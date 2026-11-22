@@ -1122,7 +1122,7 @@
         "Follow the winding entrance path to the man blocking the way. Speak to him for an Apple. Put Ershin in front and ram the nearby tree for more. Pass the man and follow the sign east to the well.",
         "In the trap clearing, take the path east from the well. Go under the broken bridge and through the eastern opening to the riverbank. Baiting a stump shows where a boar runs; you can walk straight through to the river without an apple.",
         "From the riverbank, jump to the rock beside the waterfall, then to the far bank. Follow the ledges uphill. At the top, the western jump is a dead end with a Wisdom Seed. Jump back to the fork to continue.",
-        "Heal at the fork before leaving by the high northern path. The mayor is in the next clearing. Maman uses Body Press on one character and Rock Blast on the front rank. Ryu’s Aura form has Flame Strike; Nina can heal."
+        "Heal at the fork, then take the high northern path to the mayor. Maman’s Rock Blast hits the front rank. When everyone can spare a turn, queue Ryu’s Hwa followed by Nina’s Sever for a two-hit combo. Keep a Healing Herb ready."
       ],
       "tip": "The western waterfall jump leads to the Wisdom Seed. The northern trail leads to the mayor.",
       "links": [
@@ -1321,7 +1321,7 @@
         {
           "name": "Flame Punch",
           "where": "Kyria Woods · Maman",
-          "detail": "Defeat Maman in the clearing beyond the falls to win this weapon for Ershin. The boss carries an Apple to steal.",
+          "detail": "Defeat Maman in the clearing beyond the falls to win Ershin’s Flame Punch. An Apple can appear beside it on the reward screen.",
           "areaIds": [
             "kyria-woods"
           ]
@@ -1368,7 +1368,7 @@
         {
           "name": "Maman",
           "where": "Kyria Woods · clearing above the falls · 3,600 HP",
-          "detail": "Body Press hits one character. Rock Blast hits the front rank. An Apple used on Maman briefly distracts it and heals it for 100 HP. It carries an Apple to steal. Victory earns the Flame Punch, 1,500 EXP and 450 zenny.",
+          "detail": "Body Press hits one character. Rock Blast hits the front rank. An Apple buys time to heal and gives Maman 100 HP. Ryu’s Aura can use Flame Strike. Victory earns the Flame Punch, 1,500 EXP and 450 zenny. You can steal an Apple or find one alongside the weapon.",
           "areaIds": [
             "kyria-woods"
           ]
@@ -7278,7 +7278,7 @@
           "After the night at the inn, climb out when Cray falls in. The zigzag path uphill north of the mayor’s house now leads to the passage for Synesta."
         ]
       },
-      "evidence": "The US PlayStation Lab run followed both pits. The northern cellar gave 400 zenny and led to the barrel shed. The southern ladder reached the parrot. The bookcase gave one Fish-head. The innkeeper restored the party and saved to an empty file.",
+      "evidence": "On the US PlayStation disc, the northern cellar led to 400 zenny and the barrel shed. The southern ladder led to the parrot and one Fish-head. The party saved at the inn and later returned from the Woods for the mayor’s invitation.",
       "mapKind": "Village route and cellar cutaway",
       "stop": "dam-kyria",
       "area": "Kyria",
@@ -7318,7 +7318,7 @@
         {
           "key": 4,
           "title": "Take the northern trail",
-          "body": "Heal at the fork before leaving by the high northern path. The mayor is in the next clearing. Maman uses Body Press on one character and Rock Blast on the front rank. Ryu’s Aura form has Flame Strike; Nina can heal."
+          "body": "Heal at the fork, then take the high northern path to the mayor. Maman’s Rock Blast hits the front rank. When everyone can spare a turn, queue Ryu’s Hwa followed by Nina’s Sever for a two-hit combo. Keep a Healing Herb ready."
         }
       ],
       "optional": [
@@ -7369,7 +7369,7 @@
         },
         {
           "name": "Maman",
-          "detail": "3,600 HP. Body Press hits one character. Rock Blast hits the front rank. An Apple used on Maman briefly distracts it and heals it for 100 HP. It carries an Apple to steal. Victory earns the Flame Punch, 1,500 EXP and 450 zenny."
+          "detail": "3,600 HP. Body Press hits one character. Rock Blast hits the front rank. An Apple buys time to heal and gives Maman 100 HP. Ryu’s Aura can use Flame Strike. Victory earns the Flame Punch, 1,500 EXP and 450 zenny. You can steal an Apple or find one alongside the weapon."
         },
         {
           "name": "Cap",
@@ -7388,11 +7388,11 @@
       "after": {
         "title": "After the clearing",
         "steps": [
-          "The battle returns the party to the world map. Re-enter Kyria and speak with the mayor. He opens the route to Synesta.",
+          "Return to Kyria from the world map. The mayor invites you to stay at the inn and promises to open the passage to Synesta in the morning.",
           "After the night at the inn, climb out of Cray’s pit. Take the uphill path north of the mayor’s house. The cavern on the far side leads to the well in Synesta."
         ]
       },
-      "evidence": "The US PlayStation Lab run received the Apple, crossed the trap clearing without baiting a stump, collected one Wisdom Seed on the western ledge and reached the mayor by the northern trail. The other treasure detours and battle details draw on the cited PlayStation references.",
+      "evidence": "On the US PlayStation disc, Ershin knocked Apples from the tree. The party crossed the clearing without bait, collected the western Wisdom Seed and defeated Maman. The reward screen showed one Apple, one Flame Punch and 450 zenny. The optional boar trails use the cited walkthroughs.",
       "mapKind": "Woodland route and waterfall ascent",
       "stop": "dam-kyria",
       "area": "Kyria Woods",
