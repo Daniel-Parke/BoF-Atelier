@@ -7400,7 +7400,11 @@
         },
         {
           "title": "Report back to Marlok",
-          "text": "After a scene at Marlok’s house, you regain control outside the cave. Cross the grass to the world map and travel back to Synesta. Speak to Marlok for the job at the Sandflier Wharf. To study under Stoll, re-enter the hideout and speak to him. He asks for all your zenny. You can come back later."
+          "text": "After a scene at Marlok’s house, you regain control outside the cave. Cross the grass to the world map and travel back to Synesta. Enter Marlok’s house to start the next job. If you lose track of the destination, speak to him upstairs. He sends you to the Sandflier Wharf, north of town."
+        },
+        {
+          "title": "Optional master",
+          "text": "To study under Stoll, re-enter the hideout and speak to him. He asks for all your zenny. You can come back later."
         }
       ],
       "referenceTables": [
