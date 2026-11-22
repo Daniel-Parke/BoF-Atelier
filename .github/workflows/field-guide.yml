@@ -27,3 +27,5 @@ jobs:
         run: |
           test -f tests/test_public_guide.py
           python -m unittest discover -s tests -p "test_public_guide.py" -v
+          python -m unittest discover -s tests -p "test_guide_books.py" -v
+          python -m unittest discover -s tests -p "test_guide_editorial.py" -v

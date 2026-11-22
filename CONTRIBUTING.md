@@ -8,6 +8,8 @@ For example, on IV's *Kurok, the Dam and Kyria Woods* page, identify the fork an
 
 ## Edit a guide page
 
+The [guide editing and layout standard](docs/FIELD-GUIDE-STYLE.md) gives worked examples from Cedar Woods and the Dam. Use it for both readers. Check a community walkthrough for omissions before calling a route complete.
+
 1. Fork this repository. Find the entry in [III's volume](design/field-guide/wiki/bof3.json) or [IV's volume](design/field-guide/wiki/bof4.json) by its displayed title or area. Use the pencil on GitHub for a small change, or make a branch in your local copy.
 2. Edit that entry in place. Preserve its ID so existing page links keep working. Write your own concise directions. Place a warning **before** the action that closes an opportunity. Keep optional lore out of the main sequence.
 3. Add the source or describe your own check. A reference needs an author, title and page or section where available. Prefer links to the creator, publisher or a legitimate catalogue record. Attribution alone does not permit copying another guide's prose, maps or tables.

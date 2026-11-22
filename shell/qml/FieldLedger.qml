@@ -1,5 +1,6 @@
 pragma ComponentBehavior: Bound
 import QtQuick
+import QtQuick.Controls.Basic
 import QtQuick.Layouts
 
 ColumnLayout {
@@ -8,51 +9,69 @@ ColumnLayout {
     required property bool monsters
     required property color accent
     property bool tv: false
-    property bool compact: width < (tv ? 570 : 405)
+    readonly property bool compact: width < (tv ? 470 : 295)
+    signal entryRequested(var row)
     spacing: 0
-    Rectangle {
-        Layout.fillWidth: true; color: ledger.accent; implicitHeight: ledger.tv ? 35 : 29
-        Text {
-            anchors.left: parent.left; anchors.leftMargin: 12; anchors.verticalCenter: parent.verticalCenter
-            text: ledger.monsters ? "ENCOUNTER  /  FIELD NOTES" : "ITEM  /  WHERE TO LOOK"
-            color: "#fffaf0"; font.family: "Segoe UI"; font.weight: Font.DemiBold
-            font.letterSpacing: 1; font.pixelSize: ledger.tv ? 15 : 11
+    Rectangle { Layout.fillWidth: true; implicitHeight: 2; color: ledger.accent }
+    GridLayout {
+        Layout.fillWidth: true; visible: !ledger.compact
+        Layout.topMargin: 5; Layout.bottomMargin: 6; columns: 2; columnSpacing: 12
+        Label {
+            Layout.fillWidth: true; Layout.preferredWidth: 39
+            text: ledger.monsters ? "Enemy" : "Item"; color: ledger.accent
+            font.family: "Segoe UI"; font.weight: Font.DemiBold; font.pixelSize: ledger.tv ? 18 : 14
+        }
+        Label {
+            Layout.fillWidth: true; Layout.preferredWidth: 61
+            text: ledger.monsters ? "In battle" : "Where to look"; color: ledger.accent
+            font.family: "Segoe UI"; font.weight: Font.DemiBold; font.pixelSize: ledger.tv ? 18 : 14
         }
     }
     Repeater {
         model: ledger.records
-        delegate: Rectangle {
+        delegate: Button {
             id: record
             required property var modelData
-            required property int index
-            Layout.fillWidth: true; implicitHeight: line.implicitHeight + 20
-            color: index % 2 ? "#f5f1e8" : "#fffcf3"
-            GridLayout {
-                id: line
-                anchors.left: parent.left; anchors.right: parent.right; anchors.margins: 12
-                anchors.verticalCenter: parent.verticalCenter
-                columns: ledger.compact ? 1 : 2; columnSpacing: 13; rowSpacing: 4
+            readonly property bool guideAction: true
+            objectName: (ledger.monsters ? "enemy." : "item.") + modelData.name.toLowerCase()
+            Layout.fillWidth: true; Layout.minimumWidth: 0
+            implicitHeight: cells.implicitHeight + 17
+            leftPadding: 4; rightPadding: 4; topPadding: 8; bottomPadding: 9
+            focusPolicy: Qt.StrongFocus; hoverEnabled: true
+            Accessible.name: modelData.name; Accessible.description: [modelData.where,modelData.detail].filter(Boolean).join(". ")
+            function activate() { clicked() }
+            onClicked: ledger.entryRequested(modelData)
+            Keys.onReturnPressed: event => { if (!event.isAutoRepeat) activate(); event.accepted=true }
+            Keys.onEnterPressed: event => { if (!event.isAutoRepeat) activate(); event.accepted=true }
+            background: Rectangle {
+                color: record.hovered || record.down ? "#e8e4d5" : "transparent"
+                border.width: record.activeFocus ? 2 : 0; border.color: "#006383"
+                Rectangle { anchors.top: parent.top; width: parent.width; height: 1; color: "#c7bda7" }
+            }
+            contentItem: GridLayout {
+                id: cells
+                columns: ledger.compact ? 1 : 2; columnSpacing: 12; rowSpacing: 4
                 ColumnLayout {
-                    Layout.fillWidth: true; Layout.preferredWidth: Math.max(100,record.width*.35)
+                    Layout.fillWidth: true; Layout.preferredWidth: 39; Layout.minimumWidth: 0
                     Layout.alignment: Qt.AlignTop; spacing: 3
                     Text {
                         Layout.fillWidth: true; text: record.modelData.name
-                        font.family: "Georgia"; font.pixelSize: ledger.tv ? 24 : 19
-                        color: ledger.accent; wrapMode: Text.WordWrap
+                        font.family: "Segoe UI"; font.pixelSize: ledger.tv ? 21 : 16; font.weight: Font.DemiBold
+                        font.underline: true; color: ledger.accent; wrapMode: Text.WordWrap; textFormat: Text.PlainText
                     }
                     Text {
-                        Layout.fillWidth: true; text: record.modelData.where
-                        font.family: "Segoe UI"; font.pixelSize: ledger.tv ? 17 : 13
-                        color: "#555d51"; wrapMode: Text.WordWrap
+                        Layout.fillWidth: true; text: record.modelData.where || ""; visible: !!text
+                        font.family: "Segoe UI"; font.pixelSize: ledger.tv ? 18 : 14
+                        color: "#52584f"; wrapMode: Text.WordWrap; textFormat: Text.PlainText; lineHeight: 1.12
                     }
                 }
                 Text {
-                    Layout.fillWidth: true; Layout.preferredWidth: Math.max(125,record.width*.62)
+                    Layout.fillWidth: true; Layout.preferredWidth: 61; Layout.minimumWidth: 0; Layout.alignment: Qt.AlignTop
                     text: record.modelData.detail; font.family: "Segoe UI"
-                    font.pixelSize: ledger.tv ? 21 : 16; color: "#28362e"; wrapMode: Text.WordWrap
+                    font.pixelSize: ledger.tv ? 21 : 16; color: "#283630"; wrapMode: Text.WordWrap
+                    textFormat: Text.PlainText; lineHeight: 1.16
                 }
             }
-            Rectangle { anchors.bottom: parent.bottom; width: parent.width; height: 1; color: "#d6d1c4" }
         }
     }
 }

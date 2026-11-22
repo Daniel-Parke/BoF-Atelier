@@ -20,6 +20,62 @@ ART = {
     "bof4": {"sandsea", "iv-wreck", "iv-tomb", "iv-river", "iv-palace", "iv-fishing", "iv-training", "iv-dragon"},
 }
 WIKI_FILES = ("bof3.json", "bof4.json", "illustrations.css", "illustrations.json")
+ATLAS_ART = {"bof3": set(), "bof4": {"kurok-wind"}}
+
+
+def teacher_pages(book: dict) -> list[dict]:
+    art = {stop["id"]: stop["art"] for stop in book["route"]}
+    pages = []
+    seen = set()
+    for teacher in book.get("teachers", []):
+        name = teacher["name"]
+        lessons = teacher["lessons"]
+        if (name in seen or not teacher["id"].startswith("teacher-") or not lessons
+                or not all(isinstance(t.get(key), str) and t[key].strip()
+                           for t in lessons for key in ("goal", "skill"))
+                or len({t["goal"] for t in lessons}) != len(lessons)):
+            raise ValueError(f"Invalid master lessons: {name}")
+        seen.add(name)
+        growth = teacher["growth"]
+        mental_stat = "intelligence" if book["game"] == "bof3" else "wisdom"
+        if (set(growth) != {"HP", "AP", "power", "defence", "agility", mental_stat}
+                or any(type(value) is not int for value in growth.values())):
+            raise ValueError(f"Invalid growth modifiers: {name}")
+        sections = [{"title": "Where to find " + name, "text": teacher["where"]}]
+        if "will" in teacher:
+            sections.append({"title": "Will · " + teacher["will"]["name"], "text": teacher["will"]["effect"]})
+        pages.append({
+            "id": teacher["id"], "title": name, "category": "Masters & companions",
+            "lead": teacher["join"], "art": art[teacher["unlock"]], "unlock": teacher["unlock"],
+            "links": teacher["links"], "sources": teacher["sources"],
+            "sections": sections,
+            "referenceTables": [{"title": "Lessons and rewards",
+                                 "columns": [teacher["measure"], "Reward"],
+                                 "rows": [[l["goal"], l["skill"]] for l in lessons]},
+                                {"title": "Growth per level",
+                                 "columns": ["Stat", "Change from no master"],
+                                 "rows": [[key if key in {"HP", "AP"} else key.capitalize(),
+                                           f"{value:+d}" if value else "0"] for key, value in growth.items()]}],
+        })
+    return pages
+
+
+def validate_field_sheets(book: dict, ids: set[str]) -> None:
+    stops = {stop["id"]: stop for stop in book["route"]}
+    for key, sheet in book.get("fieldSheets", {}).items():
+        stop = stops.get(sheet["stop"])
+        if (not stop or key != sheet["id"] or not re.fullmatch(r"[a-z][a-z0-9-]*", key)
+                or sheet["map"] != key + ".svg" or not sheet["mapAlt"].strip()
+                or sheet["art"] not in ART[book["game"]] | ATLAS_ART[book["game"]]
+                or set(sheet["links"]) - ids or not sheet["objective"].strip()
+                or not sheet["steps"] or not sheet["entry"].strip()
+                or any(step["key"] != n or not step["title"].strip() or not step["body"].strip()
+                       for n, step in enumerate(sheet["steps"], 1))):
+            raise ValueError(f"Incomplete illustrated route: {key}")
+        for subset, ledger in (("optional", "items"), ("enemies", "encounters")):
+            known = {row["name"] for row in stop.get(ledger, [])}
+            if any(row["name"] not in known for row in sheet[subset]):
+                raise ValueError(f"Unmatched {ledger} entry in {key}")
 
 
 def public_gene_recipe(selection: tuple[int, ...] | list[int]) -> dict:
@@ -47,12 +103,16 @@ def read_book(directory: Path, game: str) -> dict:
     route, articles, sources = book["route"], book["articles"], book["sources"]
     if tuple(row["id"] for row in route[:2]) != EARLY_PLACES[game]:
         raise ValueError(f"The legacy reading places must remain available: {game}")
+    articles.extend(teacher_pages(book))
     pages = route + articles
     ids = {row["id"] for row in pages}
     reserved = CORE_PAGES[game] | {"guide", "wiki", "route"}
     if len(ids) != len(pages) or ids & reserved or any(not re.fullmatch(r"[a-z][a-z0-9-]*", i) for i in ids):
         raise ValueError(f"Duplicate, invalid or reserved page ID: {game}")
     places = {row["id"] for row in route}
+    validate_field_sheets(book, ids | reserved)
+    entities = {}
+    book["entities"] = entities
     for key, source in sources.items():
         if source.get("kind") == "print" and source.get("title", "").strip() and "url" not in source:
             continue
@@ -64,6 +124,10 @@ def read_book(directory: Path, game: str) -> dict:
                 or not row["sources"] or set(row["sources"]) - sources.keys()
                 or set(row["links"]) - (ids | reserved)):
             raise ValueError(f"Incomplete guide page: {game}/{row['id']}")
+        for citation in row.get("sourceSections", []):
+            if (citation.get("source") not in row["sources"] or not isinstance(citation.get("section"), str)
+                    or not citation["section"].strip()):
+                raise ValueError(f"Invalid source chapter: {game}/{row['id']}")
     for row in route:
         if not all(row[key].strip() for key in ("region", "hint", "tip")) or not row["steps"] or not all(row["steps"]):
             raise ValueError(f"Incomplete walkthrough: {row['id']}")
@@ -71,6 +135,12 @@ def read_book(directory: Path, game: str) -> dict:
         if (row["unlock"] not in places or not row["category"].strip() or not row["sections"]
                 or not all(s["title"].strip() and s["text"].strip() for s in row["sections"])):
             raise ValueError(f"Incomplete wiki article: {row['id']}")
+        for table in row.get("referenceTables", []):
+            columns = table["columns"]
+            if (not table["title"] or len(columns) < 2 or not all(columns) or not table["rows"]
+                    or any(len(line) != len(columns) or not all(isinstance(c, str) and c.strip() for c in line)
+                           for line in table["rows"])):
+                raise ValueError(f"Invalid reference table: {row['id']}")
     for stop in route:
         floors = stop.get("floors", [])
         floor_keys = set()
@@ -113,6 +183,11 @@ def read_book(directory: Path, game: str) -> dict:
                 continue
             if any(not all(r[k].strip() for k in ("name", "where", "detail")) for r in records):
                 raise ValueError(f"Incomplete {field} record: {stop['id']}")
+            for record in records:
+                entity_id = ("item." if field == "items" else "enemy.") + record["name"].strip().lower()
+                entity = entities.setdefault(entity_id, {"id": entity_id, "name": record["name"],
+                                             "category": category, "unlock": stop["id"], "observations": []})
+                entity["observations"].append({"stop": stop["id"], **record})
             page_id = f"{stop['id']}-{field}"
             if page_id in ids | reserved:
                 raise ValueError(f"Duplicate atlas article: {page_id}")

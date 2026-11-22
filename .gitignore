@@ -14,6 +14,8 @@
 .env.*
 !.env.example
 *.bin
+*.bios
+*.rom
 *.iso
 *.chd
 *.cue
@@ -66,7 +68,7 @@ Thumbs.db
 *.local.json
 *.local.toml
 
-# Font files are not part of this seed or its public export.
+# Private fonts and recordings stay local. The reviewed Atelier assets are named below.
 *.ttf
 *.otf
 *.woff
@@ -75,3 +77,13 @@ Thumbs.db
 *.sqlite3-*
 *.mcs
 *.gme
+!/design/field-guide/atlas/type/Gloock-Regular.ttf
+!/design/field-guide/atlas/type/BarlowSemiCondensed-SemiBold.ttf
+!/design/field-guide/atlas/sound/after-the-rain.ogg
+!/design/field-guide/atlas/sound/copper-morning.ogg
+!/design/field-guide/atlas/sound/distant-water.ogg
+!/design/field-guide/atlas/sound/western-ridge.ogg
+!/design/field-guide/atlas/sound/after-the-rain.wav
+!/design/field-guide/atlas/sound/copper-morning.wav
+!/design/field-guide/atlas/sound/distant-water.wav
+!/design/field-guide/atlas/sound/western-ridge.wav

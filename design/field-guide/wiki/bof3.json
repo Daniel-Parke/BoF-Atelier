@@ -265,6 +265,50 @@
     "floor-exits": {
       "title": "Area_LinkAt · room links, destinations and doorway width",
       "url": "https://github.com/kerokline/BreathOfFire3PCPort/blob/7999aa1a4001a004641b8e08b471cd8875f73350/docs/area-entry.md"
+    },
+    "tri": {
+      "title": "Tricrokra · PlayStation walkthrough",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/12039"
+    },
+    "enemy-db": {
+      "title": "second_advent · PlayStation enemy formations, behaviour and learnable skills",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/57525"
+    },
+    "skills": {
+      "title": "EternalSpirit · PlayStation enemy skill FAQ",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/24900"
+    },
+    "puzzles": {
+      "title": "DavidK5 · PlayStation mini-games and puzzles",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/24866"
+    },
+    "rstone": {
+      "title": "RStone · Container Yard encounters",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/8748"
+    },
+    "grid": {
+      "title": "Joe Monson · Myria Station electric grid",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/3738"
+    },
+    "faerie-work": {
+      "title": "Thundercleese · Faerie Village jobs and shop changes",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/3739"
+    },
+    "electro-fish": {
+      "title": "ElectroSpecter · PlayStation fishing FAQ",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/40847"
+    },
+    "gene-faq": {
+      "title": "Bubbawheat · PlayStation dragon gene FAQ",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/3736"
+    },
+    "desert-map": {
+      "title": "Prestikles · Desert of Death map",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/map/23718-desert-of-death-full-map"
+    },
+    "s26-adult": {
+      "title": "SLTE · Getting the Party Back Together",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-26.html"
     }
   },
   "route": [
@@ -275,7 +319,7 @@
       "lead": "Your first footsteps are a little dragon’s. The mine has one route out, past the workers and their machines.",
       "hint": "Watch what your breath does in the first fight. When you can walk, look beside the miners.",
       "steps": [
-        "Inspect the fallen miner in the crystal chamber for the Melted Blade.",
+        "Choose Whelp Breath under Abilities in the first fight. When you regain control, search the fallen miner for the Melted Blade.",
         "Take the passage past the frightened worker. Follow the tunnel through the huge skull until the workers bring their machine.",
         "On the train, move repeatedly inside the cage to rock it off the wagon."
       ],
@@ -290,7 +334,9 @@
         "r1",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "tri"
       ],
       "landmarks": [
         "Crystal chamber",
@@ -419,6 +465,16 @@
             }
           ]
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Opening mine escape"
+        },
+        {
+          "source": "tri",
+          "section": "Prologue, mine and cage"
+        }
       ]
     },
     {
@@ -429,8 +485,8 @@
       "hint": "Cross the log bridge. If you reach the world map in your nightshirt, look for your two new friends in town.",
       "steps": [
         "Face the diary beside the bed. Choose a memory card and an empty file to record the morning.",
-        "Follow Rei and Teepo through McNeil and speak to them by the shops. Continue to Yraall Road for their plan.",
-        "Return to Bunyan’s cabin in Cedar Woods. Put Rei in front to open the lock and search the cupboard downstairs.",
+        "Go downhill past the friendly monsters and the old man. Leave by the wooden sign, then follow the world-map road around the trees into McNeil. Find Rei and Teepo by the shops and continue to Yraall Road for their plan.",
+        "Return to Bunyan’s cabin in Cedar Woods. Let Rei open the lock. Take the Beef Jerky from the cellar cupboard and head back upstairs.",
         "During the woodcutting task, swing when Teepo has set the log upright. Head for the road to Mt. Glaus afterwards."
       ],
       "tip": "Before leaving the woods, explore the clearing across the bridge. Its chest holds Skill Ink.",
@@ -448,7 +504,10 @@
         "s3",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "tri",
+        "enemy-db"
       ],
       "landmarks": [
         "Rei’s house",
@@ -667,6 +726,16 @@
           "where": "Woods after Ryu gets dressed",
           "detail": "Rei can steal a Vitamin. A Life Shard is a possible drop."
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Rei’s house, the woods and Bunyan’s cellar"
+        },
+        {
+          "source": "tri",
+          "section": "Prologue, the cabin and woodcutting"
+        }
       ]
     },
     {
@@ -694,7 +763,9 @@
         "s4",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "boss"
       ],
       "landmarks": [
         "Mountain hut",
@@ -705,8 +776,8 @@
       "encounters": [
         {
           "name": "Nue",
-          "where": "Mountain cave",
-          "detail": "Follow the broken trees to the stream. Heal before the rematch."
+          "where": "Hut and cave",
+          "detail": "Rei can try Pilfer for a Power Food before the first fight ends at the hut. Follow the broken trees and heal before the cave rematch."
         },
         {
           "name": "Bat",
@@ -838,6 +909,21 @@
           "name": "Molotov",
           "where": "Bone chamber",
           "detail": "Look beside the same pile for a second pickup."
+        },
+        {
+          "name": "200 zenny",
+          "where": "Blood trail in the cave",
+          "detail": "Search the skeleton where the blood stops. Retrace your steps to the junction for the water route."
+        }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Mountain hut and second Nue encounter"
+        },
+        {
+          "source": "boss",
+          "section": "Nue, first and second fights"
         }
       ]
     },
@@ -866,7 +952,10 @@
         "r2",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "tri",
+        "enemy-db"
       ],
       "landmarks": [
         "Outer wall",
@@ -894,6 +983,11 @@
           "name": "Taser",
           "where": "Top-floor crates",
           "detail": "Inspect the isolated crate on the same floor."
+        },
+        {
+          "name": "Magic Shard",
+          "where": "Servants’ rooms",
+          "detail": "Look in the upstairs cabinet beyond the portrait gallery. Return to the servants’ beds to rest and save before hunting the ghosts."
         }
       ],
       "encounters": [
@@ -910,12 +1004,12 @@
         {
           "name": "Rocky",
           "where": "Chicken coop",
-          "detail": "Watch the bird for Jump."
+          "detail": "Rei can try Pilfer for a Life Shard. Use Examine if you want Jump."
         },
         {
           "name": "Volt",
           "where": "Manor interior",
-          "detail": "Examine for Charge."
+          "detail": "Examine for Charge before using thunder on it. A thunder hit changes its routine."
         }
       ],
       "map": {
@@ -1067,7 +1161,17 @@
       "warning": {
         "label": "Missable",
         "text": "Search the cabinets and crates before finishing the robbery. The night-time interior is a one-visit area."
-      }
+      },
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Courtyard and interior before the roof"
+        },
+        {
+          "source": "tri",
+          "section": "Night-time manor, portrait gallery and servant quarters"
+        }
+      ]
     },
     {
       "id": "wyndia",
@@ -1086,7 +1190,9 @@
         "wyndia-stones",
         "accession-field",
         "genes",
-        "apprentices"
+        "apprentices",
+        "wyndia-children",
+        "genes-child"
       ],
       "art": "highlands",
       "sources": [
@@ -1096,7 +1202,10 @@
         "s9",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "hl",
+        "puzzles"
       ],
       "landmarks": [
         "Mt. Myrneg",
@@ -1207,6 +1316,21 @@
           "name": "Light Bangle",
           "where": "Gravestone trap",
           "detail": "Use the large stone before completing all seven green switches to reach its chest."
+        },
+        {
+          "name": "Skill Ink",
+          "where": "Castle prison",
+          "detail": "After breaking the cell door, search to the right before following Nina downstairs."
+        }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Cell escape and fountain search"
+        },
+        {
+          "source": "hl",
+          "section": "Wyndia lower city and the four children"
         }
       ]
     },
@@ -1226,7 +1350,9 @@
       "links": [
         "field-actions",
         "accession-field",
-        "genes"
+        "genes",
+        "crystal-courtyard",
+        "genes-child"
       ],
       "art": "highlands",
       "sources": [
@@ -1235,7 +1361,13 @@
         "r3",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "hl",
+        "puzzles",
+        "gene-faq",
+        "a-genes",
+        "tri"
       ],
       "landmarks": [
         "Mason’s hut",
@@ -1263,6 +1395,16 @@
           "name": "800 zenny",
           "where": "Moving platforms",
           "detail": "Use blue first. Follow the northwest route and take the second door."
+        },
+        {
+          "name": "Ring of Ice",
+          "where": "Tower courtyard",
+          "detail": "Finish Nina’s four-crystal race with at least six seconds left."
+        },
+        {
+          "name": "Reverse gene",
+          "where": "Woods below the tower",
+          "detail": "Enter the ? clearing south of the mountain escape. Have Ryu inspect the purple crystal."
         }
       ],
       "floors": [
@@ -1423,6 +1565,20 @@
           "where": "Mt. Boumore",
           "detail": "Examine for Double Blow. A Broad Sword can drop."
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "The mountain escape and tower exterior"
+        },
+        {
+          "source": "puzzles",
+          "section": "Timed courtyard crystals and prizes"
+        },
+        {
+          "source": "tri",
+          "section": "Tower, EP100000009 · Nina and the crystal switches"
+        }
       ]
     },
     {
@@ -1441,7 +1597,8 @@
       "links": [
         "field-actions",
         "accession-field",
-        "formations"
+        "formations",
+        "genes-child"
       ],
       "art": "iii-mine",
       "sources": [
@@ -1450,7 +1607,11 @@
         "a2",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "skills",
+        "enemy-db",
+        "dk",
+        "a-genes"
       ],
       "landmarks": [
         "Plant office",
@@ -1473,6 +1634,11 @@
           "name": "Pain Weed",
           "where": "Disposal site",
           "detail": "The Pain Weed carries a Bat Amulet."
+        },
+        {
+          "name": "Eye Bulb",
+          "where": "Disposal site",
+          "detail": "Use Examine while it takes a turn to Rest. The learned skill restores a little HP and AP."
         }
       ],
       "floors": [
@@ -1541,6 +1707,21 @@
           "name": "Artemis’ Cap",
           "where": "Second conveyor area",
           "detail": "Use the crates as a path between the stone ledges."
+        },
+        {
+          "name": "Thorn gene",
+          "where": "Rocket crash site",
+          "detail": "Revisit the crash clearing and check behind the tree on the east side with Ryu in front."
+        }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Disposal site and rocket wreck"
+        },
+        {
+          "source": "skills",
+          "section": "Eye Bulb and Rest"
         }
       ]
     },
@@ -1560,7 +1741,8 @@
       "links": [
         "arena-rules",
         "formations",
-        "accession-field"
+        "accession-field",
+        "enemy-skills"
       ],
       "art": "highlands",
       "sources": [
@@ -1569,7 +1751,10 @@
         "r4",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "enemy-db",
+        "skills"
       ],
       "landmarks": [
         "Registration",
@@ -1592,6 +1777,16 @@
           "name": "Emitai and Golems",
           "where": "Null Magic Hall",
           "detail": "The golems protect the caster. Resolve this round before moving on to Garr."
+        },
+        {
+          "name": "Patrio",
+          "where": "Hall of Fire",
+          "detail": "While Patrio is still fighting, choose Examine for a chance to learn Frost Strike."
+        },
+        {
+          "name": "Stallion",
+          "where": "Maekyss Gorge bridge",
+          "detail": "Examine when Stallion uses Resist or Barrier. This fight comes after the tournament."
         }
       ],
       "floors": [
@@ -1729,7 +1924,17 @@
       "warning": {
         "label": "Missable",
         "text": "Open the locker in the northwest dressing room before the tournament finishes. The locker-room money cannot be collected after the contest."
-      }
+      },
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Tournament fighters and the Maekyss bridge"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Frost Strike, Resist and Barrier"
+        }
+      ]
     },
     {
       "id": "rhapala",
@@ -1739,7 +1944,7 @@
       "hint": "Ask at the Porters’ Guild and the wharf. Beyd needs equipment and practice before you settle the question at the lighthouse.",
       "steps": [
         "Ask the guild about passage. Follow the conversations between Shadis, Beyd and Zig at the wharf and the inn.",
-        "Take a sword and armour for Beyd. Speak to him at the wharf to begin an evening’s practice.",
+        "Beyd gives you 1,000 zenny for his gear. Equip him with a sword and armour from a shop or your own inventory, then meet him at the wharf.",
         "Let Beyd land hits and take controlled damage over several sessions. When he can hold his own, select the lighthouse option.",
         "During his duel, wait unless Zig is looking away. Speak to Beyd at the wharf again for the Guild Badge."
       ],
@@ -1757,7 +1962,10 @@
         "a2",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "puzzles",
+        "tri"
       ],
       "landmarks": [
         "Wharf and inn",
@@ -1834,6 +2042,20 @@
           "where": "Wharf duel",
           "detail": "Beyd fights here after training. Keep track of his equipment before entering the duel."
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Buying Beyd’s equipment and evening practice"
+        },
+        {
+          "source": "puzzles",
+          "section": "Wharf training and the public duel"
+        },
+        {
+          "source": "tri",
+          "section": "Training Beyd, EP100000013 · the evening practice and duel"
+        }
       ]
     },
     {
@@ -1853,7 +2075,8 @@
         "lighthouse-gauge",
         "faerie-homes",
         "genes",
-        "coastal-genes"
+        "coastal-genes",
+        "genes-child"
       ],
       "art": "iii-port",
       "sources": [
@@ -1861,7 +2084,12 @@
         "r5",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "enemy-db",
+        "skills",
+        "gene-faq",
+        "a-genes"
       ],
       "landmarks": [
         "Fuel store",
@@ -1879,6 +2107,16 @@
           "name": "Coin",
           "where": "Exterior stairs",
           "detail": "Climb the west stairs and continue northeast to the chest."
+        },
+        {
+          "name": "Dream Ring",
+          "where": "Lit conduit",
+          "detail": "From the boiler, follow the powered line to the right. Turn the camera where the line bends upwards."
+        },
+        {
+          "name": "Eldritch gene",
+          "where": "Lighthouse roof",
+          "detail": "Check the roof with Ryu after climbing to the beacon."
         }
       ],
       "encounters": [
@@ -1896,6 +2134,11 @@
           "name": "Spectre",
           "where": "Lighthouse",
           "detail": "A Barrier Ring can drop."
+        },
+        {
+          "name": "Dolphin",
+          "where": "Faerie beach at night",
+          "detail": "Expect Tsunami every third turn. A character using Examine can learn it. Heal before the next attack."
         }
       ],
       "lore": "The light you restore serves two communities. After the beacon comes on, the faeries ask you to visit their beach and see what happens there after dark.",
@@ -1980,6 +2223,16 @@
             }
           ]
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Boiler conduit, beacon and island beach"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Dolphin behaviour and Tsunami"
+        }
       ]
     },
     {
@@ -1998,7 +2251,8 @@
       "links": [
         "accession-field",
         "formations",
-        "genes"
+        "genes",
+        "genes-child"
       ],
       "art": "highlands",
       "sources": [
@@ -2007,7 +2261,10 @@
         "a2",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "skills",
+        "enemy-db"
       ],
       "landmarks": [
         "Mountain entrance",
@@ -2030,6 +2287,16 @@
           "name": "Lava Man",
           "where": "Caverns",
           "detail": "Watch for Burn."
+        },
+        {
+          "name": "Scylla",
+          "where": "Gisshan’s party",
+          "detail": "Scylla and Charyb can teach Wall of Fire. Use Examine on one while it is alive."
+        },
+        {
+          "name": "Charyb",
+          "where": "Gisshan’s party",
+          "detail": "Watch for Wall of Fire or Snap. Both can be learned with Examine."
         }
       ],
       "floors": [
@@ -2114,6 +2381,16 @@
           "where": "Large magma field",
           "detail": "Check the southwest edge of the field."
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Lava crossing and Gisshan’s two companions"
+        },
+        {
+          "source": "skills",
+          "section": "Charyb and Scylla, Wall of Fire"
+        }
       ]
     },
     {
@@ -2131,7 +2408,8 @@
       "links": [
         "field-actions",
         "accession-field",
-        "camp-notes"
+        "camp-notes",
+        "genes-child"
       ],
       "art": "iii-mine",
       "sources": [
@@ -2140,7 +2418,10 @@
         "s22",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "enemy-db",
+        "skills"
       ],
       "landmarks": [
         "Outer steps",
@@ -2267,7 +2548,7 @@
         {
           "name": "Phantom",
           "where": "Inside the tower",
-          "detail": "A Crepe Cape can drop."
+          "detail": "A Crepe Cape can drop. Examine on even-numbered turns for a chance at Multistrike."
         },
         {
           "name": "Lizard Man",
@@ -2277,7 +2558,17 @@
         {
           "name": "Tricker",
           "where": "Inside the tower",
-          "detail": "Watch for Blind or Flying Kick."
+          "detail": "Try for Flying Kick before stealing its item or cutting its HP to a quarter. Blind is another learnable move."
+        }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Tower descent and the end of childhood"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Phantom and Tricker behaviour"
         }
       ]
     },
@@ -2297,7 +2588,8 @@
       "links": [
         "railway-points",
         "fusion-forms",
-        "diary"
+        "diary",
+        "genes-home"
       ],
       "art": "iii-mine",
       "sources": [
@@ -2306,7 +2598,10 @@
         "a2",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "skills",
+        "gene-faq"
       ],
       "landmarks": [
         "B2 rest room",
@@ -2329,6 +2624,21 @@
           "name": "Vitamin",
           "where": "B3 platforms",
           "detail": "Open the third chest while you are on the upper level."
+        },
+        {
+          "name": "Shadow gene",
+          "where": "Beyond the B2 rockfall",
+          "detail": "The Dragon Zombie encounter grants both Shadow and Fusion."
+        },
+        {
+          "name": "Fusion gene",
+          "where": "Beyond the B2 rockfall",
+          "detail": "This story gene uses Ryu’s current companions when choosing a form."
+        },
+        {
+          "name": "Lion’s Belt",
+          "where": "Mine passages after the rockfall",
+          "detail": "At the junction after the Dragon Zombie, take the northwest path. The northeast branch holds Protein."
         }
       ],
       "encounters": [
@@ -2466,7 +2776,17 @@
       "warning": {
         "label": "Missable",
         "text": "Before blowing up the rockfall on B2, use the explosives wagon to reach the Feather Sword chest. The blast removes the wagon you need."
-      }
+      },
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "The B2 rockfall and the return to the surface"
+        },
+        {
+          "source": "gene-faq",
+          "section": "Shadow and Fusion"
+        }
+      ]
     },
     {
       "id": "syn-city",
@@ -2484,7 +2804,9 @@
       "links": [
         "camp-notes",
         "formations",
-        "field-actions"
+        "field-actions",
+        "second-hide-and-seek",
+        "genes-home"
       ],
       "art": "iii-woods",
       "sources": [
@@ -2494,7 +2816,10 @@
         "s25",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "enemy-db",
+        "boss"
       ],
       "landmarks": [
         "Ogre Road",
@@ -2506,7 +2831,7 @@
         {
           "name": "Mikba",
           "where": "Northern Checkpoint",
-          "detail": "Bring healing items for the pursuit from Syn City."
+          "detail": "Use Examine early if you want Resist. Mikba drops it from his routine below half HP. Influence can direct Rei’s Weretiger attacks."
         },
         {
           "name": "Slasher",
@@ -2558,7 +2883,17 @@
       "warning": {
         "label": "Missable",
         "text": "Take the Old Painting from the gang hideout before leaving for the Checkpoint. You cannot return to that room."
-      }
+      },
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Ogre Road, Syn City and the Mikba encounter"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Mikba’s Resist and Multistrike"
+        }
+      ]
     },
     {
       "id": "plant",
@@ -2576,7 +2911,9 @@
       "links": [
         "plant-passwords",
         "field-actions",
-        "accession-field"
+        "accession-field",
+        "genes-home",
+        "second-hide-and-seek"
       ],
       "art": "iii-mine",
       "sources": [
@@ -2584,7 +2921,11 @@
         "r7",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "gene-faq",
+        "a-genes",
+        "enemy-db"
       ],
       "landmarks": [
         "Greenhouse stones",
@@ -2606,7 +2947,12 @@
         {
           "name": "Fly Man",
           "where": "Laboratory",
-          "detail": "A Flame Spear can drop."
+          "detail": "Examine for Flame Strike. A Flame Spear can drop."
+        },
+        {
+          "name": "Shroom",
+          "where": "Final laboratory room",
+          "detail": "Shroom can use Lava Burst. Leave one party member on healing if another is using Examine."
         }
       ],
       "floors": [
@@ -2739,6 +3085,21 @@
           "name": "Wisdom Ring",
           "where": "Ventilation ducts",
           "detail": "Take the northwest branch above the room with the pressure cubes."
+        },
+        {
+          "name": "Force gene",
+          "where": "Underground lab vents",
+          "detail": "Take Ryu along the ventilation ducts below the Plant and inspect the purple crystal."
+        }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Underground laboratory vents and Shroom"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Fly Man and Shroom skill entries"
         }
       ]
     },
@@ -2762,7 +3123,9 @@
       "links": [
         "tidal-crossing",
         "accession-field",
-        "camp-notes"
+        "camp-notes",
+        "genes-home",
+        "second-hide-and-seek"
       ],
       "art": "iii-port",
       "sources": [
@@ -2771,7 +3134,11 @@
         "r8",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "enemy-db",
+        "boss",
+        "a-genes"
       ],
       "landmarks": [
         "Castle basement",
@@ -2794,6 +3161,11 @@
           "name": "Thunder Ring",
           "where": "East passage",
           "detail": "Follow the corridor east of the ladder before descending to the lowest level."
+        },
+        {
+          "name": "Gross gene",
+          "where": "Southern mouth of the Tidal Caves",
+          "detail": "Look for the crystal on the way out. From the world map, the south entrance is the shorter return trip."
         }
       ],
       "floors": [
@@ -2885,12 +3257,22 @@
         {
           "name": "Sleepy",
           "where": "Tidal Caves",
-          "detail": "This enemy can drop a Fat Frog lure."
+          "detail": "Examine for Snooze. A Fat Frog lure can drop."
         },
         {
           "name": "Gaist",
           "where": "Cliff",
-          "detail": "Ryu fights alone. Flame heals Gaist, including the Flare cast by his torches."
+          "detail": "Ryu fights alone. Hit the torches with frost to stop their Flare healing Gaist. Use fire protection against Corona."
+        }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Tidal Caves and the duel at Cliff"
+        },
+        {
+          "source": "boss",
+          "section": "Gaist and both torches"
         }
       ]
     },
@@ -2902,7 +3284,7 @@
       "hint": "Take Momo to the engine before you search the scrap. Her list tells you which lettered parts matter.",
       "steps": [
         "Find Beyd in Junk Town and follow him to the Dock. Have Momo inspect the engine, then ask the Junk Town chief for access to Steel Beach.",
-        "Lead with Garr when speaking to the foreman. Match his rope-hauling directions and prepare for the creature pulled ashore.",
+        "Lead with Garr at the foreman. Pull on the red flag and hand the next pull to the foreman on white. Heal before the catch comes ashore.",
         "Search around the shoreline, the welder and raised ledges. Board the old freighter and change the beams’ height at the levers to reach the remaining pieces.",
         "Deliver the required parts to Momo in the engine room. Speak to the crew and try the outer waters before sailing to Parch."
       ],
@@ -2910,7 +3292,8 @@
       "links": [
         "field-view",
         "field-actions",
-        "camp-notes"
+        "camp-notes",
+        "genes-home"
       ],
       "art": "iii-port",
       "sources": [
@@ -2919,7 +3302,13 @@
         "s30",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "puzzles",
+        "boss",
+        "skills",
+        "a-genes",
+        "tri"
       ],
       "landmarks": [
         "Junk Town dock",
@@ -2942,6 +3331,11 @@
           "name": "Part E",
           "where": "Freighter cargo",
           "detail": "Search the north-side crates near the robe. Part C is behind the crates on the south side."
+        },
+        {
+          "name": "Mutant gene",
+          "where": "Northeast shore",
+          "detail": "Walk to the far end of the beach and inspect the crystal beside the water."
         }
       ],
       "floors": [
@@ -3005,6 +3399,25 @@
           "name": "Bolt Mage",
           "where": "Freighter",
           "detail": "A Robe of Wind can drop."
+        },
+        {
+          "name": "Angler",
+          "where": "Shore after hauling the rope",
+          "detail": "Thunder attacks heal Angler. Use Examine if it casts Thunderclap and keep a cure for poison ready."
+        }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Repair parts, hauling and the Angler"
+        },
+        {
+          "source": "puzzles",
+          "section": "Steel Beach rope signals"
+        },
+        {
+          "source": "tri",
+          "section": "Steel Beach, EP200000011 · Garr, the foreman and the freighter"
         }
       ]
     },
@@ -3036,7 +3449,8 @@
       "links": [
         "shisu-kitchen",
         "fishing-tackle",
-        "field-actions"
+        "field-actions",
+        "genes-home"
       ],
       "art": "iii-port",
       "sources": [
@@ -3046,7 +3460,9 @@
         "a3",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "electro-fish"
       ],
       "landmarks": [
         "Mayor’s house",
@@ -3084,6 +3500,11 @@
           "name": "400 zenny",
           "where": "Northeast houses",
           "detail": "Use the dresser in the left-hand house."
+        },
+        {
+          "name": "Shaman’s Ring",
+          "where": "Mayor’s meal",
+          "detail": "A top-grade dish can earn this AP-saving ring. Check the shisu recipe before cooking."
         }
       ],
       "map": {
@@ -3208,6 +3629,16 @@
             }
           ]
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Food for the Parch mayor and access to the mariner"
+        },
+        {
+          "source": "electro-fish",
+          "section": "Shisu trial recipe and fish length"
+        }
       ]
     },
     {
@@ -3226,7 +3657,8 @@
       "links": [
         "crane-cargo",
         "formations",
-        "camp-notes"
+        "camp-notes",
+        "enemy-skills"
       ],
       "art": "iii-port",
       "sources": [
@@ -3236,7 +3668,11 @@
         "s32",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "enemy-db",
+        "skills",
+        "boss"
       ],
       "landmarks": [
         "Boarding point",
@@ -3400,13 +3836,28 @@
         {
           "name": "Ammonites",
           "where": "Deck",
-          "detail": "Prepare for Tsunami, a group attack."
+          "detail": "Both can teach Tsunami. While the pair is intact, they can also use Multistrike. Concentrate on one to stop Multistrike."
+        },
+        {
+          "name": "King Toad",
+          "where": "Black Ship",
+          "detail": "An alternative source of Influence if Ryu missed the Boss Goblin near home."
         }
       ],
       "warning": {
         "label": "Missable",
         "text": "Collect the optional crane prizes before fighting on deck. The crossing ends after the Ammonites battle."
-      }
+      },
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Deck confrontation after the cargo crane"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Ammonite and King Toad behaviour"
+        }
+      ]
     },
     {
       "id": "colony",
@@ -3424,7 +3875,8 @@
       "links": [
         "relay-tuning",
         "genes",
-        "field-actions"
+        "field-actions",
+        "genes-across-sea"
       ],
       "art": "iii-mine",
       "sources": [
@@ -3434,7 +3886,10 @@
         "s34",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "a-genes",
+        "gene-faq"
       ],
       "landmarks": [
         "Colony portal",
@@ -3457,6 +3912,16 @@
           "name": "Hourglass",
           "where": "Freighter shutters",
           "detail": "Lift the dark-blue shutter and take the northeast door to the tablets and chest."
+        },
+        {
+          "name": "Trance gene",
+          "where": "Yggdrasil on the Lost Shore",
+          "detail": "Look behind the large tree on the new continent before moving on to Steel Grave."
+        },
+        {
+          "name": "Failure gene",
+          "where": "Colony",
+          "detail": "Search the southwest side of the settlement with Ryu in front."
         }
       ],
       "floors": [
@@ -3563,6 +4028,16 @@
           "where": "Colony",
           "detail": "Watch for Transfer or Sacrifice."
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Lost Shore tree, Colony and relay"
+        },
+        {
+          "source": "gene-faq",
+          "section": "Trance, Failure and Radiance locations"
+        }
       ]
     },
     {
@@ -3574,14 +4049,15 @@
       "steps": [
         "After the village meal and a night’s rest, explore the tents and speak with Garr. Use the small dragon statue to save.",
         "Descend the well to the mural and the elder’s room. Let him see Garr, then Nina, then Ryu.",
-        "Prepare physical skills, healing and fire or thunder protection for Jono. Ryu must manage this encounter without a dragon transformation.",
+        "Ryu cannot use Accession against Jono. Bring companions who can heal and deal physical damage. Fire and thunder protection help.",
         "Speak to the elder once more for the Infinity gene. Return to the surface and take Horis’s directions to the Factory."
       ],
       "tip": "A strong single-target physical skill gives Ryu something useful to do during the elder’s trial.",
       "links": [
         "kaiser-control",
         "genes",
-        "camp-notes"
+        "camp-notes",
+        "genes-across-sea"
       ],
       "art": "iii-desert",
       "sources": [
@@ -3589,7 +4065,11 @@
         "r10",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "boss",
+        "enemy-db",
+        "gene-faq"
       ],
       "landmarks": [
         "Village tents",
@@ -3613,7 +4093,7 @@
         {
           "name": "Jono",
           "where": "Elder’s trial",
-          "detail": "Prepare physical skills and protection against fire or thunder."
+          "detail": "Every third turn Jono loses an action to Bad Back. Use the opening to heal, or have Rei attempt Pilfer for Dynamite."
         }
       ],
       "lore": "After his trial, the elder can pass on the Infinity gene. Speak to him again before setting out.",
@@ -3682,6 +4162,16 @@
             }
           ]
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "The elder’s trial and Infinity"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Elder, Bad Back and Double Blow"
+        }
       ]
     },
     {
@@ -3709,7 +4199,10 @@
         "r10",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "skills",
+        "enemy-db"
       ],
       "landmarks": [
         "Security entrance",
@@ -3821,12 +4314,22 @@
         {
           "name": "Egg Gang",
           "where": "Factory",
-          "detail": "Watch for Double Blow."
+          "detail": "Examine when the group casts Magic Ball. Watch for Double Blow as well."
         },
         {
           "name": "Gold Egg",
           "where": "Factory",
-          "detail": "A Divine Helm can drop."
+          "detail": "Use Examine for Resist. A Divine Helm can drop."
+        }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Timed barriers and the workbot"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Egg Gang and Gold Egg move lists"
         }
       ]
     },
@@ -3846,7 +4349,8 @@
       "links": [
         "desert-stars",
         "camp-notes",
-        "formations"
+        "formations",
+        "desert-treasures"
       ],
       "art": "iii-desert",
       "sources": [
@@ -3854,7 +4358,10 @@
         "r10",
         "a4",
         "floor-names",
-        "floor-attrs"
+        "floor-attrs",
+        "dk",
+        "skills",
+        "enemy-db"
       ],
       "landmarks": [
         "First nights",
@@ -3866,7 +4373,7 @@
         {
           "name": "Manmo",
           "where": "Mound on the final leg",
-          "detail": "Heal before approaching the mound."
+          "detail": "If you want Feign Swing, watch Manmo early. It changes tactics at half HP."
         },
         {
           "name": "Scorpion",
@@ -3874,7 +4381,7 @@
           "detail": "Examine for Double Blow."
         },
         {
-          "name": "Magnemite",
+          "name": "Magmaite",
           "where": "Desert battles",
           "detail": "Watch for Air Raid, Flying Kick or Lavaburst."
         }
@@ -3940,6 +4447,16 @@
           "where": "Eastern desert detour",
           "detail": "Leave Oasis heading east. Search the clearings for the chest over several nights."
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Night bearings and Manmo"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Magmaite and Manmo behaviour"
+        }
       ]
     },
     {
@@ -3958,7 +4475,10 @@
       "links": [
         "relay-tuning",
         "camp-notes",
-        "field-view"
+        "field-view",
+        "container-yard",
+        "desert-treasures",
+        "genes-across-sea"
       ],
       "art": "iii-mine",
       "sources": [
@@ -3967,7 +4487,11 @@
         "r10",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "rstone",
+        "enemy-db",
+        "tri"
       ],
       "landmarks": [
         "Oasis",
@@ -4101,12 +4625,27 @@
         {
           "name": "ArchMage",
           "where": "Container Yard, optional",
-          "detail": "This rare encounter can drop a Holy Avenger."
+          "detail": "It regains 1,500 HP each round. Prepare burst damage before engaging. A Holy Avenger is its weapon reward."
         },
         {
           "name": "Berserker",
           "where": "Container Yard, optional",
           "detail": "It carries an Aries Glove and can drop Rufad’s Spear."
+        },
+        {
+          "name": "Tank Bot",
+          "where": "Container Yard, optional",
+          "detail": "Pilfer can yield a Wisdom Seed. Keep the party healed before moving deeper into the containers."
+        }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Oasis, Container Yard and Caer Xhan entry"
+        },
+        {
+          "source": "rstone",
+          "section": "Container Yard transporter, TankBot and both challenge enemies"
         }
       ]
     },
@@ -4119,14 +4658,15 @@
       "steps": [
         "Operate the service lift at the workers’ entrance and reach the sleeping quarters. Save and take Momo and Rei for the doors ahead.",
         "Follow the yellow route into the laboratory. Inspect the sleeping creature’s enclosure and shut off its gas at the console.",
-        "Use the neighbouring control panels to clear a path through the electrified floor. Take the lift on the far side and prepare for Chimera.",
+        "The three electrical panels overlap. Open a two-tile-wide corridor across the floor, then take the lift on the other side. Heal before facing Chimera.",
         "Take Card Key B. Collect the new HE Shells for Momo below, then return towards the quarters and follow the way into the garden."
       ],
       "tip": "Remember the healing room on the way to the laboratory. It is a shorter retreat than leaving the station.",
       "links": [
         "station-keys",
         "accession-field",
-        "formations"
+        "formations",
+        "electric-floor"
       ],
       "art": "iii-mine",
       "sources": [
@@ -4135,7 +4675,10 @@
         "hl",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "grid",
+        "puzzles"
       ],
       "landmarks": [
         "Workers’ quarters",
@@ -4311,6 +4854,16 @@
             }
           ]
         }
+      ],
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Laboratory power panels and Chimera"
+        },
+        {
+          "source": "grid",
+          "section": "The three panel configurations and resulting path"
+        }
       ]
     },
     {
@@ -4329,7 +4882,9 @@
       "links": [
         "station-keys",
         "final-battle",
-        "diary"
+        "diary",
+        "container-yard",
+        "genes-across-sea"
       ],
       "art": "iii-woods",
       "sources": [
@@ -4339,7 +4894,10 @@
         "s42",
         "floor-names",
         "floor-attrs",
-        "floor-exits"
+        "floor-exits",
+        "dk",
+        "enemy-db",
+        "skills"
       ],
       "landmarks": [
         "Eden lift",
@@ -4461,13 +5019,23 @@
         {
           "name": "Vampire",
           "where": "Final passage",
-          "detail": "Examine for Frost or Triple Blow."
+          "detail": "Frost can be learned here. Leave a Vampire alone if you want to see Evil Eye or Triple Blow."
         }
       ],
       "warning": {
         "label": "Missable",
         "text": "The Dragon Lord carries a Dragon Blade. Steal it before the encounter ends if you want the boss’s copy."
-      }
+      },
+      "sourceSections": [
+        {
+          "source": "dk",
+          "section": "Dream, garden return and the final junction"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Vampire and the last passages"
+        }
+      ]
     }
   ],
   "articles": [
@@ -4543,7 +5111,7 @@
       "sections": [
         {
           "title": "Try an Eye Goo",
-          "text": "In the early woods, leave an Eye Goo alive for a few rounds. Have one character Examine it while the others defend or heal. Snooze is one of the moves an Eye Goo can teach."
+          "text": "Keep an Eye Goo alive through ten full turns. Start using Examine before its next action and keep defending with the others until it uses Snooze. For a quicker lesson, watch a Cedar Woods Goblin for Unmotivate."
         },
         {
           "title": "Give the move time",
@@ -4563,7 +5131,41 @@
       "sources": [
         "s2",
         "qu",
-        "manual"
+        "manual",
+        "enemy-db",
+        "skills"
+      ],
+      "referenceTables": [
+        {
+          "title": "First lessons",
+          "columns": [
+            "Skill",
+            "Watch",
+            "When"
+          ],
+          "rows": [
+            [
+              "Unmotivate",
+              "Goblin",
+              "Leave it free of Influence."
+            ],
+            [
+              "Influence",
+              "Boss Goblin",
+              "Watch the boss while it directs its allies."
+            ],
+            [
+              "Burn",
+              "Mage Goo",
+              "Wait for it to cast the spell."
+            ],
+            [
+              "Snooze",
+              "Eye Goo",
+              "After turn 10, keep watching until it uses the move."
+            ]
+          ]
+        }
       ]
     },
     {
@@ -4583,6 +5185,10 @@
         {
           "title": "Coins have a different use",
           "text": "A Coin works as a special lure at certain fishing spots. Hook the Manillo to open its shop. Prices are combinations of fish, so check the trade before selling or consuming a good catch."
+        },
+        {
+          "title": "When a fish runs",
+          "text": "Follow the fish icon with the green tracker. The red gauge measures the fish’s stamina. If the line keeps running out even with the tracker green, return with a stronger rod."
         }
       ],
       "links": [
@@ -4594,7 +5200,31 @@
       "sources": [
         "s-fishing",
         "manual",
-        "r1"
+        "r1",
+        "electro-fish"
+      ],
+      "referenceTables": [
+        {
+          "title": "Where to try a Coin",
+          "columns": [
+            "Fishing spot",
+            "Catch"
+          ],
+          "rows": [
+            [
+              "Southwest of McNeil",
+              "Manillo"
+            ],
+            [
+              "South of Momo’s Tower",
+              "Manillo"
+            ],
+            [
+              "Southeast of Mt. Zublo",
+              "Manillo"
+            ]
+          ]
+        }
       ]
     },
     {
@@ -4682,14 +5312,18 @@
       "links": [
         "genes",
         "flame",
-        "wyndia"
+        "wyndia",
+        "genes-child",
+        "genes-home",
+        "genes-across-sea"
       ],
       "art": "flame",
       "unlock": "wyndia",
       "sources": [
         "s-genes",
         "isen",
-        "dk"
+        "dk",
+        "gene-faq"
       ]
     },
     {
@@ -4746,14 +5380,16 @@
       "links": [
         "enemy-skills",
         "camp-notes",
-        "accession-field"
+        "accession-field",
+        "second-hide-and-seek"
       ],
       "art": "highlands",
       "unlock": "dump",
       "sources": [
         "manual",
         "s2",
-        "dk"
+        "dk",
+        "tri"
       ]
     },
     {
@@ -4805,6 +5441,10 @@
         {
           "title": "The public duel",
           "text": "If Beyd can win alone, keep your party quiet. When Zig turns towards Shadis you have a short opening to intervene. Acting while he is looking at Beyd can cost the match."
+        },
+        {
+          "title": "When practice stops",
+          "text": "One session lasts up to 20 turns. It ends earlier if Beyd or the party falls. Speak to Beyd at the wharf the following day to continue training."
         }
       ],
       "links": [
@@ -4815,7 +5455,9 @@
       "unlock": "rhapala",
       "sources": [
         "s18",
-        "r5"
+        "r5",
+        "dk",
+        "puzzles"
       ]
     },
     {
@@ -4866,6 +5508,14 @@
         {
           "title": "Read the aptitudes",
           "text": "For basic jobs, red favours hunting and green favours clearing and building. Look at the food total and the available space before assigning a specialist to a shop."
+        },
+        {
+          "title": "Before changing a room’s job",
+          "text": "Switching a merchant to a different business resets its stock. Reassigning a music shop clears its track list. Collect anything being copied before changing the copy shop’s job."
+        },
+        {
+          "title": "Before lending a rare item",
+          "text": "The copy shop holds the original while the faerie works. A failed attempt can turn it into a Rice Ball. Save outside the village before lending a piece of equipment you intend to keep."
         }
       ],
       "links": [
@@ -4877,7 +5527,8 @@
       "sources": [
         "s19",
         "s-faeries",
-        "a-faeries"
+        "a-faeries",
+        "faerie-work"
       ]
     },
     {
@@ -4903,14 +5554,16 @@
         "genes",
         "frost",
         "thunder",
-        "rhapala"
+        "rhapala",
+        "genes-child"
       ],
       "art": "frost",
       "unlock": "rhapala",
       "sources": [
         "a-genes",
         "isen",
-        "s-genes"
+        "s-genes",
+        "gene-faq"
       ]
     },
     {
@@ -4965,7 +5618,8 @@
       "links": [
         "genes",
         "accession-field",
-        "mine-return"
+        "mine-return",
+        "genes-home"
       ],
       "art": "gene-fusion",
       "unlock": "mine-return",
@@ -4973,7 +5627,8 @@
         "s23",
         "s-genes",
         "isen",
-        "dk"
+        "dk",
+        "gene-faq"
       ]
     },
     {
@@ -5056,6 +5711,10 @@
         {
           "title": "Serve the mayor",
           "text": "Return to Kimiko before cooking. At Parch, use one fish, size the seed ball against its slice, add roughly a quarter as much vinegar as seeds and knead twice. The reward varies with the result. Ask the assistant afterwards."
+        },
+        {
+          "title": "If you want the Shaman’s Ring",
+          "text": "Catch a mackerel of at least 68 cm. One reported high-grade dish uses 15 Shaly seeds, 5 vinegar and 8 horseradish with two kneads. A smaller fish changes the proportions. Keep a diary save before serving if you want another attempt."
         }
       ],
       "links": [
@@ -5068,7 +5727,9 @@
       "sources": [
         "s31",
         "r8",
-        "a3"
+        "a3",
+        "electro-fish",
+        "dk"
       ]
     },
     {
@@ -5155,7 +5816,8 @@
         "genes",
         "accession-field",
         "colony",
-        "dragnier"
+        "dragnier",
+        "genes-across-sea"
       ],
       "art": "gene-infinity",
       "unlock": "dragnier",
@@ -5163,7 +5825,8 @@
         "s36",
         "a-genes",
         "isen",
-        "dk"
+        "dk",
+        "gene-faq"
       ]
     },
     {
@@ -5217,14 +5880,16 @@
       ],
       "links": [
         "desert",
-        "camp-notes"
+        "camp-notes",
+        "desert-treasures"
       ],
       "art": "iii-desert",
       "unlock": "desert",
       "sources": [
         "s38",
         "r10",
-        "dk"
+        "dk",
+        "desert-map"
       ]
     },
     {
@@ -5245,14 +5910,17 @@
       "links": [
         "myria-lab",
         "field-actions",
-        "camp-notes"
+        "camp-notes",
+        "electric-floor"
       ],
       "art": "iii-mine",
       "unlock": "myria-lab",
       "sources": [
         "s40",
         "a4",
-        "hl"
+        "hl",
+        "grid",
+        "puzzles"
       ]
     },
     {
@@ -5278,15 +5946,1221 @@
         "eden",
         "diary",
         "accession-field",
-        "formations"
+        "formations",
+        "container-yard"
       ],
       "art": "highlands",
       "unlock": "eden",
       "sources": [
         "qu",
         "boss",
-        "a4"
+        "a4",
+        "dk"
       ]
+    },
+    {
+      "id": "wyndia-children",
+      "title": "The children at Wyndia fountain",
+      "category": "Exploration",
+      "unlock": "wyndia",
+      "art": "iii-woods",
+      "lead": "After the catacombs, the children at the fountain know which road to follow. Speak to the group and find all four hiding places.",
+      "sections": [
+        {
+          "title": "At the fountain",
+          "text": "Accept the game before searching. Walk behind each hiding place and turn the camera until you can speak to the child."
+        },
+        {
+          "title": "After the search",
+          "text": "Meet the children at the fountain again, then take Eygnock Road."
+        }
+      ],
+      "links": [
+        "wyndia",
+        "field-view",
+        "second-hide-and-seek"
+      ],
+      "sources": [
+        "dk",
+        "hl",
+        "tri"
+      ],
+      "referenceTables": [
+        {
+          "title": "Where to look",
+          "columns": [
+            "Landmark",
+            "Search"
+          ],
+          "rows": [
+            [
+              "Inoculation shop",
+              "Trees beside the shop on the lower level."
+            ],
+            [
+              "City entrance",
+              "The wall on the left as you enter."
+            ],
+            [
+              "Weapons shop",
+              "Behind the shop, near the seated man."
+            ],
+            [
+              "Café terrace",
+              "Up the steps, behind the tree beside the tables."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "second-hide-and-seek",
+      "title": "The second game of hide-and-seek",
+      "category": "Masters & companions",
+      "unlock": "plant",
+      "art": "iii-woods",
+      "lead": "When Ryu returns to Wyndia as an adult, the group at the fountain offers another game. This time you must leave town.",
+      "sections": [
+        {
+          "title": "Start and finish at the same fountain",
+          "text": "Speak to the group before setting out. If the eastern checkpoint is still closed, find Lang in Wyndia and Bais in the mine first. Return for Lee and Wynn when the party can travel east, then meet all four at the fountain to apprentice. Three teach formations. Lang gives an item."
+        }
+      ],
+      "links": [
+        "guardians",
+        "formations",
+        "teacher-bais",
+        "teacher-lang",
+        "teacher-lee",
+        "teacher-wynn"
+      ],
+      "sources": [
+        "dk",
+        "tri",
+        "s-masters",
+        "s26-adult"
+      ],
+      "referenceTables": [
+        {
+          "title": "Four hiding places",
+          "columns": [
+            "Who",
+            "Where to look"
+          ],
+          "rows": [
+            [
+              "Lang",
+              "Wyndia royal graveyard, behind a headstone."
+            ],
+            [
+              "Wynn",
+              "Junk Town, behind a house."
+            ],
+            [
+              "Lee",
+              "Eastern Checkpoint, behind the gate."
+            ],
+            [
+              "Bais",
+              "Dauna Mine B3. From the lift, cross the wooden bridge to the junction. Take the northwest branch and look behind the last pillar."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "crystal-courtyard",
+      "title": "The crystal race at Momo’s Tower",
+      "category": "Puzzles",
+      "unlock": "momo-tower",
+      "art": "iii-mine",
+      "lead": "The pool outside the tower has four crystals and a prize chest. Bring Nina for the timed run.",
+      "sections": [
+        {
+          "title": "Start the clock",
+          "text": "Shoot the large crystal inside the lower room with Nina’s wand. The direct exit closes. Take the stairs up, leave through the higher door and descend to the courtyard."
+        },
+        {
+          "title": "At the pool",
+          "text": "Face each of the four crystals and use Nina’s field action. All four must be lit within 30 seconds. The chest’s contents depend on the time remaining. Leave the tower and enter again to retry. Each prize can be collected once."
+        }
+      ],
+      "links": [
+        "momo-tower",
+        "field-actions"
+      ],
+      "sources": [
+        "puzzles",
+        "hl",
+        "dk"
+      ],
+      "referenceTables": [
+        {
+          "title": "Chest rewards",
+          "columns": [
+            "Time left",
+            "Prize"
+          ],
+          "rows": [
+            [
+              "Under 5 seconds",
+              "MultiVitamin"
+            ],
+            [
+              "5 to under 6 seconds",
+              "Wisdom Fruit"
+            ],
+            [
+              "6 seconds or more",
+              "Ring of Ice"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "genes-child",
+      "title": "Genes from Wyndia to Angel Tower",
+      "category": "Dragon genes",
+      "unlock": "angel-tower",
+      "art": "iii-woods",
+      "lead": "Eight genes are available on Ryu’s childhood journey. The two story genes enter Accession automatically.",
+      "sections": [
+        {
+          "title": "Checking a crystal",
+          "text": "Lead with Ryu when you inspect a purple crystal. If the crystal is behind scenery, tilt the camera before leaving the area."
+        }
+      ],
+      "links": [
+        "genes",
+        "accession-field",
+        "coastal-genes",
+        "angel-tower",
+        "genes-home"
+      ],
+      "sources": [
+        "gene-faq",
+        "dk",
+        "a-genes"
+      ],
+      "referenceTables": [
+        {
+          "title": "Childhood locations",
+          "columns": [
+            "Gene",
+            "Where to find it"
+          ],
+          "rows": [
+            [
+              "Flame",
+              "Wyndia prison. The encounter with Balio and Sunder grants it."
+            ],
+            [
+              "Defender",
+              "Mt. Boumore. Finish the escape with Nina."
+            ],
+            [
+              "Reverse",
+              "A separate woodland ? stop south of the cable-car landing, near Momo’s Tower."
+            ],
+            [
+              "Thorn",
+              "Rocket crash site. Check behind the tree on the east side."
+            ],
+            [
+              "Frost",
+              "Maekyss Gorge. Search by the house at the north end."
+            ],
+            [
+              "Thunder",
+              "At the northern Rhapala ? house, inspect the beach behind the building."
+            ],
+            [
+              "Eldritch",
+              "Climb to the top of Rhapala lighthouse."
+            ],
+            [
+              "Miracle",
+              "Mt. Zublo’s lava cave. Cross the lava to the crystal."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "genes-home",
+      "title": "Genes in the mines, vents and shallows",
+      "category": "Dragon genes",
+      "unlock": "parch",
+      "art": "iii-mine",
+      "lead": "Six more genes can be collected before crossing the Outer Sea. Two come from the same mine encounter.",
+      "sections": [
+        {
+          "title": "Returning to a missed crystal",
+          "text": "For Gross, enter the Tidal Caves from the south instead of crossing the entire cave again. For Mutant, follow the beach right up to its northeast corner."
+        }
+      ],
+      "links": [
+        "genes",
+        "fusion-forms",
+        "plant",
+        "guardians",
+        "steel-beach",
+        "parch",
+        "genes-child",
+        "genes-across-sea"
+      ],
+      "sources": [
+        "gene-faq",
+        "dk",
+        "a-genes"
+      ],
+      "referenceTables": [
+        {
+          "title": "Before the crossing",
+          "columns": [
+            "Gene",
+            "Where to find it"
+          ],
+          "rows": [
+            [
+              "Shadow",
+              "Dauna Mine. Defeat the Dragon Zombie after the rockfall."
+            ],
+            [
+              "Fusion",
+              "Awarded at the same encounter as Shadow."
+            ],
+            [
+              "Force",
+              "The ventilation ducts in the Plant’s underground laboratory."
+            ],
+            [
+              "Gross",
+              "The crystal by the south exit of the Tidal Caves."
+            ],
+            [
+              "Mutant",
+              "The northeast shoreline at Steel Beach."
+            ],
+            [
+              "???",
+              "Inside the house at Point, west of Junk Town. Turn the camera and check behind the curtain."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "genes-across-sea",
+      "title": "Genes on the Lost Shore",
+      "category": "Dragon genes",
+      "unlock": "dragnier",
+      "art": "iii-desert",
+      "lead": "The last four genes are on the far side of the sea. One is a story reward in Dragnier.",
+      "sections": [
+        {
+          "title": "At the Container Yard",
+          "text": "The transporter and the ground entrance put you on different levels. Use the portal route to reach the crystal on the containers."
+        }
+      ],
+      "links": [
+        "genes",
+        "colony",
+        "dragnier",
+        "kaiser-control",
+        "genes-home",
+        "container-yard"
+      ],
+      "sources": [
+        "gene-faq",
+        "dk",
+        "a-genes"
+      ],
+      "referenceTables": [
+        {
+          "title": "Across the sea",
+          "columns": [
+            "Gene",
+            "Where to find it"
+          ],
+          "rows": [
+            [
+              "Trance",
+              "Search behind the Lost Shore’s Yggdrasil tree, on the road from Kombinat."
+            ],
+            [
+              "Failure",
+              "Search the southwest part of the Colony."
+            ],
+            [
+              "Radiance",
+              "On the crates beside the Container Yard portal."
+            ],
+            [
+              "Infinity",
+              "Finish the elder’s trial in Dragnier and speak to him again."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "desert-treasures",
+      "title": "The Royal Sword and Life Armor",
+      "category": "Exploration",
+      "unlock": "caer-xhan",
+      "art": "iii-desert",
+      "lead": "An Oasis traveller mentions two things lost in the dunes. Both are optional. Fill the Water Jug and keep a diary save before either trip.",
+      "sections": [
+        {
+          "title": "Royal Sword from Oasis",
+          "text": "Face due west, turn one step left and walk three complete nights. Turn due west and start inspecting battlefields over the next night. Use the North Star to check the new bearing after fights."
+        },
+        {
+          "title": "Life Armor from the Factory",
+          "text": "Start at Horis’s camp and head north for two full nights. Turn west for three more. Check the battlefields in that area for the armour. If your water runs short, speak to the rakda at camp and start again."
+        },
+        {
+          "title": "A fishing alternative",
+          "text": "A Manillo near Kombinat offers both pieces for rare fish. Use a Coin to meet it. The linked desert map shows the two search areas if you prefer to navigate by sight."
+        }
+      ],
+      "links": [
+        "desert",
+        "desert-stars",
+        "caer-xhan",
+        "fishing-tackle"
+      ],
+      "sources": [
+        "dk",
+        "tri",
+        "s38",
+        "desert-map"
+      ],
+      "referenceTables": [
+        {
+          "title": "Fish for the Manillo",
+          "columns": [
+            "Trade",
+            "What to bring"
+          ],
+          "rows": [
+            [
+              "Royal Sword",
+              "1 Whale, 3 Spearfish and 1 Barandy"
+            ],
+            [
+              "Life Armor",
+              "1 Whale, 1 Spearfish and 3 Barandy"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "container-yard",
+      "title": "Hunting at the Container Yard",
+      "category": "Combat",
+      "unlock": "caer-xhan",
+      "art": "iii-mine",
+      "lead": "The ? stop near Caer Xhan contains a transporter and two optional fights that can end a healthy party in a turn.",
+      "sections": [
+        {
+          "title": "Before entering",
+          "text": "Make a diary save before hunting here. If the party only needs the portal or Radiance gene, take that route and leave the fights for later."
+        },
+        {
+          "title": "Watch the first turn",
+          "text": "An ArchMage recovers 1,500 HP each round. Prepare a way to survive its spells and deal damage in one concentrated round. A Berserker starts confused. Attacking it ends that opening early."
+        }
+      ],
+      "links": [
+        "caer-xhan",
+        "genes-across-sea",
+        "formations",
+        "final-battle"
+      ],
+      "sources": [
+        "rstone",
+        "enemy-db",
+        "dk",
+        "tri"
+      ],
+      "referenceTables": [
+        {
+          "title": "Encounters",
+          "columns": [
+            "Enemy",
+            "Steal",
+            "Reward or hazard"
+          ],
+          "rows": [
+            [
+              "Tank Bot",
+              "Wisdom Seed",
+              "Sacrifice can leave survivors at 1 HP."
+            ],
+            [
+              "ArchMage",
+              "Soul Gem",
+              "Holy Avenger. Mind Sword can be learned with Examine."
+            ],
+            [
+              "Berserker",
+              "Aries Glove",
+              "Rufad’s Spear can drop. Prepare for physical damage when confusion ends."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "electric-floor",
+      "title": "Crossing the electrified laboratory",
+      "category": "Puzzles",
+      "unlock": "myria-lab",
+      "art": "iii-mine",
+      "lead": "Myria Station’s three panels control the same floor. A continuous safe corridor is enough to reach the lift.",
+      "sections": [
+        {
+          "title": "How the panels work",
+          "text": "Each terminal shifts one of the three grids. Move it with Left or Right, then confirm to see the floor. A positive charge and a negative charge at the same position cancel. Look for a continuous corridor two tiles wide."
+        },
+        {
+          "title": "If the panels have already been moved",
+          "text": "Use the top-row patterns in the table. Once the floor opens, cross the safe strip to the lift and heal before Chimera."
+        }
+      ],
+      "links": [
+        "myria-lab",
+        "station-keys"
+      ],
+      "sources": [
+        "grid",
+        "puzzles",
+        "dk",
+        "s40"
+      ],
+      "referenceTables": [
+        {
+          "title": "Panel settings",
+          "columns": [
+            "Grid on screen",
+            "From its starting position",
+            "Check the top row"
+          ],
+          "rows": [
+            [
+              "Left",
+              "Two steps left",
+              "Four blanks followed by four minus signs."
+            ],
+            [
+              "Middle",
+              "Two steps right",
+              "Four blanks followed by four plus signs."
+            ],
+            [
+              "Right",
+              "One step left",
+              "Four plus signs followed by four blanks."
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "fieldSheets": {
+    "cedar": {
+      "title": "Cedar Woods",
+      "chapter": "The highlands · Ryu’s first morning",
+      "objective": "Reach McNeil from Rei’s house.",
+      "entry": "After waking at Rei’s house",
+      "map": "cedar.svg",
+      "mapAlt": "Start at the diary beside Rei’s bed. Follow the outside wall onto the dirt path and cross the log bridge. A detour into the eastern clearing leads uphill to Skill Ink. Rejoin the forest path and take the southern exit towards McNeil. The cage clearing is a separate foraging trip.",
+      "steps": [
+        {
+          "key": 1,
+          "title": "Save beside the bed",
+          "body": "Face the diary upstairs at Rei’s house. Choose a memory card and an empty file. Downstairs, the two dressers hold a Vitamin and a Worm."
+        },
+        {
+          "key": 2,
+          "title": "Find the log bridge",
+          "body": "Leave through the downstairs front door. Follow the walkway around the treehouse to the dirt path. Take the two bends downhill and cross the log bridge. The upstairs balcony leads to a dead end."
+        },
+        {
+          "key": 3,
+          "title": "Turn uphill for Skill Ink",
+          "body": "After the log bridge, pass the friendly monsters and head east through the trees. Turn north and climb into the bare clearing. Open the chest for Skill Ink, then return to the bridge path.",
+          "optional": true
+        },
+        {
+          "key": 4,
+          "title": "Meet the others in McNeil",
+          "body": "Descend past the friendly monsters and the old man. At the fork, leave by the wooden sign. The side road leads to Bunyan’s fenced cottage. On the Yraall world map, follow the road around the trees to McNeil and interact to enter."
+        }
+      ],
+      "optional": [
+        {
+          "name": "Vitamin · Worm",
+          "where": "Rei’s house",
+          "advice": "Search both downstairs dressers."
+        },
+        {
+          "name": "Skill Ink",
+          "where": "Eastern clearing",
+          "advice": "Cross the log bridge and climb the slope to the chest."
+        },
+        {
+          "name": "Ammonia",
+          "where": "Near the water",
+          "advice": "From the Skill Ink chest, look northwest behind the trees by the water."
+        },
+        {
+          "name": "Green Apple ×2",
+          "where": "Cage clearing",
+          "advice": "One bag lies southeast of the fallen cage. Check behind the large tree nearby for the other apple."
+        }
+      ],
+      "enemies": [
+        {
+          "name": "Goblin",
+          "detail": "After Ryu changes into travelling clothes, use Examine to learn Unmotivate. Rei can steal a Bent Sword."
+        },
+        {
+          "name": "Gonghead",
+          "detail": "After Ryu changes clothes, Rei can steal a Vitamin. A Life Shard is a possible drop."
+        }
+      ],
+      "warning": null,
+      "evidence": "The US PlayStation Lab replay covered Rei’s downstairs door, the log bridge, the Skill Ink chest, the signed exit, the world-map road and the opening scene in McNeil. The other item locations use walkthrough sources.",
+      "mapKind": "Illustrated route sketch",
+      "stop": "cedar",
+      "area": "Cedar Woods",
+      "id": "cedar",
+      "art": "iii-woods",
+      "links": [
+        "diary",
+        "enemy-skills",
+        "teacher-bunyan"
+      ]
+    }
+  },
+  "teachers": [
+    {
+      "id": "teacher-mygas",
+      "name": "Mygas",
+      "unlock": "mcneil-manor",
+      "where": "Grove near McNeil",
+      "join": "After the Nue hunt, give Mygas all the zenny you are carrying.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "1 level",
+          "skill": "Frost"
+        },
+        {
+          "goal": "4 levels",
+          "skill": "Meditation"
+        },
+        {
+          "goal": "6 levels",
+          "skill": "Magic Ball"
+        },
+        {
+          "goal": "8 levels",
+          "skill": "Typhoon"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 0,
+        "AP": 1,
+        "power": -1,
+        "defence": -1,
+        "agility": 0,
+        "intelligence": 2
+      }
+    },
+    {
+      "id": "teacher-bunyan",
+      "name": "Bunyan",
+      "unlock": "wyndia",
+      "where": "Cabin in Cedar Woods",
+      "join": "Return to his cabin after the events at McNeil Manor.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "2 levels",
+          "skill": "Risky Blow"
+        },
+        {
+          "goal": "5 levels",
+          "skill": "Focus"
+        },
+        {
+          "goal": "8 levels",
+          "skill": "Super Combo"
+        },
+        {
+          "goal": "10 levels",
+          "skill": "Disembowel"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 2,
+        "AP": -2,
+        "power": 2,
+        "defence": 1,
+        "agility": 0,
+        "intelligence": -3
+      }
+    },
+    {
+      "id": "teacher-durandal",
+      "name": "Durandal",
+      "unlock": "wyndia",
+      "where": "Hut against Wyndia’s walls",
+      "join": "Visit his hut outside the city after the front gate opens.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "1 level",
+          "skill": "Unmotivate"
+        },
+        {
+          "goal": "2 levels",
+          "skill": "Feign Swing"
+        },
+        {
+          "goal": "3 levels",
+          "skill": "Backhand"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 0,
+        "AP": 0,
+        "power": 0,
+        "defence": 0,
+        "agility": 0,
+        "intelligence": 0
+      }
+    },
+    {
+      "id": "teacher-dlonzo",
+      "name": "D’Lonzo",
+      "unlock": "momo-tower",
+      "where": "Coffee Shop",
+      "join": "Show her fifteen different weapons. Check the ridge beside the shop.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "2 levels",
+          "skill": "Monopolize"
+        },
+        {
+          "goal": "3 levels",
+          "skill": "Intimidate"
+        },
+        {
+          "goal": "4 levels",
+          "skill": "Steal"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": -1,
+        "AP": -2,
+        "power": 1,
+        "defence": 0,
+        "agility": 1,
+        "intelligence": 0
+      }
+    },
+    {
+      "id": "teacher-yggdrasil",
+      "name": "Yggdrasil",
+      "unlock": "dump",
+      "where": "Grove near the Plant",
+      "join": "Put Peco in front and bring the tree a Wisdom Fruit.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "2 levels",
+          "skill": "Sanctuary"
+        },
+        {
+          "goal": "5 levels",
+          "skill": "Recall"
+        },
+        {
+          "goal": "8 levels",
+          "skill": "Shield"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": -1,
+        "AP": 1,
+        "power": -2,
+        "defence": 1,
+        "agility": 0,
+        "intelligence": 2
+      }
+    },
+    {
+      "id": "teacher-fahl",
+      "name": "Fahl",
+      "unlock": "contest",
+      "where": "Genmel tavern",
+      "join": "After the Contest, win thirty battles without resting at camp or an inn.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "2 levels",
+          "skill": "Charge"
+        },
+        {
+          "goal": "4 levels",
+          "skill": "Counter"
+        },
+        {
+          "goal": "6 levels",
+          "skill": "Resist"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 4,
+        "AP": 0,
+        "power": 1,
+        "defence": 3,
+        "agility": -3,
+        "intelligence": -3
+      }
+    },
+    {
+      "id": "teacher-meryleep",
+      "name": "Meryleep",
+      "unlock": "lighthouse",
+      "where": "Woods northeast of Wyndia",
+      "join": "After helping the faeries, use Peco to knock a stone into the pond. Knock the Flower Jewel from the crow tree west of Maekyss Gorge and bring it back.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "2 levels",
+          "skill": "Charm"
+        },
+        {
+          "goal": "5 levels",
+          "skill": "Shadowwalk"
+        },
+        {
+          "goal": "8 levels",
+          "skill": "War Shout"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": -1,
+        "AP": 0,
+        "power": -1,
+        "defence": -1,
+        "agility": 2,
+        "intelligence": 0
+      }
+    },
+    {
+      "id": "teacher-giotto",
+      "name": "Giotto",
+      "unlock": "rhapala",
+      "where": "Fishing shore southwest of Rhapala",
+      "join": "Raise your fishing score to 2,000 points and speak to him on the shore.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "2 levels",
+          "skill": "Trump"
+        },
+        {
+          "goal": "5 levels",
+          "skill": "Berserk"
+        },
+        {
+          "goal": "8 levels",
+          "skill": "Sudden Death"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 4,
+        "AP": 3,
+        "power": -1,
+        "defence": -1,
+        "agility": -1,
+        "intelligence": -1
+      }
+    },
+    {
+      "id": "teacher-hondara",
+      "name": "Hondara",
+      "unlock": "zublo",
+      "where": "Hall of Prayers, Urkan Tapa",
+      "join": "Learn Backhand from Durandal before visiting the hall.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "2 levels",
+          "skill": "Purify"
+        },
+        {
+          "goal": "5 levels",
+          "skill": "Kyrie"
+        },
+        {
+          "goal": "8 levels",
+          "skill": "Benediction"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 0,
+        "AP": 2,
+        "power": -2,
+        "defence": 0,
+        "agility": 0,
+        "intelligence": 1
+      }
+    },
+    {
+      "id": "teacher-emitai",
+      "name": "Emitai",
+      "unlock": "syn-city",
+      "where": "House east of Dauna Mine",
+      "join": "Visit as an adult and bring 10,000 zenny.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "2 levels",
+          "skill": "Barrier"
+        },
+        {
+          "goal": "4 levels",
+          "skill": "Mind Sword"
+        },
+        {
+          "goal": "6 levels",
+          "skill": "Enlighten"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 0,
+        "AP": 4,
+        "power": -2,
+        "defence": -2,
+        "agility": 0,
+        "intelligence": 4
+      }
+    },
+    {
+      "id": "teacher-bais",
+      "name": "Bais",
+      "unlock": "plant",
+      "where": "Wyndia fountain",
+      "join": "Play hide-and-seek again as an adult. Find Bais by the dragon skull at Dauna Mine.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "3 levels",
+          "skill": "Chain formation"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 0,
+        "AP": 0,
+        "power": 1,
+        "defence": 0,
+        "agility": 0,
+        "intelligence": 0
+      }
+    },
+    {
+      "id": "teacher-lang",
+      "name": "Lang",
+      "unlock": "plant",
+      "where": "Wyndia fountain",
+      "join": "Play hide-and-seek again as an adult. Look behind the grave marker in the Wyndia catacombs.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "3 levels",
+          "skill": "Cupid’s Lyre"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 0,
+        "AP": 0,
+        "power": 0,
+        "defence": 1,
+        "agility": 0,
+        "intelligence": 0
+      }
+    },
+    {
+      "id": "teacher-lee",
+      "name": "Lee",
+      "unlock": "plant",
+      "where": "Wyndia fountain",
+      "join": "Find Lee at the checkpoint during the adult game of hide-and-seek.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "3 levels",
+          "skill": "Magic formation"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 0,
+        "AP": 0,
+        "power": 0,
+        "defence": 0,
+        "agility": 0,
+        "intelligence": 1
+      }
+    },
+    {
+      "id": "teacher-wynn",
+      "name": "Wynn",
+      "unlock": "plant",
+      "where": "Wyndia fountain",
+      "join": "Find Wynn in Junk Town during the adult game of hide-and-seek.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "3 levels",
+          "skill": "Refuge formation"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 1,
+        "AP": 0,
+        "power": 0,
+        "defence": 0,
+        "agility": 0,
+        "intelligence": 0
+      }
+    },
+    {
+      "id": "teacher-hachio",
+      "name": "Hachio",
+      "unlock": "guardians",
+      "where": "Wyndia Castle kitchen",
+      "join": "Bring Beef Jerky, a Swallow Eye, an Angler and a Martian Squid to the cook.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "2 levels",
+          "skill": "Mighty Chop"
+        },
+        {
+          "goal": "4 levels",
+          "skill": "Demonbane"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": 2,
+        "AP": -2,
+        "power": 2,
+        "defence": 1,
+        "agility": -1,
+        "intelligence": -1
+      }
+    },
+    {
+      "id": "teacher-deis",
+      "name": "Deis",
+      "unlock": "colony",
+      "where": "Shrine on Mt. Zublo",
+      "join": "When you free Deis, tell her you like her appearance. Return to the shrine with Ryu after crossing the ocean.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "2 levels",
+          "skill": "Inferno"
+        },
+        {
+          "goal": "5 levels",
+          "skill": "Blizzard"
+        },
+        {
+          "goal": "8 levels",
+          "skill": "Myollnir"
+        },
+        {
+          "goal": "11 levels",
+          "skill": "Sirocco"
+        },
+        {
+          "goal": "15 levels",
+          "skill": "Celerity"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": -3,
+        "AP": 3,
+        "power": 1,
+        "defence": -3,
+        "agility": 1,
+        "intelligence": 3
+      }
+    },
+    {
+      "id": "teacher-ladon",
+      "name": "Ladon",
+      "unlock": "dragnier",
+      "where": "Dragnier",
+      "join": "With all eighteen genes, lead with Ryu and inspect the marked wall in Dragnier.",
+      "measure": "Levels gained under this master",
+      "lessons": [
+        {
+          "goal": "3 levels",
+          "skill": "Mind’s Eye"
+        },
+        {
+          "goal": "5 levels",
+          "skill": "Holy Strike"
+        },
+        {
+          "goal": "7 levels",
+          "skill": "Ward of Light"
+        },
+        {
+          "goal": "9 levels",
+          "skill": "Aura"
+        }
+      ],
+      "sources": [
+        "a-masters",
+        "s-masters"
+      ],
+      "links": [
+        "apprentices"
+      ],
+      "growth": {
+        "HP": -6,
+        "AP": -6,
+        "power": 2,
+        "defence": 2,
+        "agility": 1,
+        "intelligence": 2
+      }
     }
   ]
 }

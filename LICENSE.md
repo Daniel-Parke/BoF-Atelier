@@ -4,6 +4,8 @@
 | --- | --- |
 | Original software, including Python, QML, JavaScript, stylesheets, CI definitions and tests | MIT, reproduced below |
 | Original guide and documentation text, authored route diagrams and original Chrysm illustrations | [Creative Commons Attribution 4.0 International](LICENSES/CC-BY-4.0.txt), to the extent the contributors hold the relevant rights |
+| The four original Atelier menu compositions and their synthesised recordings | [Creative Commons Attribution 4.0 International](LICENSES/CC-BY-4.0.txt), to the extent the contributors hold the relevant rights |
+| Gloock and Barlow Semi Condensed | SIL Open Font License 1.1. Preserve the notices in [the type directory](design/field-guide/atlas/type). |
 | Third-party works and marks, including the PatterTech name and wordmark | Excluded from these project grants. Existing terms and independently granted permissions apply. |
 
 The generated HTML contains software and editorial material. Each part retains the licence of its source. The same rule applies to illustrations embedded in code or stylesheets. See [licence scope and attribution](docs/LICENSING.md) for credits, exceptions and reuse examples.

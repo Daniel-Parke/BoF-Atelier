@@ -1,21 +1,21 @@
-# Inside the Field Guide
+# Using the Field Guide
 
-[Open the Field Guide](https://daniel-parke.github.io/BoF-Atelier/). Choose **III** or **IV**. **Walkthrough** follows the journey in order. **Field wiki** looks up a subject by name. Switch volumes to search the other game.
+Open either volume and choose **Walkthrough** to follow the story or **Search** to look up an item, monster or master. You can read both volumes without a game, BIOS or account. [Open the Field Guide](https://daniel-parke.github.io/BoF-Atelier/)
 
-## Breath of Fire III
+## Find the next turn
 
-Start at [Dauna Mine](https://daniel-parke.github.io/BoF-Atelier/#bof3/mine) or go to **Cedar Woods and Rei’s house** for the next part of the opening journey. Each route page brings its steps together with relevant items, encounters and map notes. Use the directions if you want to find your own way between landmarks.
+Choose a number on the map to see the matching direction. A dashed path marks an optional detour. Use **Read all steps** for the full sequence. The text route is also available when a diagram is hard to read.
 
-For a different way into the book, open [Dragon genes](https://daniel-parke.github.io/BoF-Atelier/#bof3/genes) in the Field wiki. Select **Flame** and **Frost** together. Their affinities cancel. The resulting neutral Dragon costs **10 AP** to transform. Change a gene to compare the result. The public reader supplies three illustrated specimens to try. The desktop edition can read further data from a recognised local disc.
+- **III, Cedar Woods.** Find the downstairs door, cross the log and take the optional path to Skill Ink. [Open Cedar Woods](https://daniel-parke.github.io/BoF-Atelier/#bof3/cedar)
+- **IV, Kurok.** The upper fork leads to the Deep Diver. The lower one leads to the Dam. [Open Kurok](https://daniel-parke.github.io/BoF-Atelier/#bof4/kurok)
+- **IV, the Dam.** Start with the work-camp directions when you arrive. Read the missable warning before giving the key back. [Open the Dam](https://daniel-parke.github.io/BoF-Atelier/#bof4/dam)
 
-## Breath of Fire IV
+## Look something up
 
-In **Walkthrough**, choose **Show later stops** if needed, then open [Kurok, the Dam and Kyria Woods](https://daniel-parke.github.io/BoF-Atelier/#bof4/dam-kyria). In **Kurok**, the upper fork leads to a red chest with the Deep Diver fishing lure. Return to the junction and follow the lower western branch to reach the Dam. Switch to **Dam** for the directions that apply there. The same stop can hold several areas with different routes.
-
-For a character question, look up **Masters** in the Field wiki or search for **Rwolf**. The browser offers sample master records. The two games handle dragons and growth differently, so check which volume you have open.
+Open an item or enemy name for its known locations. The masters’ entries include the recruitment condition, every lesson and the change in growth per level. In III, use the gene cabinet to try Flame, Frost and Thunder. The native reader can open the remaining specimens from a verified local disc. In IV, look up spell combinations by casting order. [III dragon genes](https://daniel-parke.github.io/BoF-Atelier/#bof3/genes) · [IV combinations](https://daniel-parke.github.io/BoF-Atelier/#bof4/combination-magic)
 
 ## Keep your place
 
-On the walkthrough page for your current stop, choose **Set spoiler boundary here**. This keeps later names out of lists and search results. Choose **Bookmark page** to keep an entry under **Bookmarks**. If you're switching devices, copy the page address. It includes the game, page and selected area. Your bookmarks stay in the browser where you made them.
+Set a story boundary to keep later names out of search and contents. Bookmark a page to return to it. Browser bookmarks belong to the browser on that device. The Windows reader keeps its mark with the campaign branch and can recognise some ordinary saves. An ambiguous import or a return visit leaves the choice with you.
 
-In the browser, you choose where you are in the story. You never need to upload a save. The desktop app can suggest a walkthrough from a recognised local campaign.
+For an offline copy, use the download at the foot of the browser guide. Open the downloaded HTML to read either volume. Sources are available on the relevant pages. [Walkthrough sources and corrections](WALKTHROUGH-SOURCES.md)

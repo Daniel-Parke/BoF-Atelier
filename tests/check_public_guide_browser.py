@@ -14,7 +14,7 @@ from pathlib import Path
 import re
 import sys
 from threading import Thread
-from urllib.parse import urlsplit
+from urllib.parse import quote, urlencode, urlsplit
 
 from playwright.sync_api import expect, sync_playwright
 
@@ -95,121 +95,338 @@ def check_art_and_content(page, volumes: dict):
     return len(actual)
 
 
-def check_all_pages(page, volumes: dict):
-    # Change fragments as a reader would. Reloading the multi-megabyte file on
-    # each case would test initial paint in place of actual page navigation.
-    totals = {}
-    for game, volume in volumes.items():
-        pages = volume["route"] + volume["articles"]
-        for row in pages:
-            page.evaluate(
-                """async hash => {
-                    location.hash = hash;
-                    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
-                }""", f"{game}/{row['id']}"
-            )
-            expect(page.get_by_role("heading", level=1)).to_have_text(row["title"])
-            no_overflow(page)
-        totals[game] = len(pages)
-    return totals
+# Use the fragment router throughout. This exercises the published URLs without
+# reloading the multi-megabyte book for each of the several hundred entries.
+SWEEP = """async paths => {
+    const result = [];
+    for (const path of paths) {
+        const hash = '#' + path;
+        if (location.hash !== hash) await new Promise(resolve => {
+            window.addEventListener('hashchange', resolve, {once:true});
+            location.hash = hash;
+        });
+        const main = document.querySelector('main');
+        result.push({
+            path,
+            game:document.body.dataset.game,
+            title:main.querySelector('h1')?.textContent,
+            floor:main.querySelector('#floor option:checked')?.textContent,
+            floorOpen:main.querySelector('[data-panel=floor]')?.open,
+            overflow:document.documentElement.scrollWidth - document.documentElement.clientWidth,
+            links:[...document.querySelectorAll('main a, #spine a')].map(a=>a.getAttribute('href'))
+                .filter(url=>url && url.startsWith('#bof')).map(url=>url.slice(1))
+        });
+    }
+    return result;
+}"""
+
+
+def sweep(page, addresses):
+    return page.evaluate(SWEEP, list(addresses))
+
+
+def check_pages_and_links(page, volumes: dict):
+    names = {}
+    floors = {}
+    for game, book in volumes.items():
+        for stop in book["route"]:
+            destination = f"{game}/{stop['id']}"
+            names[destination] = book["fieldSheets"].get(stop["id"], {}).get("title", stop["title"])
+            parts = stop.get("sectionsByArea") or [{"name": ""}]
+            for part in parts:
+                area = part["name"]
+                local = [f for f in stop.get("floors", []) if not area or f["name"].startswith(area)]
+                for number, floor in enumerate(local):
+                    query = {"area": area, "floor": number} if area else {"floor": number}
+                    floors[destination + "?" + urlencode(query)] = floor["name"]
+        names.update({f"{game}/{article['id']}": article["title"] for article in book["articles"]})
+        names.update({f"{game}/{quote(entry['id'], safe='')}": entry["name"] for entry in book["entities"].values()})
+        for key, field in book["fieldSheets"].items():
+            names[f"{game}/{key}"] = field["title"]
+    names.update({
+        "bof3/genes": "Dragon genes", "bof3/flame":"Flame", "bof3/frost":"Frost",
+        "bof3/thunder":"Thunder", "bof3/diary":"Using a diary", "bof4/masters":"Master training",
+        "bof4/dragons":"Dragons & evocation", "bof4/rwolf":"Rwolf",
+    })
+    snapshots = sweep(page, names)
+    for snap in snapshots:
+        assert (snap["title"], snap["game"]) == (names[snap["path"]], snap["path"].split("/")[0]), snap
+        assert snap["overflow"] <= 1, snap["path"]
+    floor_results = sweep(page, floors)
+    for result in floor_results:
+        assert result["floorOpen"] and result["floor"] == floors[result["path"]], result
+    # Include both the spoiler-limited and the opt-in indexes when gathering links.
+    indexes = []
+    for game in volumes:
+        for slug in ("", "guide", "index", "walk", "route", "wiki"):
+            indexes += sweep(page, [f"{game}/{slug}"])
+        for reveal in (True, False):
+            for slug in ("walk", "wiki"):
+                fragment = f"{game}/{slug}"
+                sweep(page, [fragment])
+                toggle = page.locator("main button[data-action=reveal]").first
+                if (toggle.get_attribute("aria-expanded") == "true") != reveal:
+                    toggle.click()
+                indexes += sweep(page, [fragment])
+    links = {target for s in [*snapshots,*floor_results,*indexes] for target in s["links"]}
+    followed = sweep(page, sorted(links - names.keys() - floors.keys()))
+    assert all(s["title"] and s["title"] != "Page not found" for s in followed), [
+        s["path"] for s in followed if not s["title"] or s["title"] == "Page not found"]
+    return {"route_and_article_pages":sum(len(b["route"])+len(b["articles"]) for b in volumes.values()),
+            "named_entries":sum(len(b["entities"]) for b in volumes.values()), "special_pages":8,
+            "floor_links":len(floors), "distinct_internal_link_targets":len(links)}
 
 
 def check_reader_actions(page, base: str, volumes: dict, destination: Path | None):
     main = page.get_by_role("main")
     set_route(page, base, "bof4", "walk")
-    expect(main.get_by_text(volumes["bof4"]["route"][-1]["title"], exact=True)).to_be_hidden()
-    reveal_stops = main.get_by_role("button", name="Show later stops")
-    reveal_stops.click()
-    expect(main.get_by_text(volumes["bof4"]["route"][-1]["title"], exact=True)).to_be_visible()
-    main.get_by_role("button", name="Hide later stops").click()
-    expect(main.get_by_text(volumes["bof4"]["route"][-1]["title"], exact=True)).to_be_hidden()
-    search = page.get_by_role("searchbox", name="Search this volume")
+    last = volumes["bof4"]["route"][-1]["title"]
+    expect(main.get_by_text(last, exact=True)).to_be_hidden()
+    main.get_by_role("button", name="Show later stops").click()
+    expect(main.get_by_text(last, exact=True)).to_be_visible()
+    main.get_by_role("button", name="Hide later names").click()
+    expect(main.get_by_text(last, exact=True)).to_be_hidden()
+    page.keyboard.press("/")
+    search = page.get_by_role("searchbox", name="Place, item, enemy or skill")
+    expect(search).to_be_focused()
     search.fill("Deep Diver")
-    search.press("Enter")
-    reveal = page.get_by_role("button", name="Show later matches")
-    expect(reveal).to_be_visible()
-    reveal.click()
-    item_link = main.locator('a[href$="/dam-kyria-items"]')
+    expect(main.get_by_role("link",name="Deep Diver", exact=False)).to_have_count(0)
+    main.get_by_role("button", name="Show later matches").click()
+    item_link = main.locator("a[href$='/item.deep%20diver']")
     expect(item_link).to_be_visible()
     item_link.click()
-    expect(main.get_by_role("row").filter(has_text="Deep Diver")).to_be_visible()
-    item_url = page.url
+    expect(main.get_by_role("heading", level=1)).to_have_text("Deep Diver")
+    expect(main).to_contain_text("upper western path")
     page.go_back()
-    expect(page).to_have_url(re.compile(r"#bof4/search"))
+    expect(search).to_have_value("Deep Diver")
     page.go_forward()
-    expect(page).to_have_url(item_url)
-
+    expect(main.get_by_role("heading", level=1)).to_have_text("Deep Diver")
+    page.get_by_role("link", name="Search guide").click()
     search.fill("unlisted-query-1234")
-    search.press("Enter")
-    expect(main).to_contain_text("No matching pages")
+    expect(main).to_contain_text("No matching pages.")
+    main.get_by_role("button", name="Hide later names").click()
+    set_route(page,base,"bof4","masters")
+    expect(main.get_by_role("combobox",name="Apprentice under")).to_have_count(0)
+    main.get_by_role("button",name="Show later masters").click()
+    teachers = volumes["bof4"]["teachers"]
+    roster = main.get_by_role("combobox",name="Apprentice under")
+    assert roster.locator("option").all_text_contents() == [t["name"] for t in teachers]
+    stats = ["HP","AP","power","defence","agility","wisdom"]
+    for teacher, baseline in zip(teachers, teachers[1:] + teachers[:1]):
+        roster.select_option(teacher["id"])
+        main.get_by_role("combobox",name="Compare with").select_option(baseline["id"])
+        observed = [int(cell) for cell in main.locator(".stat-grid dd").all_text_contents()]
+        assert observed == [teacher["growth"][key] - baseline["growth"][key] for key in stats]
+        for lesson in teacher["lessons"]:
+            expect(main.get_by_role("table",name="Lessons and rewards")).to_contain_text(lesson["skill"])
+    roster.select_option("teacher-rwolf")
+    main.get_by_role("combobox",name="Compare with").select_option("")
+    main.get_by_role("button",name="Hide later names").first.click()
+
     set_route(page, base, "bof3", "genes")
-    for name in ("Flame", "Frost", "Thunder"):
-        button = page.get_by_role("button", name=re.compile(name))
-        button.focus()
-        page.keyboard.press("Enter")
-        expect(button).to_have_attribute("aria-pressed", "true")
-    expect(main.get_by_text("Trygon", exact=True)).to_be_visible()
-    expect(main).to_contain_text(re.compile("15.*AP", re.I))
+    names = ("Flame", "Frost", "Thunder")
+    recipes = page.locator("#guide-data").evaluate("el=>JSON.parse(el.textContent).extras.recipes")
+    for key, recipe in recipes.items():
+        for name in names:
+            gene = main.get_by_role("button", name=name, exact=True)
+            selected = gene.get_attribute("aria-pressed") == "true"
+            if (name.lower() in key.split("+")) != selected:
+                gene.focus()
+                page.keyboard.press("Enter")
+        result = main.get_by_role("status")
+        expect(result.get_by_text(recipe["form"], exact=True)).to_be_visible()
+        expect(result).to_contain_text(f"{recipe['cost']} initial AP")
     screenshot(page, destination, "genes")
-    for name in ("Flame", "Frost", "Thunder"):
-        page.get_by_role("button", name=name, exact=True).click()
-    expect(page.get_by_role("button", name=re.compile("Flame"))).to_have_attribute("aria-pressed", "false")
+    main.get_by_role("button", name="Clear").click()
     expect(main.get_by_role("status")).to_contain_text("Choose a gene")
+
     set_route(page, base, "bof4", "dam-kyria")
-    expect(main.get_by_text("Kurok, the Dam and Kyria Woods", exact=True).first).to_be_visible()
-    screenshot(page, destination, "kurok")
-    main.get_by_text(re.compile("^Route diagram")).click()
-    expect(main.get_by_role("listitem").filter(has_text="Chamba approach")).to_be_visible()
-    main.get_by_role("navigation", name="Area").get_by_role("link", name="Dam", exact=True).click()
-    expect(main.get_by_role("table", name="Items")).to_contain_text("Sluice Key")
-    expect(main.get_by_text("Missable", exact=True)).to_be_visible()
-    floor = main.get_by_role("combobox", name="Floor")
+    expect(main.get_by_role("heading", level=1)).to_have_text("Kurok, the Dam and Kyria Woods")
+    main.locator("a[href*='area=Kurok']").click()
+    expect(main.get_by_text("Missable", exact=True)).to_be_hidden()
+    for location, number, title in (("kurok",3,"Open the red chest"),("dam",2,"Take the lower exit for Vitamins"),
+                                      ("cedar",3,"Turn uphill for Skill Ink")):
+        game = "bof3" if location == "cedar" else "bof4"
+        set_route(page, base, game, location)
+        sheet = volumes[game]["fieldSheets"][location]
+        figure = main.get_by_role("img", name=sheet["mapAlt"])
+        expect(figure).to_be_visible()
+        assert figure.evaluate("el=>el.complete && el.naturalWidth>0"), location
+        marker = main.locator(f".map-pin[data-number='{number}']")
+        marker.click()
+        step = main.locator(f".step-button[data-number='{number}']")
+        expect(step).to_contain_text(title)
+        expect(step).to_have_attribute("aria-pressed","true")
+        expect(step.locator(".step-body")).to_be_visible()
+        screenshot(page, destination, location)
+        opener = main.get_by_role("button", name="Enlarge map")
+        opener.click()
+        modal = page.get_by_role("dialog")
+        expect(modal).to_be_visible()
+        modal.locator(".map-pin[data-number='4']").click()
+        expect(modal.locator("#enlarged-direction")).to_have_text(sheet["steps"][3]["body"])
+        page.keyboard.press("Escape")
+        expect(opener).to_be_focused()
+        expect(main.locator(".step-button[data-number='4']")).to_have_attribute("aria-pressed", "true")
+        main.get_by_role("button",name="Read all steps").click()
+        for direction in sheet["steps"]:
+            expect(main.get_by_text(direction["body"],exact=True)).to_be_visible()
+        main.get_by_role("button",name="Show selected step").click()
+
+    set_route(page,base,"bof4","kurok")
+    main.locator(".map-pin[data-number='3']").click()
+    treasure = main.get_by_role("table", name="Items").get_by_role("link",name="Deep Diver")
+    treasure.click()
+    expect(main.get_by_text(re.compile("Open the chest on the upper western path"))).to_be_visible()
+    page.go_back()
+    expect(treasure).to_be_focused()
+    expect(main.locator(".step-button[data-number='3']")).to_have_attribute("aria-pressed", "true")
+    main.get_by_role("table", name="Enemies").get_by_role("link",name="Mage Goo").click()
+    expect(main.get_by_role("heading",level=1)).to_have_text("Mage Goo")
+    page.go_back()
+    main.get_by_role("link",name="The Dam",exact=True).click()
+    danger = main.get_by_label("Missable", exact=True)
+    for name in ("Short Sword", "two Vitamins", "two Swallow Eyes"):
+        expect(danger).to_contain_text(name)
+    for name in ("Sluice Key","Flywheel prize","Crank"):
+        expect(main.get_by_role("table",name="Items")).to_contain_text(name)
+    expect(main.get_by_role("table",name="Enemies")).to_contain_text("Army Bat")
+    for key,panel in (("opening","before"),("after","after")):
+        detail = main.locator(f"details[data-panel='{panel}']")
+        detail.locator("summary").click()
+        for line in volumes["bof4"]["fieldSheets"]["dam"][key]["steps"]:
+            expect(detail.get_by_text(line,exact=True)).to_be_visible()
+    main.locator("details[data-panel=floor] summary").click()
+    floor = main.get_by_role("combobox",name="Floor")
     floors = floor.locator("option").all_text_contents()
-    selected = next(name for name in floors if "gate tunnel" in name)
-    floor.select_option(label=selected)
-    expect(main.get_by_text("Flywheel controls", exact=True)).to_be_visible()
-    main.get_by_text("Sources", exact=True).click()
-    for key in next(row for row in volumes["bof4"]["route"] if row["id"] == "dam-kyria")["sources"]:
-        source = volumes["bof4"]["sources"][key]
-        expect(main.get_by_text(source["title"], exact=True)).to_be_visible()
-    main.get_by_role("button", name="Bookmark page").click()
-    expect(main.get_by_role("button", name="Bookmarked")).to_have_attribute("aria-pressed", "true")
+    floor.select_option(label=next(name for name in floors if "gate tunnel" in name))
+    expect(main.get_by_text("Flywheel controls",exact=True)).to_be_visible()
+    expect(floor).to_be_focused()
+    main.locator(".bibliography summary").click()
+    stop = next(r for r in volumes["bof4"]["route"] if r["id"] == "dam-kyria")
+    for key in stop["sources"]:
+        expect(main.get_by_text(volumes["bof4"]["sources"][key]["title"],exact=True)).to_be_visible()
+    for ref in stop.get("sourceSections", []):
+        expect(main.locator(".bibliography").get_by_text(ref["section"], exact=True)).to_be_visible()
+    main.get_by_role("button",name="Bookmark page").click()
+    main.get_by_role("button",name="Mark my place").click()
     page.reload()
-    expect(main.get_by_role("button", name="Bookmarked")).to_have_attribute("aria-pressed", "true")
-    set_route(page, base, "bof4", "page-without-an-entry")
-    expect(main.get_by_role("heading", level=1)).to_have_text("Page not found")
-    main.get_by_role("link", name="Back to the volume").click()
-    expect(main.get_by_role("heading", level=1)).to_have_text("Breath of Fire IV")
+    expect(main.get_by_role("button",name="Bookmarked")).to_have_attribute("aria-pressed","true")
+    expect(main.get_by_role("button",name="Reading place saved")).to_be_visible()
+    for slug in ("masters","rwolf","teacher-rwolf"):
+        set_route(page,base,"bof4",slug)
+        lessons = main.get_by_role("table",name="Lessons and rewards")
+        rwolf = next(t for t in volumes["bof4"]["teachers"] if t["name"] == "Rwolf")
+        for row in rwolf["lessons"]:
+            expect(lessons.get_by_role("row").filter(has_text=row["skill"])).to_contain_text(row["goal"])
+    set_route(page,base,"bof4","combination-magic")
+    article = next(a for a in volumes["bof4"]["articles"] if a["id"] == "combination-magic")
+    for table in article["referenceTables"]:
+        rows = main.get_by_role("table",name=table["title"]).locator("tbody tr")
+        expect(rows).to_have_count(len(table["rows"]))
+        for i, entry in enumerate(table["rows"]):
+            assert rows.nth(i).locator("th,td").all_text_contents() == entry
+
+    set_route(page,base,"bof4","page-without-an-entry")
+    expect(main.get_by_role("heading",level=1)).to_have_text("Page not found")
+    main.get_by_role("link",name="Back to the volume").click()
+    expect(main.get_by_role("heading",level=1)).to_have_text("Breath of Fire IV")
+
+def check_responsive(page, base, destination):
+    wide_routes = [("bof3","cedar"),("bof4","kurok"),("bof4","dam"),("bof4","teacher-rwolf"),
+                   ("bof3","genes"),("bof4","combination-magic"),("bof3","wiki")]
+    for width,height in ((1920,1080),(1280,720),(850,800),(768,900),(390,844),(320,568)):
+        page.set_viewport_size({"width":width, "height":height})
+        for game,leaf in wide_routes:
+            set_route(page,base,game,leaf)
+            no_overflow(page)
+        set_route(page,base,"bof4","kurok")
+        if width == 390:
+            screenshot(page,destination,"mobile-kurok")
+        if width == 1280:
+            screenshot(page,destination,"kurok-720p")
+    page.get_by_role("button",name="Contents").click()
+    dialog = page.get_by_role("dialog")
+    dialog.get_by_role("link",name="Breath of Fire III").click()
+    expect(dialog).to_be_hidden()
+    expect(page.get_by_role("heading",level=1)).to_have_text("Breath of Fire III")
+    page.get_by_role("main").locator("a[href$='/walk']").click()
+    page.get_by_role("main").locator("a[href$='/cedar']").click()
+    expect(page.get_by_role("heading",level=1)).to_have_text("Cedar Woods")
+    # Equal CSS viewport to a 1280px screen at 200% zoom, then text-only scaling.
+    page.set_viewport_size({"width":640,"height":540})
+    no_overflow(page)
+    page.set_viewport_size({"width":1280,"height":900})
+    page.evaluate("document.documentElement.style.fontSize='200%'")
+    for game,leaf in wide_routes:
+        set_route(page,base,game,leaf)
+        no_overflow(page)
+    set_route(page,base,"bof4","dam")
+    expect(page.get_by_role("button",name="Contents")).to_be_visible()
+    expect(page.locator("#spine")).to_be_hidden()
+    screenshot(page,destination,"dam-large-text")
+    page.evaluate("document.documentElement.style.removeProperty('font-size')")
+    page.set_viewport_size({"width":1360,"height":900})
+
+
+def check_storage(browser, base):
+    store_key = "bof-atelier.public-guide.v1"
+    seed = {"bof3":{"through":4,"pins":["diary","cedar"]},"bof4":{"through":5,"pins":["dam-kyria","dragons"]}}
+    with browser.new_context(offline=True) as context:
+        page = context.new_page()
+        page.goto(base)
+        page.evaluate("([key,value])=>localStorage.setItem(key,JSON.stringify(value))",[store_key,seed])
+        page.reload()
+        for game,ids in (("bof3",("cedar","diary")),("bof4",("dam-kyria","dragons"))):
+            set_route(page,base,game,"bookmarks")
+            for page_id in ids:
+                expect(page.locator(f"main a[href$='/{page_id}']")).to_be_visible()
+            set_route(page,base,game,"walk")
+            expect(page.locator("main [data-action=reveal]")).to_have_attribute("aria-expanded","false")
+        assert page.evaluate("key=>JSON.parse(localStorage.getItem(key)).bof4.through",store_key) == 5
+    with browser.new_context(offline=True) as context:
+        context.add_init_script("Object.defineProperty(window,'localStorage',{get(){throw Error('off')}})")
+        page = context.new_page()
+        page.goto(base+"#bof3/cedar")
+        page.get_by_role("button",name="Bookmark page").click()
+        expect(page.locator("#announce")).to_have_text("Bookmarks last for this session.")
+        set_route(page,base,"bof3","bookmarks")
+        expect(page.locator("main a[href$='/cedar']")).to_be_visible()
 
 
 def check_transport(browser, base: str, document: bytes, volumes: dict,
                     destination: Path | None, offline: bool):
     errors, external = [], []
     context = browser.new_context(
-        offline=offline, reduced_motion="reduce", viewport={"width": 1360, "height": 900}
+        offline=offline, reduced_motion="reduce", viewport={"width":1360,"height":900}
     )
     context.set_default_timeout(5000)
 
     def guard(route):
         url = route.request.url
-        if urlsplit(url).scheme in {"http", "https", "file"} and (
-                url.split("#")[0] != base and url != base + "index.html"):
+        if urlsplit(url).scheme in {"http","https","file"} and (
+                url.split("#")[0] != base and url != base+"index.html"):
             external.append(url)
             route.abort()
         else:
             route.continue_()
 
-    context.route("**/*", guard)
-    context.on("page", lambda p: p.on("pageerror", lambda err: errors.append(str(err))))
+    context.route("**/*",guard)
+    context.on("page",lambda p:p.on("pageerror",lambda err:errors.append(str(err))))
     page = context.new_page()
     try:
         response = page.goto(base)
         if not offline:
             assert response and response.status == 200 and response.body() == document
-        expect(page.get_by_role("heading", level=1)).to_be_visible()
+        expect(page.get_by_role("heading",level=1)).to_be_visible()
         no_overflow(page)
-        art_count = check_art_and_content(page, volumes)
-        offline_link = page.get_by_role("link", name="Download for offline reading")
+        art_count = check_art_and_content(page,volumes)
+        fonts = page.evaluate("""async () => {
+          await document.fonts.ready;
+          return [...document.fonts].filter(f=>f.status==='loaded').map(f=>f.family);
+        }""")
+        assert set(fonts) == {"Gloock","Barlow"}, fonts
+        offline_link = page.get_by_role("link",name="Download for offline reading")
         if offline:
             expect(offline_link).to_have_count(0)
         else:
@@ -219,28 +436,17 @@ def check_transport(browser, base: str, document: bytes, volumes: dict,
             assert download.suggested_filename == "BoF-Atelier-Field-Guide.html"
             assert download.path().read_bytes() == document
             page.evaluate("window.scrollTo(0,0)")
-        screenshot(page, destination, "desktop")
-        check_reader_actions(page, base, volumes, destination)
-        totals = check_all_pages(page, volumes)
-        page.set_viewport_size({"width": 375, "height": 812})
-        for game, entry in (("bof3", "genes"), ("bof4", "dam-kyria"), ("bof4", "wiki")):
-            set_route(page, base, game, entry)
-            no_overflow(page)
-        screenshot(page, destination, "mobile")
-        page.get_by_role("navigation", name="Choose a game").get_by_role("link", name="Breath of Fire IV", exact=True).click()
-        expect(page.get_by_role("heading", level=1)).to_have_text("Breath of Fire IV")
-        screenshot(page, destination, "mobile-cover")
-        page.get_by_role("link", name="Open walkthrough").click()
-        page.get_by_role("main").locator("a[href$='/north-desert']").click()
-        expect(page.get_by_role("heading", level=1)).to_have_text(volumes["bof4"]["route"][1]["title"])
-        for entry in ("genes", "walk", "wiki"):
-            set_route(page, base, "bof3", entry)
-            page.set_viewport_size({"width": 320, "height": 568})
-            no_overflow(page)
+        screenshot(page,destination,"desktop")
+        check_reader_actions(page,base,volumes,destination)
+        counts = check_pages_and_links(page,volumes)
+        check_responsive(page,base,destination)
+        if offline:
+            check_storage(browser,base)
         assert not errors, errors
         assert not external, external
-        return {"pages": totals, "decoded_illustrations": art_count,
-                "page_errors": errors, "external_requests": external}
+        return {**counts,"decoded_illustrations":art_count,"fonts":fonts,
+                "widths_css_px":[320,390,640,768,850,1280,1360,1920],"text_200_percent":True,
+                "gameplay_inputs":False,"page_errors":errors,"external_requests":external}
     finally:
         context.close()
 
@@ -262,7 +468,8 @@ def main():
     receipt = {"document_sha256": sha256(document).hexdigest()}
     with sync_playwright() as driver:
         browser = driver.chromium.launch(executable_path=str(args.browser.resolve(strict=True)),
-                                         headless=True, chromium_sandbox=True)
+                                         headless=True, chromium_sandbox=True,
+                                         args=["--disable-ipc-flooding-protection"])
         try:
             receipt["browser_version"] = browser.version
             receipt["file"] = check_transport(browser, book.as_uri(), document, volumes,

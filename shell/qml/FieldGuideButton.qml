@@ -11,12 +11,13 @@ Button {
     property bool selected: false
     property bool primary: false
     property bool quiet: false
+    property bool dark: false
     property bool tv: false
     readonly property bool guideAction: true
     hoverEnabled: true
     focusPolicy: Qt.StrongFocus
-    leftPadding: art && !largePlate ? 5 : 14
-    rightPadding: 14
+    leftPadding: art && !largePlate ? 6 : quiet ? 10 : 13
+    rightPadding: quiet ? 10 : 13
     topPadding: 8
     bottomPadding: 8
     implicitWidth: Math.max(96, (art && !largePlate ? thumbnail.width + 12 : 0) + Math.max(caption.implicitWidth, note.implicitWidth) + leftPadding + rightPadding)
@@ -33,12 +34,13 @@ Button {
         event.accepted = true
     }
     background: Rectangle {
-        radius: 3
-        color: control.primary ? control.accent : control.selected ? Qt.tint(control.paper, Qt.rgba(control.accent.r, control.accent.g, control.accent.b, 0.14))
+        radius: 2
+        color: control.dark ? (control.hovered || control.selected ? "#43514b" : "transparent")
+              : control.primary ? control.accent : control.selected ? Qt.tint(control.paper, Qt.rgba(control.accent.r, control.accent.g, control.accent.b, 0.10))
               : control.hovered || control.down ? Qt.tint(control.paper, Qt.rgba(control.accent.r, control.accent.g, control.accent.b, 0.08))
               : control.quiet ? "transparent" : control.paper
         border.width: control.activeFocus || control.selected ? 2 : control.quiet ? 0 : 1
-        border.color: control.activeFocus ? "#ab521d" : control.selected ? control.accent : "#c6c3b2"
+        border.color: control.activeFocus ? (control.dark ? "#f6d08e" : "#006383") : control.selected ? (control.largePlate ? "#e0ab4e" : control.dark ? "#a6aa8a" : control.accent) : "#bcb7a4"
         Rectangle {
             visible: control.activeFocus && control.primary
             anchors.fill: parent
@@ -61,7 +63,7 @@ Button {
             anchors.verticalCenter: control.largePlate ? undefined : parent.verticalCenter
             anchors.top: control.largePlate ? parent.top : undefined
             width: control.largePlate ? parent.width : control.tv ? 80 : 62
-            height: control.largePlate ? Math.min(control.tv ? 135 : 111, width*0.8) : control.tv ? 66 : 53
+            height: control.largePlate ? Math.min(control.tv ? 175 : 135, width*.76) : control.tv ? 66 : 53
             source: control.art
             fillMode: control.largePlate ? Image.PreserveAspectFit : Image.PreserveAspectCrop
         }
@@ -79,10 +81,11 @@ Button {
                 width: parent.width
                 text: control.text
                 textFormat: Text.PlainText
-                color: control.primary ? "#fffef6" : control.accent
-                font.family: "Segoe UI"
+                color: control.dark || control.primary ? "#fff8e5" : control.accent
+                font.family: control.largePlate ? "Gloock" : "Segoe UI"
                 font.weight: Font.DemiBold
-                font.pixelSize: control.tv ? 21 : 15
+                font.pixelSize: control.largePlate ? (control.tv ? 28 : 23) : control.tv ? 22 : 16
+                lineHeight: 1.1
                 wrapMode: Text.WordWrap
             }
             Text {
@@ -91,11 +94,20 @@ Button {
                 width: parent.width
                 text: control.detail
                 textFormat: Text.PlainText
-                color: control.primary ? "#f7f4ea" : "#4d584f"
+                color: control.dark || control.primary ? "#f7f4ea" : "#4b554e"
                 font.family: "Segoe UI"
-                font.pixelSize: control.tv ? 18 : 13
+                font.pixelSize: control.tv ? 20 : 15
+                lineHeight: 1.16
                 wrapMode: Text.WordWrap
             }
+        }
+        Rectangle {
+            visible: control.selected && !!control.art; z: 2
+            anchors.top: parent.top; anchors.right: parent.right
+            width: control.tv ? 27 : 22; height: width; radius: width/2
+            color: "#285647"
+            Text { anchors.centerIn: parent; text: "✓"; color: "#fff8e5"; font.pixelSize: control.tv ? 20 : 16; font.bold: true }
+            Accessible.ignored: true
         }
     }
 }

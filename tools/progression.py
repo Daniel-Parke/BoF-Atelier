@@ -22,7 +22,7 @@ else:
 GENES = ('Flame', 'Frost', 'Thunder', 'Shadow', 'Radiance', 'Force', 'Defender', 'Eldritch',
          'Miracle', 'Gross', 'Thorn', 'Reverse', 'Mutant', '???', 'Trance', 'Failure', 'Fusion', 'Infinity')
 MASTERS = ('None', 'Rwolf', 'Momo', 'Kryrik', 'Abbess', 'Njomo', 'Gyosil', 'Stoll', 'Una',
-           'Bunyan', 'Lyta', 'Khan', 'Marlok')
+           'Bunyan', 'Lyta', 'Kahn', 'Marlok')
 FORMS = ('Aura', 'Kaiser', 'Astral', 'Tyrant', 'Wyvern', 'Weyr', 'Myrmidon', 'Knight', 'Serpent',
          'Peist', 'Behemoth', 'Mammoth', 'Mutant', 'Punk')
 STATS = ('HP', 'AP', 'power', 'defence', 'agility', 'wisdom')

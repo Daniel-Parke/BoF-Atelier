@@ -11,6 +11,7 @@ from pathlib import Path
 import re
 import sqlite3
 from typing import Callable
+from xml.etree import ElementTree
 
 from PySide6.QtCore import QByteArray, QBuffer, QIODevice, QObject, Property, Qt, Signal, Slot
 from PySide6.QtGui import QImage
@@ -36,8 +37,11 @@ class ReadingMarks:
         self.game = game
         self.places = tuple(row["id"] for row in book["route"]) if book else EARLY_PLACES[game]
         self.pages = CORE_PAGES[game] | set(self.places)
+        self.sheet_stops = {name: row["stop"] for name, row in (book or {}).get("fieldSheets", {}).items()}
+        self.pages.update(self.sheet_stops)
         if book:
             self.pages.update(row["id"] for row in book["articles"])
+            self.pages.update(book.get("entities", {}))
         self.scope = json.dumps((game, revision, branch), ensure_ascii=True)
 
     def _connect(self, write: bool) -> sqlite3.Connection:
@@ -52,36 +56,55 @@ class ReadingMarks:
                 con.execute("CREATE TABLE IF NOT EXISTS markers (scope TEXT PRIMARY KEY, place INTEGER NOT NULL)")
                 con.execute("CREATE TABLE IF NOT EXISTS pins (scope TEXT, article TEXT, PRIMARY KEY(scope, article))")
                 con.execute("CREATE TABLE IF NOT EXISTS marked_pages (scope TEXT PRIMARY KEY, page TEXT NOT NULL)")
+                con.execute("CREATE TABLE IF NOT EXISTS marked_areas (scope TEXT PRIMARY KEY, stop TEXT NOT NULL, sheet TEXT NOT NULL)")
             return con
         except BaseException:
             con.close()
             raise
 
-    def read(self) -> tuple[int, list[str]]:
+    def read_bookmarks(self) -> tuple[int, str, list[str]]:
         if not plain_path(self.db).is_file():
-            return -1, []
+            return -1, "", []
         with closing(self._connect(False)) as con:
             marker = con.execute("SELECT place FROM markers WHERE scope=?", (self.scope,)).fetchone()
             index = marker[0] if marker and marker[0] in (0, 1) else -1
+            target = self.places[index] if index >= 0 else ""
             if con.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='marked_pages'").fetchone():
                 saved = con.execute("SELECT page FROM marked_pages WHERE scope=?", (self.scope,)).fetchone()
                 if saved:
-                    index = self.places.index(saved[0]) if saved[0] in self.places else -1
+                    target = saved[0]
+                    stop = self.sheet_stops.get(target, target)
+                    index = self.places.index(stop) if stop in self.places else -1
+            if index >= 0 and con.execute("SELECT 1 FROM sqlite_master WHERE type='table' AND name='marked_areas'").fetchone():
+                area = con.execute("SELECT sheet FROM marked_areas WHERE scope=? AND stop=?", (self.scope, self.places[index])).fetchone()
+                if area and self.sheet_stops.get(area[0]) == self.places[index]:
+                    target = area[0]
             rows = con.execute("SELECT article FROM pins WHERE scope=? ORDER BY article", (self.scope,))
-            return index, [row[0] for row in rows if row[0] in self.pages]
+            return index, target if index >= 0 else "", [row[0] for row in rows if row[0] in self.pages]
 
-    def set_place(self, place: int) -> None:
+    def read(self) -> tuple[int, list[str]]:
+        index, _, pins = self.read_bookmarks()
+        return index, pins
+
+    def set_place(self, place: int, sheet: str = "") -> None:
         if type(place) is not int or not 0 <= place < len(self.places):
             raise ValueError("Unknown guide location")
+        if sheet and self.sheet_stops.get(sheet) != self.places[place]:
+            raise ValueError("Unknown area at this guide location")
         with closing(self._connect(True)) as con, con:
             con.execute("INSERT INTO marked_pages VALUES (?,?) ON CONFLICT(scope) DO UPDATE SET page=excluded.page",
                         (self.scope, self.places[place]))
+            if sheet:
+                con.execute("INSERT INTO marked_areas VALUES (?,?,?) ON CONFLICT(scope) DO UPDATE SET stop=excluded.stop, sheet=excluded.sheet",
+                            (self.scope, self.places[place], sheet))
+            else:
+                con.execute("DELETE FROM marked_areas WHERE scope=?", (self.scope,))
             con.execute("INSERT INTO markers VALUES (?,?) ON CONFLICT(scope) DO UPDATE SET place=excluded.place",
                         (self.scope, place if place < 2 else -1))
 
     def clear_place(self) -> None:
         with closing(self._connect(True)) as con, con:
-            for table in ("marked_pages", "markers"):
+            for table in ("marked_pages", "marked_areas", "markers"):
                 con.execute(f"DELETE FROM {table} WHERE scope=?", (self.scope,))
 
     def toggle(self, article: str) -> None:
@@ -208,9 +231,45 @@ class FieldGuideBridge(QObject):
         except (OSError, ValueError, TypeError, KeyError):
             pass
         self._plates = ApprovedPlates(css)
+        self._diagrams = {}
+        atlas = directory / "atlas"
+        for name in ("cedar", "kurok", "dam"):
+            sheet = atlas / (name + ".webp")
+            source = atlas / (name + ".svg")
+            if not (sheet.is_file() and source.is_file()):
+                continue
+            try:
+                svg = ElementTree.parse(source).getroot()
+                left, top, width, height = map(float, svg.attrib["viewBox"].split())
+                pins = []
+                for group in svg.iter("{http://www.w3.org/2000/svg}g"):
+                    if "data-step" not in group.attrib:
+                        continue
+                    ring = group.find("{http://www.w3.org/2000/svg}circle")
+                    if ring is None:
+                        raise ValueError("Map pin has no centre")
+                    x = (float(ring.attrib["cx"]) - left) / width
+                    y = (float(ring.attrib["cy"]) - top) / height
+                    if not (0 <= x <= 1 and 0 <= y <= 1):
+                        raise ValueError("Map pin is outside the plate")
+                    pins.append({"key": int(group.attrib["data-step"]), "x": x, "y": y})
+                image = QImage(str(sheet))
+                if image.isNull() or not pins:
+                    continue
+                self._plates.images["map-" + name] = image
+                self._diagrams[name] = {"url": "image://chrysm/map-" + name,
+                                        "pins": sorted(pins, key=lambda pin: pin["key"]), "ratio": width / height}
+            except (OSError, ElementTree.ParseError, KeyError, ValueError, ZeroDivisionError):
+                continue
+        ridge = atlas / "kurok-wind.webp"
+        if ridge.is_file():
+            painting = QImage(str(ridge))
+            if not painting.isNull():
+                self._plates.images["kurok-wind"] = painting
+                self._captions["kurok-wind"] = "Wind over the grass and red limestone ledges of Kurok ridge."
         self._floor_images = ApprovedPlates("")
         self._marks: ReadingMarks | None = None
-        self._marker, self._pins, self._error = -1, [], ""
+        self._marker, self._mark_target, self._pins, self._error = -1, "", [], ""
         self._tables, self._catalog, self._photos = {}, {}, []
         self._selection: tuple | None = None
         self._cache: dict[tuple, tuple] = {}
@@ -232,9 +291,17 @@ class FieldGuideBridge(QObject):
     def caption(self, name: str) -> str:
         return self._captions.get(name, "")
 
+    @Slot(str, result="QVariantMap")
+    def routeDiagram(self, name: str) -> dict:
+        return self._diagrams.get(name, {})
+
     @Property(int, notify=marksChanged)
     def marker(self):
         return self._marker
+
+    @Property(str, notify=marksChanged)
+    def markTarget(self):
+        return self._mark_target
 
     @Property("QVariantList", notify=marksChanged)
     def pins(self):
@@ -266,11 +333,37 @@ class FieldGuideBridge(QObject):
 
     def _refresh_marks(self):
         try:
-            self._marker, self._pins = self._marks.read()
+            self._marker, self._mark_target, self._pins = self._marks.read_bookmarks()
             self._error = ""
         except (OSError, ValueError, sqlite3.Error):
             self._error = "Guide bookmarks could not be read from this library."
         self.marksChanged.emit()
+
+    @Slot(str, str, int, result=str)
+    def campaignPlace(self, game: str, place: str, floor: int) -> str:
+        book = self._books.get(game, {})
+        for stop in book.get("route", []):
+            if stop["id"] == place:
+                for area in stop.get("sectionsByArea", []):
+                    if area["firstFloor"] == floor:
+                        return area["name"]
+                return stop["title"]
+        return ""
+
+    @Slot(str, str, str, result="QVariantMap")
+    def campaignMark(self, game: str, revision: str, branch: str) -> dict[str, str]:
+        book = self._books.get(game)
+        if self._closed or not book:
+            return {}
+        try:
+            marks = ReadingMarks(Path(self._library()), game, revision, branch, book)
+            index, target, _ = marks.read_bookmarks()
+        except (OSError, ValueError, sqlite3.Error):
+            return {}
+        if index < 0 or not target:
+            return {}
+        page = book.get("fieldSheets", {}).get(target) or book["route"][index]
+        return {"id": target, "title": page["title"]}
 
     @Slot(str, str, str)
     def setContext(self, game: str, revision: str, branch: str):
@@ -279,7 +372,7 @@ class FieldGuideBridge(QObject):
         root = Path(self._library())
         self._book = self._books.get(game, {})
         self._marks = ReadingMarks(root, game, revision, branch, self._book)
-        self._marker, self._pins = -1, []
+        self._marker, self._mark_target, self._pins = -1, "", []
         self._refresh_marks()
         receipt = root / "games" / game / "import-receipt.json"
         try:
@@ -332,6 +425,10 @@ class FieldGuideBridge(QObject):
     def setMarker(self, place: int):
         self._save(place=place)
 
+    @Slot(int, str)
+    def markArea(self, place: int, sheet: str):
+        self._save(place=place, sheet=sheet)
+
     @Slot()
     def clearMarker(self):
         if self._marks:
@@ -347,12 +444,12 @@ class FieldGuideBridge(QObject):
     def togglePin(self, article: str):
         self._save(article=article)
 
-    def _save(self, *, place: int | None = None, article: str = ""):
+    def _save(self, *, place: int | None = None, sheet: str = "", article: str = ""):
         if not self._marks:
             return
         try:
             if place is not None:
-                self._marks.set_place(place)
+                self._marks.set_place(place, sheet)
             else:
                 self._marks.toggle(article)
         except (OSError, ValueError, sqlite3.Error):

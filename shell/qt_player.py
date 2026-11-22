@@ -14,6 +14,7 @@ import time
 def main(argv=None, on_loaded=None):
     from PySide6.QtCore import QObject, Property, QStandardPaths, QTimer, QUrl, Signal, Slot
     from PySide6.QtQuick import QQuickWindow
+    from PySide6.QtGui import QFontDatabase
     from PySide6.QtWidgets import QApplication, QFileDialog
     from PySide6.QtQml import QQmlApplicationEngine
     from shell.field_guide import FieldGuideBridge
@@ -78,11 +79,19 @@ def main(argv=None, on_loaded=None):
             wiki = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1])) / "design/field-guide/wiki"
             chosen = read_book(wiki, args.title)
             pages = {row["id"] for row in chosen["route"] + chosen["articles"]}
+            pages.update(chosen.get("fieldSheets", {}))
             if args.guide_entry not in pages | CORE_PAGES[args.title] | {"guide", "wiki", "route"}:
                 arguments.error("Unknown Field Guide page for this title")
         if args.view == "Field guide":
             service.action("openGuide", args.guide_entry or "guide")
     root = Path(getattr(sys, "_MEIPASS", Path(__file__).resolve().parents[1]))
+    atlas = root / "design/field-guide/atlas"
+    for name in ("Gloock-Regular.ttf", "BarlowSemiCondensed-SemiBold.ttf"):
+        QFontDatabase.addApplicationFont(str(atlas / "type" / name))
+    from shell.menu_sound import MenuSound
+    sound = MenuSound(atlas / "sound")
+    allow_menu_audio = not args.review and app.platformName() != "offscreen"
+    app.aboutToQuit.connect(sound.close)
 
     class Bridge(QObject):
         changed = Signal()
@@ -101,7 +110,13 @@ def main(argv=None, on_loaded=None):
         @Slot(str, str, result=str)
         def perform(self, name, value):
             try:
+                if name == "auditionMusic":
+                    sound.update(service, audible=allow_menu_audio, audition=True)
+                    return ""
                 result = service.action(name, json.loads(value))
+                if name == "menuMusic" and not service.settings.get("menu_music"):
+                    sound.stop()
+                sound.update(service, audible=allow_menu_audio)
                 if name == "assetPreview":
                     return json.dumps(result, ensure_ascii=False)
             except Exception as exc:
@@ -190,6 +205,7 @@ def main(argv=None, on_loaded=None):
                 event = service.poll()
                 if self.seen != event["version"]:
                     self.seen = event["version"]
+                    sound.update(service, audible=allow_menu_audio)
                     self.changed.emit()
                 if event["move"]:
                     self.move.emit(event["move"])
@@ -206,6 +222,13 @@ def main(argv=None, on_loaded=None):
     bridge = Bridge()
     reader = FieldGuideBridge(lambda: service.root, root, parent=app)
     engine = QQmlApplicationEngine()
+    system_reduced_motion = False
+    if sys.platform == "win32":
+        import ctypes
+        animations = ctypes.c_int(1)
+        if ctypes.windll.user32.SystemParametersInfoW(0x1042, 0, ctypes.byref(animations), 0):
+            system_reduced_motion = not animations.value
+    engine.rootContext().setContextProperty("systemReducedMotion", system_reduced_motion)
     engine.rootContext().setContextProperty("player", bridge)
     reader.install(engine)
     engine.load(QUrl.fromLocalFile(str(root / "shell/qml/Main.qml")))
@@ -240,7 +263,7 @@ def main(argv=None, on_loaded=None):
             try:
                 if args.guide_entry and args.guide_entry != "guide":
                     view = window.findChild(QObject, "fieldGuideReader")
-                    actual = (view.property("page"), view.property("pinId")) if view else ()
+                    actual = (view.property("page"), view.property("pinId"), view.property("bookmarkId")) if view else ()
                     if args.guide_entry not in actual:
                         raise ValueError(f"Expected guide page {args.guide_entry}, rendered {actual}")
                 if args.expect_saved_place or args.record_guide_opening:

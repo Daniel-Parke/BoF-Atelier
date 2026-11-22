@@ -223,6 +223,8 @@ class PlayerService:
 
     def refresh(self):
         self.guide_story = {}
+        self.campaign_story = {}
+        self.suspend_ready = False
         self.records, self.history, self.workshop = [], [], {}
         self.restored = []
         self.art = {}
@@ -258,6 +260,9 @@ class PlayerService:
             if (self.root / "atelier/campaigns.sqlite3").is_file():
                 self.history = campaigns.CampaignStore(self.root).history(self.game)
             self.restored = self._restored(self.game)
+            self.suspend_ready = self._compatible_suspend()
+            if self.process is None:
+                self.campaign_story = self._saved_guide_story()
             if self.record and re.fullmatch("[a-f0-9]{64}", self.record["fingerprint"]):
                 folder = (
                     self.root
@@ -282,6 +287,38 @@ class PlayerService:
         ) as err:
             self.message = str(err)
         self.version += 1
+
+    def _compatible_suspend(self):
+        """Offer direct resume only for the same verified edition and ordinary card."""
+        if (self.channel != "lab" or sys.platform != "win32" or not self.record or not self.record["verified"]
+                or not checkpoints.path_for(self.root, self.game, "suspend").is_file()):
+            return False
+        journey = self.journeys[self.game]
+        cue = Path(self.record["cue"])
+        lock = self._edition()
+        try:
+            if self.game == "bof3" and journey["labStock"]:
+                mode = "stock"
+                paths = managed_cards.duckstation_paths(self.root, "lab", self.game, cue)
+                lock.update(runtime=self.runtime["version"], firmware=self.runtime.get("firmware_sha256", ""),
+                            backend="duckstation")
+            elif self.game == "bof4" and journey["reference"] and not journey["stock"]:
+                mode = "reference"
+                status = runtime_reference_play.reference_status(self.root, self.game)
+                lock.update(runtime=status["version"], backend=status["backend"],
+                            firmware=runtime_setup._catalogue()["openbios-psx-rom"]["member"]["sha256"])
+                campaign = journey["campaign"]
+                paths = (managed_cards.slot_paths(self.root / "lab/reference-play" / self.game / campaign["id"])
+                         if campaign and campaign["route"] == "reference" else {})
+            else:
+                return False
+            ordinary = managed_cards.read_cards(self.game, paths)
+            anchor = checkpoints.card_identity(ordinary.slots) if ordinary.title else {}
+            identity = checkpoint_session.identity(self.root, self.game, self.record, mode, lock)
+            checkpoints.load(self.root, self.game, "suspend", identity, anchor)
+        except (OSError, ValueError, RuntimeError, KeyError, TypeError):
+            return False
+        return True
 
     def _closed_reference_paths(self, directory, receipt, game, status, cue_digest, firmware_digest, restored_branch):
         if (receipt.get("backend") != status["backend"] or receipt.get("game") != game
@@ -620,6 +657,7 @@ class PlayerService:
             "guideRequest": self.guide_request,
             "guideEntry": self.guide_entry,
             "guideStory": self.guide_story,
+            "campaignStory": self.campaign_story,
             "guideBranch": self._guide_branch(),
             "guideStatus": ("Game can continue while you read. Use F6 in the game to pause."
                             if self.played_cards and self.played_cards.get("backend") == "reference" else ""),
@@ -664,6 +702,9 @@ class PlayerService:
             "journeys": self.journeys,
             "art": self.art,
             "preferences": {
+                "menuMusic": self.settings.get("menu_music") is True,
+                "menuVolume": self._menu_volume(),
+                "reduceMotion": self.settings.get("reduce_motion") is True,
                 "presentation": self.settings.get("bof3_presentation") or "original",
                 "fastForward": self.settings.get("bof3_hold_2x") is True,
                 "leftStick": bool(self.pad.handle) and not self.pad.raw
@@ -677,6 +718,7 @@ class PlayerService:
                 if self.channel == "lab" and sys.platform == "win32" and
                 checkpoints.path_for(self.root, self.game, kind).is_file()
             ],
+            "resumeAvailable": self.suspend_ready,
             "checkpointControls": self.channel == "lab" and sys.platform == "win32"
                 and (self.journeys.get(self.game, {}).get("labStock") if self.game == "bof3"
                      else self.journeys.get(self.game, {}).get("reference")),
@@ -961,6 +1003,10 @@ class PlayerService:
         self.capture_action, self.proposed_binding = "", None
         self.pad.edges.reset()
 
+    def _menu_volume(self):
+        value = self.settings.get("menu_volume", 25)
+        return value if type(value) is int and 0 <= value <= 100 else 25
+
     def action(self, name, value=None):
         if name == "poll":
             return self.poll()
@@ -1030,6 +1076,9 @@ class PlayerService:
             "resetBindings",
             "resetGameplay",
             "toggleGameplay",
+            "menuMusic",
+            "menuVolume",
+            "reduceMotion",
             "tv",
             "refresh",
         ):
@@ -1071,6 +1120,12 @@ class PlayerService:
                 self._save()
             elif name == "tv":
                 self.settings["tv"] = not self.settings.get("tv", False)
+                self._save()
+            elif name in ("menuMusic", "reduceMotion") and type(value) is bool:
+                self.settings["menu_music" if name == "menuMusic" else "reduce_motion"] = value
+                self._save()
+            elif name == "menuVolume" and type(value) is int and 0 <= value <= 100:
+                self.settings["menu_volume"] = value
                 self._save()
             elif name == "refresh":
                 self.refresh()

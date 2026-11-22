@@ -1,34 +1,18 @@
 # BoF Atelier
 
-An illustrated Field Guide for *Breath of Fire III* and *IV*. Keep it open beside the game when you need a direction, a chest location or a reminder of what those dragon genes do.
+Two illustrated books for *Breath of Fire III* and *IV*. Follow a route, find a chest or look up a dragon form.
 
-**[Open the Field Guide](https://daniel-parke.github.io/BoF-Atelier/)** · [How to play the games](docs/PLAYING.md)
+| [Breath of Fire III](https://daniel-parke.github.io/BoF-Atelier/#bof3/walk) | [Breath of Fire IV](https://daniel-parke.github.io/BoF-Atelier/#bof4/walk) |
+| :---: | :---: |
+| [![A green dragon above a mountain valley](docs/art/atelier.webp)](https://daniel-parke.github.io/BoF-Atelier/#bof3/walk) | [![A sand dragon rising above a caravan](docs/art/sandsea.webp)](https://daniel-parke.github.io/BoF-Atelier/#bof4/walk) |
+| [Walkthrough](https://daniel-parke.github.io/BoF-Atelier/#bof3/walk) · [Dragon genes](https://daniel-parke.github.io/BoF-Atelier/#bof3/genes) | [Walkthrough](https://daniel-parke.github.io/BoF-Atelier/#bof4/walk) · [Master growth](https://daniel-parke.github.io/BoF-Atelier/#bof4/masters) |
 
-<p align="center">
-  <a href="https://daniel-parke.github.io/BoF-Atelier/#bof3/walk"><img src="docs/art/atelier.webp" width="48%" alt="Open the Breath of Fire III guide. A green dragon overlooks a mountain valley."></a>
-  <a href="https://daniel-parke.github.io/BoF-Atelier/#bof4/walk"><img src="docs/art/sandsea.webp" width="48%" alt="Open the Breath of Fire IV guide. A sand dragon rises above a caravan."></a>
-</p>
+**Want to play?** The Atelier app is still in development. Our [play guide](docs/PLAYING.md) covers original PlayStation discs and the Windows edition of *IV*.
 
-| [Breath of Fire III walkthrough](https://daniel-parke.github.io/BoF-Atelier/#bof3/walk) | [Breath of Fire IV walkthrough](https://daniel-parke.github.io/BoF-Atelier/#bof4/walk) |
-| :--- | :--- |
-| Find your way out of Dauna Mine, look up a master or try a dragon gene combination. | Follow Ryu and Fou-Lu, check a fork in Kurok or see what you can miss before leaving an area. |
+**Taking the guide offline?** Open either book and choose **Download for offline reading** at the foot of the page. Both volumes travel in that one file.
 
-## Read the Field Guide
-
-Choose a game above. **Walkthrough** follows the story in order. **Field wiki** is for looking something up. Later stops stay hidden until you choose to see them. You can read either book on your phone while you play on another screen.
-
-For an offline copy, open the guide and choose **Download for offline reading** at the foot of the page. Both books and their illustrations fit in one HTML file. Double-click it to read it again.
-
-## I want to play
-
-The Field Guide is ready to use. The Atelier desktop app is still in development and there's no player installer yet. If you're here for *IV* on Windows, the GOG edition is the shortest route. If you have one of the PlayStation games, the play guide starts with what you already own. [Play III or IV](docs/PLAYING.md)
-
-## Help build Atelier
-
-If a direction sends you to the wrong exit, tell us the game, the area and which way you came in. That's enough for a useful correction. [Report a guide correction](https://github.com/Daniel-Parke/BoF-Atelier/issues/new?template=guide-correction.md)
-
-We're working towards an optional remaster of the art, animation and music in both games. You should always be able to go back to the originals. [What's next](docs/ROADMAP.md) · [Contribute](CONTRIBUTING.md) · [Developer setup](docs/PLAYER-DEVELOPMENT.md) · [Credits and licences](docs/LICENSING.md)
+If we’ve sent you down the wrong path, [tell us the place and where you came in](https://github.com/Daniel-Parke/BoF-Atelier/issues/new?template=guide-correction.md). We’re also working on optional artwork, animation and music for both games. [Contribute](CONTRIBUTING.md) · [Roadmap](docs/ROADMAP.md) · [Credits](docs/LICENSING.md)
 
 *An unofficial fan project. Breath of Fire belongs to Capcom.*
 
-Started by <a href="https://pattertech.com/"><img src="docs/art/pattertech.svg" alt="PatterTech" width="108"></a>
+Started by <a href="https://pattertech.com/"><img src="docs/art/pattertech.svg" width="108" alt="PatterTech"></a>

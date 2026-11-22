@@ -1,5 +1,7 @@
 """Regressions for the downloadable, disc-independent Field Guide."""
 from html.parser import HTMLParser
+import base64
+import html
 import json
 from pathlib import Path
 import tempfile
@@ -44,6 +46,32 @@ class PublicGuideTests(unittest.TestCase):
         self.assertEqual(public_gene_recipe([0, 1, 2]), dataset["extras"]["recipes"]["flame+frost+thunder"])
         for bad in ([0, 0], [True], [3], [], [0, 1, 2, 3]):
             self.assertEqual({}, public_gene_recipe(bad))
+
+    def test_all_editorial_maps_and_font_notices_travel_with_the_single_file(self):
+        artifact = guide.render(guide.ROOT)["index.html"].decode()
+        parsed = EmbeddedBook()
+        parsed.feed(artifact)
+        books = json.loads("".join(parsed.text))
+        atlas = guide.ROOT / "design/field-guide/atlas"
+        diagrams = books["extras"]["diagrams"]
+        for game in ("bof3", "bof4"):
+            for name, sheet in books[game]["fieldSheets"].items():
+                expected = (atlas / sheet["map"]).read_bytes()
+                embedded = diagrams[name]["image"].removeprefix("data:image/svg+xml;base64,")
+                self.assertEqual(expected, base64.b64decode(embedded, validate=True))
+                self.assertEqual({str(step["key"]) for step in sheet["steps"]}, set(diagrams[name]["points"]))
+        for filename in ("OFL-Gloock.txt", "OFL-BarlowSemiCondensed.txt"):
+            self.assertIn(html.escape((atlas / "type" / filename).read_text("utf-8")), artifact)
+        self.assertIn("Wind on Kurok ridge", artifact)
+        self.assertNotIn("private/design-review/",artifact)
+
+    def test_route_markers_reject_active_external_and_out_of_bounds_content(self):
+        original = b'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10"><g data-step="1"><circle class="selection" cx="5" cy="5"/></g></svg>'
+        self.assertEqual({"1":[50,50]},guide.route_illustration(original,"fixture")["points"])
+        for content in (b'<script/>', b'<use href="https://example.org/pin"/>', b'<g onload="x"/>',
+                        b'<g data-step="2"><circle class="selection" cx="15" cy="0"/></g>'):
+            with self.subTest(content=content), self.assertRaises(ValueError):
+                guide.route_illustration(original.replace(b"</svg>",content+b"</svg>"),"fixture")
 
     def test_editorial_text_cannot_end_the_inline_json_block(self):
         title = "A page about </ScRiPt> & <specimens>"

@@ -78,6 +78,34 @@ class Edges:
         return None, next(iter(sorted(new)), None)
 
 
+def load_sdl():
+    """Load the one reviewed native SDL installation used by the shell."""
+    if sys.platform == "win32":
+        bundle = Path(
+            getattr(
+                sys,
+                "_MEIPASS",
+                Path(__file__).resolve().parents[1] / "private/shell-tools",
+            )
+        )
+        path = bundle / (
+            "native/SDL3.dll" if hasattr(sys, "_MEIPASS") else "SDL3.dll"
+        )
+        if not path.is_file():
+            raise OSError("The SDL3 library is missing.")
+        return ct.CDLL(str(path))
+    else:
+        packaged = Path(__file__).resolve().parents[1] / "native/libSDL3.so.0"
+        name = (
+            str(packaged)
+            if sys.platform.startswith("linux") and packaged.is_file()
+            else ctypes.util.find_library("SDL3")
+        )
+        if not name:
+            raise OSError("The SDL3 library is missing.")
+        return ct.CDLL(name)
+
+
 class NativeInput:
     def __init__(self):
         self.dll = None
@@ -95,30 +123,7 @@ class NativeInput:
         self.check_time = 0.0
         self.last_input = ""
         try:
-            if sys.platform == "win32":
-                bundle = Path(
-                    getattr(
-                        sys,
-                        "_MEIPASS",
-                        Path(__file__).resolve().parents[1] / "private/shell-tools",
-                    )
-                )
-                path = bundle / (
-                    "native/SDL3.dll" if hasattr(sys, "_MEIPASS") else "SDL3.dll"
-                )
-                if not path.is_file():
-                    raise OSError("The SDL3 input component is missing.")
-                lib = ct.CDLL(str(path))
-            else:
-                packaged = Path(__file__).resolve().parents[1] / "native/libSDL3.so.0"
-                name = (
-                    str(packaged)
-                    if sys.platform.startswith("linux") and packaged.is_file()
-                    else ctypes.util.find_library("SDL3")
-                )
-                if not name:
-                    raise OSError("The SDL3 input component is missing.")
-                lib = ct.CDLL(name)
+            lib = load_sdl()
             definitions = {
                 "SDL_SetHintWithPriority": (ct.c_bool, [ct.c_char_p, ct.c_char_p, ct.c_int]),
                 "SDL_InitSubSystem": (ct.c_bool, [ct.c_uint32]),

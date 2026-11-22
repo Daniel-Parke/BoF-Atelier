@@ -4,6 +4,8 @@ Read [README.md](README.md), [CONTRIBUTING.md](CONTRIBUTING.md) and the [licensi
 
 ## Guide changes
 
+Apply the [Field Guide editorial and layout standard](docs/FIELD-GUIDE-STYLE.md). Preserve the route ID, source references, complete area ledgers, declared missables, accessible map key and spoiler boundary. Verify the rebuilt browser reader from an offline file.
+
 - Edit `design/field-guide/wiki/bof3.json` or `bof4.json` for guide content. Preserve published page IDs and source attribution. Keep game-specific names and rules distinct.
 - Use original writing. Record the edition, method and result of a check. Label reported facts that still need confirmation. Put a missable warning before the relevant decision.
 - Rebuild with `python tools/build_public_guide.py`, then run `python tools/build_public_guide.py --check`. Review the rendered article and both volume indexes. Include the generated output with the source. [Maintenance and tests](docs/MAINTAINING.md)

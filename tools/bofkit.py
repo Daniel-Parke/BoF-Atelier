@@ -22,6 +22,11 @@ import uuid
 import zipfile
 from typing import Any, Iterable
 
+if __package__:
+    from .atlas_assets import ATLAS_HASHES
+else:
+    from atlas_assets import ATLAS_HASHES
+
 DEFAULT_ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_ROOT_FILES = {
     'README.md', '00-START-HERE.md', '01-MASTER-PROMPT.md', '02-PLAY-NOW.md',
@@ -33,7 +38,7 @@ PUBLIC_DIRECTORIES = {'context', 'docs', 'design', 'research', 'schemas', 'examp
 PUBLIC_EXTENSIONS = {'.md', '.txt', '.json', '.py', '.html', '.css', '.js', '.toml', '.yml', '.yaml',
                      '.qml', '.ts', '.rs', '.lock', '.qrc', '.spec', '.ps1', '.cmd'}
 FORBIDDEN_EXTENSIONS = {
-    '.bin', '.iso', '.chd', '.cue', '.7z', '.zip', '.rar', '.ecm', '.mdf', '.mds',
+    '.bin', '.bios', '.rom', '.iso', '.chd', '.cue', '.7z', '.zip', '.rar', '.ecm', '.mdf', '.mds',
     '.ccd', '.img', '.pbp', '.exe', '.dll', '.appimage', '.dmg', '.mcd', '.mcr',
     '.mc', '.sav', '.srm', '.state', '.psf', '.psflib', '.wav', '.mp3', '.flac',
     '.ogg', '.mp4', '.mkv', '.pem', '.key', '.p12', '.pfx', '.ttf', '.otf', '.woff', '.woff2',
@@ -318,6 +323,13 @@ def forbidden_public_path(relative: Path | str) -> bool:
 def inspect_public_file(path: Path, relative: Path) -> bytes:
     if _linked(path):
         raise KitError(f'Public export refuses symlinks: {relative}')
+    if relative.as_posix() in ATLAS_HASHES:
+        if path.stat().st_size > 4 * 1024 * 1024:
+            raise KitError(f'Unexpected asset size: {relative}')
+        data = path.read_bytes()
+        if hashlib.sha256(data).hexdigest() != ATLAS_HASHES[relative.as_posix()]:
+            raise KitError(f'Artwork, font or audio differs from its reviewed bytes: {relative}')
+        return data
     if forbidden_public_path(relative):
         raise KitError(f'Private/binary path in public selection: {relative}')
     if path.stat().st_size > 4 * 1024 * 1024:
@@ -364,7 +376,7 @@ def public_files(root: Path) -> list[Path]:
                 candidate = Path(parent) / name
                 relative = candidate.relative_to(root)
                 if (candidate.name != '.gitignore' and relative.as_posix() != 'shell/linux/Dockerfile'
-                        and candidate.suffix.lower() not in PUBLIC_EXTENSIONS):
+                        and candidate.suffix.lower() not in PUBLIC_EXTENSIONS and relative.as_posix() not in ATLAS_HASHES):
                     raise KitError(f'Unallowlisted file type in public tree: {relative}')
                 inspect_public_file(candidate, relative)
                 selected.append(candidate)
@@ -421,13 +433,16 @@ def audit_git(root: Path) -> dict[str, Any]:
     if result.returncode:
         raise KitError('No readable Git index here. No repository was initialised or modified.')
     entries = [entry.decode('utf-8') for entry in result.stdout.split(b'\x00') if entry]
-    problems = [entry for entry in entries if forbidden_public_path(entry)]
+    problems = [entry for entry in entries if entry not in ATLAS_HASHES and forbidden_public_path(entry)]
     for entry in entries:
         if entry in problems:
             continue
         staged = subprocess.run(['git', '-C', str(root), 'show', ':' + entry], capture_output=True, check=False)
         if staged.returncode:
             problems.append(entry + ' (index content unreadable)')
+        elif entry in ATLAS_HASHES:
+            if hashlib.sha256(staged.stdout).hexdigest() != ATLAS_HASHES[entry]:
+                problems.append(entry + ' (asset digest differs)')
         elif len(staged.stdout) > 4 * 1024 * 1024 or b'\x00' in staged.stdout:
             problems.append(entry + ' (large/binary indexed content)')
         elif any(pattern.search(staged.stdout) for pattern in SECRET_PATTERNS):
