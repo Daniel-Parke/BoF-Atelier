@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "style": "patter_art_chrysm",
+  "approved": "2026-11-21",
+  "plates": {
+    "highlands": {"size": [1250,833], "sha256":"d4cd869d0472ab45c0fe3e56eeb3f086806a53216d9404aa58a8b2971eaec612"},
+    "sandsea": {"size": [1250,833], "sha256":"beb7b7d5be957531f5759228b25cb8c087d6f6498bbbb81aea09fed762052594"},
+    "flame": {"size": [300,300], "sha256":"9f49979b4886342583ef0f9d1263574ad7920c20c02dffdfb3762232f59ad252"},
+    "frost": {"size": [300,300], "sha256":"d99c6ec545245a00276cb732574110ac174468b679811968264be56a7bade644"},
+    "thunder": {"size": [300,300], "sha256":"ab36f7be1d01b4782193b0c2fa97c7d4afe610e55f69cd176605a3c839750b86"}
+  }
+}

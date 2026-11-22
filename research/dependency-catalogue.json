@@ -1,0 +1,141 @@
+{
+  "$schema": "../schemas/dependency-catalogue.schema.json",
+  "version": 1,
+  "reviewed": "2026-11-17",
+  "components": [
+    {
+      "id": "duckstation-windows-x64",
+      "purpose": "External Sony PlayStation runtime for private stock Play and isolated Lab",
+      "platforms": ["windows-x64"],
+      "version": "v0.1-12442",
+      "source": "https://github.com/stenzek/duckstation/releases/tag/v0.1-12442",
+      "licence": "CC-BY-NC-ND-4.0; upstream treats preconfigured packages/settings as modifications. Build files have additional packaging restrictions.",
+      "licence_url": "https://github.com/stenzek/duckstation/blob/dd4a0eb779296a525f8b10b6d9a45911ad6d088f/LICENSE",
+      "delivery": "Owner-authorised private stock installation from unchanged official ZIP. Public preconfigured packaging and automated configuration need a separate rights decision.",
+      "verification": "Match official release 423115112, asset 673934896, length and GitHub asset SHA-256. Check contents and executable identity. Record platform signature result separately.",
+      "maintenance": "Use separate portable directories. Reverify immutable files. Qualify new releases beside the stable release; preserve cards, configuration and states.",
+      "package": {
+        "url": "https://github.com/stenzek/duckstation/releases/download/v0.1-12442/duckstation-windows-x64-release.zip",
+        "metadata": "https://api.github.com/repos/stenzek/duckstation/releases/tags/v0.1-12442",
+        "release_id": 423115112,
+        "asset_id": 673934896,
+        "source_commit": "dd4a0eb779296a525f8b10b6d9a45911ad6d088f",
+        "bytes": 73988909,
+        "sha256": "b55d1cf45bdb6d0326a9083cf787ca7d6386dff6c837f6d3b8713f48af2a02b7",
+        "files_sha256": "9d0aaaa9e2aedca7516bfb46216714f05f7a8ef45b9616e4819d7bd0e468669d",
+        "executable": "duckstation-qt-x64-ReleaseLTCG.exe",
+        "executable_sha256": "b1fe97200ad8599dd1dfbf0aad6275d9cdbeafc55bacd1d8b751310a688a3267"
+      }
+    },
+    {
+      "id": "pcsx-redux-windows-x64",
+      "purpose": "Reference emulator for replacement firmware, disc layout and isolated compatibility testing",
+      "platforms": ["windows-x64"],
+      "version": "31852.20261117.34.x64",
+      "source": "https://distrib.app/pub/org/pcsx-redux/project/dev-win-x64",
+      "licence": "GPL-2.0, individual core files permit version 2 or later. Retain dependency notices and supply corresponding source for redistribution.",
+      "licence_url": "https://github.com/pcsx-redux/pcsx-redux/blob/d9a9985251e97141868b44e60c8a8d4f5f4365d6/LICENSES.md",
+      "delivery": "Unchanged development-channel build, private Lab only; use its own OpenBIOS as provenance reference.",
+      "verification": "Match build 879 size, SHA3-256 and SHA-1 from the official manifest, then cross-check the embedded version.json and source changeset. SHA-256 below was computed from those verified bytes.",
+      "maintenance": "Pin the dev build, disable automatic updates in Lab sessions and isolate all writable directories. Reacquire the same digest for repair.",
+      "package": {
+        "url": "https://distrib.app/storage/assets/755/006/f0c/85f404f91e7147da6d2e111bccaf9784031961270b58fa39b168325/pcsx-redux-nightly-31852.20261117.34-x64.zip",
+        "metadata": "https://distrib.app/storage/manifests/pcsx-redux/dev-win-x64/manifest-879.json",
+        "release_id": 879,
+        "source_commit": "d9a9985251e97141868b44e60c8a8d4f5f4365d6",
+        "bytes": 51005018,
+        "sha256": "6e0c2d785c13efb970bf74e5811025ea4dfe1c00217b1cc1382bd98e0975a07d",
+        "files_sha256": "cfebfebf98588c9b9edaa28ff1d3566e1b472add8a2881ae2a0152198a5bc676",
+        "publisher_sha3_256": "520c2f1444b67ef4ce69138897a04f2fb88801f0dc038cc36ae1e201cc121645",
+        "executable": "pcsx-redux.exe",
+        "executable_sha256": "a790f901cb9342233f6f8643a3b07e44622c44eb62be74d0a9319a8d6c51a412"
+      }
+    },
+    {
+      "id": "pcsx-redux-cli-windows-x64",
+      "purpose": "Local-only scripted compatibility and save regression runs with the standalone console entry point",
+      "platforms": ["windows-x64"],
+      "version": "31835.20261117.28.x64",
+      "source": "https://distrib.app/pub/org/pcsx-redux/project/dev-win-cli-x64",
+      "licence": "GPL-2.0 and component notices. The CLI skips the ordinary Windows GUI entry point's crash collector.",
+      "licence_url": "https://github.com/pcsx-redux/pcsx-redux/blob/b52a0da118a463baf38bf5fff592d89f321005f7/LICENSES.md",
+      "delivery": "Private Lab development channel. Run the verified console binary with the network debugger, web server and updater disabled.",
+      "verification": "The official manifest supplies size, SHA-1 and SHA3-256. Its embedded version and the firmware member are verified separately.",
+      "maintenance": "Keep a fixed build for frame-based testing. Requalify the fixture and game sequence on a new version.",
+      "package": {
+        "url": "https://distrib.app/storage/assets/2f7/908/d08/5a26a0269e504266410d22d7a15defd219141d185187be0d79666db/pcsx-redux-nightly-31835.20261117.28-x64-cli.zip",
+        "metadata": "https://distrib.app/storage/manifests/pcsx-redux/dev-win-cli-x64/manifest-876.json",
+        "release_id": 876,
+        "source_commit": "b52a0da118a463baf38bf5fff592d89f321005f7",
+        "bytes": 49430097,
+        "sha256": "a97dfdc579cdef088cb1f233ceb835e403edb38453424141ba7469598e4a43db",
+        "files_sha256": "337a4d1e05c70f2eb79d80be0c17556201c56659c4fd813ef3532815977874ac",
+        "publisher_sha3_256": "0841d4b01d05c4df9c7b21d0dbd2055a332f78341ae400d35f6825d9ffecb2c3",
+        "executable": "pcsx-redux.exe",
+        "executable_sha256": "b97ea01286218351dec900d6ea7efef52eb1cb04baeb7de99eac4c4b1c52a045"
+      }
+    },
+    {
+      "id": "pcsx-redux-linux-x64",
+      "purpose": "Private interactive reference Lab on Ubuntu 24.04 x86-64 with isolated per-session cards",
+      "platforms": ["ubuntu-24.04-x86_64"],
+      "version": "975bae64",
+      "source": "https://distrib.app/pub/org/pcsx-redux/project/dev-linux-x64",
+      "licence": "GPL-2.0 and per-component notices. Public redistribution must cover the exact corresponding source, dependencies and firmware notices.",
+      "licence_url": "https://github.com/pcsx-redux/pcsx-redux/blob/975bae640de1472e389ac49b2e80794cfc9ee059/LICENSES.md",
+      "delivery": "Owner-authorised private Lab acquisition of the unchanged official ZIP. The embedded AppImage runs as an ordinary user using extraction without FUSE.",
+      "verification": "Match official build 570 size, SHA3-256 and SHA-1. Validate the sole AppImage, its embedded version.json and its standard OpenBIOS member against recorded fingerprints.",
+      "maintenance": "Keep the installed AppImage and firmware separate from game sessions. Qualify later builds before adopting them. Preserve old versions, cards and settings.",
+      "package": {"url":"https://distrib.app/storage/assets/66b/cd4/557/6d51d1e37df2a62ab407745a462d364b1e854213871a118b24822d1/PCSX-Redux-975bae64-linux-x86_64.zip","metadata":"https://distrib.app/storage/manifests/pcsx-redux/dev-linux-x64/manifest-570.json","release_id":570,"source_commit":"975bae640de1472e389ac49b2e80794cfc9ee059","bytes":92538844,"sha256":"84ff0e0e49b2b1a05793a075d56772336120338df83e9e264523a4c953faef82","files_sha256":"46dc1815f27e30b84110fc7d7791bed75a688b73e7c7c10b070ecf56ec02dfe6","publisher_sha3_256":"ad038ea2287c22e7ba73799ee8a454223ac5cc7abcb7540ebdf28ae5fe5db065","executable":"PCSX-Redux-HEAD-x86_64.AppImage","executable_sha256":"156f425c64e9d2b9205399c1cef395d1135d8d0f2a91a47036ce43547ee2c420"}
+    },
+    {
+      "id": "openbios-psx-rom",
+      "purpose": "Candidate replacement firmware for private Lab gameplay",
+      "platforms": ["ps1-mips"],
+      "version": "redux-win-879",
+      "source": "https://github.com/pcsx-redux/nugget/tree/751c1f86ba891759548fa9913424fff218f79367/openbios",
+      "licence": "Nugget MIT; preserve font credits and review embedded shell jingle and linked components before public distribution.",
+      "licence_url": "https://github.com/pcsx-redux/nugget/blob/751c1f86ba891759548fa9913424fff218f79367/LICENSE",
+      "delivery": "Extract only the standard openbios.bin from the pinned, verified official PCSX-Redux package. Do not select cart, fastboot, UniROM or ELF builds.",
+      "verification": "512 KiB. OpenBIOS marker and SHA-256 of the exact member of the vetted package. Test separate Cold Boot, gameplay, transitions, ordinary card save/load and later routes for both games.",
+      "maintenance": "Keep exact firmware digest in session and state locks. Retail NTSC-U user-file import remains independent. Promotion requires named real-game results on the requested backend.",
+      "member": {"name": "openbios.bin", "bytes": 524288, "sha256": "8a8925807952965c4a116239a21903476c5c585387a1d4778a90b9b9c01804ee"}
+    },
+    {
+      "id": "msvc-runtime-x64",
+      "purpose": "Microsoft native runtime libraries",
+      "platforms": ["windows-x64"],
+      "version": "compatible supported Visual C++ redistributable checked on target",
+      "source": "https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist",
+      "licence": "Microsoft terms restrict redistribution to eligible licensed Visual Studio users.",
+      "licence_url": "https://learn.microsoft.com/en-us/cpp/windows/redistributing-visual-cpp-files",
+      "delivery": "Reuse an installed supported runtime; otherwise open Microsoft's architecture-matched installer through the OS.",
+      "verification": "Verify Microsoft signature, installed architecture and application startup on each target.",
+      "maintenance": "Repair via the official Windows installer. Leave shared prerequisites in place when removing Atelier."
+    },
+    {
+      "id": "archive-library",
+      "purpose": "Stream safe extraction of user archives without player-installed tools",
+      "platforms": ["windows-x64","linux-x86_64","macos-arm64"],
+      "version": "pin per packaged importer build",
+      "source": "https://www.libarchive.org/",
+      "licence": "New BSD and per-file or enabled codec notices.",
+      "licence_url": "https://github.com/libarchive/libarchive/blob/master/COPYING",
+      "delivery": "Use a vetted compatible OS library or package an audited build and codecs required for ZIP and 7z.",
+      "verification": "Validate supported compression methods against both owner archives and bounded synthetic error cases.",
+      "maintenance": "Replace only through tested application upgrades; preserve imported content and receipts."
+    },
+    {
+      "id": "native-input",
+      "purpose": "Physical gamepad input and controller mapping",
+      "platforms": ["windows-x64","linux-x86_64","macos-arm64"],
+      "version": "pin SDL and device mappings per packaged shell",
+      "source": "https://wiki.libsdl.org/SDL3/CategoryGamepad",
+      "licence": "SDL uses zlib; review separate mappings and attribution before packaging.",
+      "licence_url": "https://www.libsdl.org/license.php",
+      "delivery": "Prefer application-managed native input; use runtime-provided SDL in the external runtime.",
+      "verification": "Record library fingerprint and physical controller model, connection, disconnect/reconnect, and process focus on each OS.",
+      "maintenance": "Keep mappings versioned with reset and keyboard recovery. Preserve saved player remaps."
+    }
+  ]
+}

@@ -1,0 +1,473 @@
+{
+  "style": "patter_art_chrysm",
+  "date": "2026-11-21",
+  "credit": "BoF Atelier. Original illustrations generated with OpenAI ImageGen under the project's Chrysm direction.",
+  "use": "Regional atmosphere. Walkthrough text and cited maps provide navigation.",
+  "sheets": [
+    {
+      "game": "bof3",
+      "generation": "exec-9f846628-8e5e-4a9f-b771-b54f4a6d6fea",
+      "prompt": "Original patter_art_chrysm illustrated field journal for Breath of Fire III. Paint a 3:2 horizontal full-bleed sheet divided exactly into four equal rectangular 3:2 landscape paintings in a 2-by-2 grid. Hard butt edges at midpoint, no mat, gutters, frames, ornaments, labels, writing or lettering anywhere. Distinct original places, richly observed warm watercolour and gouache over fine pen hatching on toothy ivory paper, romantic late-1990s Japanese fantasy travel atlas. Keep an intelligible focal point in the central 60 percent of each quadrant. Top left: deep cobalt underground chrysm mine, brilliant blue mineral seams catching little copper oil lanterns, crooked narrow gauge mine tracks curve into slate distance. Top right: modest timber lookout beneath immense red cedar trees in a sunlit green mountain wood, dappled needles, emerald canopy, airy winding path. Bottom left: moored ocean-going wooden sailing ship in a working harbour, aquamarine inlet, small terracotta market buildings, hazy blue headlands. Bottom right: moonlight over a great open desert, pale amber dune ridges, indigo clear sky with three standout stars and some tiny dim stars. Original atmospheric interpretations, never a game map. Restrain orange accents, retain glowing light and real distance. No people, game assets, characters, logos, typography, diagram or symbols.",
+      "plates": [
+        {
+          "id": "iii-mine",
+          "description": "A mine railway curves past blue chrysm and oil lanterns.",
+          "crop": [
+            2,
+            2,
+            766,
+            510
+          ],
+          "size": [
+            764,
+            508
+          ],
+          "sha256": "7dd8ec4fa80bb4030146707f3dea652f63d18b35efcfeaf0eebb5ecba8506d0f",
+          "bytes": 148552
+        },
+        {
+          "id": "iii-woods",
+          "description": "A timber lookout rests beneath tall cedars on a mountain path.",
+          "crop": [
+            770,
+            2,
+            1534,
+            510
+          ],
+          "size": [
+            764,
+            508
+          ],
+          "sha256": "29a438de800945ec30842c889b66c449a0a380f828b28917c4d1edeb2fee80b6",
+          "bytes": 153152
+        },
+        {
+          "id": "iii-port",
+          "description": "A wooden sailing ship lies alongside a sunlit town quay.",
+          "crop": [
+            2,
+            514,
+            766,
+            1022
+          ],
+          "size": [
+            764,
+            508
+          ],
+          "sha256": "181bac17371a47115a51861203e446a7cc05a7aadfc6e30dc3c6b5a74b6a8a1c",
+          "bytes": 139926
+        },
+        {
+          "id": "iii-desert",
+          "description": "Three stars shine above moonlit dunes.",
+          "crop": [
+            770,
+            514,
+            1534,
+            1022
+          ],
+          "size": [
+            764,
+            508
+          ],
+          "sha256": "420c429342d1ec1a4779caf4586cc7420cf34f80df344c34adddbbb327291d6d",
+          "bytes": 92214
+        }
+      ],
+      "source_sha256": "5ae1ecb8dc0ce39ec2cfe10d79a4b1607148de5134ab1646c0a8f56a25d95bfa",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "game": "bof4",
+      "generation": "exec-c35dba36-bd0b-4228-a548-b3bd528e4147",
+      "prompt": "Original patter_art_chrysm illustrated field journal for Breath of Fire IV. Paint a 3:2 horizontal full-bleed sheet divided exactly into four equal rectangular 3:2 landscape paintings in a 2-by-2 grid. Hard butt edges at midpoint, no mat, gutters, frames, ornaments, labels or writing anywhere. Each quadrant is a separate scene. Painterly mineral pigment, Japanese brush ink over fibrous rice paper, a few cinnabar marks from real fabrics, bone ochre and celadon, asymmetrical dark foreground gestures and distant bands of space. Compose an intelligible focal point in the central 60 percent of each quadrant. Top left: a wrecked wooden sandflier, torn russet sail and split curved hull half buried in wide amber dunes, cool green sky, great silence. Top right: a mossy weathered imperial tomb entrance, stone stair descending into a dark forest sanctuary, roots, pale soft shaft of light, no tomb writing or people. Bottom left: a wooden river ferry on pale celadon water between reed banks, mist and a dark diagonal willow in foreground, a rust-coloured awning. Bottom right: an imperial palace approach, a succession of dark tiled vermilion-roofed pavilions and monumental charcoal stone stairs, distant ochre mountain silhouette, late light. Original atmospheric landscapes with depth, not literal maps. No people, game assets, characters, logos, typography, diagrams, seals, stamps or symbols.",
+      "plates": [
+        {
+          "id": "iv-wreck",
+          "description": "A broken sandflier lies in the dunes under a pale sky.",
+          "crop": [
+            2,
+            2,
+            766,
+            510
+          ],
+          "size": [
+            764,
+            508
+          ],
+          "sha256": "69d958077bde4fe306477515c23dbef223f46db3e9f58a72b1eadb64196fbc53",
+          "bytes": 93668
+        },
+        {
+          "id": "iv-tomb",
+          "description": "A moss-covered stone stair descends into a forest tomb.",
+          "crop": [
+            770,
+            2,
+            1534,
+            510
+          ],
+          "size": [
+            764,
+            508
+          ],
+          "sha256": "e85ba5d0ce199b2246747e499652513e3525b5fbe20ca4aedded5911694cbb46",
+          "bytes": 103496
+        },
+        {
+          "id": "iv-river",
+          "description": "A small ferry lies among the reeds on a misty river.",
+          "crop": [
+            2,
+            514,
+            766,
+            1022
+          ],
+          "size": [
+            764,
+            508
+          ],
+          "sha256": "f43b0efc01b47d5b607f51c7c41dd84cdcc0ee41c9f148e4d5e52ca971672c47",
+          "bytes": 103666
+        },
+        {
+          "id": "iv-palace",
+          "description": "Dark steps rise towards a terraced imperial palace.",
+          "crop": [
+            770,
+            514,
+            1534,
+            1022
+          ],
+          "size": [
+            764,
+            508
+          ],
+          "sha256": "536c7036402c0d848a9dafa36c09333addc2507339b75c71a6029f39ce10b309",
+          "bytes": 94870
+        }
+      ],
+      "source_sha256": "4ddc3f2b2eb73186f00ca2aa34ce909d8824e83b2288dc4e287c975b5f416aca",
+      "dimensions": [
+        1536,
+        1024
+      ]
+    },
+    {
+      "series": "specimens-a",
+      "generation": "exec-3906e793-dc3d-4c1a-8a4b-a6389c887c8f",
+      "prompt": "Create a square Chrysm field-guide naturalist's specimen sheet, exact THREE-by-THREE grid of NINE distinct equally sized objects. Nothing else, no borders or dividers or writing. Vintage gouache, fine ink crosshatching and natural mineral pigment, subtle contact shadows on the SAME flat light warm ivory paper. Each silhouette centred in its own equal square, at most 67 percent of the square width and height, comfortably isolated with generous identical padding. Precisely nine distinct illustrations, viewed in natural perspective. Top row left to right: A smoky folded obsidian shard with a violet edge; A translucent pale-gold sunburst crystal with fine radiating points; A chunky ochre lodestone broken like a fist. Middle row left to right: A broad hexagonal layered green armour-like geode; A twisting three-sided dark purple fluorite tower; An open white chalcedony flower with a pearl centre. Bottom row left to right: A swollen mossy ochre agate nodule with a dark central cavity; A narrow olive mineral spine with thornlike side projections; A twin split crystal with contrasting amber and blue mirror facets. Everything is an original interpretive museum watercolour. No diagram, writing, letters, runes, numbers, printed labels, logos, humans, pre-existing game art, grids or frames on the canvas.",
+      "plates": [
+        {
+          "id": "gene-shadow",
+          "description": "A smoky folded obsidian shard with a violet edge.",
+          "crop": [
+            0,
+            0,
+            415,
+            387
+          ],
+          "size": [
+            415,
+            387
+          ],
+          "sha256": "7d97a52509e84899473df2f2beb9fb0784cc817dc579ef70997ec6562bfed6ca",
+          "bytes": 25498
+        },
+        {
+          "id": "gene-radiance",
+          "description": "A translucent pale-gold sunburst crystal with fine radiating points.",
+          "crop": [
+            415,
+            0,
+            837,
+            387
+          ],
+          "size": [
+            422,
+            387
+          ],
+          "sha256": "0fc3ec23ffa3160ee143a50b0b8f33f2eb874abb9f7ee287bf3e84e4540eb3e8",
+          "bytes": 24278
+        },
+        {
+          "id": "gene-force",
+          "description": "A chunky ochre lodestone broken like a fist.",
+          "crop": [
+            837,
+            0,
+            1254,
+            387
+          ],
+          "size": [
+            417,
+            387
+          ],
+          "sha256": "e00cfada85cdabe6ff5fc9d7300f85be1cf75eb3e08e6da521c06f6b1f03375b",
+          "bytes": 31318
+        },
+        {
+          "id": "gene-defender",
+          "description": "A broad hexagonal layered green armour-like geode.",
+          "crop": [
+            0,
+            387,
+            415,
+            796
+          ],
+          "size": [
+            415,
+            409
+          ],
+          "sha256": "df77773bb23ea15d57b88b175663f76e9684f03af1b6b7816521b2c33c49384f",
+          "bytes": 35122
+        },
+        {
+          "id": "gene-eldritch",
+          "description": "A twisting three-sided dark purple fluorite tower.",
+          "crop": [
+            415,
+            387,
+            837,
+            796
+          ],
+          "size": [
+            422,
+            409
+          ],
+          "sha256": "2d612fd9b32cb71931dd4a3d795876af809120a0c888f1aafe55c70b9c50af65",
+          "bytes": 20228
+        },
+        {
+          "id": "gene-miracle",
+          "description": "An open white chalcedony flower with a pearl centre.",
+          "crop": [
+            837,
+            387,
+            1254,
+            796
+          ],
+          "size": [
+            417,
+            409
+          ],
+          "sha256": "0dcc1381514a1fa533986f6d611887b155727b5d818654c5fa94904c16b7206f",
+          "bytes": 21116
+        },
+        {
+          "id": "gene-gross",
+          "description": "A swollen mossy ochre agate nodule with a dark central cavity.",
+          "crop": [
+            0,
+            796,
+            415,
+            1254
+          ],
+          "size": [
+            415,
+            458
+          ],
+          "sha256": "c906f1357cba0d2118093882da1245c558f8644a0ded123ebf35f29c449f3d95",
+          "bytes": 40480
+        },
+        {
+          "id": "gene-thorn",
+          "description": "A narrow olive mineral spine with thornlike side projections.",
+          "crop": [
+            415,
+            796,
+            837,
+            1254
+          ],
+          "size": [
+            422,
+            458
+          ],
+          "sha256": "4fc2c4403a97c04b793339e83d22225d11eda70d2d09222cec6cdd04fd50afa0",
+          "bytes": 12540
+        },
+        {
+          "id": "gene-reverse",
+          "description": "A twin split crystal with contrasting amber and blue mirror facets.",
+          "crop": [
+            837,
+            796,
+            1254,
+            1254
+          ],
+          "size": [
+            417,
+            458
+          ],
+          "sha256": "2e361a358642abec90f5d4693f248de0e77360fb8652799c941fc9d8f921136f",
+          "bytes": 29778
+        }
+      ],
+      "source_sha256": "3fff9623e4afb6d24957f2c8822649478fe4f2f441cc30b1298f6bd963fdb89c",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    },
+    {
+      "series": "specimens-b",
+      "generation": "exec-c97e8e5e-5fb1-4048-87ef-c548b146f11f",
+      "prompt": "Create a square Chrysm field-guide naturalist's specimen sheet, exact THREE-by-THREE grid of NINE distinct equally sized objects. Nothing else, no borders or dividers or writing. Vintage gouache, fine ink crosshatching and natural mineral pigment, subtle contact shadows on the SAME flat light warm ivory paper. Each silhouette centred in its own equal square, at most 67 percent of the square width and height, comfortably isolated with generous identical padding. Precisely nine distinct illustrations, viewed in natural perspective. Top row left to right: A mottled beryl specimen with a startling crooked hooked growth; A half-buried midnight-blue rounded mineral dotted with tiny amber inclusions; A lustrous violet oval iris stone held within concentric fine mineral bands. Middle row left to right: A cracked and crumbling pale-grey geode with a single spark in the core; Two separate jade and copper crystal spires naturally fused at the hip; A single looping opalescent ring mineral shaped by flowing water. Bottom row left to right: A simple bamboo fishing rod with line, cork float and hand-carved lure, arranged in a tight still life; A practice short sword laid against a folded leather training notebook with blank cream paper; A small celadon jade carving of a sinuous water dragon, its body curling through a river wave. Everything is an original interpretive museum watercolour. No diagram, writing, letters, runes, numbers, printed labels, logos, humans, pre-existing game art, grids or frames on the canvas.",
+      "plates": [
+        {
+          "id": "gene-mutant",
+          "description": "A mottled beryl specimen with a startling crooked hooked growth.",
+          "crop": [
+            0,
+            0,
+            415,
+            387
+          ],
+          "size": [
+            415,
+            387
+          ],
+          "sha256": "0a3211ff0acb1e7c0d53e13a711d219fe576f4e3f7393e52005b34936a02db02",
+          "bytes": 25938
+        },
+        {
+          "id": "gene-unknown",
+          "description": "A half-buried midnight-blue rounded mineral dotted with tiny amber inclusions.",
+          "crop": [
+            415,
+            0,
+            837,
+            387
+          ],
+          "size": [
+            422,
+            387
+          ],
+          "sha256": "d761169769df9d136c5965475b5f38514f1558d74714c9369f9bccf924ddb9c9",
+          "bytes": 28070
+        },
+        {
+          "id": "gene-trance",
+          "description": "A lustrous violet oval iris stone held within concentric fine mineral bands.",
+          "crop": [
+            837,
+            0,
+            1254,
+            387
+          ],
+          "size": [
+            417,
+            387
+          ],
+          "sha256": "e485c9db34dd4e91f02be6ab7d297e1a5726502bcdccde9965884006c6412367",
+          "bytes": 29532
+        },
+        {
+          "id": "gene-failure",
+          "description": "A cracked and crumbling pale-grey geode with a single spark in the core.",
+          "crop": [
+            0,
+            387,
+            415,
+            796
+          ],
+          "size": [
+            415,
+            409
+          ],
+          "sha256": "1893c7e9ad1123374c5bd00546a74844a96bf6eed8b848becb7a025b1a3fa2fc",
+          "bytes": 33428
+        },
+        {
+          "id": "gene-fusion",
+          "description": "Two separate jade and copper crystal spires naturally fused at the hip.",
+          "crop": [
+            415,
+            387,
+            837,
+            796
+          ],
+          "size": [
+            422,
+            409
+          ],
+          "sha256": "64d9e704ebfb4f21da7e9ac6668ebb21325a62d9ed3d0dfa252fc00337b6a9dd",
+          "bytes": 27268
+        },
+        {
+          "id": "gene-infinity",
+          "description": "A single looping opalescent ring mineral shaped by flowing water.",
+          "crop": [
+            837,
+            387,
+            1254,
+            796
+          ],
+          "size": [
+            417,
+            409
+          ],
+          "sha256": "3eec639fb193537d0ecc6c449009f9de033be49e51d1601e4c0b5435d7d0c57b",
+          "bytes": 20084
+        },
+        {
+          "id": "iv-fishing",
+          "description": "A simple bamboo fishing rod with line, cork float and hand-carved lure, arranged in a tight still life.",
+          "crop": [
+            0,
+            796,
+            415,
+            1254
+          ],
+          "size": [
+            415,
+            458
+          ],
+          "sha256": "cbb000117fd03d98ac4bc17f7df79a29c9a01be66e0f06748a4bd839f453d2f0",
+          "bytes": 18926
+        },
+        {
+          "id": "iv-training",
+          "description": "A practice short sword laid against a folded leather training notebook with blank cream paper.",
+          "crop": [
+            415,
+            796,
+            837,
+            1254
+          ],
+          "size": [
+            422,
+            458
+          ],
+          "sha256": "1e02cf4797d50d97333fd730ee19e8a9ac79a658291c14f2c5d8c021265d5e24",
+          "bytes": 31092
+        },
+        {
+          "id": "iv-dragon",
+          "description": "A small celadon jade carving of a sinuous water dragon, its body curling through a river wave.",
+          "crop": [
+            837,
+            796,
+            1254,
+            1254
+          ],
+          "size": [
+            417,
+            458
+          ],
+          "sha256": "2a903004ecfe5cc24a23ec0961a5b9420a59d0d5316fa8155e9c18f9dc5a9fdc",
+          "bytes": 25588
+        }
+      ],
+      "source_sha256": "03b74feff0d1524996ade0048d468f933aba2b98e5187cadeb1a194dfb0be1d4",
+      "dimensions": [
+        1254,
+        1254
+      ]
+    }
+  ],
+  "encoding": "Pixel crop rectangles are left, top, right exclusive, bottom exclusive in the original PNG. Landscape quadrants have a two-pixel inset. Specimen boundaries follow the paper between objects. RGB WebP, quality 84, method 6."
+}

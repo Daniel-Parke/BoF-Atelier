@@ -1,0 +1,5292 @@
+{
+  "game": "bof3",
+  "version": 1,
+  "sources": {
+    "manual": {
+      "title": "Capcom · Breath of Fire III US PlayStation instruction manual",
+      "kind": "print"
+    },
+    "a-faeries": {
+      "title": "Almar · Rebuilding the Faerie Village Side Quest - Breath of Fire III",
+      "url": "https://almarsguides.com/retro/walkthroughs/PS1/Games/BreathofFireIII/FaerieVillage/"
+    },
+    "a-genes": {
+      "title": "Almar · Dragon Genes Locations & Guide",
+      "url": "https://almarsguides.com/retro/walkthroughs/PS1/Games/BreathofFireIII/DragonGeneLocations/"
+    },
+    "a-masters": {
+      "title": "Almar · Masters Locations & Walkthrough",
+      "url": "https://almarsguides.com/retro/walkthroughs/PS1/Games/BreathofFireIII/Masters/"
+    },
+    "a1": {
+      "title": "Almar · Breath of Fire 3 Walkthrough - Chapter 1",
+      "url": "https://almarsguides.com/retro/walkthroughs/PS1/Games/BreathofFireIII/FullPlaythrough/Chapter1/"
+    },
+    "a2": {
+      "title": "Almar · Breath of Fire III Walkthrough - Chapter 2",
+      "url": "https://almarsguides.com/retro/walkthroughs/PS1/Games/BreathofFireIII/FullPlaythrough/Chapter2/"
+    },
+    "a3": {
+      "title": "Almar · Breath of Fire III Walkthrough - Chapter 3",
+      "url": "https://almarsguides.com/retro/walkthroughs/PS1/Games/BreathofFireIII/FullPlaythrough/Chapter3/"
+    },
+    "a4": {
+      "title": "Almar · Breath of Fire III Walkthrough - Chapter 4",
+      "url": "https://almarsguides.com/retro/walkthroughs/PS1/Games/BreathofFireIII/FullPlaythrough/Chapter4/"
+    },
+    "boss": {
+      "title": "metroid213 · Breath of Fire III boss guide",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/24306"
+    },
+    "dk": {
+      "title": "DavidK5 · Breath of Fire III PlayStation mechanics and walkthrough",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/18685"
+    },
+    "hl": {
+      "title": "H. LaPierre · Breath of Fire III PlayStation walkthrough",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/3732"
+    },
+    "isen": {
+      "title": "L. A. Isen · Dragon Handbook",
+      "url": "https://www.neoseeker.com/breath-of-fire-iii/faqs/67278-dragon.html"
+    },
+    "qu": {
+      "title": "QuMarsh · Breath of Fire III PlayStation walkthrough",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/3731"
+    },
+    "r1": {
+      "title": "Shaded Resolve · Whelp in the Woods",
+      "url": "https://www.shadedresolve.net/2026/07/breath-of-fire-iii-chapter-1-whelp-in.html"
+    },
+    "r2": {
+      "title": "Shaded Resolve · Grand Larceny",
+      "url": "https://www.shadedresolve.net/2026/08/breath-of-fire-iii-chapter-2-grand.html"
+    },
+    "r3": {
+      "title": "Shaded Resolve · Dragon & Princess",
+      "url": "https://www.shadedresolve.net/2026/08/breath-of-fire-iii-chapter-3-dragon.html"
+    },
+    "r4": {
+      "title": "Shaded Resolve · Contests of Character",
+      "url": "https://www.shadedresolve.net/2026/08/breath-of-fire-iii-chapter-4-contests.html"
+    },
+    "r5": {
+      "title": "Shaded Resolve · Life's a Beach",
+      "url": "https://www.shadedresolve.net/2026/08/breath-of-fire-iii-chapter-5-lifes-beach.html"
+    },
+    "r6": {
+      "title": "Shaded Resolve · Guardian's Deceit",
+      "url": "https://www.shadedresolve.net/2026/09/breath-of-fire-iii-chapter-6-guardians.html"
+    },
+    "r7": {
+      "title": "Shaded Resolve · Syns of the Past",
+      "url": "https://www.shadedresolve.net/2026/09/breath-of-fire-iii-chapter-7-syns-of.html"
+    },
+    "r8": {
+      "title": "Shaded Resolve · Edge of the World",
+      "url": "https://www.shadedresolve.net/2026/09/breath-of-fire-iii-chapter-8-edge-of.html"
+    },
+    "r9": {
+      "title": "Shaded Resolve · The Lost Shore",
+      "url": "https://www.shadedresolve.net/2026/09/breath-of-fire-iii-chapter-9-lost-shore.html"
+    },
+    "r10": {
+      "title": "Shaded Resolve · Death's Crossing",
+      "url": "https://www.shadedresolve.net/2026/10/breath-of-fire-iii-chapter-10-deaths.html"
+    },
+    "s-faeries": {
+      "title": "SLTE · Faerie Village Guide",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-faerie.html"
+    },
+    "s-fishing": {
+      "title": "SLTE · Fishing Guide",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-fishing.html"
+    },
+    "s-genes": {
+      "title": "SLTE · Dragon Genes and Accession Guide",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-dragon.html"
+    },
+    "s-masters": {
+      "title": "SLTE · Masters Guide",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-masters.html"
+    },
+    "s1": {
+      "title": "SLTE · Dauna Mine, Cedar Woods, and McNeil",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-1.html"
+    },
+    "s2": {
+      "title": "SLTE · Yraall Road, combat and camping",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-2.html"
+    },
+    "s6": {
+      "title": "SLTE · McNeil Manor - Courtyard",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-6.html"
+    },
+    "s7": {
+      "title": "SLTE · McNeil Manor - Interior",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-7.html"
+    },
+    "s10": {
+      "title": "SLTE · Wyndia Catacombs",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-10.html"
+    },
+    "s12": {
+      "title": "SLTE · Genmel and Mt. Boumore",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-12.html"
+    },
+    "s13": {
+      "title": "SLTE · Momo's Tower",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-13.html"
+    },
+    "s15": {
+      "title": "SLTE · Dump and Peco",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-15.html"
+    },
+    "s16": {
+      "title": "SLTE · The Contest of Champions",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-16.html"
+    },
+    "s17": {
+      "title": "SLTE · Castle Wyndia",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-17.html"
+    },
+    "s18": {
+      "title": "SLTE · Rhapala, Beyd, Shadis, and Zig",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-18.html"
+    },
+    "s19": {
+      "title": "SLTE · The Lighthouse",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-19.html"
+    },
+    "s20": {
+      "title": "SLTE · Mt. Zublo",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-20.html"
+    },
+    "s23": {
+      "title": "SLTE · Dauna Mine",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-23.html"
+    },
+    "s24": {
+      "title": "SLTE · Ogre Road and Mt. Levett",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-24.html"
+    },
+    "s27": {
+      "title": "SLTE · The Plant",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-27.html"
+    },
+    "s28": {
+      "title": "SLTE · Castle Wyndia and the Portal Drives",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-28.html"
+    },
+    "s29": {
+      "title": "SLTE · Tidal Caves and Cliff",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-29.html"
+    },
+    "s31": {
+      "title": "SLTE · Parch and Shisu",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-31.html"
+    },
+    "s33": {
+      "title": "SLTE · Kombinat and Steel Grave",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-33.html"
+    },
+    "s35": {
+      "title": "SLTE · Steel Beach Freighter - Relay Point A",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-35.html"
+    },
+    "s36": {
+      "title": "SLTE · Dragnier",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-36.html"
+    },
+    "s37": {
+      "title": "SLTE · Factory",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-37.html"
+    },
+    "s38": {
+      "title": "SLTE · The Desert of Death",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-38.html"
+    },
+    "s39": {
+      "title": "SLTE · Oasis, Container Yard, and Caer Xhan",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-39.html"
+    },
+    "s40": {
+      "title": "SLTE · Myria Station - Worker's Area, Laboratory",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-40.html"
+    },
+    "s3": {
+      "title": "ArrPeeGeeZ · Breath of Fire III walkthrough, part 3",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-walkthrough-part-3-cedar.html"
+    },
+    "s4": {
+      "title": "ArrPeeGeeZ · Breath of Fire III walkthrough, part 4",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-4.html"
+    },
+    "s22": {
+      "title": "ArrPeeGeeZ · Breath of Fire III walkthrough, part 22",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-22.html"
+    },
+    "s25": {
+      "title": "ArrPeeGeeZ · Breath of Fire III walkthrough, part 25",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-25.html"
+    },
+    "s30": {
+      "title": "ArrPeeGeeZ · Breath of Fire III walkthrough, part 30",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-30.html"
+    },
+    "s32": {
+      "title": "ArrPeeGeeZ · Breath of Fire III walkthrough, part 32",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-32.html"
+    },
+    "s34": {
+      "title": "ArrPeeGeeZ · Breath of Fire III walkthrough, part 34",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-34.html"
+    },
+    "s41": {
+      "title": "ArrPeeGeeZ · Breath of Fire III walkthrough, part 41",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-41.html"
+    },
+    "s42": {
+      "title": "ArrPeeGeeZ · Breath of Fire III walkthrough, part 42",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-42.html"
+    },
+    "s9": {
+      "title": "ArrPeeGeeZ · Breath of Fire III walkthrough, part 9",
+      "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-9.html"
+    },
+    "floor-names": {
+      "title": "US PSX save editor · area numbers and location names",
+      "url": "https://github.com/glitch-in-the-herring/bof3-save-editor/blob/7c93fd3ef7328eae119594aaf1ed20e81a177e85/src/data/areas.ts"
+    },
+    "floor-attrs": {
+      "title": "AreaMap_CellBlocked · field attribute interpretation and PSX comparison",
+      "url": "https://github.com/kerokline/BreathOfFire3PCPort/blob/7999aa1a4001a004641b8e08b471cd8875f73350/docs/field-blocked.md"
+    },
+    "floor-exits": {
+      "title": "Area_LinkAt · room links, destinations and doorway width",
+      "url": "https://github.com/kerokline/BreathOfFire3PCPort/blob/7999aa1a4001a004641b8e08b471cd8875f73350/docs/area-entry.md"
+    }
+  },
+  "route": [
+    {
+      "id": "mine",
+      "title": "Dauna Mine",
+      "region": "The highlands",
+      "lead": "Your first footsteps are a little dragon’s. The mine has one route out, past the workers and their machines.",
+      "hint": "Watch what your breath does in the first fight. When you can walk, look beside the miners.",
+      "steps": [
+        "Inspect the fallen miner in the crystal chamber for the Melted Blade.",
+        "Take the passage past the frightened worker. Follow the tunnel through the huge skull until the workers bring their machine.",
+        "On the train, move repeatedly inside the cage to rock it off the wagon."
+      ],
+      "tip": "The blade is a keepsake. Leaving it behind does not stop the story.",
+      "links": [
+        "field-view"
+      ],
+      "art": "iii-mine",
+      "sources": [
+        "s1",
+        "a1",
+        "r1",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Crystal chamber",
+        "Skull tunnel",
+        "Ore train"
+      ],
+      "items": [
+        {
+          "name": "Melted Blade",
+          "where": "Crystal chamber",
+          "detail": "Inspect the fallen miner before the ore train carries you away."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Miner and Engineer",
+          "where": "Tunnel beyond the crystal",
+          "detail": "Use Whelp Breath when the workers block the passage."
+        },
+        {
+          "name": "Operator and Worker",
+          "where": "Skull passage",
+          "detail": "This encounter ends the escape on foot. Finish searching before approaching the machine."
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Inspect the fallen miner before leaving the crystal chamber. The opening encounter ends with the train journey."
+      },
+      "map": {
+        "title": "Dauna Mine",
+        "points": [
+          {
+            "name": "Crystal chamber",
+            "x": 19,
+            "y": 24,
+            "note": "Inspect the fallen miner beside the broken chrysm."
+          },
+          {
+            "name": "Side passage",
+            "x": 48,
+            "y": 24,
+            "note": "Follow the worker through the exit at the chamber edge."
+          },
+          {
+            "name": "Skull tunnel",
+            "x": 57,
+            "y": 60,
+            "note": "The tunnel emerges through a giant skull."
+          },
+          {
+            "name": "Haulage machinery",
+            "x": 82,
+            "y": 79,
+            "note": "Continue southeast to the workers and their machine."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      "lore": "The miners you see in the title sequence are Mogu and Gary. When they split the crystal in the opening scene, you see their discovery from the other side.",
+      "floors": [
+        {
+          "name": "Crystal chamber and mine passages",
+          "mapId": 24,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 3,
+              "z": 24,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 119,
+              "z": 8,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 7,
+              "z": 16,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 194,
+              "z": 16,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Ore railway",
+          "mapId": 4,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 81,
+              "z": 9,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 4,
+              "z": 69,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 26,
+              "z": 6,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 52,
+              "z": 71,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cedar",
+      "title": "Cedar Woods and Rei’s house",
+      "region": "The highlands",
+      "lead": "Save beside the bed at Rei’s house. Head for McNeil to find Rei and Teepo, or take the log bridge to search the clearing first.",
+      "hint": "Cross the log bridge. If you reach the world map in your nightshirt, look for your two new friends in town.",
+      "steps": [
+        "Face the diary beside the bed. Choose a memory card and an empty file to record the morning.",
+        "Follow Rei and Teepo through McNeil and speak to them by the shops. Continue to Yraall Road for their plan.",
+        "Return to Bunyan’s cabin in Cedar Woods. Put Rei in front to open the lock and search the cupboard downstairs.",
+        "During the woodcutting task, swing when Teepo has set the log upright. Head for the road to Mt. Glaus afterwards."
+      ],
+      "tip": "Before leaving the woods, explore the clearing across the bridge. Its chest holds Skill Ink.",
+      "links": [
+        "diary",
+        "camp-notes",
+        "enemy-skills",
+        "field-view"
+      ],
+      "art": "iii-woods",
+      "sources": [
+        "s1",
+        "r1",
+        "a1",
+        "s3",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Rei’s house",
+        "McNeil and Yraall Road",
+        "Bunyan’s cellar",
+        "Woodpile"
+      ],
+      "items": [
+        {
+          "name": "Vitamin · Worm",
+          "where": "Rei’s house",
+          "detail": "Search both downstairs dressers."
+        },
+        {
+          "name": "Skill Ink",
+          "where": "Eastern clearing",
+          "detail": "Cross the log bridge and climb the slope to the chest."
+        },
+        {
+          "name": "Ammonia",
+          "where": "Stream bank",
+          "detail": "Look behind the trees northwest of the Skill Ink chest."
+        },
+        {
+          "name": "Healing Herb",
+          "where": "Kitchen cellar",
+          "detail": "Come back in travelling clothes and climb down the ladder."
+        },
+        {
+          "name": "Green Apple ×2",
+          "where": "Fallen cage",
+          "detail": "Take the bag southeast of the cage. The second apple is hidden behind the large tree nearby."
+        }
+      ],
+      "map": {
+        "title": "Cedar Woods",
+        "points": [
+          {
+            "name": "Rei’s house",
+            "x": 54,
+            "y": 21,
+            "note": "The diary is beside the upstairs bed."
+          },
+          {
+            "name": "Cage clearing",
+            "x": 19,
+            "y": 39,
+            "note": "Take the western path. Check the bags near the cage."
+          },
+          {
+            "name": "Log bridge",
+            "x": 71,
+            "y": 41,
+            "note": "Follow the dirt path along the outside wall."
+          },
+          {
+            "name": "Stream clearing",
+            "x": 83,
+            "y": 69,
+            "note": "Look uphill for Skill Ink and behind the trees for Ammonia."
+          },
+          {
+            "name": "Southern paths",
+            "x": 46,
+            "y": 74,
+            "note": "The paths meet on the way to McNeil."
+          },
+          {
+            "name": "Bunyan’s cabin",
+            "x": 66,
+            "y": 86,
+            "note": "Follow the southeastern paths when you return with Rei."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            0,
+            4
+          ],
+          [
+            1,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      },
+      "lore": "On his first morning, Ryu can wander the woods in his nightshirt without a random battle. The clothes Rei finds for him in McNeil mark the end of that peaceful outing.",
+      "floors": [
+        {
+          "name": "Rei’s treehouse",
+          "mapId": 10,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 87,
+              "z": 4,
+              "name": "Bedside diary"
+            },
+            {
+              "x": 10,
+              "z": 48,
+              "name": "Exit · The cage clearing"
+            },
+            {
+              "x": 59,
+              "z": 33,
+              "name": "Exit · Woodland pond"
+            },
+            {
+              "x": 11,
+              "z": 14,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 76,
+              "z": 7,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Woodland pond",
+          "mapId": 8,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 48,
+              "name": "Exit · Rei’s treehouse"
+            },
+            {
+              "x": 27,
+              "z": 58,
+              "name": "Exit · The cage clearing"
+            },
+            {
+              "x": 50,
+              "z": 21,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 85,
+              "z": 28,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "The cage clearing",
+          "mapId": 9,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 78,
+              "z": 18,
+              "name": "Exit · Woodland pond"
+            },
+            {
+              "x": 20,
+              "z": 3,
+              "name": "Exit · Rei’s treehouse"
+            }
+          ]
+        },
+        {
+          "name": "McNeil Village",
+          "mapId": 7,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 27,
+              "z": 21,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 31,
+              "z": 77,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 32,
+              "z": 21,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 94,
+              "z": 52,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Goblin",
+          "where": "Woods after Ryu gets dressed",
+          "detail": "Examine to learn Unmotivate. Its steal is a Bent Sword."
+        },
+        {
+          "name": "Gonghead",
+          "where": "Woods after Ryu gets dressed",
+          "detail": "Rei can steal a Vitamin. A Life Shard is a possible drop."
+        }
+      ]
+    },
+    {
+      "id": "glaus",
+      "title": "The hunt on Mt. Glaus",
+      "region": "The highlands",
+      "lead": "A mountain shelter gives you a place to stop before following Rei’s quarry.",
+      "hint": "The first encounter ends on the mountain. Signs of a struggle continue into the cave.",
+      "steps": [
+        "Climb past the rockslide to the hut by the bridge. Rejoin Rei and follow the encounter outside.",
+        "Track the broken trees into the cave. Where the trail reaches a dead end, return to the junction and take the path to running water.",
+        "Agree to jump into the current. Prepare to heal before approaching the Nue again.",
+        "After the fight, look into the den behind it. Leave by the water and speak to the villagers in McNeil."
+      ],
+      "tip": "Keep one party member free to heal. An early knockout makes the following climb harder.",
+      "links": [
+        "enemy-skills",
+        "camp-notes",
+        "fishing-tackle"
+      ],
+      "art": "highlands",
+      "sources": [
+        "r1",
+        "a1",
+        "s4",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Mountain hut",
+        "Broken trees",
+        "Underground stream",
+        "The den"
+      ],
+      "encounters": [
+        {
+          "name": "Nue",
+          "where": "Mountain cave",
+          "detail": "Follow the broken trees to the stream. Heal before the rematch."
+        },
+        {
+          "name": "Bat",
+          "where": "Mt. Glaus",
+          "detail": "Watch for Gloom. Berries can be stolen."
+        },
+        {
+          "name": "Zombie",
+          "where": "Cave",
+          "detail": "Use Teepo’s fire magic in the passages along the blood trail."
+        }
+      ],
+      "map": {
+        "title": "Mt. Glaus cave",
+        "points": [
+          {
+            "name": "Bridge hut",
+            "x": 17,
+            "y": 26,
+            "note": "Meet Rei at the mountain shelter."
+          },
+          {
+            "name": "Broken trees",
+            "x": 43,
+            "y": 38,
+            "note": "Follow the marks into the cave."
+          },
+          {
+            "name": "Dead end",
+            "x": 67,
+            "y": 19,
+            "note": "Turn back to the junction."
+          },
+          {
+            "name": "Stream",
+            "x": 60,
+            "y": 62,
+            "note": "Jump into the current to continue."
+          },
+          {
+            "name": "Den",
+            "x": 81,
+            "y": 81,
+            "note": "Look behind the Nue after the encounter."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "floors": [
+        {
+          "name": "Mountain approach",
+          "mapId": 23,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 8,
+              "z": 7,
+              "name": "Exit · Nue’s cave"
+            },
+            {
+              "x": 23,
+              "z": 21,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 72,
+              "z": 12,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Nue’s cave",
+          "mapId": 22,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 22,
+              "z": 77,
+              "name": "Exit · Mountain approach"
+            },
+            {
+              "x": 3,
+              "z": 41,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 97,
+              "z": 68,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 5,
+              "z": 19,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 81,
+              "z": 32,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Bent Sword",
+          "where": "Bone chamber",
+          "detail": "At the blood-trail junction, take the northwest passage and inspect the bones."
+        },
+        {
+          "name": "Molotov",
+          "where": "Bone chamber",
+          "detail": "Look beside the same pile for a second pickup."
+        }
+      ]
+    },
+    {
+      "id": "mcneil-manor",
+      "title": "A night at McNeil Manor",
+      "region": "The highlands",
+      "lead": "Getting into the manor takes more ingenuity than fighting the guards. Talk to the people on patrol.",
+      "hint": "Look for a repaired patch of wall. A missing possession and a noisy chicken coop can open the way inside.",
+      "steps": [
+        "Meet Loki in the hut beyond the farm. At night, inspect the odd section of outer wall and enter the courtyard.",
+        "Find the wallet for the guard, make use of the bell and follow the gossip near the hedges. Deal with the dog and investigate the chicken coop to draw guards from the front door.",
+        "Inside, visit the rooms guarded by the family ghosts. Use the lift to reach the roof and find the grappling hook by the last raised window.",
+        "Cross the rope with Rei. Heal before entering McNeil’s room, then return to the woods when the job is over."
+      ],
+      "tip": "Keep a little zenny for the first guard. If a patrol catches you, you can enter the grounds again.",
+      "links": [
+        "apprentices",
+        "fishing-tackle",
+        "enemy-skills"
+      ],
+      "art": "iii-woods",
+      "sources": [
+        "s6",
+        "s7",
+        "r2",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Outer wall",
+        "Courtyard patrols",
+        "Family rooms",
+        "Rooftop crossing"
+      ],
+      "items": [
+        {
+          "name": "Wallet",
+          "where": "Manor courtyard",
+          "detail": "Return it to the guard to get past his post."
+        },
+        {
+          "name": "120 zenny",
+          "where": "Butler’s bedroom",
+          "detail": "Search the cabinet in the small room immediately north of the bed."
+        },
+        {
+          "name": "Eye Drops",
+          "where": "Top-floor crates",
+          "detail": "Climb both flights above the bedroom. Inspect the stack rather than the lone crate."
+        },
+        {
+          "name": "Taser",
+          "where": "Top-floor crates",
+          "detail": "Inspect the isolated crate on the same floor."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Family ghosts",
+          "where": "Manor rooms",
+          "detail": "Visit the occupied rooms before taking the lift to the roof."
+        },
+        {
+          "name": "Pooch",
+          "where": "Gardens",
+          "detail": "Examine for Snap."
+        },
+        {
+          "name": "Rocky",
+          "where": "Chicken coop",
+          "detail": "Watch the bird for Jump."
+        },
+        {
+          "name": "Volt",
+          "where": "Manor interior",
+          "detail": "Examine for Charge."
+        }
+      ],
+      "map": {
+        "title": "Through the manor",
+        "points": [
+          {
+            "name": "Wall breach",
+            "x": 10,
+            "y": 63,
+            "note": "Enter the courtyard through the loose section at night."
+          },
+          {
+            "name": "Courtyard",
+            "x": 31,
+            "y": 49,
+            "note": "Watch the guards and listen at the hedges."
+          },
+          {
+            "name": "Chicken coop",
+            "x": 46,
+            "y": 19,
+            "note": "Investigate the coop to draw the guards away."
+          },
+          {
+            "name": "Front door",
+            "x": 54,
+            "y": 72,
+            "note": "Return here when the patrol moves."
+          },
+          {
+            "name": "Lift and roof",
+            "x": 77,
+            "y": 46,
+            "note": "Find the hook beside the last raised window."
+          },
+          {
+            "name": "McNeil’s room",
+            "x": 90,
+            "y": 75,
+            "note": "Cross the rope and heal before entering."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      },
+      "floors": [
+        {
+          "name": "Manor gardens",
+          "mapId": 26,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 31,
+              "z": 39,
+              "name": "Exit · Inside the manor"
+            },
+            {
+              "x": 7,
+              "z": 16,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 52,
+              "z": 7,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Inside the manor",
+          "mapId": 27,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 89,
+              "z": 74,
+              "name": "Exit · Rooftop"
+            },
+            {
+              "x": 40,
+              "z": 38,
+              "name": "Exit · Manor gardens"
+            },
+            {
+              "x": 27,
+              "z": 28,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 63,
+              "z": 28,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Rooftop",
+          "mapId": 28,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 57,
+              "z": 7,
+              "name": "Exit · Inside the manor"
+            },
+            {
+              "x": 66,
+              "z": 42,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 72,
+              "z": 86,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 33,
+              "z": 42,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 38,
+              "z": 86,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Search the cabinets and crates before finishing the robbery. The night-time interior is a one-visit area."
+      }
+    },
+    {
+      "id": "wyndia",
+      "title": "The road beneath Wyndia",
+      "region": "Eastern roads",
+      "lead": "With the old road behind you, the route runs through a mountain, a prison and a royal burial ground.",
+      "hint": "Each small grave highlights a word in red. Look for a separate inscription with word buttons in the south of the chamber.",
+      "steps": [
+        "After returning to the house, visit Bunyan and follow his lead to Mt. Myrneg. Continue through the mountainside encounter to Wyndia.",
+        "Try the cell door more than once. Follow Nina and the brothers downstairs. The confrontation can end without an outright victory.",
+        "Read the inscriptions in the catacombs. At the final stone in the south, select their red words in sequence and follow the drop to the exit.",
+        "Above ground, accept the four children’s hide-and-seek game by the fountain. When all four return, follow the lead to the house on Eygnock Road."
+      ],
+      "tip": "Save when you leave the cells. It gives you a clean place to try Ryu’s new Accession command.",
+      "links": [
+        "wyndia-stones",
+        "accession-field",
+        "genes",
+        "apprentices"
+      ],
+      "art": "highlands",
+      "sources": [
+        "s10",
+        "r3",
+        "a1",
+        "s9",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Mt. Myrneg",
+        "Prison cells",
+        "Catacomb inscriptions",
+        "Fountain square"
+      ],
+      "encounters": [
+        {
+          "name": "The brothers",
+          "where": "Castle prison",
+          "detail": "Keep going after the confrontation. Winning it is optional."
+        },
+        {
+          "name": "NutTroop",
+          "where": "Mt. Myrneg and catacombs",
+          "detail": "Examine for Double Blow."
+        },
+        {
+          "name": "Ghoul",
+          "where": "Catacombs",
+          "detail": "Rei is away, but defeating a Ghoul can still yield High Boots."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Mt. Myrneg",
+          "mapId": 51,
+          "section": 0
+        },
+        {
+          "name": "Castle jail and cellars",
+          "mapId": 41,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 109,
+              "z": 5,
+              "name": "Exit · Royal catacombs"
+            },
+            {
+              "x": 72,
+              "z": 48,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 128,
+              "z": 3,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 137,
+              "z": 25,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 3,
+              "z": 2,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Royal catacombs",
+          "mapId": 56,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 16,
+              "z": 5,
+              "name": "Exit · Castle jail and cellars"
+            },
+            {
+              "x": 16,
+              "z": 12,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 92,
+              "z": 10,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 67,
+              "z": 40,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 142,
+              "z": 4,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Panacea",
+          "where": "Catacombs",
+          "detail": "Check the south end before operating the gravestones."
+        },
+        {
+          "name": "Glass Domino",
+          "where": "Lower chamber ladder",
+          "detail": "Open the chest at the top when you climb out."
+        },
+        {
+          "name": "Light Bangle",
+          "where": "Gravestone trap",
+          "detail": "Use the large stone before completing all seven green switches to reach its chest."
+        }
+      ]
+    },
+    {
+      "id": "momo-tower",
+      "title": "Mt. Boumore and the tower",
+      "region": "Eastern roads",
+      "lead": "A lift across a mountain and a researcher’s tower stand between the children and safety.",
+      "hint": "At Mt. Boumore, look for the pipe-smoking worker by the cable car. In the tower, take Nina to the dark crystals.",
+      "steps": [
+        "Leave Genmel, labelled Arena on the map, for Mt. Boumore. Meet Mason and wait out the pursuit in his hut.",
+        "Use the cable car and continue towards the tower beyond the mountain. Look around the world map for a purple crystal before you go in.",
+        "Follow the notices up the tower to meet Momo. At the moving platforms, operate the coloured switches and use Nina’s field magic on the crystals.",
+        "Reach the study at the top. Investigate the desk and follow Momo to the escape craft."
+      ],
+      "tip": "Return to the entrance of a platform room to reset its puzzle if a moving bridge has carried you to the wrong side.",
+      "links": [
+        "field-actions",
+        "accession-field",
+        "genes"
+      ],
+      "art": "highlands",
+      "sources": [
+        "s12",
+        "s13",
+        "r3",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Mason’s hut",
+        "Cable car",
+        "Moving platforms",
+        "Momo’s study"
+      ],
+      "items": [
+        {
+          "name": "Dragon gene",
+          "where": "Outside the tower",
+          "detail": "Inspect the purple crystal on the world map before entering."
+        },
+        {
+          "name": "Skill Ink",
+          "where": "Timed switch room",
+          "detail": "The timed door opens onto three chests."
+        },
+        {
+          "name": "Flame Chrysm and Ice Chrysm",
+          "where": "Timed switch room",
+          "detail": "Collect Momo’s two elemental rounds from the other chests."
+        },
+        {
+          "name": "800 zenny",
+          "where": "Moving platforms",
+          "detail": "Use blue first. Follow the northwest route and take the second door."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Mason’s house",
+          "mapId": 99,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 10,
+              "z": 116,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 11,
+              "z": 36,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 5,
+              "z": 31,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 5,
+              "z": 12,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Tower entrance and lower rooms",
+          "mapId": 42,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 123,
+              "z": 48,
+              "name": "Exit · Tower interior"
+            },
+            {
+              "x": 16,
+              "z": 16,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 67,
+              "z": 33,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 21,
+              "z": 16,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 71,
+              "z": 33,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Tower interior",
+          "mapId": 40,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 50,
+              "z": 19,
+              "name": "Exit · Upper rooms"
+            },
+            {
+              "x": 32,
+              "z": 37,
+              "name": "Exit · Tower entrance and lower rooms"
+            },
+            {
+              "x": 14,
+              "z": 5,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 179,
+              "z": 17,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Upper rooms",
+          "mapId": 44,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 86,
+              "z": 8,
+              "name": "Exit · Tower interior"
+            },
+            {
+              "x": 16,
+              "z": 26,
+              "name": "Exit · Tower summit"
+            },
+            {
+              "x": 2,
+              "z": 8,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 55,
+              "z": 3,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Tower summit",
+          "mapId": 48,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 25,
+              "z": 27,
+              "name": "Exit · Upper rooms"
+            },
+            {
+              "x": 3,
+              "z": 26,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 72,
+              "z": 43,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 80,
+              "z": 29,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 64,
+              "z": 5,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Armor Bot",
+          "where": "Tower",
+          "detail": "Watch for Charge. Breast Plate is its steal."
+        },
+        {
+          "name": "NutTroop",
+          "where": "Mt. Boumore",
+          "detail": "Examine for Double Blow. A Broad Sword can drop."
+        }
+      ]
+    },
+    {
+      "id": "dump",
+      "title": "The Plant and its disposal site",
+      "region": "Eastern roads",
+      "lead": "The tower’s escape craft leaves the party near a rest stop. A job at the Plant leads underground.",
+      "hint": "The conveyor does two jobs. It can make a gap to walk through or move a crate to the molten pit.",
+      "steps": [
+        "At the Coffee Shop, follow the meeting that takes Momo back to the Plant. Speak to Director Palet and enter the Dump.",
+        "Operate the first conveyor lever until there is room between crates. Cross and follow the raised paths towards the hot disposal pit.",
+        "Use the red and blue levers to line a crate up with the ledges by the pit. Walk across it to the vine-framed doorway. Bring fire damage for the Mutant and its regeneration.",
+        "After the fight, operate the disposal lever when prompted. Return to the Plant with Peco and stay at the inn."
+      ],
+      "tip": "Momo can equip elemental chrysm as ammunition. Change back to ordinary rounds against an enemy that absorbs the element.",
+      "links": [
+        "field-actions",
+        "accession-field",
+        "formations"
+      ],
+      "art": "iii-mine",
+      "sources": [
+        "s15",
+        "r4",
+        "a2",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Plant office",
+        "Conveyor belts",
+        "Disposal pit",
+        "The inn"
+      ],
+      "encounters": [
+        {
+          "name": "Mutant",
+          "where": "Disposal pit",
+          "detail": "Use fire to counter its regeneration."
+        },
+        {
+          "name": "Bomber",
+          "where": "Conveyors",
+          "detail": "Examine for Air Raid."
+        },
+        {
+          "name": "Pain Weed",
+          "where": "Disposal site",
+          "detail": "The Pain Weed carries a Bat Amulet."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Research Plant",
+          "mapId": 49,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 38,
+              "z": 41,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 12,
+              "z": 94,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 63,
+              "z": 19,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 42,
+              "z": 92,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Disposal site",
+          "mapId": 52,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 8,
+              "z": 40,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 95,
+              "z": 5,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 62,
+              "z": 40,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 147,
+              "z": 6,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "1,200 zenny",
+          "where": "First conveyor belt",
+          "detail": "Cross through the gaps between the crates to reach the chest."
+        },
+        {
+          "name": "Artemis’ Cap",
+          "where": "Second conveyor area",
+          "detail": "Use the crates as a path between the stone ledges."
+        }
+      ]
+    },
+    {
+      "id": "contest",
+      "title": "The Contest of Champions",
+      "region": "Eastern roads",
+      "lead": "The arena changes its rules between rounds. Prepare the three entrants before you speak to an attendant.",
+      "hint": "Look at the opponent and the platform beneath them. The opening round gives you a choice of targets.",
+      "steps": [
+        "At Genmel, choose who waits behind. Visit the western locker rooms and register your three fighters.",
+        "In the Hall of Fire, set your fighting order and choose whether to attack the rider or the Dodai. In the Hall of Null Magic, rely on physical attacks and items.",
+        "Enter the final even if the opponent seems unbeatable. Follow the party to Maekyss Gorge and prepare before crossing the bridge.",
+        "After the bridge battle, return to Wyndia. Find Honey in the wine cellar and on the balcony to move the journey east."
+      ],
+      "tip": "Rest and shop between rounds. Healing items remain useful when spells are unavailable.",
+      "links": [
+        "arena-rules",
+        "formations",
+        "accession-field"
+      ],
+      "art": "highlands",
+      "sources": [
+        "s16",
+        "s17",
+        "r4",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Registration",
+        "Preliminary halls",
+        "Final and gorge",
+        "Castle cellar"
+      ],
+      "encounters": [
+        {
+          "name": "Dodai",
+          "where": "Hall of Fire",
+          "detail": "Choose between attacking the mount and its rider."
+        },
+        {
+          "name": "Claw",
+          "where": "Hall of Fire",
+          "detail": "Examine for Blind or Double Blow."
+        },
+        {
+          "name": "Emitai and Golems",
+          "where": "Null Magic Hall",
+          "detail": "The golems protect the caster. Resolve this round before moving on to Garr."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Genmel arena",
+          "mapId": 50,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 7,
+              "z": 38,
+              "name": "Exit · Contest halls I"
+            },
+            {
+              "x": 8,
+              "z": 47,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 6,
+              "z": 147,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 8,
+              "z": 29,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 26,
+              "z": 144,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Contest halls I",
+          "mapId": 78,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 176,
+              "name": "Exit · Contest halls II"
+            },
+            {
+              "x": 41,
+              "z": 127,
+              "name": "Exit · Genmel arena"
+            },
+            {
+              "x": 1,
+              "z": 171,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 41,
+              "z": 12,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Contest halls II",
+          "mapId": 79,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 35,
+              "z": 30,
+              "name": "Exit · Waiting rooms"
+            },
+            {
+              "x": 64,
+              "z": 28,
+              "name": "Exit · Contest halls I"
+            },
+            {
+              "x": 4,
+              "z": 22,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 111,
+              "z": 15,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Waiting rooms",
+          "mapId": 80,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 36,
+              "z": 3,
+              "name": "Exit · Contest halls II"
+            },
+            {
+              "x": 36,
+              "z": 11,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 188,
+              "z": 15,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 126,
+              "z": 7,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 210,
+              "z": 15,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "40 zenny",
+          "where": "Null Magic Hall",
+          "detail": "Check the northwest locker room before reporting to your own."
+        },
+        {
+          "name": "Frost gene",
+          "where": "House beyond Maekyss Gorge",
+          "detail": "Look behind the bush outside the artists’ house."
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Open the locker in the northwest dressing room before the tournament finishes. The locker-room money cannot be collected after the contest."
+      }
+    },
+    {
+      "id": "rhapala",
+      "title": "Beyd at Rhapala Wharf",
+      "region": "The coast",
+      "lead": "The ship is overdue. A porter at the wharf thinks he can help, if someone will teach him to fight.",
+      "hint": "Ask at the Porters’ Guild and the wharf. Beyd needs equipment and practice before you settle the question at the lighthouse.",
+      "steps": [
+        "Ask the guild about passage. Follow the conversations between Shadis, Beyd and Zig at the wharf and the inn.",
+        "Take a sword and armour for Beyd. Speak to him at the wharf to begin an evening’s practice.",
+        "Let Beyd land hits and take controlled damage over several sessions. When he can hold his own, select the lighthouse option.",
+        "During his duel, wait unless Zig is looking away. Speak to Beyd at the wharf again for the Guild Badge."
+      ],
+      "tip": "Beyd keeps the stat gains from practice. You can train him again if the duel goes badly.",
+      "links": [
+        "beyd-practice",
+        "arena-rules",
+        "camp-notes",
+        "coastal-genes"
+      ],
+      "art": "iii-port",
+      "sources": [
+        "s18",
+        "r5",
+        "a2",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Wharf and inn",
+        "Practice equipment",
+        "Training nights",
+        "The duel"
+      ],
+      "items": [
+        {
+          "name": "Guild Badge",
+          "where": "Rhapala Wharf",
+          "detail": "Speak to Beyd after his duel for access to the lighthouse."
+        },
+        {
+          "name": "Panacea",
+          "where": "Inn bedroom",
+          "detail": "Find Sinkar in the basement pub. Take the stairs near him and search the cabinet."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Town",
+          "mapId": 57,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 9,
+              "z": 28,
+              "name": "Exit · Wharf"
+            },
+            {
+              "x": 11,
+              "z": 56,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 92,
+              "z": 78,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 11,
+              "z": 62,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 80,
+              "z": 56,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Wharf",
+          "mapId": 94,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 83,
+              "z": 51,
+              "name": "Exit · Town"
+            }
+          ]
+        },
+        {
+          "name": "Beyd’s training ground",
+          "mapId": 92,
+          "section": 0
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Zig",
+          "where": "Wharf duel",
+          "detail": "Beyd fights here after training. Keep track of his equipment before entering the duel."
+        }
+      ]
+    },
+    {
+      "id": "lighthouse",
+      "title": "The lighthouse and the flower ring",
+      "region": "The coast",
+      "lead": "The Guild Badge gets you past the guard. Getting the light back on starts in the boiler room.",
+      "hint": "Look for a hatch above the boiler. Read the gauge before you spend your last piece of fuel.",
+      "steps": [
+        "Enter from Rhapala Wharf. Collect Flame Chrysm from the outdoor boxes or buy spare pieces in Rhapala’s weapon shop.",
+        "Load the boiler, then pull the lever as the moving light meets the central red line at the top of its arc. Follow the lit conduit and throw the next switch.",
+        "Defeat Gazer on the stairs and pull the lever at the top. Take the tiara to a ring of flowers on the world map.",
+        "Hear the faeries out. Go to their beach, wait on the jetty for night, then return to the house after the encounter."
+      ],
+      "tip": "A missed ignition uses one piece of Flame Chrysm. The Flame dragon gene cannot fuel the boiler.",
+      "links": [
+        "lighthouse-gauge",
+        "faerie-homes",
+        "genes",
+        "coastal-genes"
+      ],
+      "art": "iii-port",
+      "sources": [
+        "s19",
+        "r5",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Fuel store",
+        "Boiler lever",
+        "Lantern stairs",
+        "Faerie beach"
+      ],
+      "items": [
+        {
+          "name": "Flame Chrysm",
+          "where": "Outdoor crates",
+          "detail": "Each ignition attempt consumes one. Spare pieces are sold in Rhapala."
+        },
+        {
+          "name": "Coin",
+          "where": "Exterior stairs",
+          "detail": "Climb the west stairs and continue northeast to the chest."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Gazer",
+          "where": "Lighthouse stairs",
+          "detail": "Prepare before climbing to the switch above the fight."
+        },
+        {
+          "name": "Volt",
+          "where": "Lighthouse",
+          "detail": "Examine for Charge."
+        },
+        {
+          "name": "Spectre",
+          "where": "Lighthouse",
+          "detail": "A Barrier Ring can drop."
+        }
+      ],
+      "lore": "The light you restore serves two communities. After the beacon comes on, the faeries ask you to visit their beach and see what happens there after dark.",
+      "map": {
+        "title": "From fuel boxes to lantern",
+        "points": [
+          {
+            "name": "Wharf entrance",
+            "x": 11,
+            "y": 64,
+            "note": "Enter the lighthouse grounds from the wharf."
+          },
+          {
+            "name": "Flame Chrysm",
+            "x": 28,
+            "y": 22,
+            "note": "The outside boxes supply fuel."
+          },
+          {
+            "name": "Boiler",
+            "x": 50,
+            "y": 59,
+            "note": "Load the fuel and time the lever."
+          },
+          {
+            "name": "Conduit switch",
+            "x": 73,
+            "y": 73,
+            "note": "Follow the lit line from the boiler."
+          },
+          {
+            "name": "Lantern stairs",
+            "x": 88,
+            "y": 26,
+            "note": "The stairs lead past Gazer to the lever above."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "floors": [
+        {
+          "name": "Lighthouse",
+          "mapId": 77,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 9,
+              "z": 18,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 115,
+              "z": 20,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 29,
+              "z": 51,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 90,
+              "z": 53,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "zublo",
+      "title": "Crossing Mt. Zublo",
+      "region": "The eastern mountains",
+      "lead": "The mountain pass gives the party a way inland. Hot ground and steam jets demand care before the battle at the far side.",
+      "hint": "Watch a steam jet complete its cycle before stepping past it. Frost damage is useful deeper inside.",
+      "steps": [
+        "Return to Rhapala after helping the faeries. Take the mountain route through Mt. Zublo.",
+        "Work past the jets and lava, using safe ground between crossings. Examine the purple chrysm near the far side with Ryu leading.",
+        "When Gisshan and his two creatures block the route, interrupt the healing by concentrating on Gisshan first. Frost attacks are useful here.",
+        "Once through, restock at Junk Town if needed. Take Garr to the elder at Urkan Tapa before going to Angel Tower."
+      ],
+      "tip": "Avoid practising fire spells on the local lava creatures. Some grow more dangerous when heated.",
+      "links": [
+        "accession-field",
+        "formations",
+        "genes"
+      ],
+      "art": "highlands",
+      "sources": [
+        "s20",
+        "r6",
+        "a2",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Mountain entrance",
+        "Steam jets",
+        "Blocked pass",
+        "Urkan Tapa"
+      ],
+      "encounters": [
+        {
+          "name": "Gisshan",
+          "where": "Far side of the pass",
+          "detail": "Focus on the healer before finishing his two companions."
+        },
+        {
+          "name": "Vulcan",
+          "where": "Caverns",
+          "detail": "Examine for Lavaburst."
+        },
+        {
+          "name": "Lava Man",
+          "where": "Caverns",
+          "detail": "Watch for Burn."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Shrine approach",
+          "mapId": 97,
+          "section": 0
+        },
+        {
+          "name": "Volcanic caverns I",
+          "mapId": 102,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 28,
+              "z": 4,
+              "name": "Exit · Volcanic caverns II"
+            },
+            {
+              "x": 61,
+              "z": 95,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 6,
+              "z": 40,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 67,
+              "z": 46,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 40,
+              "z": 78,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Volcanic caverns II",
+          "mapId": 103,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 28,
+              "z": 68,
+              "name": "Exit · Volcanic caverns I"
+            },
+            {
+              "x": 5,
+              "z": 25,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 76,
+              "z": 12,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Protein",
+          "where": "Outside shrine",
+          "detail": "Inspect the chest east of the shrine steps."
+        },
+        {
+          "name": "Asbestos Armor",
+          "where": "First interior junction",
+          "detail": "Take the side chamber. The armour helps a character vulnerable to fire."
+        },
+        {
+          "name": "Ring of Fire",
+          "where": "Lower lava slope",
+          "detail": "Cross the yellow lava to the lower chest. Heal the leader afterwards."
+        },
+        {
+          "name": "Miracle gene",
+          "where": "Large magma field",
+          "detail": "Check the southwest edge of the field."
+        }
+      ]
+    },
+    {
+      "id": "angel-tower",
+      "title": "Angel Tower",
+      "region": "The eastern mountains",
+      "lead": "The descent below the tower ends the first long stretch of the journey. There is time to save outside first.",
+      "hint": "Garr can shift the huge blocks. Look down from an upper walkway to see which gaps need filling.",
+      "steps": [
+        "Bring Garr to the tower. Climb the outside stairs, drop to the next ledge and enter the interior.",
+        "Use Garr to push blocks in the lower room into a walkway. Return to the higher level and cross the completed path.",
+        "Before descending the last staircase, mend Ryu’s health and equipment. Read the inscriptions in the chamber beyond and complete the encounter."
+      ],
+      "tip": "Keep a separate diary file before the descent if you want to revisit this part of the journey.",
+      "links": [
+        "field-actions",
+        "accession-field",
+        "camp-notes"
+      ],
+      "art": "iii-mine",
+      "sources": [
+        "a2",
+        "r6",
+        "s22",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Outer steps",
+        "Block chamber",
+        "Last staircase"
+      ],
+      "warning": {
+        "label": "Before the descent",
+        "text": "Keep an ordinary diary save outside the tower if you want to explore this chapter again."
+      },
+      "floors": [
+        {
+          "name": "Tower entrance",
+          "mapId": 82,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 39,
+              "z": 35,
+              "name": "Exit · Interior passages"
+            },
+            {
+              "x": 70,
+              "z": 35,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 68,
+              "z": 86,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Interior passages",
+          "mapId": 84,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 12,
+              "z": 60,
+              "name": "Exit · Sliding block chamber"
+            },
+            {
+              "x": 64,
+              "z": 90,
+              "name": "Exit · Tower entrance"
+            },
+            {
+              "x": 23,
+              "z": 5,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 58,
+              "z": 92,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Sliding block chamber",
+          "mapId": 83,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 48,
+              "z": 10,
+              "name": "Exit · Interior passages"
+            },
+            {
+              "x": 56,
+              "z": 52,
+              "name": "Exit · Guardian chamber"
+            },
+            {
+              "x": 12,
+              "z": 18,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 23,
+              "z": 66,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Guardian chamber",
+          "mapId": 85,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 37,
+              "z": 28,
+              "name": "Exit · Sliding block chamber"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Ivory Dice",
+          "where": "Outer ledges",
+          "detail": "Drop through the gap at the railing to reach the chest."
+        },
+        {
+          "name": "Diamond Ring and Moon Tears",
+          "where": "Secret passage",
+          "detail": "Bring Momo to break the cracked wall. Take both chests beyond it."
+        },
+        {
+          "name": "Mythril Helm",
+          "where": "Block chamber",
+          "detail": "Push the block into position and use it to reach the upper walkway."
+        },
+        {
+          "name": "Napalm",
+          "where": "Deep staircase",
+          "detail": "Turn the camera and look beside the stairs southeast of the entrance."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Phantom",
+          "where": "Inside the tower",
+          "detail": "A Crepe Cape can drop."
+        },
+        {
+          "name": "Lizard Man",
+          "where": "Inside the tower",
+          "detail": "Examine for Double Blow."
+        },
+        {
+          "name": "Tricker",
+          "where": "Inside the tower",
+          "detail": "Watch for Blind or Flying Kick."
+        }
+      ]
+    },
+    {
+      "id": "mine-return",
+      "title": "Back in Dauna Mine",
+      "region": "Western roads",
+      "lead": "The familiar mine now has lifts, points on a railway and a cart that Garr can move.",
+      "hint": "Look on level B2. The rails need to carry an explosives wagon towards the rockfall.",
+      "steps": [
+        "Follow Garr to the lift and ride to B2. Find the workers’ rest room and use its diary.",
+        "Trace the rails from the explosives wagon to the boulder. Use Garr to move the wagon and the rail points to steer it. The optional detour before the blast leads to a Feather Sword.",
+        "At the final junction, switch the line east and push the wagon into the rockfall. Prepare for the Dragon Zombie and the confusion it can cause.",
+        "Continue to the mining office outside, collect the reward and head onto Ogre Road."
+      ],
+      "tip": "Healing and saving before moving the wagon leaves a convenient retry if confusion turns your two characters on each other.",
+      "links": [
+        "railway-points",
+        "fusion-forms",
+        "diary"
+      ],
+      "art": "iii-mine",
+      "sources": [
+        "s23",
+        "r7",
+        "a2",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "B2 rest room",
+        "Rail points",
+        "Rockfall",
+        "Mining office"
+      ],
+      "items": [
+        {
+          "name": "Feather Sword",
+          "where": "Rails on B2",
+          "detail": "Take the side track before sending the explosives into the rockfall."
+        },
+        {
+          "name": "Life Shard and Magic Shard",
+          "where": "B3 platforms",
+          "detail": "Take the upper northwestern platforms to the two shard chests."
+        },
+        {
+          "name": "Vitamin",
+          "where": "B3 platforms",
+          "detail": "Open the third chest while you are on the upper level."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Dragon Zombie",
+          "where": "Beyond the rockfall",
+          "detail": "Prepare for confusion before pushing the wagon."
+        },
+        {
+          "name": "Giant Roach",
+          "where": "Deep workings",
+          "detail": "Examine for Jump."
+        },
+        {
+          "name": "Ghoul",
+          "where": "Deep workings",
+          "detail": "Watch for Bone Dart."
+        }
+      ],
+      "lore": "Garr can push the explosives wagon. The track switches let the same wagon serve two purposes: opening the main route and reaching the Feather Sword.",
+      "map": {
+        "title": "The B2 rail junction",
+        "points": [
+          {
+            "name": "Workers’ room",
+            "x": 11,
+            "y": 66,
+            "note": "Use the diary before taking Garr to the explosive wagon."
+          },
+          {
+            "name": "Rail points",
+            "x": 40,
+            "y": 52,
+            "note": "Walk the line before moving the wagon."
+          },
+          {
+            "name": "Feather Sword",
+            "x": 65,
+            "y": 20,
+            "note": "An optional siding leads to the sword before the blast."
+          },
+          {
+            "name": "Rockfall",
+            "x": 83,
+            "y": 76,
+            "note": "For the main route, set the last junction east."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ]
+        ]
+      },
+      "floors": [
+        {
+          "name": "Dragon skull and B3",
+          "mapId": 34,
+          "section": 0
+        },
+        {
+          "name": "B2 mine workings",
+          "mapId": 109,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 4,
+              "z": 42,
+              "name": "Exit · Minecart tracks"
+            },
+            {
+              "x": 24,
+              "z": 25,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 59,
+              "z": 31,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 74,
+              "z": 31,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 53,
+              "z": 2,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Minecart tracks",
+          "mapId": 108,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 33,
+              "z": 45,
+              "name": "Exit · B2 mine workings"
+            },
+            {
+              "x": 18,
+              "z": 50,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 12,
+              "z": 12,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 1,
+              "z": 11,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 77,
+              "z": 6,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Before blowing up the rockfall on B2, use the explosives wagon to reach the Feather Sword chest. The blast removes the wagon you need."
+      }
+    },
+    {
+      "id": "syn-city",
+      "title": "The trail through Syn City",
+      "region": "Western roads",
+      "lead": "Old friends have left a trail between Ogre Road, the woods and the border. The order of those visits matters.",
+      "hint": "McNeil’s innkeeper has news. Visit the old house in Cedar Woods after spending the night.",
+      "steps": [
+        "Cross Ogre Road and Mt. Levett to McNeil. Speak to the innkeeper and follow the lead into Cedar Woods.",
+        "At the old house, hear Rei out. Take the farm road to McNeil Manor and meet Nina.",
+        "Return to Syn City with Nina. Speak to the wounded man in the room beyond the market and pursue the trail to the northern Checkpoint.",
+        "After the fight with Mikba, take Eygnock Road towards Wyndia. Follow Nina’s new lead to Momo at the Plant and find Peco by Yggdrasil."
+      ],
+      "tip": "Keep healing items for the Checkpoint. Rei’s transformed attacks can be unpredictable.",
+      "links": [
+        "camp-notes",
+        "formations",
+        "field-actions"
+      ],
+      "art": "iii-woods",
+      "sources": [
+        "s24",
+        "r7",
+        "hl",
+        "s25",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Ogre Road",
+        "Cedar Woods",
+        "Northern Checkpoint",
+        "The Plant"
+      ],
+      "encounters": [
+        {
+          "name": "Mikba",
+          "where": "Northern Checkpoint",
+          "detail": "Bring healing items for the pursuit from Syn City."
+        },
+        {
+          "name": "Slasher",
+          "where": "Ogre Road",
+          "detail": "Examine for Mind Flay."
+        },
+        {
+          "name": "Tricker",
+          "where": "Ogre Road",
+          "detail": "Watch for Blind or Flying Kick."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Ogre Road",
+          "mapId": 35,
+          "section": 0
+        },
+        {
+          "name": "Syn City",
+          "mapId": 21,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 10,
+              "z": 15,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 75,
+              "z": 11,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Old Painting",
+          "where": "Gang hideout",
+          "detail": "Search the chest along the left wall before following the fleeing gang."
+        },
+        {
+          "name": "Deluxe Rod",
+          "where": "Checkpoint hut",
+          "detail": "Bring Rei back to the locked room after the fight."
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Take the Old Painting from the gang hideout before leaving for the Checkpoint. You cannot return to that room."
+      }
+    },
+    {
+      "id": "plant",
+      "title": "Below the greenhouses",
+      "region": "Eastern roads",
+      "lead": "The trouble at the Plant starts above ground. Two companions’ field actions open the way into the facility.",
+      "hint": "Look for the marks by the greenhouses. A running start gives Peco enough force to send a stone flying.",
+      "steps": [
+        "Roll each loose stone to its ground mark. Back Peco away, then run at the stone to strike the greenhouse.",
+        "Lead with Momo and fire at the boiler front. Descend and use the first numbered console to open its matching doors.",
+        "Read the clues in the growing beds and beside the ventilation ducts. Take each password back to the console room, opening the numbered sections in turn.",
+        "Expect a slippery Huge Slug and a later confrontation with Shroom. Rest or restore AP before using the last door. Return to Wyndia after the facility is clear."
+      ],
+      "tip": "If the gas forces you out, plan the next short trip from the stairs. Look behind the duct above the growing beds.",
+      "links": [
+        "plant-passwords",
+        "field-actions",
+        "accession-field"
+      ],
+      "art": "iii-mine",
+      "sources": [
+        "s27",
+        "r7",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Greenhouse stones",
+        "Boiler room",
+        "Console room",
+        "Last door"
+      ],
+      "encounters": [
+        {
+          "name": "Huge Slug",
+          "where": "Below the growing beds",
+          "detail": "Restore AP before continuing from this fight towards Shroom."
+        },
+        {
+          "name": "Big Bulb",
+          "where": "Laboratory",
+          "detail": "A Life Shard can drop."
+        },
+        {
+          "name": "Fly Man",
+          "where": "Laboratory",
+          "detail": "A Flame Spear can drop."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Greenhouses",
+          "mapId": 49,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 11,
+              "z": 84,
+              "name": "Exit · Laboratory I"
+            },
+            {
+              "x": 38,
+              "z": 41,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 12,
+              "z": 94,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 63,
+              "z": 19,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 42,
+              "z": 92,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Laboratory I",
+          "mapId": 117,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 64,
+              "z": 9,
+              "name": "Exit · Greenhouses"
+            },
+            {
+              "x": 1,
+              "z": 21,
+              "name": "Exit · Laboratory II"
+            },
+            {
+              "x": 64,
+              "z": 5,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 13,
+              "z": 20,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Laboratory II",
+          "mapId": 118,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 71,
+              "z": 3,
+              "name": "Exit · Laboratory III"
+            },
+            {
+              "x": 7,
+              "z": 58,
+              "name": "Exit · Laboratory I"
+            },
+            {
+              "x": 34,
+              "z": 6,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 58,
+              "z": 17,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Laboratory III",
+          "mapId": 119,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 91,
+              "z": 74,
+              "name": "Exit · Laboratory II"
+            },
+            {
+              "x": 67,
+              "z": 45,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 5,
+              "z": 2,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 65,
+              "z": 62,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 22,
+              "z": 52,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Sleep Shells",
+          "where": "Conveyor beyond the computer",
+          "detail": "Ride up to the door before taking the return belt."
+        },
+        {
+          "name": "Wisdom Ring",
+          "where": "Ventilation ducts",
+          "detail": "Take the northwest branch above the room with the pressure cubes."
+        }
+      ]
+    },
+    {
+      "id": "guardians",
+      "title": "The portal and the Tidal Caves",
+      "region": "The eastern mountains",
+      "lead": "A trip to the castle for a passport takes an unexpected turn. Beyond the checkpoint, Garr can speak for the party.",
+      "hint": "In the Tidal Caves, ladders and the raft become usable as the water recedes.",
+      "steps": [
+        "At Wyndia, lead with Nina. Explore the basement with Rei, follow Honey and return to the altar room when the castle visit goes wrong.",
+        "Cross the Checkpoint, take Garr to Angel Tower, then have him speak to Sudama at Urkan Tapa. Travel west towards the Tidal Caves.",
+        "At low tide, descend the ladders and ride the raft to the exit for Cliff. In the far house speak to Gaist, then Garr outside, before committing Ryu to the duel.",
+        "Return to the chamber under Angel Tower to free Deis. Visit the shrine at Mt. Zublo, then ask Shadis at Rhapala where Beyd has gone."
+      ],
+      "tip": "Check the place where Gaist stood after the duel. His Beast Spear is easy to walk past.",
+      "warning": {
+        "label": "Missable master",
+        "text": "At the Mt. Zublo shrine, tell Deis “I like you this way” if you want to apprentice under her later. The other answer closes that option."
+      },
+      "links": [
+        "tidal-crossing",
+        "accession-field",
+        "camp-notes"
+      ],
+      "art": "iii-port",
+      "sources": [
+        "s28",
+        "s29",
+        "r8",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Castle basement",
+        "Urkan Tapa",
+        "Tidal Caves and Cliff",
+        "Return to the tower"
+      ],
+      "items": [
+        {
+          "name": "Beast Spear",
+          "where": "Gaist’s house",
+          "detail": "After the duel, search the spot where Gaist stood."
+        },
+        {
+          "name": "Fish-head",
+          "where": "Puddle chamber",
+          "detail": "Turn the viewpoint to reveal the hidden chest."
+        },
+        {
+          "name": "Thunder Ring",
+          "where": "East passage",
+          "detail": "Follow the corridor east of the ladder before descending to the lowest level."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Tidal Caves",
+          "mapId": 105,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 8,
+              "z": 34,
+              "name": "Exit · Tidal basin"
+            }
+          ]
+        },
+        {
+          "name": "Tidal basin",
+          "mapId": 106,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 45,
+              "z": 6,
+              "name": "Exit · Tidal Caves"
+            },
+            {
+              "x": 18,
+              "z": 5,
+              "name": "Exit · Inner caves"
+            },
+            {
+              "x": 27,
+              "z": 46,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 76,
+              "z": 4,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Inner caves",
+          "mapId": 107,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 54,
+              "z": 38,
+              "name": "Exit · Tidal basin"
+            }
+          ]
+        },
+        {
+          "name": "Cliff",
+          "mapId": 120,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 17,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 48,
+              "z": 116,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 34,
+              "z": 12,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 12,
+              "z": 90,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Bomb Seed",
+          "where": "Tidal Caves",
+          "detail": "Examine for Sacrifice."
+        },
+        {
+          "name": "Sleepy",
+          "where": "Tidal Caves",
+          "detail": "This enemy can drop a Fat Frog lure."
+        },
+        {
+          "name": "Gaist",
+          "where": "Cliff",
+          "detail": "Ryu fights alone. Flame heals Gaist, including the Flare cast by his torches."
+        }
+      ]
+    },
+    {
+      "id": "steel-beach",
+      "title": "The freighter at Steel Beach",
+      "region": "The coast",
+      "lead": "Momo can diagnose the ship. The spare parts are scattered between the beach and a dismantled freighter.",
+      "hint": "Take Momo to the engine before you search the scrap. Her list tells you which lettered parts matter.",
+      "steps": [
+        "Find Beyd in Junk Town and follow him to the Dock. Have Momo inspect the engine, then ask the Junk Town chief for access to Steel Beach.",
+        "Lead with Garr when speaking to the foreman. Match his rope-hauling directions and prepare for the creature pulled ashore.",
+        "Search around the shoreline, the welder and raised ledges. Board the old freighter and change the beams’ height at the levers to reach the remaining pieces.",
+        "Deliver the required parts to Momo in the engine room. Speak to the crew and try the outer waters before sailing to Parch."
+      ],
+      "tip": "Tilt the camera before leaving a pile of scrap. Several parts are hidden by the edge of the foreground scenery.",
+      "links": [
+        "field-view",
+        "field-actions",
+        "camp-notes"
+      ],
+      "art": "iii-port",
+      "sources": [
+        "r8",
+        "a3",
+        "s30",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Junk Town dock",
+        "Beach foreman",
+        "Freighter beams",
+        "Engine room"
+      ],
+      "items": [
+        {
+          "name": "Ship parts",
+          "where": "Beach and derelict freighter",
+          "detail": "Rotate the camera behind the scrap piles. Change beam height to reach the upper ledges."
+        },
+        {
+          "name": "Robe of Wind",
+          "where": "Freighter cargo",
+          "detail": "Look behind the crates at the northwest end."
+        },
+        {
+          "name": "Part E",
+          "where": "Freighter cargo",
+          "detail": "Search the north-side crates near the robe. Part C is behind the crates on the south side."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Steel Beach",
+          "mapId": 75,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 26,
+              "z": 57,
+              "name": "Exit · Freighter hold"
+            },
+            {
+              "x": 2,
+              "z": 108,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 57,
+              "z": 44,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Freighter hold",
+          "mapId": 86,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 66,
+              "z": 4,
+              "name": "Exit · Steel Beach"
+            },
+            {
+              "x": 11,
+              "z": 9,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 67,
+              "z": 58,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Freighter",
+          "mapId": 134,
+          "section": 0
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Bolt Archer",
+          "where": "Freighter",
+          "detail": "Examine for Blind."
+        },
+        {
+          "name": "Bolt Mage",
+          "where": "Freighter",
+          "detail": "A Robe of Wind can drop."
+        }
+      ]
+    },
+    {
+      "id": "parch",
+      "title": "Shisu and the mariner",
+      "region": "The coast",
+      "lead": "Parch’s mayor knows the sea crossing. The way to his confidence starts at a cook’s house in Maekyss Gorge.",
+      "hint": "Speak to the cook before gathering everything. The dish draws on fishing and three different field actions.",
+      "steps": [
+        "Speak to the mayor at Parch, then meet the cook in the house at Maekyss Gorge.",
+        "Fish for mackerel by the gorge, use Peco on the Shaly tree nearby, cut horseradish on Ogre Road, and have Garr draw vinegar from the Coffee Shop well.",
+        "Return to the cook with the four ingredients. In the mayor’s house, speak to his attendant, prepare the dish and hear the sailing directions.",
+        "Take the boat through the narrow route to the mariner’s house. Use the marker on the little map to steer and retry the timed stretch if necessary."
+      ],
+      "tip": "Parch is a village stop. Shop, fish and prepare Shisu here. There is no required battle at the meal.",
+      "encounters": [
+        {
+          "name": "Slasher",
+          "where": "Ogre Road · horseradish detour",
+          "detail": "Watch for Mind Flay while gathering ingredients outside town."
+        },
+        {
+          "name": "Goo Titan",
+          "where": "Ogre Road · horseradish detour",
+          "detail": "A Life Shard is its steal. It can demonstrate Burn and Timed Blow."
+        }
+      ],
+      "links": [
+        "shisu-kitchen",
+        "fishing-tackle",
+        "field-actions"
+      ],
+      "art": "iii-port",
+      "sources": [
+        "s31",
+        "s24",
+        "r9",
+        "a3",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Mayor’s house",
+        "Four ingredients",
+        "The kitchen",
+        "Mariner’s channel"
+      ],
+      "items": [
+        {
+          "name": "Mackerel",
+          "where": "Maekyss Gorge",
+          "detail": "Catch one with the fishing rod for the shisu."
+        },
+        {
+          "name": "Shaly",
+          "where": "Gorge tree",
+          "detail": "Lead with Peco to knock the ingredient down."
+        },
+        {
+          "name": "Horseradish",
+          "where": "Ogre Road",
+          "detail": "Cut the plant with Ryu."
+        },
+        {
+          "name": "Vinegar",
+          "where": "Coffee Shop well",
+          "detail": "Use Garr at the well."
+        },
+        {
+          "name": "Coin",
+          "where": "Inn and shop",
+          "detail": "Search the dresser beside the Manillo in the bedroom."
+        },
+        {
+          "name": "400 zenny",
+          "where": "Northeast houses",
+          "detail": "Use the dresser in the left-hand house."
+        }
+      ],
+      "map": {
+        "title": "Gathering the shisu ingredients",
+        "points": [
+          {
+            "name": "Maekyss Gorge",
+            "x": 45,
+            "y": 46,
+            "note": "Meet the cook. The mackerel and Shaly tree are nearby."
+          },
+          {
+            "name": "Ogre Road",
+            "x": 19,
+            "y": 21,
+            "note": "Ryu can cut the horseradish."
+          },
+          {
+            "name": "Coffee Shop",
+            "x": 72,
+            "y": 26,
+            "note": "Use Garr at the well for vinegar."
+          },
+          {
+            "name": "Parch",
+            "x": 77,
+            "y": 76,
+            "note": "Take the prepared ingredients to the mayor’s attendant."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            0,
+            3
+          ]
+        ]
+      },
+      "floors": [
+        {
+          "name": "Parch village",
+          "mapId": 130,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 14,
+              "z": 32,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 11,
+              "z": 142,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 17,
+              "z": 12,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 41,
+              "z": 90,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Maekyss Gorge",
+          "mapId": 67,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 47,
+              "z": 32,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 56,
+              "z": 97,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "House by the gorge",
+          "mapId": 62,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 29,
+              "z": 20,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 77,
+              "z": 7,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Coffee Shop",
+          "mapId": 68,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 27,
+              "z": 24,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 28,
+              "z": 96,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "black-ship",
+      "title": "Aboard the Black Ship",
+      "region": "The open sea",
+      "lead": "To cross the outer sea you first need to board the vessel that already makes the trip.",
+      "hint": "Once aboard, look for a way to send power to the crane. Its cargo can become a walkway.",
+      "steps": [
+        "After meeting the mariner, return to your ship and approach the stern of the Black Ship at sea. After contact, go below to speak to Momo.",
+        "On the Black Ship, find the terminal controlling the moving platform. Ride the P3 route to the crane control and enable it.",
+        "At the crane, lift the small wooden crates to build a bridge. Continue through the opened route to the deck and the creatures there.",
+        "Once the crossing ends, restock at Kombinat and take the road towards Steel Grave."
+      ],
+      "tip": "You can return to the party’s own vessel to rest during the boarding operation.",
+      "links": [
+        "crane-cargo",
+        "formations",
+        "camp-notes"
+      ],
+      "art": "iii-port",
+      "sources": [
+        "r9",
+        "s33",
+        "a3",
+        "s32",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Boarding point",
+        "Platform terminal",
+        "Cargo crane",
+        "Kombinat"
+      ],
+      "items": [
+        {
+          "name": "Wooden crates",
+          "where": "Cargo crane",
+          "detail": "Lift the small crates into the gap to make a crossing."
+        },
+        {
+          "name": "Ascension",
+          "where": "Cargo crane",
+          "detail": "After making the bridge, lift the heavy cargo containers. One exposes Ryu’s sword."
+        },
+        {
+          "name": "Protectors",
+          "where": "Cargo crane",
+          "detail": "Keep lifting the large containers for the accessory."
+        },
+        {
+          "name": "Ivory Dice",
+          "where": "Platform chamber",
+          "detail": "Search the east room before leaving by the northwest door."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Black Ship exterior",
+          "mapId": 133,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 59,
+              "z": 43,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 40,
+              "z": 91,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 8,
+              "z": 93,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 35,
+              "z": 93,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Inside the Black Ship",
+          "mapId": 135,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 46,
+              "z": 6,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 38,
+              "z": 45,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 46,
+              "z": 20,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 38,
+              "z": 57,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Labyrinth",
+          "mapId": 137,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 43,
+              "z": 45,
+              "name": "Exit · Upper decks"
+            },
+            {
+              "x": 11,
+              "z": 45,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 32,
+              "z": 28,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 32,
+              "z": 4,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 64,
+              "z": 45,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Upper decks",
+          "mapId": 188,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 31,
+              "z": 21,
+              "name": "Exit · Labyrinth"
+            },
+            {
+              "x": 12,
+              "z": 6,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 44,
+              "z": 44,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 20,
+              "z": 6,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 52,
+              "z": 44,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Bolt Archer",
+          "where": "Interior",
+          "detail": "Examine for Blind."
+        },
+        {
+          "name": "Giant Crab",
+          "where": "Interior",
+          "detail": "Watch for Double Blow."
+        },
+        {
+          "name": "Ammonites",
+          "where": "Deck",
+          "detail": "Prepare for Tsunami, a group attack."
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Collect the optional crane prizes before fighting on deck. The crossing ends after the Ammonites battle."
+      }
+    },
+    {
+      "id": "colony",
+      "title": "The Colony and Relay Point A",
+      "region": "The far shore",
+      "lead": "Past the rusting machines lies a network of portals. Momo can bring the first one back into service.",
+      "hint": "Look for a key at the portal, then find a way down through the window to the room with three reflectors.",
+      "steps": [
+        "Cross Steel Grave, where the upper paths lead over derelict machinery. Bring Momo to the Colony and inspect the portal for its key.",
+        "Reach the reflector room from the window. Have Momo fit the key, then turn the mirrors to carry light from its emitter to the fuses.",
+        "Step into the portal and follow Honey. Return to the relay equipment, work through the coloured switches and ride the platforms to the central floor switch.",
+        "Climb to the antenna. Rotate it until a clear tone replaces the static. Use the terminal by the portal to choose Dragnier."
+      ],
+      "tip": "Once the network works, Container Yard is worth a brief visit for the Radiance gene. Return through the portal afterwards.",
+      "links": [
+        "relay-tuning",
+        "genes",
+        "field-actions"
+      ],
+      "art": "iii-mine",
+      "sources": [
+        "s33",
+        "s35",
+        "r9",
+        "s34",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Colony portal",
+        "Reflector room",
+        "Relay switches",
+        "Antenna"
+      ],
+      "items": [
+        {
+          "name": "Radiance gene",
+          "where": "Container Yard",
+          "detail": "Take the portal detour once the network is active."
+        },
+        {
+          "name": "Lacquer Staff",
+          "where": "Freighter shutters",
+          "detail": "Lift the light-blue shutter. The eastern door leads to the staff."
+        },
+        {
+          "name": "Hourglass",
+          "where": "Freighter shutters",
+          "detail": "Lift the dark-blue shutter and take the northeast door to the tablets and chest."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Colony",
+          "mapId": 145,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 20,
+              "z": 99,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 13,
+              "z": 16,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 31,
+              "z": 22,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 64,
+              "z": 107,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Relay Point A",
+          "mapId": 112,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 7,
+              "z": 21,
+              "name": "Exit · Steel Tower"
+            },
+            {
+              "x": 44,
+              "z": 51,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 24,
+              "z": 88,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 43,
+              "z": 95,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 7,
+              "z": 34,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Steel Tower",
+          "mapId": 111,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 7,
+              "z": 225,
+              "name": "Exit · Relay Point A"
+            },
+            {
+              "x": 15,
+              "z": 6,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 17,
+              "z": 94,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 16,
+              "z": 12,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 17,
+              "z": 105,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Codger",
+          "where": "Colony",
+          "detail": "Examine for Flying Kick. Skill Ink is a possible drop."
+        },
+        {
+          "name": "Tank Bot",
+          "where": "Colony",
+          "detail": "Watch for Transfer or Sacrifice."
+        }
+      ]
+    },
+    {
+      "id": "dragnier",
+      "title": "Dragnier",
+      "region": "Beyond the sea",
+      "lead": "An inhabited camp sits beyond the portal. Give the party a chance to talk before going underground.",
+      "hint": "Find Garr among the tents. The villagers will direct Ryu to the elder beneath the well.",
+      "steps": [
+        "After the village meal and a night’s rest, explore the tents and speak with Garr. Use the small dragon statue to save.",
+        "Descend the well to the mural and the elder’s room. Let him see Garr, then Nina, then Ryu.",
+        "Prepare physical skills, healing and fire or thunder protection for Jono. Ryu must manage this encounter without a dragon transformation.",
+        "Speak to the elder once more for the Infinity gene. Return to the surface and take Horis’s directions to the Factory."
+      ],
+      "tip": "A strong single-target physical skill gives Ryu something useful to do during the elder’s trial.",
+      "links": [
+        "kaiser-control",
+        "genes",
+        "camp-notes"
+      ],
+      "art": "iii-desert",
+      "sources": [
+        "s36",
+        "r10",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Village tents",
+        "Painted chamber",
+        "Elder’s trial",
+        "Return to the well"
+      ],
+      "items": [
+        {
+          "name": "Infinity gene",
+          "where": "Elder’s room",
+          "detail": "Speak to the elder again after the trial."
+        },
+        {
+          "name": "Damascus Sword and Damascus Mail",
+          "where": "Western tent",
+          "detail": "The vendor in the village sells both before the Factory journey."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Jono",
+          "where": "Elder’s trial",
+          "detail": "Prepare physical skills and protection against fire or thunder."
+        }
+      ],
+      "lore": "After his trial, the elder can pass on the Infinity gene. Speak to him again before setting out.",
+      "floors": [
+        {
+          "name": "Dragnier above ground",
+          "mapId": 143,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 42,
+              "z": 31,
+              "name": "Exit · Underground chambers"
+            },
+            {
+              "x": 53,
+              "z": 19,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 14,
+              "z": 105,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 45,
+              "z": 25,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 8,
+              "z": 87,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Underground chambers",
+          "mapId": 144,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 24,
+              "z": 56,
+              "name": "Exit · Dragnier above ground"
+            },
+            {
+              "x": 10,
+              "z": 65,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 6,
+              "z": 38,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 3,
+              "z": 1,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 36,
+              "z": 6,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "factory",
+      "title": "The Factory workbot",
+      "region": "Beyond the sea",
+      "lead": "Security beams bar the route through the abandoned Factory. Some switches are on the other side, within a robot’s reach.",
+      "hint": "The robot copies your steps on a different floor. Watch where it ends a move before pressing the field-action button.",
+      "steps": [
+        "Enter the Factory from the dirt paths. In the first security room, use the timed switches to cross one section at a time.",
+        "Reach the far side of the first laser barrier and switch it off to open a shortcut. Raise the platform between the staircases to reach the terminal.",
+        "Activate the workbot. Steer its feet to each of the three switches and use your field action to make it strike. Reset its position for a fresh attempt.",
+        "With the floor panels clear, climb the eastern ladder and follow the upper passage. Have Momo shoot the yellow panel by the last locked door. Outside, rest at Horis’s camp and fill the Water Jug."
+      ],
+      "tip": "Check the exit from a switch room before you hurry after its timer. A missed run costs less than losing track of the next door.",
+      "links": [
+        "workbot-floor",
+        "field-actions",
+        "camp-notes"
+      ],
+      "art": "iii-mine",
+      "sources": [
+        "s37",
+        "a4",
+        "r10",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Security entrance",
+        "Laser barrier",
+        "Workbot terminal",
+        "Eastern ladder"
+      ],
+      "items": [
+        {
+          "name": "Water Jug",
+          "where": "Horis’s camp",
+          "detail": "Fill it before setting out into the desert."
+        },
+        {
+          "name": "Wisdom Seed",
+          "where": "Outside",
+          "detail": "Climb northeast from the first intersection and follow the path to its end."
+        },
+        {
+          "name": "Rockbreaker",
+          "where": "Hidden ladder",
+          "detail": "Find the ladder to the right of the beam and descend to the chest."
+        },
+        {
+          "name": "Homing Bomb",
+          "where": "Electrical grid",
+          "detail": "Shut down the grid and collect the chest beside it."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Exterior",
+          "mapId": 138,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 30,
+              "z": 16,
+              "name": "Exit · Western machinery"
+            }
+          ]
+        },
+        {
+          "name": "Western machinery",
+          "mapId": 139,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 87,
+              "z": 44,
+              "name": "Exit · Exterior"
+            },
+            {
+              "x": 88,
+              "z": 11,
+              "name": "Exit · Inner factory"
+            },
+            {
+              "x": 66,
+              "z": 2,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 35,
+              "z": 70,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Inner factory",
+          "mapId": 140,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 13,
+              "z": 70,
+              "name": "Exit · Western machinery"
+            },
+            {
+              "x": 39,
+              "z": 6,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 63,
+              "z": 5,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 67,
+              "z": 35,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 50,
+              "z": 74,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Pipe Bomb",
+          "where": "Factory",
+          "detail": "Examine for Air Raid or Sacrifice."
+        },
+        {
+          "name": "Egg Gang",
+          "where": "Factory",
+          "detail": "Watch for Double Blow."
+        },
+        {
+          "name": "Gold Egg",
+          "where": "Factory",
+          "detail": "A Divine Helm can drop."
+        }
+      ]
+    },
+    {
+      "id": "desert",
+      "title": "The Desert of Death",
+      "region": "The desert",
+      "lead": "Three legs take you to the oasis. The evening star marks west, and the middle leg goes east.",
+      "hint": "Face the true North Star first. For the second leg, the Evening Star belongs behind you.",
+      "steps": [
+        "At Horis’s camp, fill the Water Jug from the jar. Walk towards the true North Star for two full nights, camping by day.",
+        "Turn east. With the North Star ahead, four right taps set this heading. Keep the Evening Star behind you until it has sunk below the horizon.",
+        "Turn back to true north and continue. Recheck the sky after each fight or camp and drink when the party reports thirst.",
+        "Heal before approaching the mound where the route changes. After Manmo, follow the story at the camp through to Oasis."
+      ],
+      "tip": "If you lose your bearings and water runs low, speak to the rakda at camp to return to the Factory.",
+      "links": [
+        "desert-stars",
+        "camp-notes",
+        "formations"
+      ],
+      "art": "iii-desert",
+      "sources": [
+        "s38",
+        "r10",
+        "a4",
+        "floor-names",
+        "floor-attrs"
+      ],
+      "landmarks": [
+        "First nights",
+        "Eastern leg",
+        "Northern leg",
+        "Final camp"
+      ],
+      "encounters": [
+        {
+          "name": "Manmo",
+          "where": "Mound on the final leg",
+          "detail": "Heal before approaching the mound."
+        },
+        {
+          "name": "Scorpion",
+          "where": "Desert battles",
+          "detail": "Examine for Double Blow."
+        },
+        {
+          "name": "Magnemite",
+          "where": "Desert battles",
+          "detail": "Watch for Air Raid, Flying Kick or Lavaburst."
+        }
+      ],
+      "map": {
+        "title": "Desert of Death · night bearings",
+        "points": [
+          {
+            "name": "Horis’s camp",
+            "x": 17,
+            "y": 80,
+            "note": "Fill the jug before leaving."
+          },
+          {
+            "name": "North Star",
+            "x": 17,
+            "y": 46,
+            "note": "Keep the true North Star ahead for two nights."
+          },
+          {
+            "name": "Eastern leg",
+            "x": 75,
+            "y": 46,
+            "note": "Turn east until the Evening Star has sunk behind you."
+          },
+          {
+            "name": "Final northern leg",
+            "x": 75,
+            "y": 15,
+            "note": "Turn north again and check direction after each encounter."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      "floors": [
+        {
+          "name": "Manmo’s hill",
+          "mapId": 196,
+          "section": 0
+        }
+      ],
+      "items": [
+        {
+          "name": "Death Claws",
+          "where": "Western desert detour",
+          "detail": "A chest lies west of Oasis. Carry enough water for an extra journey."
+        },
+        {
+          "name": "Speed Boots",
+          "where": "Eastern desert detour",
+          "detail": "Leave Oasis heading east. Search the clearings for the chest over several nights."
+        }
+      ]
+    },
+    {
+      "id": "caer-xhan",
+      "title": "Oasis and Caer Xhan",
+      "region": "Beyond the desert",
+      "lead": "The road leads from an inhabited oasis to a machine city. The darkened security room holds the clue to its lift.",
+      "hint": "If an apparently empty corridor shocks you, look downstairs for the lights.",
+      "steps": [
+        "Stock up at Oasis. On the far side of the desert, a visit to Container Yard can reopen the route to the portal network.",
+        "Walk north to Caer Xhan and visit the robot merchants. Enter the building up the street where a laser blocks the way.",
+        "Use the lower switch to darken the room and reveal the beams. Walk through the gaps to the control room and deactivate emergency mode.",
+        "Drop back to the street, reach the next building and use its terminal to enable Platform 1. Board the lift."
+      ],
+      "tip": "The stronger optional machines in Container Yard are a considerable jump in difficulty. You can reach the city without hunting them.",
+      "links": [
+        "relay-tuning",
+        "camp-notes",
+        "field-view"
+      ],
+      "art": "iii-mine",
+      "sources": [
+        "s39",
+        "a4",
+        "r10",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Oasis",
+        "Machine city",
+        "Security room",
+        "Platform 1"
+      ],
+      "floors": [
+        {
+          "name": "Oasis",
+          "mapId": 150,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 20,
+              "z": 40,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 65,
+              "z": 13,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 18,
+              "z": 36,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 65,
+              "z": 35,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Container Yard",
+          "mapId": 146,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 20,
+              "z": 15,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 70,
+              "z": 57,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Caer Xhan",
+          "mapId": 147,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 8,
+              "z": 34,
+              "name": "Exit · Elevator sector"
+            },
+            {
+              "x": 15,
+              "z": 24,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 130,
+              "z": 6,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 44,
+              "z": 13,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 75,
+              "z": 57,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Elevator sector",
+          "mapId": 148,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 41,
+              "z": 50,
+              "name": "Exit · Caer Xhan"
+            },
+            {
+              "x": 19,
+              "z": 44,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 106,
+              "z": 64,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 116,
+              "z": 54,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 23,
+              "z": 38,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "800 zenny",
+          "where": "Oasis",
+          "detail": "Search the dresser in the house next door to Fa’ah."
+        },
+        {
+          "name": "Moon Tears",
+          "where": "Security hall",
+          "detail": "Turn out the lights to see the beams around the chest."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "ArchMage",
+          "where": "Container Yard, optional",
+          "detail": "This rare encounter can drop a Holy Avenger."
+        },
+        {
+          "name": "Berserker",
+          "where": "Container Yard, optional",
+          "detail": "It carries an Aries Glove and can drop Rufad’s Spear."
+        }
+      ]
+    },
+    {
+      "id": "myria-lab",
+      "title": "Myria Station laboratory",
+      "region": "The station",
+      "lead": "The workers’ quarters make a useful base. The first access card lies beyond a live security grid.",
+      "hint": "Change the panel arrangement before crossing the grid. One of the nearby rooms restores the party.",
+      "steps": [
+        "Operate the service lift at the workers’ entrance and reach the sleeping quarters. Save and take Momo and Rei for the doors ahead.",
+        "Follow the yellow route into the laboratory. Inspect the sleeping creature’s enclosure and shut off its gas at the console.",
+        "Use the neighbouring control panels to clear a path through the electrified floor. Take the lift on the far side and prepare for Chimera.",
+        "Take Card Key B. Collect the new HE Shells for Momo below, then return towards the quarters and follow the way into the garden."
+      ],
+      "tip": "Remember the healing room on the way to the laboratory. It is a shorter retreat than leaving the station.",
+      "links": [
+        "station-keys",
+        "accession-field",
+        "formations"
+      ],
+      "art": "iii-mine",
+      "sources": [
+        "s40",
+        "a4",
+        "hl",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Workers’ quarters",
+        "Yellow passage",
+        "Electrified floor",
+        "Access door"
+      ],
+      "items": [
+        {
+          "name": "Card Key B",
+          "where": "Laboratory",
+          "detail": "Collect it after the electrified floor and its guardian."
+        },
+        {
+          "name": "HE Shells",
+          "where": "Below the laboratory",
+          "detail": "Collect the ammunition before returning to the garden route."
+        },
+        {
+          "name": "Wisdom Fruit",
+          "where": "Arrival platform",
+          "detail": "Ride the elevator up, step outside and open the chest."
+        },
+        {
+          "name": "Holy Robe",
+          "where": "Workers’ quarters",
+          "detail": "From the healing station, check the small room to the northwest."
+        },
+        {
+          "name": "Giant Shield, Dragon Shield and Dragon Helm",
+          "where": "Locked store",
+          "detail": "Bring Rei to open the room with three chests."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Chimera",
+          "where": "Laboratory lift",
+          "detail": "Restore the party before riding the lift across the grid."
+        },
+        {
+          "name": "DeathBot",
+          "where": "Workers’ quarters",
+          "detail": "Examine for Triple Blow."
+        },
+        {
+          "name": "Ice Drake",
+          "where": "Laboratory",
+          "detail": "The Ring of Ice is its steal."
+        },
+        {
+          "name": "Red Drake",
+          "where": "Laboratory",
+          "detail": "The Ring of Fire is its steal."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Arrival and workers’ quarters",
+          "mapId": 167,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 8,
+              "z": 38,
+              "name": "Exit · Lobby and workers’ area"
+            },
+            {
+              "x": 35,
+              "z": 90,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 47,
+              "z": 27,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 24,
+              "z": 78,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 24,
+              "z": 4,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Lobby and workers’ area",
+          "mapId": 168,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 51,
+              "z": 16,
+              "name": "Exit · Arrival and workers’ quarters"
+            },
+            {
+              "x": 14,
+              "z": 3,
+              "name": "Exit · Orange path entrance"
+            },
+            {
+              "x": 66,
+              "z": 37,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 166,
+              "z": 25,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Orange path entrance",
+          "mapId": 169,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 31,
+              "z": 8,
+              "name": "Exit · Lobby and workers’ area"
+            },
+            {
+              "x": 4,
+              "z": 60,
+              "name": "Exit · Laboratory"
+            },
+            {
+              "x": 3,
+              "z": 12,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 5,
+              "z": 28,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Laboratory",
+          "mapId": 170,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 44,
+              "z": 2,
+              "name": "Exit · Orange path entrance"
+            },
+            {
+              "x": 30,
+              "z": 2,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 28,
+              "z": 157,
+              "name": "Passage A · other doorway"
+            },
+            {
+              "x": 13,
+              "z": 157,
+              "name": "Passage B · first doorway"
+            },
+            {
+              "x": 14,
+              "z": 2,
+              "name": "Passage B · other doorway"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eden",
+      "title": "Eden and the final decision",
+      "region": "The station",
+      "lead": "From the garden, follow Ryu’s trial and open the station’s last doors. If you saved at the final diary, take the ladder down from the save room.",
+      "hint": "Let Rei lead at a locked door in the garden. During Ryu’s trial, one statue asks for something you do by waiting.",
+      "steps": [
+        "Use Rei on the garden lock and take the lift to Eden. In the dream, follow the lighted paths and revisit the last figure or statue when a path ends.",
+        "When the statue asks you to bow, stand still in front of it. Finish the dream and prepare for the Dragon Lord when the party returns.",
+        "Pick up Card Key A and backtrack from the garden to the coloured-floor junction. Through the A door, use the lights over the passageways to recognise rooms you have visited.",
+        "Find the beds and diary before the final descent. Follow the projections to the platform. Accepting Myria’s shelter ends the journey there. Choosing your own path leads to the final battle."
+      ],
+      "tip": "Keep a diary file before the final conversation so you can return to the decision or play the other ending.",
+      "links": [
+        "station-keys",
+        "final-battle",
+        "diary"
+      ],
+      "art": "iii-woods",
+      "sources": [
+        "a4",
+        "hl",
+        "s41",
+        "s42",
+        "floor-names",
+        "floor-attrs",
+        "floor-exits"
+      ],
+      "landmarks": [
+        "Eden lift",
+        "The dream",
+        "Coloured junction",
+        "Last diary"
+      ],
+      "items": [
+        {
+          "name": "Card Key A",
+          "where": "After the dream",
+          "detail": "Bring it back to the coloured-floor junction to open the A door."
+        },
+        {
+          "name": "Silver Tiara",
+          "where": "Eden",
+          "detail": "Find the tree standing alone in a wall recess. Check behind it."
+        },
+        {
+          "name": "Shaman’s Ring",
+          "where": "Ryu’s dream",
+          "detail": "Ask the statue for the chest and avoid the poison spikes."
+        },
+        {
+          "name": "Cupid’s Lyre",
+          "where": "Last diary room",
+          "detail": "Take the north door to the bedroom and open the chest."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Eden",
+          "mapId": 172,
+          "section": 0
+        },
+        {
+          "name": "Path beyond the lobby lock",
+          "mapId": 173,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 22,
+              "z": 121,
+              "name": "Exit · Last diary and passage"
+            },
+            {
+              "x": 17,
+              "z": 97,
+              "name": "Exit · Final sector"
+            }
+          ]
+        },
+        {
+          "name": "Final sector",
+          "mapId": 174,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 51,
+              "z": 1,
+              "name": "Exit · Path beyond the lobby lock"
+            },
+            {
+              "x": 15,
+              "z": 39,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 14,
+              "z": 7,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Last diary and passage",
+          "mapId": 166,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 64,
+              "z": 7,
+              "name": "Last diary"
+            },
+            {
+              "x": 69,
+              "z": 9,
+              "name": "Exit · Path beyond the lobby lock"
+            },
+            {
+              "x": 8,
+              "z": 14,
+              "name": "Passage A · first doorway"
+            },
+            {
+              "x": 63,
+              "z": 13,
+              "name": "Passage A · other doorway"
+            }
+          ]
+        },
+        {
+          "name": "Final chamber",
+          "mapId": 198,
+          "section": 0
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Goo King",
+          "where": "Eden",
+          "detail": "Steal the Green Apple to prevent it fleeing. Its sword is a rare drop."
+        },
+        {
+          "name": "Dragon Lord",
+          "where": "After the dream",
+          "detail": "Use Pilfer or Steal for the Dragon Blade before finishing the battle."
+        },
+        {
+          "name": "Vampire",
+          "where": "Final passage",
+          "detail": "Examine for Frost or Triple Blow."
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "The Dragon Lord carries a Dragon Blade. Steal it before the encounter ends if you want the boss’s copy."
+      }
+    }
+  ],
+  "articles": [
+    {
+      "id": "field-view",
+      "title": "Reading an isometric room",
+      "category": "Exploration",
+      "lead": "A roof, a crate or the near wall can hide a perfectly reachable door.",
+      "sections": [
+        {
+          "title": "Look around a corner",
+          "text": "Hold the camera control and tilt the view. Try it beside the first village’s shops or a wall that appears to meet a dead end. Release it to return to the normal angle."
+        },
+        {
+          "title": "Give directions by landmarks",
+          "text": "Before you leave a room, pick the doorway, stream or set of stairs you arrived by. If a guide says to head left after you have moved the camera, return to the normal view first."
+        },
+        {
+          "title": "Small things worth checking",
+          "text": "Face a dresser, a bag or a roughly patched section of wall and use the game’s interact control. Field actions such as Ryu’s sword use their own control."
+        }
+      ],
+      "links": [
+        "mine",
+        "cedar",
+        "camp-notes"
+      ],
+      "art": "iii-mine",
+      "unlock": "mine",
+      "sources": [
+        "manual",
+        "s1",
+        "a1"
+      ]
+    },
+    {
+      "id": "camp-notes",
+      "title": "Camp, diaries and Skill Notes",
+      "category": "Camp & village",
+      "lead": "The journal in the tent holds several different tools. Saving and moving a learned skill are separate choices.",
+      "sections": [
+        {
+          "title": "Write an ordinary save",
+          "text": "Set up camp from the world map, enter the tent and use its journal. In some houses and inns you can use a diary directly. Choose a card and file, then let the write finish before exiting."
+        },
+        {
+          "title": "Change the travelling party",
+          "text": "Once you have spare companions, use the journal’s party option at camp. The party you take through the next door matters if a friend must operate a switch or a lock."
+        },
+        {
+          "title": "Pass a skill along",
+          "text": "Open Skill Notes at the journal to move a transferable skill to the character you want to use it. Have Skill Ink ready. A learned enemy skill can serve a different character later."
+        }
+      ],
+      "links": [
+        "diary",
+        "enemy-skills",
+        "cedar"
+      ],
+      "art": "iii-woods",
+      "unlock": "cedar",
+      "sources": [
+        "manual",
+        "s2",
+        "hl"
+      ]
+    },
+    {
+      "id": "enemy-skills",
+      "title": "Learning by watching",
+      "category": "Combat",
+      "lead": "Examine gives a party member a chance to learn certain enemy moves. Choose the enemy that performs the move.",
+      "sections": [
+        {
+          "title": "Try an Eye Goo",
+          "text": "In the early woods, leave an Eye Goo alive for a few rounds. Have one character Examine it while the others defend or heal. Snooze is one of the moves an Eye Goo can teach."
+        },
+        {
+          "title": "Give the move time",
+          "text": "The enemy must actually use the eligible skill while the learner is watching. A round spent on an ordinary attack teaches nothing. Try again before finishing the battle."
+        },
+        {
+          "title": "Choose a user",
+          "text": "Once someone learns a skill, look in their skill list. The camp journal and Skill Ink let you change who carries a transferable skill."
+        }
+      ],
+      "links": [
+        "camp-notes",
+        "cedar"
+      ],
+      "art": "iii-woods",
+      "unlock": "cedar",
+      "sources": [
+        "s2",
+        "qu",
+        "manual"
+      ]
+    },
+    {
+      "id": "fishing-tackle",
+      "title": "Rods, lures and Manillo",
+      "category": "Fishing",
+      "lead": "The same fishing spot can supply food, catch records and barter. What bites depends on the lure and where you cast.",
+      "sections": [
+        {
+          "title": "Make a first cast",
+          "text": "Buy a rod and lure at McNeil. Enter a fishing spot on the world map, open the tackle menu and equip both. Face the water and press cast again when the power bar shows the distance you want."
+        },
+        {
+          "title": "Land the catch",
+          "text": "Once a fish is hooked, keep the controllable green area over its marker while you reel. When it fights, follow the marker before trying to take in more line."
+        },
+        {
+          "title": "Coins have a different use",
+          "text": "A Coin works as a special lure at certain fishing spots. Hook the Manillo to open its shop. Prices are combinations of fish, so check the trade before selling or consuming a good catch."
+        }
+      ],
+      "links": [
+        "glaus",
+        "camp-notes"
+      ],
+      "art": "iii-port",
+      "unlock": "glaus",
+      "sources": [
+        "s-fishing",
+        "manual",
+        "r1"
+      ]
+    },
+    {
+      "id": "apprentices",
+      "title": "Choosing a first master",
+      "category": "Masters & companions",
+      "lead": "An apprenticeship can change the stats a character gains on their next levels and teach skills when they return to the master.",
+      "sections": [
+        {
+          "title": "Meet Mygas",
+          "text": "After the Nue, enter the little grove northwest of McNeil and look for Mygas at the tree stump. His fee is the money you currently carry. Do your shopping first if you want to control what the first lesson costs."
+        },
+        {
+          "title": "Level, then visit",
+          "text": "Choose a pupil before gaining the levels you want to count. Return to the teacher after levelling to collect earned skills. Keep an eye on the stat trade-offs while deciding how long to stay."
+        },
+        {
+          "title": "Teach the right person",
+          "text": "If the pupil earns a skill someone else needs, use Skill Notes and Skill Ink at camp. Character growth already gained under a master stays with that character."
+        }
+      ],
+      "links": [
+        "camp-notes",
+        "enemy-skills",
+        "mcneil-manor"
+      ],
+      "art": "iii-woods",
+      "unlock": "mcneil-manor",
+      "sources": [
+        "a-masters",
+        "s-masters",
+        "r2"
+      ]
+    },
+    {
+      "id": "wyndia-stones",
+      "title": "The catacomb inscriptions",
+      "category": "Puzzles",
+      "lead": "Seven short inscriptions supply the words for the final stone. A separate monument near the entrance rewards a little extra exploration.",
+      "sections": [
+        {
+          "title": "Find the inscriptions",
+          "text": "Check the stone near the rope ladder as well as the group near the entrance. You can read a small stone without deliberately pressing a coloured word."
+        },
+        {
+          "title": "Open the story route",
+          "text": "Find the uncoloured stone in the south, past the seventh small grave. Its sequence is Red, Climbing, I, Is, Look, Beneath, This. Take the drop and walk to the next opening in the floor."
+        },
+        {
+          "title": "If you dropped early",
+          "text": "A red switch on a small stone puts you near the furnaces. Take the ladder back up. To find the optional treasure, press the green choices on all seven small stones, then try the monument across the stone bridge."
+        }
+      ],
+      "links": [
+        "wyndia",
+        "field-view"
+      ],
+      "art": "iii-mine",
+      "unlock": "wyndia",
+      "sources": [
+        "s10",
+        "r3",
+        "a1"
+      ]
+    },
+    {
+      "id": "accession-field",
+      "title": "Accession in battle",
+      "category": "Dragon genes",
+      "lead": "Ryu’s Accession command lets you select up to three different genes. An elemental gene by itself makes a good first experiment.",
+      "sections": [
+        {
+          "title": "Start with one gene",
+          "text": "At Wyndia, try Flame by itself and inspect the whelp’s abilities. Fire damage helps on some targets and heals others. Keep Ryu’s ordinary attacks available by using Restore Form when the match is poor."
+        },
+        {
+          "title": "Budget for the fight",
+          "text": "The opening cost adds the costs of the selected genes. Remaining transformed also uses AP in later rounds. Leave a reserve for a second transformation or a spell if the enemy outlasts your first form."
+        },
+        {
+          "title": "Use the gene atlas",
+          "text": "Open Dragon genes, add a second specimen and compare the starting AP. Some combinations change the form itself. Read its abilities in battle before planning an entire encounter around a recipe."
+        }
+      ],
+      "links": [
+        "genes",
+        "flame",
+        "wyndia"
+      ],
+      "art": "flame",
+      "unlock": "wyndia",
+      "sources": [
+        "s-genes",
+        "isen",
+        "dk"
+      ]
+    },
+    {
+      "id": "field-actions",
+      "title": "Choosing who leads",
+      "category": "Exploration",
+      "lead": "The first person in line acts on the scenery. Changing that person also changes which tools you bring to a puzzle.",
+      "sections": [
+        {
+          "title": "Locks, plants and crystals",
+          "text": "Rei can pick certain locks. Ryu can cut small plants with his sword. In Momo’s tower, Nina’s magic activates crystals that ordinary interaction leaves dark."
+        },
+        {
+          "title": "Spot the right target",
+          "text": "A cracked wall or breakable obstruction may respond to Momo’s shot. Stand on the same level and line the shot up first. If the wall is clearly undamaged, look for a staircase or switch nearby."
+        },
+        {
+          "title": "Change leader or party",
+          "text": "Use the party-leader control to bring a travelling companion to the front. If the person you need is travelling separately, change the party at camp the next time you can reach it."
+        }
+      ],
+      "links": [
+        "momo-tower",
+        "field-view",
+        "camp-notes"
+      ],
+      "art": "highlands",
+      "unlock": "momo-tower",
+      "sources": [
+        "s13",
+        "r3",
+        "manual"
+      ]
+    },
+    {
+      "id": "formations",
+      "title": "Where the party stands",
+      "category": "Combat",
+      "lead": "The Tactics menu changes battle formation and who holds each position. Your strongest attacker may also need the most protection.",
+      "sections": [
+        {
+          "title": "Start in Normal",
+          "text": "Use Normal when meeting unfamiliar enemies. Check who is repeatedly taking hits before changing the line-up. Field leadership and battle position are separate choices."
+        },
+        {
+          "title": "Use the point of Attack",
+          "text": "Attack formation gives the front member more physical power and draws enemy attention there. Give that place to someone able to withstand hits. A fragile caster can stay behind them."
+        },
+        {
+          "title": "Make a fair comparison",
+          "text": "Try both formations against a familiar group with the same equipment. Watch incoming damage as well as the size of your own hits before taking the formation into a boss fight."
+        }
+      ],
+      "links": [
+        "enemy-skills",
+        "camp-notes",
+        "accession-field"
+      ],
+      "art": "highlands",
+      "unlock": "dump",
+      "sources": [
+        "manual",
+        "s2",
+        "dk"
+      ]
+    },
+    {
+      "id": "arena-rules",
+      "title": "The two tournament halls",
+      "category": "Combat",
+      "lead": "Genmel’s first two rounds reward different parties. Visit the desk in the correct hall when the team is ready.",
+      "sections": [
+        {
+          "title": "Hall of Fire",
+          "text": "Entrants fight in order. Beating a rider brings up the next opponent. Defeating the opposing Dodai ends the round at once, although it can take much more damage than a rider. Decide early where to spend your attacks."
+        },
+        {
+          "title": "Hall of Null Magic",
+          "text": "Bring enough healing items for three characters. Physical skills still work. Concentrate attacks on Emitai to disrupt his control of the golems, or remove the golems one at a time."
+        },
+        {
+          "title": "Between matches",
+          "text": "The contestant left with the brothers can be exchanged at their office. Rest, change the line-up and equip it before speaking to the next attendant."
+        }
+      ],
+      "links": [
+        "contest",
+        "formations",
+        "genes"
+      ],
+      "art": "highlands",
+      "unlock": "contest",
+      "sources": [
+        "s16",
+        "r4",
+        "a2"
+      ]
+    },
+    {
+      "id": "beyd-practice",
+      "title": "Training Beyd",
+      "category": "Masters & companions",
+      "lead": "This sparring partner improves according to what happens in a round. A quick knockout gives him very little practice.",
+      "sections": [
+        {
+          "title": "Build his staying power",
+          "text": "Give Beyd his equipment. Start with one light attacker and two companions who can wait or heal. Damage he survives increases his HP. Let him attack sometimes so his power can grow."
+        },
+        {
+          "title": "Train his guard",
+          "text": "Watch for Beyd’s defensive stance before sending several light hits. Hits taken while guarding build defence. End the session while you still control how much damage the next blow can do."
+        },
+        {
+          "title": "The public duel",
+          "text": "If Beyd can win alone, keep your party quiet. When Zig turns towards Shadis you have a short opening to intervene. Acting while he is looking at Beyd can cost the match."
+        }
+      ],
+      "links": [
+        "rhapala",
+        "formations"
+      ],
+      "art": "iii-port",
+      "unlock": "rhapala",
+      "sources": [
+        "s18",
+        "r5"
+      ]
+    },
+    {
+      "id": "lighthouse-gauge",
+      "title": "Starting the chrysm boiler",
+      "category": "Puzzles",
+      "lead": "Ignition uses a piece of Flame Chrysm for every attempt. Watch one full sweep before touching the lever.",
+      "sections": [
+        {
+          "title": "Load the hatch",
+          "text": "Go above the boiler to feed in the chrysm. You can find spare pieces in boxes in the small yard outside. If your supply is exhausted, buy Flame Chrysm in Rhapala."
+        },
+        {
+          "title": "Read the meter",
+          "text": "Follow the moving point up the arcs. Pull when it crosses the central red mark on the top line. Use the normal game speed while learning the timing."
+        },
+        {
+          "title": "Verify ignition",
+          "text": "A lit cable runs out of the boiler. Follow it and throw the next lever to carry power through the building. Return to the stairs for the climb to the beacon."
+        }
+      ],
+      "links": [
+        "lighthouse",
+        "flame",
+        "field-actions"
+      ],
+      "art": "flame",
+      "unlock": "lighthouse",
+      "sources": [
+        "s19",
+        "r5"
+      ]
+    },
+    {
+      "id": "faerie-homes",
+      "title": "The flower rings",
+      "category": "Camp & village",
+      "lead": "The tiara opens a passage wherever you find a faerie ring. The beach request and village management happen on different visits.",
+      "sections": [
+        {
+          "title": "Help at the beach",
+          "text": "During the first visit, speak to the faeries in the house. Walk to the jetty, inspect it and wait for night. Prepare Nina and Momo before accepting the wait."
+        },
+        {
+          "title": "Revisit later",
+          "text": "Once the village asks you to organise its work, assign enough hunters to keep food coming in. Give another faerie clearing work so there is room to build. Revisit after battles outside the village to see what has changed."
+        },
+        {
+          "title": "Read the aptitudes",
+          "text": "For basic jobs, red favours hunting and green favours clearing and building. Look at the food total and the available space before assigning a specialist to a shop."
+        }
+      ],
+      "links": [
+        "lighthouse",
+        "camp-notes"
+      ],
+      "art": "iii-woods",
+      "unlock": "lighthouse",
+      "sources": [
+        "s19",
+        "s-faeries",
+        "a-faeries"
+      ]
+    },
+    {
+      "id": "coastal-genes",
+      "title": "Where to find Frost and Thunder",
+      "category": "Dragon genes",
+      "lead": "Two short diversions before the lighthouse expand Ryu’s elemental choices. Put him in front to examine the purple chrysm.",
+      "sections": [
+        {
+          "title": "Frost at the gorge",
+          "text": "Visit the house at the north end of Maekyss Gorge. Search the ground outside it for Frost. The cold element is particularly useful when the journey reaches hot terrain."
+        },
+        {
+          "title": "Thunder by the sea",
+          "text": "North of Rhapala, enter the house location marked with a question mark on the world map. Walk round to the beach behind the building and turn the camera to see the crystal."
+        },
+        {
+          "title": "Compare the specimens",
+          "text": "Try each as a single selection in the atlas. Both cost 5 AP to enter alone. Carry an ordinary weapon as well so an elemental mismatch need not cost you another transformation."
+        }
+      ],
+      "links": [
+        "genes",
+        "frost",
+        "thunder",
+        "rhapala"
+      ],
+      "art": "frost",
+      "unlock": "rhapala",
+      "sources": [
+        "a-genes",
+        "isen",
+        "s-genes"
+      ]
+    },
+    {
+      "id": "railway-points",
+      "title": "The explosives wagon",
+      "category": "Puzzles",
+      "lead": "Level B2 has a useful optional stop for the wagon before you send it into the rockfall.",
+      "sections": [
+        {
+          "title": "Stop for the sword",
+          "text": "Count points from the wagon’s starting end. Put the nearest lever up and the second down. Have Garr push. The stopped wagon bridges the gap to the Feather Sword, approached from the southeast slope."
+        },
+        {
+          "title": "Send the wagon onward",
+          "text": "From the sword detour, put the second and third levers up and the furthest one down. Push until the wagon stops there. Throw that last lever up, then push the wagon east into the boulder."
+        },
+        {
+          "title": "Before the last push",
+          "text": "Use the nearby rest room if you need it. The explosion brings a boss to the tracks. Carry a way to revive an ally and plan for confusion."
+        }
+      ],
+      "links": [
+        "mine-return",
+        "camp-notes"
+      ],
+      "art": "iii-mine",
+      "unlock": "mine-return",
+      "sources": [
+        "s23",
+        "a2"
+      ]
+    },
+    {
+      "id": "fusion-forms",
+      "title": "Fusion and the travelling party",
+      "category": "Dragon genes",
+      "lead": "The Fusion gene draws on Ryu’s companions. It is the first time that changing travelling partners can change the result of the same gene choice.",
+      "sections": [
+        {
+          "title": "Find it",
+          "text": "The return to Dauna Mine awards Fusion with Shadow after the Dragon Zombie encounter. Look in Accession on the next suitable battle turn."
+        },
+        {
+          "title": "Try a different party",
+          "text": "Set up a regular battle with a saved party and test Fusion. After camp, try the same gene with a different pair. Look at the resulting form and its ability list. The gene alone does not identify which ally will shape a hybrid."
+        },
+        {
+          "title": "Use the atlas",
+          "text": "Keep the opening AP and possible hybrid separate when comparing recipes. A change of party can alter the latter without changing the selected gene."
+        }
+      ],
+      "links": [
+        "genes",
+        "accession-field",
+        "mine-return"
+      ],
+      "art": "gene-fusion",
+      "unlock": "mine-return",
+      "sources": [
+        "s23",
+        "s-genes",
+        "isen",
+        "dk"
+      ]
+    },
+    {
+      "id": "plant-passwords",
+      "title": "The four security terminals",
+      "category": "Puzzles",
+      "lead": "The underground Plant unlocks in numbered stages. Momo uses what you learn in the facility at the bank of consoles.",
+      "sections": [
+        {
+          "title": "Terminals 1 and 2",
+          "text": "Activate the first console with Momo. For the second, examine the onion specimen in the gas room, partly hidden by a duct. Its name is Repsol. Return to the consoles to enter it."
+        },
+        {
+          "title": "Terminal 3",
+          "text": "Pass through the level-two area and find the memo underneath the duct near the one-way belt. It supplies AA. Use the belt to get back towards the entrance and return to Momo’s consoles."
+        },
+        {
+          "title": "Terminal 4",
+          "text": "Read the five pressure units and the note about the inaccurate gauge. Unit 3 reads ten too low. In increasing pressure order the unit numbers are 1, 3, 2, 5, 4. Under Other, select that sequence."
+        }
+      ],
+      "links": [
+        "plant",
+        "field-actions"
+      ],
+      "art": "iii-mine",
+      "unlock": "plant",
+      "sources": [
+        "s27",
+        "r7",
+        "hl"
+      ]
+    },
+    {
+      "id": "tidal-crossing",
+      "title": "Waiting for low tide",
+      "category": "Exploration",
+      "lead": "The Tidal Caves have several doors into one water chamber. Approaching it from a different room can reveal a newly exposed ladder.",
+      "sections": [
+        {
+          "title": "Get below the waterline",
+          "text": "Leave the main chamber for the side passages. Listen for the rumble that signals a change and look at the ladders when you go back in. At low water descend to the lowest level."
+        },
+        {
+          "title": "Stay with the raft",
+          "text": "The raft serves multiple landings. Board it again from a landing to change which path you can reach. Use the passage out towards Cliff for the story. An optional crystal by an exterior ledge holds the Gross gene."
+        },
+        {
+          "title": "The duel at Cliff",
+          "text": "Give Ryu fire protection and a weapon that does not deal fire damage. Once Gaist has explained the challenge, talk to Garr outside and return between the braziers. Ryu fights alone."
+        }
+      ],
+      "links": [
+        "guardians",
+        "genes",
+        "accession-field"
+      ],
+      "art": "iii-port",
+      "unlock": "guardians",
+      "sources": [
+        "s29",
+        "r8",
+        "a3"
+      ]
+    },
+    {
+      "id": "shisu-kitchen",
+      "title": "Making shisu",
+      "category": "Fishing",
+      "lead": "Kimiko’s dish joins a fresh mackerel and a ball of Shaly seeds. The size of the fish changes the size you aim for.",
+      "sections": [
+        {
+          "title": "Lay in the ingredients",
+          "text": "Collect the seeds from the tree by Kimiko’s home using Peco. Land a mackerel at the fishing spot beside Maekyss Gorge. The seasoning comes from Ryu’s sword on Ogre Road and Garr’s bucket at the Coffee Shop."
+        },
+        {
+          "title": "Work the well",
+          "text": "Count the downward pulls until the bucket reaches water. Swing it left and right to fill it, then haul it back the same number of pulls. If it spills, start again with a steady tempo."
+        },
+        {
+          "title": "Serve the mayor",
+          "text": "Return to Kimiko before cooking. At Parch, use one fish, size the seed ball against its slice, add roughly a quarter as much vinegar as seeds and knead twice. The reward varies with the result. Ask the assistant afterwards."
+        }
+      ],
+      "links": [
+        "parch",
+        "fishing-tackle",
+        "field-actions"
+      ],
+      "art": "iii-port",
+      "unlock": "parch",
+      "sources": [
+        "s31",
+        "r8",
+        "a3"
+      ]
+    },
+    {
+      "id": "crane-cargo",
+      "title": "The Black Ship’s cargo crane",
+      "category": "Puzzles",
+      "lead": "The crane stays idle until you switch its control on elsewhere in the ship. Four small crates can fill the gap.",
+      "sections": [
+        {
+          "title": "Give it power",
+          "text": "At the moving-platform console, set the destination to P3, board it and use the terminal you reach. Return to the room across from the boarding entrance."
+        },
+        {
+          "title": "Line up the claw",
+          "text": "Watch the claw move in one direction before setting the second. Aim for the small wooden boxes. Larger stacks are landmarks for gauging depth. If a grab misses, line up again against the same stack."
+        },
+        {
+          "title": "Make the crossing",
+          "text": "Each successful lift adds a crate to the new walkway. When the bridge is complete, cross it on foot and use the door on the far side."
+        }
+      ],
+      "links": [
+        "black-ship",
+        "field-view"
+      ],
+      "art": "iii-port",
+      "unlock": "black-ship",
+      "sources": [
+        "r9",
+        "a3"
+      ]
+    },
+    {
+      "id": "relay-tuning",
+      "title": "Restarting the portal network",
+      "category": "Puzzles",
+      "lead": "Two different machines need your attention. The Colony redirects light. Relay Point A tunes a signal.",
+      "sections": [
+        {
+          "title": "Redirect the light",
+          "text": "Insert the key with Momo. From the mirrors’ original positions, turn the south reflector twice, the east reflector twice and the west reflector three times. Send the beam and check that it reaches the fuses. If you tried earlier, follow the beam rather than repeating the counts."
+        },
+        {
+          "title": "Tune the antenna",
+          "text": "Above Relay Point A, turn the aerial towards the northwest. Listen for the steady clear note and confirm where the static disappears. Return to the portal console below."
+        },
+        {
+          "title": "Choose a destination",
+          "text": "Dragnier continues the journey. Colony brings you to the far shore. Relay Point B reconnects Wyndia, while Container Yard gives early access to a chrysm deposit."
+        }
+      ],
+      "links": [
+        "colony",
+        "genes"
+      ],
+      "art": "iii-mine",
+      "unlock": "colony",
+      "sources": [
+        "s35",
+        "a4",
+        "r9"
+      ]
+    },
+    {
+      "id": "kaiser-control",
+      "title": "Keeping control of Kaiser",
+      "category": "Dragon genes",
+      "lead": "Infinity gives access to Kaiser. A controllable transformation takes a particular recipe.",
+      "sections": [
+        {
+          "title": "The elder’s gene",
+          "text": "Speak to Jono after his test beneath Dragnier. If Ryu uses Infinity by itself, Kaiser acts without your commands and can strike an ally."
+        },
+        {
+          "title": "Two controlled forms",
+          "text": "Infinity with Failure gives a weaker Kaiser that takes commands. Infinity with Trance and Radiance gives a controllable full-power Kaiser. The latter calls for three different discoveries."
+        },
+        {
+          "title": "Find the missing pieces",
+          "text": "Look for Failure in the Colony’s wreckage, Trance by the tree beyond Kombinat and Radiance at the Container Yard portal. Use the atlas to check opening AP before planning to hold the form through a boss fight."
+        }
+      ],
+      "links": [
+        "genes",
+        "accession-field",
+        "colony",
+        "dragnier"
+      ],
+      "art": "gene-infinity",
+      "unlock": "dragnier",
+      "sources": [
+        "s36",
+        "a-genes",
+        "isen",
+        "dk"
+      ]
+    },
+    {
+      "id": "workbot-floor",
+      "title": "Walking the Factory workbot",
+      "category": "Puzzles",
+      "lead": "The workbot copies your movement, but walls can stop one of you while the other keeps walking. Use that difference to line up a switch.",
+      "sections": [
+        {
+          "title": "Set up a run",
+          "text": "Raise the platform in the stairs, reach the stage and use its console. Study where the robot stands in relation to the row of three levers. Reset at the console to start from a known position."
+        },
+        {
+          "title": "Reach the middle lever",
+          "text": "From reset, move one tile southwest, three southeast and three northwest. Watch the robot at the middle lever and use your field action. Reset and use the ledges as stops to line it up with the other two."
+        },
+        {
+          "title": "Open the last door",
+          "text": "Once the three floor panels are safe, climb the eastern ladder and take the upper walkway to the north door. At the last locked door, shoot the yellow panel beside it with Momo."
+        }
+      ],
+      "links": [
+        "factory",
+        "field-actions"
+      ],
+      "art": "iii-mine",
+      "unlock": "factory",
+      "sources": [
+        "s37",
+        "a4"
+      ]
+    },
+    {
+      "id": "desert-stars",
+      "title": "Crossing by the stars",
+      "category": "Exploration",
+      "lead": "Look for the fixed North Star before moving. The route to Oasis has two northbound stretches separated by one eastbound stretch.",
+      "sections": [
+        {
+          "title": "Read the sky",
+          "text": "The true North Star holds its place. A second point farther right can lead you astray. From true north, four taps right turn you east. The Evening Star should then be behind you."
+        },
+        {
+          "title": "Mark the two turns",
+          "text": "Set out north for two complete nights. Walk east until the Evening Star sinks out of sight. Turn back north for the last leg. The US directions around the Evening Star are misleading. Following it west misses Oasis."
+        },
+        {
+          "title": "Recover a bearing",
+          "text": "Camp in daylight, drink from the Water Jug when thirsty and check the stars after every interruption. If you have lost the route or run short of water, the rakda can carry you back from camp."
+        }
+      ],
+      "links": [
+        "desert",
+        "camp-notes"
+      ],
+      "art": "iii-desert",
+      "unlock": "desert",
+      "sources": [
+        "s38",
+        "r10",
+        "dk"
+      ]
+    },
+    {
+      "id": "station-keys",
+      "title": "Doors and cards at Myria Station",
+      "category": "Exploration",
+      "lead": "Card doors in the final station make more sense if you keep the workers’ quarters as your point of reference.",
+      "sections": [
+        {
+          "title": "First return trip",
+          "text": "Follow the laboratory route and disable the gas over the specimen before crossing the electric grid. Chimera guards Card Key B. The nearby lift leads down to Momo’s HE Shells, which help clear obstructing plants."
+        },
+        {
+          "title": "Through the garden",
+          "text": "Bring Rei to open the lock on the garden route and Momo for the plant growth. Their field actions open different obstacles. Return to the quarters to change companions if a route stays blocked."
+        }
+      ],
+      "links": [
+        "myria-lab",
+        "field-actions",
+        "camp-notes"
+      ],
+      "art": "iii-mine",
+      "unlock": "myria-lab",
+      "sources": [
+        "s40",
+        "a4",
+        "hl"
+      ]
+    },
+    {
+      "id": "final-battle",
+      "title": "Before the last conversation",
+      "category": "Combat",
+      "lead": "The station’s last bedroom and diary give you a good place to prepare a party and keep the choice open.",
+      "sections": [
+        {
+          "title": "Keep a way back",
+          "text": "Use the diary in the final complex and rest in the beds beside it. Before leaving for the platform, check AP, revival items and whether more than one party member can treat status effects."
+        },
+        {
+          "title": "Two answers",
+          "text": "After the projections, speak to Myria on the platform. Giving up the power ends this journey without fighting her. Choosing a future outside her protection leads to a party selection and the final battle."
+        },
+        {
+          "title": "During the fight",
+          "text": "Venom can leave several allies poisoned, blind or confused. Give a reliable healer protection against disabling effects and keep cures on a second character. Sanctuary can remove support magic. Reapply only what the party needs and keep healing AP for the long fight."
+        }
+      ],
+      "links": [
+        "eden",
+        "diary",
+        "accession-field",
+        "formations"
+      ],
+      "art": "highlands",
+      "unlock": "eden",
+      "sources": [
+        "qu",
+        "boss",
+        "a4"
+      ]
+    }
+  ]
+}

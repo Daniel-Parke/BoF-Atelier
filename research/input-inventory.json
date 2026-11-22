@@ -1,0 +1,58 @@
+[
+  {
+    "game": "bof3",
+    "entries": [
+      {
+        "name": "Breath of Fire III (USA)/Breath of Fire III (USA) (Track 1).bin",
+        "kit_path": "private/games/bof3/Breath of Fire III (USA)/Breath of Fire III (USA) (Track 1).bin",
+        "size": 442938048,
+        "sha256": "94835d58c8b19c39b551039010ee9669861f1421958002b2f6927bb2d50f2f55"
+      },
+      {
+        "name": "Breath of Fire III (USA)/Breath of Fire III (USA) (Track 2).bin",
+        "kit_path": "private/games/bof3/Breath of Fire III (USA)/Breath of Fire III (USA) (Track 2).bin",
+        "size": 37396800,
+        "sha256": "ce5509fad13f6210656c9d29fb536b47abe5f824467177652c91b5c500470c77"
+      },
+      {
+        "name": "Breath of Fire III (USA)/Breath of Fire III (USA).cue",
+        "kit_path": "private/games/bof3/Breath of Fire III (USA)/Breath of Fire III (USA).cue",
+        "size": 218,
+        "sha256": "999ea6b59dcd7834e41de6d57b511e60d389bfc8125c0bd34ac4311dcfc4f11f"
+      }
+    ],
+    "working_cue": {
+      "path": "private/games/bof3/Breath of Fire III (USA)/Breath of Fire III (USA).cue",
+      "sha256": "999ea6b59dcd7834e41de6d57b511e60d389bfc8125c0bd34ac4311dcfc4f11f"
+    },
+    "disc_inspection": {
+      "serial_from_system_cnf": "SLUS-00422",
+      "executable_sha256": "0af39fb1ffcf25e4bdf2730173f397b5b5f6c44989114fe9b59b92ab7c0eb21a"
+    }
+  },
+  {
+    "game": "bof4",
+    "entries": [
+      {
+        "name": "Breath of Fire IV [U] [SLUS-01324]/breath of fire 4.bin",
+        "kit_path": "private/games/bof4/Breath of Fire IV [U] [SLUS-01324]/breath of fire 4.bin",
+        "size": 688315152,
+        "sha256": "0e8e4285f58a4be91cd7227ecd72ea59785f447a1a57b8b7daed48b5e857a0fa"
+      },
+      {
+        "name": "Breath of Fire IV [U] [SLUS-01324]/breath of fire 4.cue",
+        "kit_path": "private/games/bof4/Breath of Fire IV [U] [SLUS-01324]/breath of fire 4.cue",
+        "size": 404,
+        "sha256": "edf89aba440e76ddba9d4a2b0f3ca8ea63614a84f817008418ff45326aa1dc7c"
+      }
+    ],
+    "working_cue": {
+      "path": "private/games/bof4/Breath of Fire IV [U] [SLUS-01324]/Breath of Fire IV - filename-fixed.cue",
+      "sha256": "425ded4886d91166ae3b6a84cae65909fe548c51791f69b9b06536a5d1a917a8"
+    },
+    "disc_inspection": {
+      "serial_from_system_cnf": "SLUS-01324",
+      "executable_sha256": "0f85a9fc4796279024b508f6a37bc5b8ed24a90bcdaa2e2e2fdcbaa0e8b93c95"
+    }
+  }
+]

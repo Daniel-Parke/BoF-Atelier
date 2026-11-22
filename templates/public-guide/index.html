@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="An illustrated offline walkthrough and field wiki for Breath of Fire III and IV.">
+  <title>Field Guide · BoF Atelier</title>
+  <style>{{GUIDE_ART}}</style>
+  <style>{{GUIDE_CSS}}</style>
+</head>
+<body>
+  <template id="software-licence">{{GUIDE_NOTICE}}</template>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="mast">
+    <div class="mast-inner">
+      <a class="imprint" id="imprint" href="#bof3" aria-label="BoF Atelier Field Guide home">
+        <span class="seal" aria-hidden="true"><i></i></span>
+        <span>BoF <em>Atelier</em></span>
+      </a>
+      <span class="mast-title">Field Guide</span>
+      <nav class="volume-switch" aria-label="Choose a game">
+        <a href="#bof3" data-volume="bof3" aria-label="Breath of Fire III">III</a>
+        <a href="#bof4" data-volume="bof4" aria-label="Breath of Fire IV">IV</a>
+      </nav>
+    </div>
+  </header>
+  <div class="utility">
+    <div class="utility-inner">
+      <nav class="book-nav" aria-label="Volume navigation" id="book-nav"></nav>
+      <form role="search" id="search" class="search">
+        <label class="sr" for="query">Search this volume</label>
+        <input type="search" id="query" name="q" placeholder="Search this volume" maxlength="140">
+        <button type="submit" aria-label="Search"><i class="lens" aria-hidden="true"></i></button>
+      </form>
+    </div>
+  </div>
+  <main id="main" tabindex="-1"><noscript><h1>BoF Atelier Field Guide</h1><p>Enable JavaScript to read and search the two bundled volumes. The guide works offline.</p></noscript></main>
+  <footer class="colophon">
+    <span>BoF <em>Atelier</em></span>
+    <span>Unofficial companion to Breath of Fire III &amp; IV</span>
+    <a id="download-guide" href="./index.html" download="BoF-Atelier-Field-Guide.html" hidden>Download for offline reading</a>
+    <details class="credits">
+      <summary>Credits and reuse</summary>
+      <p>Original guide text and Chrysm illustrations by BoF Atelier contributors, licensed under
+        <a href="https://creativecommons.org/licenses/by/4.0/" rel="noreferrer">Creative Commons Attribution 4.0</a>.
+        The reader code uses the MIT licence. Capcom, Sony and other rights holders retain their respective marks and works.</p>
+    </details>
+  </footer>
+  <script type="application/json" id="guide-data">{{GUIDE_DATA}}</script>
+  <script>{{GUIDE_JS}}</script>
+</body>
+</html>

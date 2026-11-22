@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Proposed edition profile v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "game",
+    "edition",
+    "status",
+    "base_source_sha256",
+    "backend",
+    "packs",
+    "data_root_relative",
+    "provider_use_allowed"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string"
+    },
+    "game": {
+      "enum": [
+        "bof3",
+        "bof4"
+      ]
+    },
+    "edition": {
+      "enum": [
+        "original",
+        "enhanced",
+        "personal"
+      ]
+    },
+    "status": {
+      "enum": [
+        "design-only",
+        "resolved",
+        "tested"
+      ]
+    },
+    "base_source_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "backend": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "binary_sha256"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "binary_sha256": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "packs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version",
+          "sha256"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "data_root_relative": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provider_use_allowed": {
+      "const": false
+    }
+  }
+}

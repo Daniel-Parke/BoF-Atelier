@@ -1,0 +1,2 @@
+# Optional downloader only; review and lock the resolved version for production.
+httpx>=0.27,<1.0

@@ -1,0 +1,1 @@
+"""BoF Atelier desktop experience."""

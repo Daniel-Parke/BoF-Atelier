@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "id": "bof3-original-design",
+  "game": "bof3",
+  "edition": "original",
+  "status": "design-only",
+  "base_source_sha256": "94835d58c8b19c39b551039010ee9669861f1421958002b2f6927bb2d50f2f55",
+  "backend": {
+    "id": "duckstation-external",
+    "version": null,
+    "binary_sha256": null
+  },
+  "packs": [],
+  "data_root_relative": "profile-data/bof3-original",
+  "provider_use_allowed": false
+}

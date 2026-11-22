@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "backend": "duckstation-external",
+  "runtime_version": null,
+  "game": "bof3",
+  "capabilities": [
+    {
+      "id": "launch.disc-image",
+      "status": "documented",
+      "source": "S02",
+      "local_test": null
+    },
+    {
+      "id": "launch.fullscreen",
+      "status": "documented",
+      "source": "S02",
+      "local_test": null
+    },
+    {
+      "id": "pause.acknowledged-control-api",
+      "status": "unverified",
+      "source": null,
+      "local_test": null
+    },
+    {
+      "id": "assets.game-specific-replacement",
+      "status": "unverified",
+      "source": "S04",
+      "local_test": null
+    },
+    {
+      "id": "audio.synchronised-replacement",
+      "status": "unverified",
+      "source": null,
+      "local_test": null
+    }
+  ]
+}

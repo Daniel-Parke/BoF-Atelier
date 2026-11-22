@@ -1,0 +1,32 @@
+{
+  "schema_version": 2,
+  "id": "atelier.bof3.integer-scaling",
+  "version": "1.0.0",
+  "title": "Nearest integer scaling",
+  "game": "bof3",
+  "status": "experimental",
+  "classification": "presentation",
+  "supported_game_fingerprints": [
+    "1d97aa04983896b88ef1cf1cb55f7e1373a03e6fc893d7a1860e2c3d4c8e083e"
+  ],
+  "required_capabilities": [
+    "display.scaling"
+  ],
+  "dependencies": [],
+  "conflicts": [],
+  "save_impact": "session-only",
+  "operations": [
+    {
+      "kind": "config-option",
+      "target": "display.scaling",
+      "option_value": "NearestInteger",
+      "expected_input_sha256": "97ce336548d441151509b8a732dd65b8d45335ce373aaa09c62b0a6330c8922e",
+      "expected_output_sha256": "0442be363db19b9df9a588293783c80c0d956f6a40346b8d1a22e93c93be8fd5"
+    }
+  ],
+  "rights": {
+    "author": "BoF Atelier",
+    "basis": "Locally authored option selection",
+    "publication_status": "private-only"
+  }
+}

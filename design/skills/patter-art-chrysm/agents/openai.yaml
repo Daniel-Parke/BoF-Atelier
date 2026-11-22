@@ -1,0 +1,5 @@
+interface:
+  display_name: "patter_art_chrysm"
+  short_description: "Illustrate landscapes and specimens in Chrysm"
+  brand_color: "#285640"
+  default_prompt: "Use $patter-art-chrysm to illustrate a new field guide plate in the approved Chrysm style."

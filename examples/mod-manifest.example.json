@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "id": "example.iii.presentation-study",
+  "version": "0.0.1-draft",
+  "title": "Inert III presentation-pack contract example",
+  "game": "bof3",
+  "status": "draft",
+  "classification": "research",
+  "supported_source_sha256": [
+    "94835d58c8b19c39b551039010ee9669861f1421958002b2f6927bb2d50f2f55"
+  ],
+  "required_capabilities": [],
+  "dependencies": [],
+  "conflicts": [],
+  "save_impact": "unknown",
+  "operations": [],
+  "rights": {
+    "author": "Project owner \u2014 to be confirmed",
+    "basis": "Schema example only. No third-party content or executable patch supplied.",
+    "publication_status": "not-reviewed"
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Proposed asset provenance v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "game",
+    "source_type",
+    "source_sha256",
+    "output_sha256",
+    "tools",
+    "references",
+    "cost",
+    "art_review",
+    "distribution"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string"
+    },
+    "game": {
+      "enum": [
+        "bof3",
+        "bof4"
+      ]
+    },
+    "source_type": {
+      "enum": [
+        "user-game-data",
+        "original-created",
+        "licensed-third-party",
+        "generated"
+      ]
+    },
+    "source_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "output_sha256": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "version"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "cost": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "amount",
+        "currency",
+        "authorised"
+      ],
+      "properties": {
+        "amount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "currency": {
+          "type": "string"
+        },
+        "authorised": {
+          "type": "boolean"
+        }
+      }
+    },
+    "art_review": {
+      "enum": [
+        "not-started",
+        "rejected",
+        "approved-in-preview",
+        "approved-in-game"
+      ]
+    },
+    "distribution": {
+      "enum": [
+        "not-reviewed",
+        "private-only",
+        "cleared-for-described-use"
+      ]
+    }
+  }
+}

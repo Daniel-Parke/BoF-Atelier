@@ -1,0 +1,5028 @@
+{
+  "game": "bof4",
+  "version": 1,
+  "sources": {
+    "manual": {
+      "title": "Capcom · North American PlayStation instruction booklet, pp. 8–23",
+      "kind": "print"
+    },
+    "prima": {
+      "title": "John Shivers and Jason Young · Prima’s Official Strategy Guide, route maps and battle reference",
+      "kind": "print"
+    },
+    "deh1": {
+      "title": "DEH Designs · The Awakening, field and encounter notes",
+      "url": "https://www.dehdesigns.com/bof_iv/pages/walkthrough.php"
+    },
+    "deh2": {
+      "title": "DEH Designs · The Endless, field and encounter notes",
+      "url": "https://www.dehdesigns.com/bof_iv/pages/walkthrough_chp2.php"
+    },
+    "dalez": {
+      "title": "Dalez · PlayStation walkthrough and reference tables",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/9877"
+    },
+    "dxie": {
+      "title": "DXie · PlayStation field route and mini-games",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/10199"
+    },
+    "billy": {
+      "title": "Billy Lee · PlayStation walkthrough and side activities",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/9833"
+    },
+    "angel": {
+      "title": "Angelwingnl · PlayStation walkthrough with field and dungeon maps",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/9914"
+    },
+    "tricro": {
+      "title": "Tricrokra · PlayStation route and optional encounters",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/47149"
+    },
+    "rx1": {
+      "title": "RealXaenith · Sandflier Crash through the Golden Plains",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/73540"
+    },
+    "rx2": {
+      "title": "RealXaenith · Ludia, Wyndia, Chek and the Sanctum",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/73540?page=1"
+    },
+    "rx3": {
+      "title": "RealXaenith · Mt. Ryft, Shyde and the sea crossing",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/73540?page=2"
+    },
+    "rx4": {
+      "title": "RealXaenith · Lyp, Chiqua and the Tomb",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/73540?page=3"
+    },
+    "fish": {
+      "title": "AlaskaFox · PlayStation Fishing FAQ",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/13679"
+    },
+    "raiu": {
+      "title": "Raiu · Dragon Guide and transformation tests",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/9928"
+    },
+    "almar": {
+      "title": "Almar · Masters, apprenticeship requirements and lessons",
+      "url": "https://almarsguides.com/retro/walkthroughs/ps1/games/breathoffireiv/masters/"
+    },
+    "slivers": {
+      "title": "slivers7 · Enemy and Information Guide, including treasure exchanges",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/12971"
+    },
+    "faeries": {
+      "title": "gemelog · Faerie Colony jobs and food",
+      "url": "https://gemelog.jp/en/games/breath-of-fire-4/fairy/"
+    },
+    "combos": {
+      "title": "gemelog · Skills and Combos",
+      "url": "https://gemelog.jp/en/games/breath-of-fire-4/skills/"
+    },
+    "manillo": {
+      "title": "gemelog · Fishing and Manillo trading",
+      "url": "https://gemelog.jp/en/games/breath-of-fire-4/fishing/"
+    },
+    "western": {
+      "title": "Breath of Fire 4 · PlayStation playthrough, second half with location timestamps",
+      "url": "https://www.youtube.com/watch?v=_2MeftdMPAQ"
+    },
+    "eastern": {
+      "title": "Breath of Fire 4 · PlayStation playthrough, first half with location timestamps",
+      "url": "https://www.youtube.com/watch?v=rGAjRYXHsZI"
+    },
+    "sanctumFilm": {
+      "title": "Sanctum and Soma · PlayStation walkthrough, episode 42",
+      "url": "https://www.youtube.com/watch?v=GEhxdv_JnWE"
+    },
+    "routeRun": {
+      "title": "1 Bot Battle · PlayStation route and puzzle notes",
+      "url": "https://www.speedrun.com/bof4/guides/1c4wh"
+    },
+    "drawers": {
+      "title": "mev1978 · Dresser and treasure locations on PlayStation",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/80045"
+    },
+    "evocationMap": {
+      "title": "Almar · Dragon summoning locations and field maps",
+      "url": "https://almarsguides.com/retro/walkthroughs/ps1/games/breathoffireiv/dragonlocations/"
+    },
+    "crystalMap": {
+      "title": "Almar · Dragon gem locations and screenshots",
+      "url": "https://almarsguides.com/retro/walkthroughs/ps1/games/breathoffireiv/dragongemlocations/"
+    },
+    "saldineFilm": {
+      "title": "Saldine Tidal Flats · Earth Gem and Fou-Lu gameplay recording",
+      "url": "https://www.youtube.com/watch?v=fukoahd7Ku8"
+    },
+    "growth": {
+      "title": "BoF IV recompilation project · US master and growth table definitions",
+      "url": "https://github.com/plaught-armor/bof4-recomp/blob/c6ad1cf27a2638870a20571da13db68bc5f7193d/port/src/qol/balance.odin"
+    },
+    "masterMap": {
+      "title": "gemelog · The twelve masters, locations and challenges",
+      "url": "https://gemelog.jp/en/games/breath-of-fire-4/masters/"
+    },
+    "ridge": {
+      "title": "Billy Lee · Kurok ridge and the western forks",
+      "url": "https://gamefaqs.gamespot.com/ps/196818-breath-of-fire-iv/faqs/9833"
+    },
+    "field-layout": {
+      "title": "US PlayStation field geometry and collision layers · BOF4 recompilation project",
+      "url": "https://github.com/plaught-armor/bof4-recomp/blob/c6ad1cf27a2638870a20571da13db68bc5f7193d/docs/field.md"
+    }
+  },
+  "route": [
+    {
+      "id": "crash",
+      "title": "The sandflier wreck",
+      "region": "Chapter I · North Desert",
+      "lead": "Find a way to repair the craft and give Cray a place to wait.",
+      "hint": "Leave the wreck as Nina. The first lead is on the road to Sarai.",
+      "steps": [
+        "Speak with Cray beside the damaged sandflier. He stays with the craft while Nina looks for parts.",
+        "Walk off the edge of the crash site to reach the world map. Follow the road south and enter the exclamation mark.",
+        "At the crater, approach the figure below. Let the scene finish before setting off with Ryu."
+      ],
+      "tip": "The wreck and crater are story scenes. After Nina meets Ryu, the Cliff is the first route with regular encounters.",
+      "links": [
+        "camp-and-card",
+        "field-actions"
+      ],
+      "art": "iv-wreck",
+      "sources": [
+        "deh1",
+        "rx1",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Wreck",
+        "Desert road",
+        "Crater"
+      ],
+      "map": {
+        "title": "Crash site and crater",
+        "points": [
+          {
+            "name": "Wreck",
+            "x": 21,
+            "y": 26,
+            "note": "Speak to Cray at the damaged sandflier."
+          },
+          {
+            "name": "Desert road",
+            "x": 48,
+            "y": 46,
+            "note": "Leave the site and take the dotted road south."
+          },
+          {
+            "name": "Event marker",
+            "x": 50,
+            "y": 73,
+            "note": "Enter at the exclamation mark."
+          },
+          {
+            "name": "Crater floor",
+            "x": 81,
+            "y": 81,
+            "note": "Approach the figure below."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      "lore": "Cray and Nina were already looking for someone when the sandflier came down. Their destination was Synesta, the last place anyone had seen Nina’s sister Elina.",
+      "items": [
+        {
+          "name": "King’s Sword",
+          "where": "Sandflier wreck",
+          "detail": "Cray hands it to Nina. It passes to Ryu after the crater scene."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Crash site",
+          "mapId": 2063,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 17,
+              "z": 13,
+              "name": "Arrival from the world map"
+            },
+            {
+              "x": 2,
+              "z": 1,
+              "name": "World map"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "north-desert",
+      "title": "North Desert and the Cliff",
+      "region": "Chapter I · North Desert",
+      "lead": "An ordinary world-map save can bring you back here before the first town.",
+      "hint": "If Nina is travelling alone, follow the marked road from Crash to the crater. Once Ryu is with her, look for the Cliff.",
+      "steps": [
+        "Loading a file labelled North Desert places you on the world map. Enter Crash to revisit the wreck, or continue along the dotted road. You can save again in camp.",
+        "Enter the Cliff. Follow the ledge through the rock arch, then cross the plank and jump the small gaps.",
+        "After the ledge gives way, take the cave entrance. The viewpoint changes while the two travellers shelter."
+      ],
+      "tip": "Rotate the camera at the arch. A short branch leads to Ammonia, a useful early revival item.",
+      "links": [
+        "crash",
+        "camp-and-card",
+        "field-actions"
+      ],
+      "art": "sandsea",
+      "sources": [
+        "rx1",
+        "dxie",
+        "eastern",
+        "deh1",
+        "field-layout"
+      ],
+      "landmarks": [
+        "World map",
+        "Cliff ledge",
+        "Shelter"
+      ],
+      "items": [
+        {
+          "name": "Ammonia",
+          "where": "Cliff arch",
+          "detail": "Rotate the camera to see the side ledge."
+        }
+      ],
+      "map": {
+        "title": "The Cliff",
+        "points": [
+          {
+            "name": "Ledge",
+            "x": 14,
+            "y": 49,
+            "note": "Follow the ledge to the stone arch."
+          },
+          {
+            "name": "Rock arch",
+            "x": 40,
+            "y": 49,
+            "note": "Rotate the view here to see the branch."
+          },
+          {
+            "name": "Side ledge",
+            "x": 54,
+            "y": 21,
+            "note": "Search for Ammonia before continuing."
+          },
+          {
+            "name": "Plank crossing",
+            "x": 66,
+            "y": 62,
+            "note": "Cross the plank and follow the gaps."
+          },
+          {
+            "name": "Shelter",
+            "x": 87,
+            "y": 79,
+            "note": "Enter the cave when the ledge gives way."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            3,
+            4
+          ]
+        ]
+      },
+      "lore": "Ryu’s first sword came from Cray. He gave it to Nina at the wreck, and she passed it to Ryu after they climbed out of the crater.",
+      "encounters": [
+        {
+          "name": "Eye Goo",
+          "where": "Cliff · 150 HP",
+          "detail": "Watch for Rest."
+        },
+        {
+          "name": "Mage Goo",
+          "where": "Cliff · 200 HP",
+          "detail": "Watch for Burn."
+        },
+        {
+          "name": "Cap",
+          "where": "Cliff · 170 HP",
+          "detail": "7 EXP and 8 zenny."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Cliff · entrance ledges",
+          "mapId": 1044,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 18,
+              "z": 10,
+              "name": "Cave entrance"
+            },
+            {
+              "x": 40,
+              "z": 1,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Cliff · collapsed ledge",
+          "mapId": 1044,
+          "section": 2,
+          "landmarks": [
+            {
+              "x": 18,
+              "z": 10,
+              "name": "Cave shelter"
+            },
+            {
+              "x": 4,
+              "z": 3,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Cave shelter",
+          "mapId": 1044,
+          "section": 3,
+          "landmarks": [
+            {
+              "x": 0,
+              "z": 2,
+              "name": "Back to the Cliff"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tomb",
+      "title": "The emperor’s awakening",
+      "region": "Chapter I · Imperial Tomb",
+      "lead": "For a while, you travel alone on the far side of the world.",
+      "hint": "Follow Fou-Lu out of the burial chamber and into the woods.",
+      "steps": [
+        "Leave the tomb and pass its guardian, Won-qu. Follow the path across the gaps to the world map.",
+        "Enter the marked road and continue until Yohm bars the way with Kham. Open Fou-Lu’s Abilities and choose Meditate to try Astral.",
+        "Beyond the fight, follow the path to the bridge. When the story returns to the Cliff, leave for Sarai with Ryu and Nina."
+      ],
+      "tip": "The brief changes of protagonist are part of one campaign. You do not need to start a second save.",
+      "links": [
+        "fou-lu-forms",
+        "camp-and-card"
+      ],
+      "art": "iv-tomb",
+      "sources": [
+        "prima",
+        "rx1",
+        "raiu",
+        "deh1",
+        "field-layout",
+        "drawers"
+      ],
+      "landmarks": [
+        "Tomb grounds",
+        "Marked road",
+        "Bridge"
+      ],
+      "encounters": [
+        {
+          "name": "Kham",
+          "where": "Yohm’s roadblock",
+          "detail": "Use Meditate to change into Astral. Frost Strike is effective against the summon."
+        },
+        {
+          "name": "Zaurus",
+          "where": "Zhinga Mountains",
+          "detail": "Fou-Lu encounters these large beasts on the road beyond his tomb."
+        }
+      ],
+      "lore": "The guardian at the tomb is Won-qu. Fou-Lu leaves him at the entrance while he investigates why nobody has come to greet him.",
+      "map": {
+        "title": "The emperor’s road",
+        "points": [
+          {
+            "name": "Guardian",
+            "x": 11,
+            "y": 52,
+            "note": "Leave Won-qu at the entrance."
+          },
+          {
+            "name": "First stair",
+            "x": 32,
+            "y": 44,
+            "note": "Descend to the chest detour."
+          },
+          {
+            "name": "Ambrosia chest",
+            "x": 34,
+            "y": 15,
+            "note": "Look northwest after the first flight of stairs."
+          },
+          {
+            "name": "Marked road",
+            "x": 56,
+            "y": 70,
+            "note": "Leave the grounds and take the road on the world map."
+          },
+          {
+            "name": "Yohm",
+            "x": 76,
+            "y": 43,
+            "note": "Prepare for his summoned beast."
+          },
+          {
+            "name": "Bridge",
+            "x": 90,
+            "y": 71,
+            "note": "Follow the path after the battle."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      },
+      "floors": [
+        {
+          "name": "Tomb · outer path",
+          "mapId": 1042,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 6,
+              "z": 18,
+              "name": "World map"
+            },
+            {
+              "x": 64,
+              "z": 14,
+              "name": "Inner grounds"
+            }
+          ]
+        },
+        {
+          "name": "Tomb · inner grounds",
+          "mapId": 1141,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 28,
+              "name": "Tomb · outer path"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Ambrosia",
+          "where": "Tomb grounds",
+          "detail": "Look northwest from Won-qu after descending the first stairs. The chest sits off the route out."
+        },
+        {
+          "name": "Wisdom Fruit",
+          "where": "Tomb grounds",
+          "detail": "Take the side path through the trees before leaving the grounds."
+        }
+      ],
+      "warning": {
+        "label": "Shared chests · separate inventories",
+        "text": "Fou-Lu keeps what he takes. If you want the Wisdom Fruit and Ambrosia for Ryu on his later visit, leave the bag and chest closed."
+      }
+    },
+    {
+      "id": "sarai",
+      "title": "Sarai and the salvage yard",
+      "region": "Chapter I · North Desert",
+      "lead": "Follow the trail of a merchant who knows where old sandfliers are taken apart.",
+      "hint": "The tavern, the broker and the merchant on the road each know a different part of the story.",
+      "steps": [
+        "In Sarai, buy something for the hungry man at the bar. Find the broker outside and pay him for the merchant’s whereabouts.",
+        "Visit the question mark between Sarai and the Cliff, then return to the tavern to learn about Sandflier Valley.",
+        "In the valley, reposition the suspended paths with their wheels. Use the winch and ride the anchor into the salvage yard. Hire the dog and shovel, then dig where its barking is strongest.",
+        "Return to the inn in Sarai with the parts. Nina fights Joh alone. Afterwards the route to Cray takes a detour through Chamba."
+      ],
+      "tip": "Before leaving the bar, the man selling a Lead Ball can start a long optional exchange.",
+      "links": [
+        "treasure-exchange",
+        "learning-skills",
+        "sarai-salvage"
+      ],
+      "art": "iv-wreck",
+      "sources": [
+        "deh1",
+        "eastern",
+        "dxie",
+        "drawers",
+        "angel",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Sarai tavern",
+        "Merchant’s road",
+        "Salvage yard",
+        "The inn"
+      ],
+      "items": [
+        {
+          "name": "Lead Ball",
+          "where": "Sarai tavern",
+          "detail": "Buy from the patron to start the optional exchange."
+        },
+        {
+          "name": "Ship Parts",
+          "where": "Salvage yard",
+          "detail": "Dig where the hired dog barks loudest."
+        },
+        {
+          "name": "40 zenny",
+          "where": "Tavern",
+          "detail": "Search the shelving behind the bar before digging up the Ship Parts."
+        },
+        {
+          "name": "Power Food",
+          "where": "Dealer’s room",
+          "detail": "Enter from behind the bar. Search the dresser opposite the sandflier dealer."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Joh",
+          "where": "Sarai inn",
+          "detail": "Nina fights alone. Check her equipment before returning with the parts."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Sarai · streets",
+          "mapId": 4096,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 26,
+              "z": 15,
+              "name": "Sarai · tavern back room"
+            },
+            {
+              "x": 20,
+              "z": 42,
+              "name": "Sarai · tavern"
+            },
+            {
+              "x": 9,
+              "z": 8,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Sarai · tavern",
+          "mapId": 513,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 6,
+              "z": 4,
+              "name": "Sarai · streets"
+            }
+          ]
+        },
+        {
+          "name": "Sarai · tavern back room",
+          "mapId": 513,
+          "section": 2,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 8,
+              "name": "Sarai · streets"
+            }
+          ]
+        },
+        {
+          "name": "Sandflier Valley · wrecks",
+          "mapId": 1052,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 44,
+              "z": 46,
+              "name": "Salvage yard · shelter"
+            },
+            {
+              "x": 7,
+              "z": 26,
+              "name": "World map"
+            },
+            {
+              "x": 46,
+              "z": 43,
+              "name": "Salvage yard · shelter"
+            }
+          ]
+        },
+        {
+          "name": "Salvage yard · shelter",
+          "mapId": 521,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 12,
+              "name": "Sandflier Valley · wrecks"
+            },
+            {
+              "x": 4,
+              "z": 6,
+              "name": "Sandflier Valley · wrecks"
+            }
+          ]
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Before you dig up the Ship Parts, search behind the tavern bar for 40 zenny and check the dealer’s dresser for Power Food."
+      }
+    },
+    {
+      "id": "chamba",
+      "title": "The roofs of Chamba",
+      "region": "Chapter I · North Chamba",
+      "lead": "Cross the part of town swallowed by the hex.",
+      "hint": "At the gate, ask for a guide. Once the party splits, switch between the two groups.",
+      "steps": [
+        "Approach the armorer, then speak to the cook in the barracks and agree to wait. When the workers disperse, ask around for a guide. Return to the foreman outside the barracks to meet Ershin.",
+        "Climb the ladder on the first roof route. At the paired crates, put Ryu on the first one. Send Ershin down the ladder, underneath the raised crate and up to the opposite roof. Move Ryu off, then put Ershin on the other crate so his group can cross.",
+        "Bring each group to its valve and operate both. Rejoin on the roof and deal with the creature that follows you.",
+        "Return to Cray at the wreck. In the dream, go upstairs and behind the curtain. On waking, take the road to Kurok."
+      ],
+      "tip": "A figure you can see across the roof may be on a different level. Rotate the view before jumping back down.",
+      "links": [
+        "field-actions",
+        "ranks",
+        "learning-skills"
+      ],
+      "art": "iv-wreck",
+      "sources": [
+        "deh1",
+        "prima",
+        "rx1",
+        "drawers",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Find a guide",
+        "The suspended crates",
+        "Two valves",
+        "Return to the wreck"
+      ],
+      "items": [
+        {
+          "name": "Molotov",
+          "where": "North Chamba",
+          "detail": "As Ershin, open the roof chest above the lower path and return to the suspended crate."
+        },
+        {
+          "name": "Aurum · side room",
+          "where": "Dream corridor",
+          "detail": "Take the first small side room off the hallway before the stairs. Look for the bag."
+        },
+        {
+          "name": "Aurum · armoire",
+          "where": "Dream corridor",
+          "detail": "Check the armoire in the room overlooking the red curtain. Walking past it can end the dream."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Skulfish",
+          "where": "Rooftop bridge",
+          "detail": "Target this undead boss with Nina’s Heal. Ryu can use Flame Strike in Aura form."
+        },
+        {
+          "name": "Zombie",
+          "where": "Hexed quarter",
+          "detail": "Expect encounters while walking the roofs as well as down in the mist."
+        }
+      ],
+      "map": {
+        "title": "North Chamba · suspended crates",
+        "points": [
+          {
+            "name": "Upper walkway",
+            "x": 48,
+            "y": 18,
+            "note": "Keep Ryu and Nina above the hex."
+          },
+          {
+            "name": "First crate",
+            "x": 78,
+            "y": 36,
+            "note": "Stand here as Ryu to lift the far crate."
+          },
+          {
+            "name": "Lower walkway",
+            "x": 20,
+            "y": 39,
+            "note": "Descend with Ershin and pass beneath the lifted crate."
+          },
+          {
+            "name": "Opposite roof",
+            "x": 20,
+            "y": 72,
+            "note": "Climb to the chest, then wait for Ryu to step off."
+          },
+          {
+            "name": "Second crate",
+            "x": 48,
+            "y": 76,
+            "note": "Stand here as Ershin to open Ryu’s crossing."
+          },
+          {
+            "name": "Valve platform",
+            "x": 81,
+            "y": 77,
+            "note": "Cross with Ryu and inspect the valve. Take Ershin to its partner below."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            3,
+            4
+          ],
+          [
+            1,
+            5
+          ]
+        ]
+      },
+      "lore": "Ershin can move below the rooftops through the hex. Follow the changes in elevation when the party splits: characters that appear side by side may be on separate paths.",
+      "floors": [
+        {
+          "name": "Chamba · streets",
+          "mapId": 4099,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 23,
+              "z": 13,
+              "name": "Door to the barracks building"
+            },
+            {
+              "x": 9,
+              "z": 17,
+              "name": "Hexed quarter"
+            },
+            {
+              "x": 20,
+              "z": 37,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Passage to the roofs",
+          "mapId": 1066,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 39,
+              "z": 11,
+              "name": "Chamba · streets"
+            }
+          ]
+        },
+        {
+          "name": "North Chamba · outer roofs",
+          "mapId": 1098,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 9,
+              "z": 11,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Dream · first passage",
+          "mapId": 1162,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 4,
+              "name": "Dream · hallway"
+            }
+          ]
+        },
+        {
+          "name": "Dream · hallway",
+          "mapId": 1162,
+          "section": 1,
+          "landmarks": [
+            {
+              "x": 12,
+              "z": 7,
+              "name": "Dream · first passage"
+            },
+            {
+              "x": 16,
+              "z": 7,
+              "name": "Dream · side room"
+            }
+          ]
+        },
+        {
+          "name": "Dream · side room",
+          "mapId": 1162,
+          "section": 3,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 4,
+              "name": "Dream · hallway"
+            }
+          ]
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Pick up the rooftop Molotov while Ershin is separated. In Ryu’s dream, check the side room and the armoire for two separate Aurum before passing the red curtain."
+      }
+    },
+    {
+      "id": "dam-kyria",
+      "sectionsByArea": [
+        {"name":"Kurok","firstStep":0,"endStep":1,"firstFloor":1110,"lead":"From Chamba, take the ridge past Rwolf. The lower western fork leads to the Dam.","hint":"Look uphill for the red chest and downhill for the exit.","tip":"The Deep Diver is fishing tackle. Collect it on the upper fork and return to the junction.","lore":true},
+        {"name":"Dam","firstStep":1,"endStep":7,"firstFloor":1024,"lead":"Descend from the western entrance to the work camp before trying the engines.","hint":"Find the worker wearing a swimming ring after meeting the foreman.","tip":"Make an ordinary save before attempting the second engine if you want to retry the flywheel prize.","warning":true},
+        {"name":"Kyria","firstStep":7,"endStep":9,"firstFloor":4097,"lead":"Find the mayor’s house before following the trail into the woods.","hint":"Listen to the parrot before setting out into the woods.","tip":"Keep spare apples to bait a different stump on your way back."}
+      ],
+      "title": "Kurok, the Dam and Kyria Woods",
+      "region": "Chapter I · South Desert",
+      "lead": "At Kurok, follow the ridge to Rwolf. The lower western fork leads out towards the Dam.",
+      "hint": "At the dam, find the worker wearing a swimming ring. He holds the Sluice Key.",
+      "steps": [
+        "Meet Rwolf on the ridge. The upper branch ends at a red chest holding the Deep Diver lure. Return to the fork and take the lower path west to leave for the Dam.",
+        "Descend the two ladders. Take the upper west-tunnel door and follow the tunnel to the wooden platform. Cross the gap in the planks to meet the foreman. Walk back to Rhoppe, the worker in a pink swimming ring, for the Sluice Key.",
+        "Return to the first control panel and use the key. Climb back outside and cross the gate you just lowered. The first ladder on the far side leads up to the Short Sword chest.",
+        "From the sword ladder, take the lower path to the second engine. Roll the directional buttons in a circle either way. Start slowly, then speed up. When the wheel sounds high-pitched, press your mapped Circle button. If Ryu starts sweating, he is tiring.",
+        "The lower exit beside the second engine leads to the chest with two Vitamins. Return to the upper walkway and cross the second gate. Climb the eastern ladder for two Swallow Eyes. Take the east tunnel to the work camp, descend the ladder from the far gallery and pull the blue lever to lower the bridge.",
+        "Once you have the three chests, cross the bridge to the foreman. After the bell, take the Crank back across the bridge. Examine the box on the lift. When the handle sticks, tap your mapped Cross button repeatedly to bring the lift down.",
+        "On the world map, go north from the Dam and enter the ! stop. Ask the bard for the dragon’s song. You can pay 10 zenny for each tune. Once the scene ends, follow the road east to Kyria.",
+        "At the village, reach the mayor’s house through the hole and ladder. Speak to the parrot, then travel west to the woods.",
+        "Lead with Ershin to knock apples from the tree. Bait the stumps and follow the fresh tracks to Maman. After finding the mayor, return to Kyria for the passage towards Synesta."
+      ],
+      "tip": "The tracks branching towards chests are optional. Keep apples handy to bait a different stump on your way back.",
+      "links": [
+        "rwolf",
+        "apprentices",
+        "field-actions"
+      ],
+      "art": "iv-river",
+      "sources": [
+        "deh1",
+        "dxie",
+        "prima",
+        "eastern",
+        "ridge",
+        "drawers",
+        "billy",
+        "dalez",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Kurok · upper and lower forks",
+        "Dam · work camp",
+        "First sluice",
+        "Second sluice · flywheel",
+        "Across the second gate",
+        "Foreman and lift",
+        "Road north · the bard",
+        "Kyria village",
+        "Kyria Woods"
+      ],
+      "items": [
+        {
+          "name": "Deep Diver",
+          "where": "Kurok · upper fork",
+          "detail": "Open the chest on the upper western path. Rejoin the lower path for the exit."
+        },
+        {
+          "name": "Short Sword",
+          "where": "Dam · first gate",
+          "detail": "Cross the lowered gate and climb to the chest on the upper level."
+        },
+        {
+          "name": "Apples",
+          "where": "Kyria Woods",
+          "detail": "Have Ershin strike an apple tree. Place one apple on a stump to reveal tracks."
+        },
+        {
+          "name": "Sluice Key",
+          "where": "Dam · work camp",
+          "detail": "Speak to Rhoppe in the pink swimming ring after meeting the foreman."
+        },
+        {
+          "name": "Vitamin ×2",
+          "where": "Dam · second engine",
+          "detail": "Take the passage beside the flywheel room to the small outdoor chest."
+        },
+        {
+          "name": "Swallow Eye ×2",
+          "where": "Dam · far gate",
+          "detail": "Cross the second lowered gate. The chest is at the top of the ladder."
+        },
+        {
+          "name": "Crank",
+          "where": "Dam · work camp",
+          "detail": "The foreman exchanges it for the key. Take it to the lift."
+        },
+        {
+          "name": "Flywheel prize",
+          "where": "Dam · second engine",
+          "detail": "Speak to the worker after starting the engine. A good run can earn a fishing lure such as the Silver Top. Save before you start if you want to try for a different result."
+        },
+        {
+          "name": "Fish-Head",
+          "where": "Kyria · mayor’s house",
+          "detail": "Search the shelves beside the parrot."
+        },
+        {
+          "name": "Healing Herb ×4",
+          "where": "Kyria Woods · well clearing",
+          "detail": "Drop through the hole near the cage. The ladder returns to the well."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Mage Goo",
+          "where": "Kurok and Dam · 200 HP",
+          "detail": "Guard to learn Burn when the goo casts it."
+        },
+        {
+          "name": "Scorpion",
+          "where": "Kurok · 280 HP",
+          "detail": "20 EXP per enemy."
+        },
+        {
+          "name": "Flue Goo",
+          "where": "Kurok and Dam · 320 HP",
+          "detail": "Worth 40 EXP before bonuses."
+        },
+        {
+          "name": "Red Cap",
+          "where": "Kurok, Dam and Kyria Woods · 300 HP",
+          "detail": "Watch for Command when other enemies are present."
+        },
+        {
+          "name": "Maman",
+          "where": "Kyria Woods",
+          "detail": "Heal before following the last set of boar tracks."
+        },
+        {
+          "name": "Puspool",
+          "where": "Dam tunnels · 300 HP",
+          "detail": "Fire hardens the slime. Try Guard to learn Molasses."
+        },
+        {
+          "name": "Tadpole",
+          "where": "Dam tunnels · 580 HP",
+          "detail": "Guard when it rests to learn Snooze."
+        },
+        {
+          "name": "Army Bat",
+          "where": "Dam tunnels · 8 HP",
+          "detail": "Low HP makes the bat a quick target in a mixed group."
+        },
+        {
+          "name": "Eye Goo",
+          "where": "Dam · 150 HP",
+          "detail": "Guard for Rest if you missed it on the Cliff."
+        },
+        {
+          "name": "Cap",
+          "where": "Dam · 170 HP",
+          "detail": "Drops can include Berries."
+        },
+        {
+          "name": "Fungoid",
+          "where": "Kyria Woods",
+          "detail": "Guard for Command before finishing the fight."
+        }
+      ],
+      "map": {
+        "title": "Kurok ridge",
+        "points": [
+          {
+            "name": "Chamba approach",
+            "x": 88,
+            "y": 46,
+            "note": "Enter the ridge from the Chamba side."
+          },
+          {
+            "name": "Rwolf",
+            "x": 67,
+            "y": 46,
+            "note": "Speak to the master along the main path."
+          },
+          {
+            "name": "Western fork",
+            "x": 48,
+            "y": 46,
+            "note": "Both branches lead west."
+          },
+          {
+            "name": "Deep Diver",
+            "x": 21,
+            "y": 20,
+            "note": "The upper branch ends at the lure chest. Return to the fork."
+          },
+          {
+            "name": "Lower path",
+            "x": 33,
+            "y": 73,
+            "note": "Take the lower branch and keep west at the intersection."
+          },
+          {
+            "name": "Exit to Dam",
+            "x": 11,
+            "y": 73,
+            "note": "Leave the ridge to open the road to the Dam."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ],
+          [
+            4,
+            5
+          ]
+        ]
+      },
+      "lore": "Rwolf measures the party’s best combo. The order of actions matters for his training even when a single attack would finish a fight.",
+      "floors": [
+        {
+          "name": "Kurok · ridge",
+          "mapId": 1110,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 51,
+              "z": 6,
+              "name": "Chamba side"
+            },
+            {
+              "x": 14,
+              "z": 8,
+              "name": "Deep Diver chest"
+            },
+            {
+              "x": 2,
+              "z": 18,
+              "name": "Dam side"
+            }
+          ]
+        },
+        {
+          "name": "Dam · gates and ladders",
+          "enclosedDeck": true,
+          "mapId": 1024,
+          "section": 0,
+          "landmarks": [
+            {"x":44,"z":18,"name":"Ladder to the sword"},
+            {"x":44,"z":13,"name":"Short Sword chest"},
+            {"x":58,"z":18,"name":"Ladder to the eastern ledge"},
+            {"x":70,"z":12,"name":"Swallow Eye chest"},
+            {
+              "x": 15,
+              "z": 12,
+              "name": "Road to Kurok"
+            },
+            {
+              "x": 70,
+              "z": 19,
+              "name": "East tunnel"
+            }
+          ]
+        },
+        {
+          "name": "Dam · middle walkways",
+          "enclosedDeck": true,
+          "mapId": 1024,
+          "section": 1,
+          "landmarks": [
+            {"x":28,"z":21,"name":"Approach to the west tunnel"},
+            {"x":65,"z":21,"name":"Approach to the gate tunnel"}
+          ]
+        },
+        {
+          "name": "Dam · lower bank",
+          "enclosedDeck": true,
+          "mapId": 1024,
+          "section": 2,
+          "landmarks": [
+            {"x":28,"z":24,"name":"West tunnel, lower door"},
+            {"x":62,"z":24,"name":"Gate tunnel, lower door"},
+            {"x":54,"z":28,"name":"Vitamin chest"}
+          ]
+        },
+        {
+          "name": "Dam · west tunnel",
+          "mapId": 1029,
+          "section": 0,
+          "landmarks": [
+            {"x":21,"z":6,"name":"Sluice Key barrier"},
+            {"x":22,"z":2,"name":"First engine switch"},
+            {
+              "x": 20,
+              "z": 10,
+              "name": "Gate bank"
+            },
+            {
+              "x": 22,
+              "z": 14,
+              "name": "Gate bank, lower door"
+            },
+            {
+              "x": 14,
+              "z": 42,
+              "name": "Work camp"
+            }
+          ]
+        },
+        {
+          "name": "Dam · gate tunnel",
+          "mapId": 1029,
+          "section": 2,
+          "landmarks": [
+            {"x":3,"z":3,"name":"Flywheel controls"},
+            {
+              "x": 6,
+              "z": 10,
+              "name": "Upper door"
+            },
+            {
+              "x": 1,
+              "z": 15,
+              "name": "Lower door"
+            }
+          ]
+        },
+        {
+          "name": "Dam · east tunnel",
+          "mapId": 1029,
+          "section": 3,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 4,
+              "name": "Gate bank"
+            },
+            {
+              "x": 2,
+              "z": 35,
+              "name": "Work camp"
+            }
+          ]
+        },
+        {
+          "name": "Dam · work camp",
+          "mapId": 1028,
+          "section": 0,
+          "landmarks": [
+            {"x":29,"z":32,"name":"Gap in the planks"},
+            {"x":36,"z":23,"name":"Approach to the foreman"},
+            {"x":38,"z":36,"name":"Rhoppe and the key"},
+            {"x":49,"z":35,"name":"Far gallery ladder"},
+            {"x":48,"z":32,"name":"Face north for the blue lever"},
+            {"x":49,"z":36,"name":"Face southeast for the lift crank"},
+            {
+              "x": 11,
+              "z": 13,
+              "name": "West tunnel"
+            },
+            {
+              "x": 59,
+              "z": 19,
+              "name": "East tunnel"
+            },
+            {
+              "x": 64,
+              "z": 43,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Kyria · village",
+          "mapId": 4097,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 38,
+              "z": 41,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Kyria Woods · entrance",
+          "mapId": 1043,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 32,
+              "z": 8,
+              "name": "Kyria Woods · junction"
+            },
+            {
+              "x": 10,
+              "z": 30,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Kyria Woods · junction",
+          "mapId": 1045,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 14,
+              "z": 13,
+              "name": "Kyria Woods · side clearing"
+            },
+            {
+              "x": 3,
+              "z": 22,
+              "name": "Kyria Woods · entrance"
+            }
+          ]
+        },
+        {
+          "name": "Kyria Woods · side clearing",
+          "mapId": 1046,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 6,
+              "z": 3,
+              "name": "Kyria Woods · junction"
+            }
+          ]
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Returning the Sluice Key to the foreman closes access to the Dam chests. Collect the Short Sword, two Vitamins and two Swallow Eyes first. The flywheel prize also depends on your one attempt."
+      }
+    },
+    {
+      "id": "synesta",
+      "title": "The children of Synesta",
+      "region": "Chapter I · Synesta and the wharf",
+      "lead": "The orphanage and a trader’s errands hold the next lead on Elina.",
+      "hint": "Begin at the orphanage. Rotate the view before counting a hiding place as empty.",
+      "steps": [
+        "Catch Chino by cutting across his circuit. During hide-and-seek, check the orphanage, inn, well and stairways. When the nun sends you after Chino, distract the cellar guard as the water seller passes. Upstairs from Chino’s cell, step onto the planks to reach him.",
+        "Follow the lead to Marlok. Fight Kahn at the door, then take Marlok’s errand to the hideout. Cut across the thief’s route to catch him.",
+        "Return to Marlok and work at the Sandflier Wharf. Help clear the store, then use the crane to load the sandflier.",
+        "Speak to Marlok after loading the sandflier. When play switches to Fou-Lu, leave Bunyan’s hut and follow the mountain trail to Yohm. Use Astral against his flying summon Khafu."
+      ],
+      "tip": "Kahn can demonstrate Focus. Have someone Guard while he uses it if you want to learn the skill.",
+      "links": [
+        "wharf-cargo",
+        "learning-skills",
+        "treasure-exchange"
+      ],
+      "art": "iv-wreck",
+      "sources": [
+        "dxie",
+        "tricro",
+        "almar",
+        "eastern",
+        "billy",
+        "dalez",
+        "deh1",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Orphanage",
+        "Trader’s house",
+        "Sandflier Wharf",
+        "Mountain trail"
+      ],
+      "encounters": [
+        {
+          "name": "Kahn",
+          "where": "Marlok’s door",
+          "detail": "Guard while he uses Focus for a chance to learn it."
+        },
+        {
+          "name": "Rat",
+          "where": "Bandit hideout",
+          "detail": "Use magic before it flees. Physical attacks often miss."
+        },
+        {
+          "name": "Khafu",
+          "where": "Zhinga Mountains",
+          "detail": "Fou-Lu faces Yohm’s flying summon on the route after the wharf."
+        }
+      ],
+      "map": {
+        "title": "The orphanage and the wharf",
+        "points": [
+          {
+            "name": "Orphanage",
+            "x": 11,
+            "y": 47,
+            "note": "Return here after finding the children."
+          },
+          {
+            "name": "Guarded cellar",
+            "x": 29,
+            "y": 19,
+            "note": "Chino has another hiding place below."
+          },
+          {
+            "name": "Marlok’s door",
+            "x": 43,
+            "y": 62,
+            "note": "Meet Kahn outside the trader’s house."
+          },
+          {
+            "name": "Hideout",
+            "x": 62,
+            "y": 25,
+            "note": "Cut across the thief’s path and report back to Marlok."
+          },
+          {
+            "name": "Sandflier Wharf",
+            "x": 84,
+            "y": 72,
+            "note": "Clear the store before loading the sandflier."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            0,
+            2
+          ],
+          [
+            2,
+            3
+          ],
+          [
+            2,
+            4
+          ]
+        ]
+      },
+      "floors": [
+        {
+          "name": "Synesta · streets and well",
+          "mapId": 4098,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 40,
+              "z": 26,
+              "name": "Well passage"
+            },
+            {
+              "x": 9,
+              "z": 31,
+              "name": "World map"
+            },
+            {
+              "x": 15,
+              "z": 40,
+              "name": "Cellar entrance"
+            }
+          ]
+        },
+        {
+          "name": "Synesta · cellar",
+          "mapId": 1093,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 3,
+              "z": 0,
+              "name": "Synesta · streets and well"
+            },
+            {
+              "x": 4,
+              "z": 4,
+              "name": "Cellar · lower stairs"
+            }
+          ]
+        },
+        {
+          "name": "Cellar · lower stairs",
+          "mapId": 1093,
+          "section": 1,
+          "landmarks": [
+            {
+              "x": 3,
+              "z": 5,
+              "name": "Synesta · cellar"
+            },
+            {
+              "x": 6,
+              "z": 1,
+              "name": "Cellar · branching passage"
+            }
+          ]
+        },
+        {
+          "name": "Cellar · branching passage",
+          "mapId": 1093,
+          "section": 3,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 17,
+              "name": "Cellar · lower stairs"
+            },
+            {
+              "x": 6,
+              "z": 7,
+              "name": "Cellar · side room A"
+            },
+            {
+              "x": 6,
+              "z": 13,
+              "name": "Cellar · side room B"
+            }
+          ]
+        },
+        {
+          "name": "Cellar · side room A",
+          "mapId": 1093,
+          "section": 4,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 2,
+              "name": "Cellar · branching passage"
+            }
+          ]
+        },
+        {
+          "name": "Cellar · side room B",
+          "mapId": 1093,
+          "section": 5,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 2,
+              "name": "Cellar · branching passage"
+            }
+          ]
+        },
+        {
+          "name": "Bandit hideout · entrance",
+          "mapId": 1138,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 6,
+              "z": 8,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Sandflier Wharf",
+          "mapId": 4103,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 17,
+              "z": 18,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Raptor Claws",
+          "where": "Cellar cells",
+          "detail": "Open the chest beside the cell where Chino is hiding."
+        },
+        {
+          "name": "Protein",
+          "where": "Cellar bar",
+          "detail": "Cross the broken furniture and search the cabinet behind the bar."
+        },
+        {
+          "name": "Ammonia",
+          "where": "Cellar corridor",
+          "detail": "Check the cabinet in the first side room off the hallway."
+        }
+      ]
+    },
+    {
+      "id": "causeway",
+      "title": "Across the Causeway",
+      "region": "Chapter I · Kyoin and Astana",
+      "lead": "A guarded gateway puts Astana within reach.",
+      "hint": "In Kyoin, inspect the guarded approach. Return after the chance to rest.",
+      "steps": [
+        "Make your way up through the towers. Lifts sit on the outer faces, so check the balcony if the stairs end at a wall.",
+        "At the gateway, Rasso calls Ymechaf. Chain magic to knock it off balance and follow with physical attacks. Cross the portal and descend the far tower towards Astana.",
+        "Ask about the aqueduct in town. Climb through its platforms and use the worker’s lift to reach the water channel.",
+        "Follow the familiar upstairs corridor in the headquarters and look behind the curtain to finish the chapter."
+      ],
+      "tip": "When a tower looks empty, turn the camera to check for an exit hidden behind the spire.",
+      "links": [
+        "ranks",
+        "camp-and-card"
+      ],
+      "art": "iv-palace",
+      "sources": [
+        "deh1",
+        "angel",
+        "routeRun",
+        "eastern",
+        "drawers",
+        "billy",
+        "dalez",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Outer lifts",
+        "Gateway",
+        "Aqueduct",
+        "Curtained corridor"
+      ],
+      "encounters": [
+        {
+          "name": "Ymechaf",
+          "where": "Tower gateway",
+          "detail": "Chain magic to stagger it, then follow with physical attacks."
+        },
+        {
+          "name": "Gonghead",
+          "where": "Kyoin · Imperial Causeway",
+          "detail": "Keep the party ready to heal as you climb between lift stops."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Kyoin · eastern gate",
+          "mapId": 1100,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 44,
+              "z": 27,
+              "name": "Kyoin · town and tower approach"
+            }
+          ]
+        },
+        {
+          "name": "Kyoin · town and tower approach",
+          "mapId": 4108,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 13,
+              "z": 28,
+              "name": "Kyoin · eastern gate"
+            },
+            {
+              "x": 21,
+              "z": 11,
+              "name": "Kyoin · tower entrance"
+            }
+          ]
+        },
+        {
+          "name": "Kyoin · tower entrance",
+          "mapId": 1122,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 19,
+              "z": 23,
+              "name": "Kyoin · town and tower approach"
+            }
+          ]
+        },
+        {
+          "name": "Western gate",
+          "mapId": 4124,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 23,
+              "z": 61,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Astana · town",
+          "mapId": 4106,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 18,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Astana · aqueduct entrance",
+          "mapId": 1035,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 4,
+              "z": 28,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Healing Herb ×3",
+          "where": "East tower · side room",
+          "detail": "After riding the outside lift, search the shelves in the first room to the south."
+        },
+        {
+          "name": "Glass Domino",
+          "where": "East tower · third floor",
+          "detail": "Open the chest in the lift room before crossing the gateway."
+        },
+        {
+          "name": "Ammonia ×2",
+          "where": "West tower · third floor",
+          "detail": "Take the stairs down the far tower to find the chest."
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Collect the three Healing Herbs and Glass Domino on the eastern side before crossing the gateway. Later visits cannot recover these tower finds."
+      }
+    },
+    {
+      "id": "ludia",
+      "title": "From Ludia to Worent",
+      "region": "Chapter II · The Endless",
+      "lead": "Find Cray’s people while Scias accompanies the party.",
+      "hint": "Ask about Worent. The path out of Shyde goes through Wychwood.",
+      "steps": [
+        "Leave the castle in Ludia and follow Nina’s plan. Visit Shyde on the way to Wychwood.",
+        "When Nina disappears, listen for the loudest birdsong. Lead with Ershin and strike the tree to reach the nest. Survive the fight as Nina.",
+        "At Worent, visit the elders. Deal with Kahn outside, then ask the keeper at the stable for a mount to cross the plains."
+      ],
+      "tip": "In the forest, circle a trunk if the birdsong grows quieter. Ershin must make contact with the right tree.",
+      "links": [
+        "field-actions",
+        "learning-skills"
+      ],
+      "art": "sandsea",
+      "sources": [
+        "deh2",
+        "billy",
+        "dxie",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Castle road",
+        "Wychwood",
+        "Worent stable"
+      ],
+      "encounters": [
+        {
+          "name": "Kahn",
+          "where": "Worent",
+          "detail": "Prepare outside the elders’ house before speaking to the stable keeper."
+        },
+        {
+          "name": "Sparrow",
+          "where": "Wychwood · nest",
+          "detail": "Nina fights alone. Use her wind magic."
+        },
+        {
+          "name": "NutTroop",
+          "where": "Wychwood",
+          "detail": "Can carry a Scramasax."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Ludia · town",
+          "mapId": 4118,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 13,
+              "z": 16,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Ludia · diary room",
+          "mapId": 557,
+          "section": 1
+        },
+        {
+          "name": "Wychwood · first approach",
+          "mapId": 1088,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 9,
+              "z": 11,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Worent · village",
+          "mapId": 4102,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 9,
+              "z": 15,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Healing Herb ×3",
+          "where": "Wychwood",
+          "detail": "Open the chest near the way into the woods."
+        },
+        {
+          "name": "Magic Shard",
+          "where": "Wychwood",
+          "detail": "Explore the outer edge during the search for the bird."
+        },
+        {
+          "name": "ManlyClothes",
+          "where": "Worent · elders’ building",
+          "detail": "Check the pouch downstairs on the right before returning to the stable."
+        }
+      ]
+    },
+    {
+      "id": "golden-plains",
+      "title": "Finding Tarhn’s camp",
+      "region": "Chapter II · Golden Plains",
+      "lead": "Use a painted boulder and a plume of smoke to find Cray’s mother.",
+      "hint": "Ride east from the entrance. At the white-marked rock, turn north-east.",
+      "steps": [
+        "Follow the smoke to the tent. Spend the night there and ask Tarhn about the King’s Sword.",
+        "Ride back to the marked rock and turn south towards the volcano to find Mt. Glom. The lava platforms change position after battles. Visit the smith beyond them.",
+        "Return to Wychwood and examine the faeries’ meeting place. Clear the nightmares in their dream, then take the Faerie Drop back to the smith.",
+        "Carry the replacement sword to Ludia. Wait in your quarters for night and enter the castle to find Cray. Speak to Tarhn again, with Cray present, for the Jadestone."
+      ],
+      "tip": "Use the compass on departure from the rock. The direction of the camera can make two very different routes look alike.",
+      "links": [
+        "plains-landmarks",
+        "faerie-colony",
+        "treasure-exchange"
+      ],
+      "art": "sandsea",
+      "sources": [
+        "deh2",
+        "billy",
+        "tricro",
+        "rx2",
+        "drawers",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Smoke on the plains",
+        "Painted boulder",
+        "Faerie meeting place",
+        "Ludia at night"
+      ],
+      "items": [
+        {
+          "name": "Faerie Drop",
+          "where": "Wychwood",
+          "detail": "Clear the nightmares and take the reward back to the smith."
+        },
+        {
+          "name": "Jadestone",
+          "where": "Tarhn’s camp",
+          "detail": "Bring Cray when you return to speak to Tarhn."
+        },
+        {
+          "name": "Iron Ball trade",
+          "where": "Ludia · night raid",
+          "detail": "Speak to the trader in the orange hat outside the southwestern building before rescuing Cray."
+        },
+        {
+          "name": "Artemis’ Cap",
+          "where": "Ludia · night raid",
+          "detail": "Beyond the guarded northern route, climb the short stairs. The chest is inside the room on the eastern landing."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Worent · departure for the plains",
+          "mapId": 4102,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 9,
+              "z": 15,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Mt. Glom · volcano entrance",
+          "mapId": 1111,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 25,
+              "z": 16,
+              "name": "Mt. Glom · inner path"
+            },
+            {
+              "x": 18,
+              "z": 12,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Mt. Glom · inner path",
+          "mapId": 1058,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 21,
+              "z": 6,
+              "name": "Mt. Glom · far path"
+            },
+            {
+              "x": 27,
+              "z": 7,
+              "name": "Mt. Glom · far path"
+            },
+            {
+              "x": 1,
+              "z": 20,
+              "name": "Mt. Glom · volcano entrance"
+            }
+          ]
+        },
+        {
+          "name": "Mt. Glom · far path",
+          "mapId": 1058,
+          "section": 1,
+          "landmarks": [
+            {
+              "x": 3,
+              "z": 10,
+              "name": "Mt. Glom · inner path"
+            },
+            {
+              "x": 9,
+              "z": 16,
+              "name": "Mt. Glom · inner path"
+            }
+          ]
+        },
+        {
+          "name": "Ludia · castle approach",
+          "mapId": 4111,
+          "section": 0
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "The night raid on Ludia is your chance to trade with the man in the orange hat and collect Artemis’ Cap. Finish both before rescuing Cray."
+      },
+      "encounters": [
+        {
+          "name": "NutArchr",
+          "where": "Golden Plains",
+          "detail": "The archer can carry a Face Guard."
+        },
+        {
+          "name": "Fantam",
+          "where": "Faerie dream",
+          "detail": "Heal after the nightmare group falls. Their defeat brings out Fantam."
+        }
+      ]
+    },
+    {
+      "id": "wyndia",
+      "title": "The shrine road to Wyndia",
+      "region": "Chapter II · Ahm Fen and Wyndia",
+      "lead": "Get from the grasslands to the windmills of Nina’s home.",
+      "hint": "The shrine is east across the plains. Set Tarhn’s Jadestone on the altar.",
+      "steps": [
+        "In the shrine, use Cray to move the pillars that direct the coloured beams. Follow the passage that opens to the far side.",
+        "In Ahm Fen, stamp on a damaged stretch of walkway to draw the giant snake nearer. Use its back to reach the next stretch of boardwalk.",
+        "At Wyndia Castle, put Nina in front to speak to the guards. After the royal audience, cross Kasq Woods to consult the oracle.",
+        "Use the floating logs to move between banks. Return to Wyndia after the oracle’s directions and speak with the king again."
+      ],
+      "tip": "If the snake stops one platform short, make another noise at the broken boards and watch where its coils appear.",
+      "links": [
+        "field-actions",
+        "faerie-colony",
+        "plains-landmarks"
+      ],
+      "art": "iv-river",
+      "sources": [
+        "rx2",
+        "prima",
+        "angel",
+        "deh2",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Coloured beams",
+        "Ahm Fen",
+        "Castle audience",
+        "Kasq Woods"
+      ],
+      "lore": "The great snake in Ahm Fen is part of the crossing. Its coils surface near the sound of breaking boards.",
+      "floors": [
+        {
+          "name": "Shrine · outer path",
+          "mapId": 1068,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 1,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Shrine · opposite approach",
+          "mapId": 4139,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 2,
+              "z": 2,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Ahm Fen · entry boardwalk",
+          "mapId": 1070,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 45,
+              "z": 48,
+              "name": "Ahm Fen · central crossing"
+            },
+            {
+              "x": 2,
+              "z": 8,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Ahm Fen · central crossing",
+          "mapId": 1069,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 10,
+              "z": 12,
+              "name": "Ahm Fen · entry boardwalk"
+            },
+            {
+              "x": 36,
+              "z": 38,
+              "name": "Ahm Fen · opposite bank"
+            }
+          ]
+        },
+        {
+          "name": "Ahm Fen · opposite bank",
+          "mapId": 1073,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 8,
+              "z": 14,
+              "name": "Ahm Fen · central crossing"
+            },
+            {
+              "x": 30,
+              "z": 2,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Wyndia · town",
+          "mapId": 4105,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 12,
+              "z": 10,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Kasq Woods · river approach",
+          "mapId": 1086,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 7,
+              "z": 1,
+              "name": "Kasq Woods · log crossing"
+            },
+            {
+              "x": 32,
+              "z": 23,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Kasq Woods · log crossing",
+          "mapId": 1034,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 17,
+              "z": 53,
+              "name": "Kasq Woods · river approach"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Silver Top",
+          "where": "Dragon Shrine",
+          "detail": "Look for this fishing lure while opening the routes through the shrine."
+        },
+        {
+          "name": "Baby Frog",
+          "where": "Ahm Fen",
+          "detail": "An optional lure on the swamp crossing."
+        },
+        {
+          "name": "Life Shard ×3",
+          "where": "Ahm Fen",
+          "detail": "Check the side paths while using the snake to cross the boardwalk."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Patrol",
+          "where": "Ahm Fen",
+          "detail": "Watch for Mind Flay in the swamp."
+        },
+        {
+          "name": "Catrpilr",
+          "where": "Dragon Shrine",
+          "detail": "Berries and Panacea can come from this enemy."
+        }
+      ]
+    },
+    {
+      "id": "pung-tap",
+      "title": "The Wind Flute",
+      "region": "Chapter II · Pung’tap and Ice Peak",
+      "lead": "The route to the Wind Dragon begins under Wyndia Castle.",
+      "hint": "Get the flute in the basement before climbing Pung’tap.",
+      "steps": [
+        "Cross the moving platforms under the castle and shelter in the recesses when the wind blows. Collect the Wind Flute and return to the surface.",
+        "At Pung’tap, watch the gusts before jumping. Use the wind when the far ledge is out of normal range. Climb to the summit.",
+        "Fight through the ambush and finish the audience with the Wind Dragon. When you reach the Ice Peak, use Cray to roll snowballs down the slope.",
+        "A snowball lodged in a gap makes a crossing. Follow the new route down to Chek."
+      ],
+      "tip": "Stop for a whole gust cycle on a new ledge. A calm jump and a wind-assisted jump can land on different paths.",
+      "links": [
+        "evocations",
+        "field-actions"
+      ],
+      "art": "iv-river",
+      "sources": [
+        "deh2",
+        "rx2",
+        "tricro",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Wind chambers",
+        "Summit path",
+        "Ice Peak",
+        "Snow crossing"
+      ],
+      "items": [
+        {
+          "name": "Wind Flute",
+          "where": "Beneath Wyndia",
+          "detail": "Shelter from the gusts and carry the flute back to the surface."
+        },
+        {
+          "name": "FightingRobe",
+          "where": "Pung’tap",
+          "detail": "Search the tower on the climb to the Wind Dragon."
+        },
+        {
+          "name": "AsbestosArmor",
+          "where": "Ice Peak",
+          "detail": "An optional armour find on the way down to Chek."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Pung’tap · base",
+          "mapId": 4119,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 18,
+              "z": 30,
+              "name": "Into the tower"
+            },
+            {
+              "x": 4,
+              "z": 15,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Pung’tap · tower",
+          "mapId": 1115,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 2,
+              "name": "Pung’tap · base"
+            },
+            {
+              "x": 7,
+              "z": 2,
+              "name": "Tower · second chamber"
+            }
+          ]
+        },
+        {
+          "name": "Tower · second chamber",
+          "mapId": 1115,
+          "section": 1,
+          "landmarks": [
+            {
+              "x": 7,
+              "z": 4,
+              "name": "Pung’tap · tower"
+            },
+            {
+              "x": 14,
+              "z": 5,
+              "name": "Tower · branching chamber"
+            }
+          ]
+        },
+        {
+          "name": "Tower · branching chamber",
+          "mapId": 1115,
+          "section": 2,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 7,
+              "name": "Tower · second chamber"
+            },
+            {
+              "x": 7,
+              "z": 3,
+              "name": "Tower · through passage"
+            },
+            {
+              "x": 7,
+              "z": 11,
+              "name": "Tower · side passage"
+            }
+          ]
+        },
+        {
+          "name": "Tower · through passage",
+          "mapId": 1115,
+          "section": 3,
+          "landmarks": [
+            {
+              "x": 6,
+              "z": 16,
+              "name": "Tower · branching chamber"
+            }
+          ]
+        },
+        {
+          "name": "Tower · side passage",
+          "mapId": 1115,
+          "section": 4,
+          "landmarks": [
+            {
+              "x": 6,
+              "z": 15,
+              "name": "Tower · branching chamber"
+            },
+            {
+              "x": 23,
+              "z": 5,
+              "name": "Tower · end of side passage"
+            }
+          ]
+        },
+        {
+          "name": "Tower · end of side passage",
+          "mapId": 1115,
+          "section": 5,
+          "landmarks": [
+            {
+              "x": 8,
+              "z": 12,
+              "name": "Tower · side passage"
+            }
+          ]
+        },
+        {
+          "name": "Ice Peak · upper approach",
+          "mapId": 1112,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 6,
+              "z": 6,
+              "name": "Ice Peak · other approach"
+            },
+            {
+              "x": 47,
+              "z": 8,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Ice Peak · other approach",
+          "mapId": 1090,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 46,
+              "z": 7,
+              "name": "Ice Peak · upper approach"
+            },
+            {
+              "x": 5,
+              "z": 27,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "GntRoach",
+          "where": "Pung’tap",
+          "detail": "This insect can carry a Healing Herb or Vitamin."
+        },
+        {
+          "name": "Red Cap",
+          "where": "Ice Peak",
+          "detail": "Look for Command in mixed groups."
+        }
+      ]
+    },
+    {
+      "id": "chek",
+      "title": "Chek and the four pillars",
+      "region": "Chapter II · Chek and Sonne",
+      "lead": "The journey turns inwards at Chek, while village life resumes for Fou-Lu.",
+      "hint": "Speak with the Abbess. In Ershin’s mind, the large crystal and the four pillars are the landmarks.",
+      "steps": [
+        "Follow the Abbess into Ershin’s mind. Stop the rotating platform where it makes a bridge and examine the crystal beyond it.",
+        "Touch a pillar to start the four-way fight. Concentrate attacks on one opponent to reduce the spells coming back each round.",
+        "Walk back out and check on Ershin. During Fou-Lu’s visit to Sonne, follow the village disturbance into the woods and face Papan.",
+        "When control returns to Ryu, speak to the Abbess and enter the mind again. Follow the passage to the conversation, then leave Chek."
+      ],
+      "tip": "Save at the inn before the first journey inside. Ershin is unavailable to fight the pillars.",
+      "links": [
+        "ranks",
+        "combination-magic",
+        "fou-lu-forms"
+      ],
+      "art": "iv-tomb",
+      "sources": [
+        "deh2",
+        "rx2",
+        "angel",
+        "drawers",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Turning platform",
+        "Four pillars",
+        "Sonne woods",
+        "The Abbess"
+      ],
+      "encounters": [
+        {
+          "name": "Four pillars",
+          "where": "Ershin’s mind",
+          "detail": "Focus on one pillar to reduce the number of spells cast each round."
+        },
+        {
+          "name": "Papan",
+          "where": "Sonne · woods",
+          "detail": "Fou-Lu follows the disturbance out of the village to this encounter."
+        },
+        {
+          "name": "Spectre",
+          "where": "Ershin’s second dream",
+          "detail": "Can carry a Headband or Magic Shard."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Chek · village",
+          "mapId": 4116,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 19,
+              "z": 35,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Sonne · village",
+          "mapId": 4148,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 47,
+              "z": 40,
+              "name": "Sonne · forest approach"
+            },
+            {
+              "x": 24,
+              "z": 8,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Sonne · forest approach",
+          "mapId": 1171,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 13,
+              "name": "Sonne · village"
+            },
+            {
+              "x": 1,
+              "z": 41,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Water Ward",
+          "where": "Ershin’s first dream",
+          "detail": "Drop from the ledge to the chest on the southeast platform."
+        },
+        {
+          "name": "Knockout Gas ×2",
+          "where": "Ershin’s second dream",
+          "detail": "Jump from the opening path to the isolated northern platform."
+        },
+        {
+          "name": "ManlyClothes",
+          "where": "Ershin’s second dream",
+          "detail": "At the fork, take the northern dead end for the chest."
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Each dream has its own treasures. Collect the Water Ward on the first trip. Collect the Knockout Gas and ManlyClothes before leaving the second dream."
+      }
+    },
+    {
+      "id": "sinchon",
+      "title": "The shrine at Sinchon",
+      "region": "Chapter II · Sinchon and Mt. Yogy",
+      "lead": "Two journeys alternate between the shrine and a volcanic mountain.",
+      "hint": "Inside Sinchon, touch the crest and get back to the raised pillars before they sink.",
+      "steps": [
+        "Follow the shrine passage to the crest. Take the eastern of the two timed pillars to continue. The western one leads to treasure.",
+        "When play switches to Fou-Lu, climb Mt. Yogy. Marl calls smaller enemies. Use a group attack to clear them while you work on Marl.",
+        "Back in Sonne, follow the scenes at Mami’s home. Take the escape through the wall when the soldiers close in.",
+        "Rejoin Ryu at the shrine, then follow the village and camp scenes. In the fight with Ight, the shield stays up until the event involving Ryu takes place."
+      ],
+      "tip": "Avoid spending your stock of attack items on Ight’s shield. The story supplies the opening.",
+      "links": [
+        "fou-lu-forms",
+        "evocations",
+        "camp-and-card"
+      ],
+      "art": "iv-tomb",
+      "sources": [
+        "deh2",
+        "rx2",
+        "eastern",
+        "dalez",
+        "drawers",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Timed pillars",
+        "Mt. Yogy",
+        "Mami’s house",
+        "Village camp"
+      ],
+      "encounters": [
+        {
+          "name": "Ight",
+          "where": "Village encounter",
+          "detail": "Conserve attack items while its shield holds."
+        },
+        {
+          "name": "Marl",
+          "where": "Mt. Yogy",
+          "detail": "Clear the enemies Marl summons with a group attack."
+        },
+        {
+          "name": "Bot",
+          "where": "Sinchon",
+          "detail": "Can leave a Multigun. Watch its behaviour when choosing combo targets."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Sinchon · approach",
+          "mapId": 1101,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 21,
+              "z": 20,
+              "name": "Shrine interior"
+            },
+            {
+              "x": 19,
+              "z": 38,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Sinchon · shrine interior",
+          "mapId": 1152,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 4,
+              "z": 20,
+              "name": "Sinchon · approach"
+            },
+            {
+              "x": 5,
+              "z": 1,
+              "name": "Sinchon · second chamber"
+            }
+          ]
+        },
+        {
+          "name": "Sinchon · second chamber",
+          "mapId": 1152,
+          "section": 1,
+          "landmarks": [
+            {
+              "x": 10,
+              "z": 25,
+              "name": "Sinchon · shrine interior"
+            },
+            {
+              "x": 3,
+              "z": 1,
+              "name": "Sinchon · third chamber"
+            },
+            {
+              "x": 17,
+              "z": 1,
+              "name": "Sinchon · third chamber"
+            }
+          ]
+        },
+        {
+          "name": "Sinchon · third chamber",
+          "mapId": 1152,
+          "section": 2,
+          "landmarks": [
+            {
+              "x": 3,
+              "z": 8,
+              "name": "Sinchon · second chamber"
+            },
+            {
+              "x": 18,
+              "z": 8,
+              "name": "Sinchon · second chamber"
+            },
+            {
+              "x": 10,
+              "z": 2,
+              "name": "Sinchon · fourth chamber"
+            }
+          ]
+        },
+        {
+          "name": "Sinchon · fourth chamber",
+          "mapId": 1152,
+          "section": 3,
+          "landmarks": [
+            {
+              "x": 4,
+              "z": 45,
+              "name": "Sinchon · third chamber"
+            }
+          ]
+        },
+        {
+          "name": "Mt. Yogy · mountain path",
+          "mapId": 1129,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 17,
+              "z": 19,
+              "name": "Mt. Yogy · interior entrance"
+            },
+            {
+              "x": 23,
+              "z": 37,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Mt. Yogy · interior entrance",
+          "mapId": 1128,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 10,
+              "z": 40,
+              "name": "Mt. Yogy · mountain path"
+            },
+            {
+              "x": 10,
+              "z": 7,
+              "name": "Mt. Yogy · interior passage"
+            }
+          ]
+        },
+        {
+          "name": "Mt. Yogy · interior passage",
+          "mapId": 1128,
+          "section": 1,
+          "landmarks": [
+            {
+              "x": 16,
+              "z": 40,
+              "name": "Mt. Yogy · interior entrance"
+            }
+          ]
+        },
+        {
+          "name": "Sonne · village",
+          "mapId": 4148,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 24,
+              "z": 8,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Rice Ball",
+          "where": "Sonne · Mami’s house",
+          "detail": "Speak with Mami before Fou-Lu leaves for Mt. Yogy."
+        },
+        {
+          "name": "Soul Ring",
+          "where": "Sinchon",
+          "detail": "Search the optional route from the moving pillars rather than heading straight to the crest."
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Speak with Mami for her Rice Ball before Fou-Lu sets off to face the mountain god. This is Fou-Lu’s chance to receive it."
+      }
+    },
+    {
+      "id": "sanctum",
+      "title": "Through the Sanctum",
+      "region": "Chapter III · Sonne and Mt. Ryft",
+      "lead": "Find Fou-Lu’s route out, then return to the party on the other side of the world.",
+      "hint": "Examine the stone slab at the Sanctum, south of Sonne.",
+      "steps": [
+        "Leave Sonne by the forest path and examine the shrine slab. Enter the passage once the way opens.",
+        "Look for the Water Gem in the southern branch inside the Sanctum. It adds Serpent to Fou-Lu’s forms. Continue into Soma Forest.",
+        "When control returns to the party, visit the Abbess at Chek and check on Ershin. Travel to Mt. Ryft.",
+        "Cross the gaps on the mountain path and take the raft downstream. Steer clear of obstacles on the way out."
+      ],
+      "tip": "On a first visit, pick up the Water Gem before walking on. Ryu’s own elemental form comes from a different gem.",
+      "links": [
+        "fou-lu-forms",
+        "dragon-crystals"
+      ],
+      "art": "iv-river",
+      "sources": [
+        "sanctumFilm",
+        "rx3",
+        "raiu",
+        "western",
+        "drawers",
+        "billy",
+        "dalez",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Shrine slab",
+        "Southern branch",
+        "Chek",
+        "Mt. Ryft"
+      ],
+      "items": [
+        {
+          "name": "Water Gem",
+          "where": "Southern passage",
+          "detail": "Explore the side passage as Fou-Lu to gain Serpent."
+        },
+        {
+          "name": "SuperVitamin",
+          "where": "Soma Forest",
+          "detail": "At the first fork take the side branch to the chest before proceeding to the clearing."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Sanctum · shrine approach",
+          "mapId": 1132,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 9,
+              "z": 15,
+              "name": "Shrine passage"
+            },
+            {
+              "x": 29,
+              "z": 15,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Sanctum · passage",
+          "mapId": 1114,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 36,
+              "z": 8,
+              "name": "Sanctum · shrine approach"
+            },
+            {
+              "x": 5,
+              "z": 16,
+              "name": "Sanctum · second chamber"
+            }
+          ]
+        },
+        {
+          "name": "Sanctum · second chamber",
+          "mapId": 1114,
+          "section": 2,
+          "landmarks": [
+            {
+              "x": 44,
+              "z": 16,
+              "name": "Sanctum · passage"
+            },
+            {
+              "x": 5,
+              "z": 31,
+              "name": "Sanctum · third chamber"
+            }
+          ]
+        },
+        {
+          "name": "Sanctum · third chamber",
+          "mapId": 1114,
+          "section": 4,
+          "landmarks": [
+            {
+              "x": 36,
+              "z": 25,
+              "name": "Sanctum · second chamber"
+            },
+            {
+              "x": 5,
+              "z": 10,
+              "name": "Sanctum · far chamber"
+            }
+          ]
+        },
+        {
+          "name": "Sanctum · far chamber",
+          "mapId": 1114,
+          "section": 6,
+          "landmarks": [
+            {
+              "x": 22,
+              "z": 10,
+              "name": "Sanctum · third chamber"
+            }
+          ]
+        },
+        {
+          "name": "Soma · forest approach",
+          "mapId": 1149,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 52,
+              "z": 20,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Mt. Ryft · mountain approach",
+          "mapId": 1109,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 22,
+              "z": 10,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Mt. Ryft · other approach",
+          "mapId": 1091,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 16,
+              "z": 20,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Search the first section of Soma for the SuperVitamin before entering the clearing as Fou-Lu. Keep a separate save if you want to revisit this sequence."
+      },
+      "encounters": [
+        {
+          "name": "Mud Pup",
+          "where": "Mt. Ryft",
+          "detail": "Can confuse a target or put the whole front line to sleep. Watch for Snooze to learn it."
+        }
+      ]
+    },
+    {
+      "id": "shyde",
+      "title": "Sandflier passage",
+      "region": "Chapter III · Shyde and Mt. Giga",
+      "lead": "A ride through the sand takes the party around a closed crossing.",
+      "hint": "In Shyde, climb to the puppeteer. Afterwards speak to the sandflier dealer below.",
+      "steps": [
+        "Learn Shift from the puppeteer, then talk to the sandflier dealer. Use Marlok’s Bond to buy the craft. Pilot it to Kyoin and check the gateway.",
+        "After finding the crossing closed, agree to carry the traveller towards Shikk. Take the newly available sand route.",
+        "Cross Mt. Giga using the lifts. A glint on a side ledge is the Fire Gem. Examine it if you want Ryu’s Wyvern form.",
+        "At the checkpoint, get Cray through his fight. Arrange the wagons into a series of jumps, climb the roof and cross over the barrier to Shikk."
+      ],
+      "tip": "Shift can save a return journey once a place is available. Use the sandflier when you need to open a new route.",
+      "links": [
+        "dragon-crystals",
+        "shift-and-travel",
+        "evocations"
+      ],
+      "art": "iv-wreck",
+      "sources": [
+        "rx3",
+        "angel",
+        "raiu",
+        "western",
+        "dalez",
+        "billy",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Sandflier dealer",
+        "Closed crossing",
+        "Mountain lifts",
+        "Wagon yard"
+      ],
+      "items": [
+        {
+          "name": "Fire Gem",
+          "where": "Mt. Giga",
+          "detail": "Inspect the glint on the side ledge to unlock Wyvern."
+        },
+        {
+          "name": "800 zenny",
+          "where": "Mt. Giga · first gondola",
+          "detail": "At the bottom, check the bag before the first jump."
+        },
+        {
+          "name": "MultiVitamin",
+          "where": "Mt. Giga · second gondola",
+          "detail": "Take the upper fork on the far side of the lift."
+        },
+        {
+          "name": "Weather Wand",
+          "where": "Mt. Giga · lower path",
+          "detail": "Head across the eastern gaps for Nina’s wind weapon."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Shyde · sandflier port",
+          "mapId": 4129,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 36,
+              "z": 20,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Kyoin · gate approach",
+          "mapId": 1100,
+          "section": 0
+        },
+        {
+          "name": "Mt. Giga · first landing",
+          "mapId": 1074,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 32,
+              "z": 30,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Mt. Giga · far landing",
+          "mapId": 1074,
+          "section": 3,
+          "landmarks": [
+            {
+              "x": 8,
+              "z": 8,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Checkpoint · wagons",
+          "mapId": 4127,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 18,
+              "z": 5,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Legion",
+          "where": "Mt. Giga",
+          "detail": "Repeated physical hits strengthen it. Finish with magic before it powers up."
+        },
+        {
+          "name": "Saruga",
+          "where": "Mt. Giga",
+          "detail": "Watch for Muffle. Defeating its companions can provoke Blitz."
+        }
+      ]
+    },
+    {
+      "id": "shikk",
+      "title": "Shikk and the Island of Fire",
+      "region": "Chapter III · The sea crossing",
+      "lead": "Earn a berth on a ship bound for the western shore.",
+      "hint": "Talk to the sailors in Shikk’s pub, then ask the sailor outside about the Fane.",
+      "steps": [
+        "At the Fane of the Sea God, take the lower water passage for the Wave Stone. Offer it at the inscribed slab and enter the upper cave for the Salt Stone.",
+        "Show the Salt Stone in the pub. Complete the dock and shipboard trials, then speak to the captain to sail.",
+        "After boarding, check the hold and return to the deck for Kahn. Speak to Zig and follow the voyage to the Island of Fire.",
+        "Cross the plank paths above the lava. Beat Glebe in the cavern and return to your ship for the passage to Lyp."
+      ],
+      "tip": "Keep Nina ready when Glebe calls more enemies. A spell that reaches several targets can free up the other two turns.",
+      "links": [
+        "ship-and-fane",
+        "ranks"
+      ],
+      "art": "iv-river",
+      "sources": [
+        "rx3",
+        "billy",
+        "western",
+        "drawers",
+        "dalez",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Lower water passage",
+        "Harbour trials",
+        "Ship’s hold",
+        "Island of Fire"
+      ],
+      "items": [
+        {
+          "name": "Wave Stone",
+          "where": "Lower water passage",
+          "detail": "Offer it at the inscribed slab in the Fane."
+        },
+        {
+          "name": "Salt Stone",
+          "where": "Upper cave",
+          "detail": "Take the stone back to the harbour pub."
+        },
+        {
+          "name": "Warbler",
+          "where": "Zig’s ship",
+          "detail": "Search the tall cabinet on the left as you enter the captain’s quarters."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Glebe",
+          "where": "Island of Fire",
+          "detail": "Keep a multi-target spell ready for the summoned enemies."
+        },
+        {
+          "name": "Kahn",
+          "where": "Zig’s ship",
+          "detail": "After checking the hold, return to the deck ready for the fight."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Shikk · port",
+          "mapId": 4123,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 39,
+              "z": 30,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Fane · entrance",
+          "mapId": 1194,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 40,
+              "z": 9,
+              "name": "Cave doorway"
+            },
+            {
+              "x": 39,
+              "z": 6,
+              "name": "Upper doorway"
+            },
+            {
+              "x": 16,
+              "z": 55,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Fane · cave passage",
+          "mapId": 1195,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 30,
+              "z": 26,
+              "name": "Fane · entrance"
+            },
+            {
+              "x": 14,
+              "z": 35,
+              "name": "Fane · branching cave"
+            }
+          ]
+        },
+        {
+          "name": "Fane · branching cave",
+          "mapId": 1195,
+          "section": 1,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 7,
+              "name": "Fane · cave passage"
+            },
+            {
+              "x": 28,
+              "z": 5,
+              "name": "Fane · side cave B"
+            },
+            {
+              "x": 30,
+              "z": 10,
+              "name": "Fane · side cave A"
+            }
+          ]
+        },
+        {
+          "name": "Fane · side cave A",
+          "mapId": 1195,
+          "section": 2,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 6,
+              "name": "Fane · branching cave"
+            }
+          ]
+        },
+        {
+          "name": "Fane · side cave B",
+          "mapId": 1195,
+          "section": 3,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 26,
+              "name": "Fane · branching cave"
+            }
+          ]
+        },
+        {
+          "name": "Fane · upper passage",
+          "mapId": 1195,
+          "section": 4,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 8,
+              "name": "Fane · entrance"
+            }
+          ]
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "Search the captain’s quarters for the Warbler while you can move freely aboard Zig’s ship. The opportunity ends on arrival at Lyp."
+      }
+    },
+    {
+      "id": "lyp",
+      "title": "The cure for Pabpab",
+      "region": "Chapter III · Lyp and the Tidal Flats",
+      "lead": "An illness inland sends the party back to sea.",
+      "hint": "Read Beyd’s notes in Pabpab. The local name of the herb matters more than a complete translation.",
+      "steps": [
+        "From Lyp, cross the jungle to Pabpab and speak to Beyd and the patient. Return to Lyp and ask about the herb.",
+        "Sail to the marked patch of water and land. Cut Mozweed with Ryu’s sword, bring it to the patient, then return to Beyd.",
+        "Cross the Tidal Flats. When the party makes camp, follow the fishing detour to the Saldine Spot.",
+        "During Fou-Lu’s turn, enter the Imperial Castle. Keep AP in reserve across Yohm’s successive summons, Kahbo and Kamyu. Return to Ryu’s party and continue to Koshka."
+      ],
+      "tip": "The Earth Gem in the Tidal Flats unlocks Behemoth. Look along the overgrown side path before leaving the flats.",
+      "links": [
+        "dragon-crystals",
+        "fishing",
+        "fou-lu-forms"
+      ],
+      "art": "iv-river",
+      "sources": [
+        "billy",
+        "rx4",
+        "western",
+        "raiu",
+        "saldineFilm",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Pabpab",
+        "Herb landing",
+        "Tidal Flats",
+        "Imperial Castle"
+      ],
+      "items": [
+        {
+          "name": "Mozweed",
+          "where": "Offshore landing",
+          "detail": "Cut the herb with Ryu’s sword and return to Pabpab."
+        },
+        {
+          "name": "Earth Gem",
+          "where": "Tidal Flats",
+          "detail": "Search the overgrown side path to unlock Behemoth."
+        },
+        {
+          "name": "Toxic Claws",
+          "where": "Jungle · rolling logs",
+          "detail": "At the fourth log, roll south and cross two logs east for Ershin’s weapon."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Lyp · village",
+          "mapId": 4113,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 35,
+              "z": 23,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Jungle · first approach",
+          "mapId": 1105,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 43,
+              "z": 26,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Jungle · central crossing",
+          "mapId": 1103,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 20,
+              "name": "Jungle · other approach"
+            }
+          ]
+        },
+        {
+          "name": "Jungle · other approach",
+          "mapId": 1104,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 55,
+              "z": 22,
+              "name": "Jungle · central crossing"
+            },
+            {
+              "x": 3,
+              "z": 22,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Pabpab · village",
+          "mapId": 4101,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 8,
+              "z": 22,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Saldine · tidal flats",
+          "mapId": 1169,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 50,
+              "z": 16,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Smasher",
+          "where": "Approach south of Lyp",
+          "detail": "Can inflict Ovum. Swallow Eyes are a possible steal."
+        },
+        {
+          "name": "Kahbo and Kamyu",
+          "where": "Imperial Castle",
+          "detail": "Fou-Lu fights these summons in succession. Conserve AP for the second."
+        }
+      ]
+    },
+    {
+      "id": "chiqua",
+      "title": "Passage from Chiqua",
+      "region": "Chapter III · Shan River and Chiqua",
+      "lead": "Pay for directions while keeping an unusually valuable find.",
+      "hint": "At Chiqua, ask the informant about all three offers before handing anything over.",
+      "steps": [
+        "Cross Shan River using its lifts and continue to Chiqua. The informant in purple accepts fish, a pot from Koshka or an object from the ruins.",
+        "For the pot route, place an order in Koshka. Ask about En Jhou, explore the ruins while the potter works and return to collect the finished pot.",
+        "En Jhou’s hanging chests can be cut down to collect on the lower level. The Flawed Gem deeper in the ruins unlocks Mutant. Keep the gem and hand over the pot.",
+        "Alternatively, supply the requested fish. Once the informant tells you about the southern river, the route out of Chiqua opens."
+      ],
+      "tip": "Check the name in the handover prompt. Offering the Flawed Gem spends the same crystal that grants Mutant.",
+      "links": [
+        "chiqua-bargain",
+        "fishing",
+        "dragon-crystals"
+      ],
+      "art": "iv-river",
+      "sources": [
+        "rx4",
+        "billy",
+        "raiu",
+        "western",
+        "dalez",
+        "field-layout"
+      ],
+      "landmarks": [
+        "River crossing",
+        "Potter’s kiln",
+        "Hanging chests",
+        "Informant"
+      ],
+      "items": [
+        {
+          "name": "Flawed Gem",
+          "where": "En Jhou ruins",
+          "detail": "Keep the gem for Mutant. Give the informant a pot or the requested fish."
+        },
+        {
+          "name": "Jar",
+          "where": "Koshka · potter",
+          "detail": "Commission the pot before exploring the ruins. Return with 500 zenny."
+        },
+        {
+          "name": "Titan’s Boots",
+          "where": "Shan River",
+          "detail": "Look under the branches southwest of the tree by the lift route."
+        },
+        {
+          "name": "Warding Staff",
+          "where": "En Jhou",
+          "detail": "Look for Nina’s staff while collecting the hanging chests."
+        }
+      ],
+      "warning": {
+        "label": "Missable",
+        "text": "The informant keeps his payment. Give him fish to keep both the Jar and Flawed Gem. Giving him the Flawed Gem costs you the Mutant transformation."
+      },
+      "map": {
+        "title": "Chiqua and the informant",
+        "points": [
+          {
+            "name": "Informant",
+            "x": 50,
+            "y": 44,
+            "note": "Agree on payment before handing anything over."
+          },
+          {
+            "name": "Koshka",
+            "x": 23,
+            "y": 22,
+            "note": "Order a pot and return when it is ready."
+          },
+          {
+            "name": "En Jhou",
+            "x": 25,
+            "y": 72,
+            "note": "Explore while the potter works. Cut down hanging chests."
+          },
+          {
+            "name": "Fish payment",
+            "x": 76,
+            "y": 21,
+            "note": "The requested fish are another way to pay."
+          },
+          {
+            "name": "Southern river",
+            "x": 81,
+            "y": 76,
+            "note": "Collect the directions and take the newly opened route."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            0,
+            3
+          ],
+          [
+            0,
+            4
+          ]
+        ]
+      },
+      "floors": [
+        {
+          "name": "Shan River · lift crossing",
+          "mapId": 1076,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 44,
+              "z": 15,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Chiqua · village",
+          "mapId": 4121,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 24,
+              "z": 11,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Koshka · village",
+          "mapId": 4125,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 10,
+              "z": 23,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "En Jhou · ruins entrance",
+          "mapId": 4110,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 34,
+              "z": 37,
+              "name": "Enter the ruins"
+            },
+            {
+              "x": 21,
+              "z": 27,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "En Jhou · first chamber",
+          "mapId": 1077,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 25,
+              "z": 6,
+              "name": "En Jhou · side chamber"
+            },
+            {
+              "x": 27,
+              "z": 11,
+              "name": "En Jhou · inner passage"
+            },
+            {
+              "x": 7,
+              "z": 5,
+              "name": "En Jhou · ruins entrance"
+            }
+          ]
+        },
+        {
+          "name": "En Jhou · side chamber",
+          "mapId": 1077,
+          "section": 1,
+          "landmarks": [
+            {
+              "x": 7,
+              "z": 6,
+              "name": "En Jhou · first chamber"
+            }
+          ]
+        },
+        {
+          "name": "En Jhou · inner passage",
+          "mapId": 1077,
+          "section": 2,
+          "landmarks": [
+            {
+              "x": 11,
+              "z": 13,
+              "name": "En Jhou · first chamber"
+            },
+            {
+              "x": 20,
+              "z": 8,
+              "name": "En Jhou · lower junction"
+            }
+          ]
+        },
+        {
+          "name": "En Jhou · lower junction",
+          "mapId": 1078,
+          "section": 1,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 8,
+              "name": "En Jhou · inner passage"
+            },
+            {
+              "x": 18,
+              "z": 8,
+              "name": "En Jhou · lower side room"
+            },
+            {
+              "x": 16,
+              "z": 11,
+              "name": "En Jhou · lower side room"
+            }
+          ]
+        },
+        {
+          "name": "En Jhou · lower side room",
+          "mapId": 1078,
+          "section": 3,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 11,
+              "name": "En Jhou · lower junction"
+            },
+            {
+              "x": 1,
+              "z": 8,
+              "name": "En Jhou · lower junction"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Puppeteer",
+          "where": "En Jhou",
+          "detail": "Defeat it first to send the accompanying Decoy out of control."
+        },
+        {
+          "name": "Ibomb",
+          "where": "En Jhou",
+          "detail": "Sacrifice can leave the entire active group at 1 HP."
+        }
+      ]
+    },
+    {
+      "id": "imperial-tomb",
+      "title": "The guardian at the Tomb",
+      "region": "Chapter III · Southern river and Pauk",
+      "lead": "Ryu approaches the tomb that Fou-Lu left at the beginning.",
+      "hint": "Follow the river south from Chiqua. The gates change both the water route and the usable crossings.",
+      "steps": [
+        "Move the crates into jumping distance and use the sluice panels to change the bridges. In Pauk, visit the tent and follow the errand to round up the brown chicken. Return to the tent.",
+        "Enter the tomb grounds by the burnt path. Examine the guardian at the entrance to face Won-qu.",
+        "Inside, align three purple blocks to reach one Bead. Ride the rolling cube to the other. Each Bead changes access from the main stairwell.",
+        "At the inner tablet, fight I and II. Use spells against I and physical attacks against II. Take Won-qu’s Gem back to the main lift and choose the way ahead to Mukto."
+      ],
+      "tip": "Stop at the bottom of the main stairwell after each Bead. The lift and newly opened paths are easy to miss on the upper walkways.",
+      "links": [
+        "tomb-mechanisms",
+        "ranks",
+        "tomb"
+      ],
+      "art": "iv-tomb",
+      "sources": [
+        "rx4",
+        "routeRun",
+        "tricro",
+        "western",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Pauk",
+        "Tomb grounds",
+        "Rolling cube",
+        "Inner tablet"
+      ],
+      "items": [
+        {
+          "name": "Beads",
+          "where": "Inner stairwell",
+          "detail": "One path uses purple blocks. The other uses a rolling cube."
+        },
+        {
+          "name": "Wisdom Fruit",
+          "where": "Tomb grounds",
+          "detail": "Follow the northern branch off the charred ramp."
+        },
+        {
+          "name": "Ambrosia",
+          "where": "Tomb grounds",
+          "detail": "Search behind the tomb on the upper level before speaking to Won-qu."
+        },
+        {
+          "name": "Won-qu’s Gem",
+          "where": "Inner tablet",
+          "detail": "The paired guardians leave the gem. Take it back to the main lift."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "I and II",
+          "where": "Inner tablet",
+          "detail": "Use magic against I and physical attacks against II."
+        },
+        {
+          "name": "Won-qu",
+          "where": "Tomb entrance",
+          "detail": "Examine the guardian to begin the fight. Restore the party first."
+        },
+        {
+          "name": "Guardian",
+          "where": "Inside the Tomb",
+          "detail": "Use Guard to try to learn Triple Blow."
+        }
+      ],
+      "map": {
+        "title": "The two Bead chambers",
+        "points": [
+          {
+            "name": "Entrance",
+            "x": 10,
+            "y": 50,
+            "note": "Examine the guardian at the burnt path."
+          },
+          {
+            "name": "Main stairwell",
+            "x": 33,
+            "y": 51,
+            "note": "The Beads change access from this central stair."
+          },
+          {
+            "name": "Purple blocks",
+            "x": 56,
+            "y": 22,
+            "note": "Align all three blocks to reach the Bead."
+          },
+          {
+            "name": "Rolling cube",
+            "x": 55,
+            "y": 80,
+            "note": "Ride the cube to collect the second Bead."
+          },
+          {
+            "name": "Inner tablet",
+            "x": 80,
+            "y": 51,
+            "note": "Prepare for the paired guardians."
+          }
+        ],
+        "paths": [
+          [
+            0,
+            1
+          ],
+          [
+            1,
+            2
+          ],
+          [
+            1,
+            3
+          ],
+          [
+            1,
+            4
+          ]
+        ]
+      },
+      "floors": [
+        {
+          "name": "River · first crossing",
+          "mapId": 1096,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 7,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Pauk · village",
+          "mapId": 4114,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 22,
+              "z": 40,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Tomb · outer path",
+          "mapId": 1042,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 64,
+              "z": 14,
+              "name": "Tomb · inner grounds"
+            },
+            {
+              "x": 6,
+              "z": 18,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Tomb · inner grounds",
+          "mapId": 1141,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 28,
+              "name": "Tomb · outer path"
+            }
+          ]
+        },
+        {
+          "name": "Mukto · approach",
+          "mapId": 1102,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 4,
+              "z": 18,
+              "name": "World map"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "astana-hq",
+      "title": "Back to Astana",
+      "region": "Chapter III · Kwanso and Imperial HQ",
+      "lead": "A block on the highway sends Ursula’s party back to headquarters.",
+      "hint": "Put Ursula in front when you speak to the officer on the Highway.",
+      "steps": [
+        "From the western side of the Tomb, take the mountain path south of Kwanso to the Highway. Follow the officer’s lead back to Astana.",
+        "Enter the military building on the east side. Use its basement exit and the long outside staircase to reach headquarters. Find the lift beyond the familiar curtained rooms.",
+        "Use the levers below to lower gates into walkways. Meet the person at the end, then follow the guards’ information to Kwanso to find Yuna and obtain the Dragonslayer.",
+        "Return to the lower chamber. Equip the blade on Ryu and use his field action on the vessel. Follow the opened path to the house."
+      ],
+      "tip": "The last part of the visit is a long story sequence. Make a separate ordinary save before entering if you want to revisit the earlier rooms.",
+      "links": [
+        "field-actions",
+        "camp-and-card"
+      ],
+      "art": "iv-palace",
+      "sources": [
+        "tricro",
+        "billy",
+        "drawers",
+        "routeRun",
+        "dalez",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Highway",
+        "Basement exit",
+        "Lower gates",
+        "Sealed vessel"
+      ],
+      "items": [
+        {
+          "name": "Dragonslayer",
+          "where": "Kwanso",
+          "detail": "Equip on Ryu before using his field action at the vessel."
+        },
+        {
+          "name": "Ghostbuster",
+          "where": "Headquarters · lower works",
+          "detail": "Walk under the bridge and pipework to reach the chest."
+        },
+        {
+          "name": "Croc Tear ×3",
+          "where": "Mansion exterior",
+          "detail": "Check behind the building at the top of the stairs."
+        },
+        {
+          "name": "Diana’s Dress",
+          "where": "Upper house",
+          "detail": "Walk behind the house before entering it."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Highway",
+          "mapId": 1172,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 9,
+              "z": 10,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Astana · eastern approach",
+          "mapId": 4106,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 32,
+              "z": 4,
+              "name": "Military grounds"
+            },
+            {
+              "x": 5,
+              "z": 18,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Astana · military grounds",
+          "mapId": 4109,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 28,
+              "z": 10,
+              "name": "Astana · eastern approach"
+            }
+          ]
+        },
+        {
+          "name": "Kwanso · guard post",
+          "mapId": 4132,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 13,
+              "z": 22,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Battle Suit",
+          "where": "Headquarters",
+          "detail": "Guard to learn Focus when it raises its attack power."
+        },
+        {
+          "name": "Gonger",
+          "where": "Headquarters",
+          "detail": "Timed Blow sacrifices the Gonger to hit one target. Keep an injured ally out of the front row."
+        }
+      ]
+    },
+    {
+      "id": "chedo",
+      "title": "The streets of Chedo",
+      "region": "Chapter IV · That Which Passes",
+      "lead": "Walk the last stretch of the capital before entering the castle.",
+      "hint": "Revisit the Highway after the night outside Astana. Take the newly open road to Chedo.",
+      "steps": [
+        "Visit the merchants in the inhabited part of Chedo for healing and status recovery. Leave through the east gate into the damaged quarter.",
+        "Go through the ruined house and use the stairs to reach the upper ledge. An arch and a staircase lead back inside. Cross the building and descend to street level.",
+        "Keep moving through the eastern gates to meet A-tur. Protect the party against water damage and have a group heal ready after Frost Breath.",
+        "After General Rhun’s scene, pass the gate to the Imperial Castle."
+      ],
+      "tip": "During A-tur’s fight, keep a second healer available in reserve. Sanctuary can erase the protective spells you set up.",
+      "links": [
+        "ranks",
+        "late-battles",
+        "camp-and-card"
+      ],
+      "art": "iv-palace",
+      "sources": [
+        "angel",
+        "dalez",
+        "routeRun",
+        "western",
+        "billy",
+        "field-layout"
+      ],
+      "landmarks": [
+        "East gate",
+        "Ruined house",
+        "Eastern gates",
+        "Castle entrance"
+      ],
+      "encounters": [
+        {
+          "name": "A-tur",
+          "where": "Eastern gates",
+          "detail": "Prepare group healing for Frost Breath. Sanctuary removes protective spells."
+        },
+        {
+          "name": "Shadow",
+          "where": "Ruined streets",
+          "detail": "Encounters begin beyond the inhabited market. Finish shopping before entering the east gate."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Chedo · inhabited quarter",
+          "mapId": 4133,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 42,
+              "z": 28,
+              "name": "Eastern gate"
+            },
+            {
+              "x": 24,
+              "z": 27,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Chedo · ruined quarter",
+          "mapId": 4147,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 31,
+              "z": 29,
+              "name": "Chedo · ruined building, far door"
+            },
+            {
+              "x": 36,
+              "z": 7,
+              "name": "Chedo · ruined building, first route"
+            },
+            {
+              "x": 9,
+              "z": 16,
+              "name": "Chedo · inhabited quarter"
+            },
+            {
+              "x": 35,
+              "z": 18,
+              "name": "Chedo · opposite approach"
+            },
+            {
+              "x": 24,
+              "z": 5,
+              "name": "Chedo · ruined building, first route"
+            }
+          ]
+        },
+        {
+          "name": "Chedo · ruined building, first route",
+          "mapId": 1159,
+          "section": 1,
+          "landmarks": [
+            {
+              "x": 4,
+              "z": 7,
+              "name": "Chedo · ruined quarter"
+            },
+            {
+              "x": 20,
+              "z": 11,
+              "name": "Chedo · ruined quarter"
+            },
+            {
+              "x": 20,
+              "z": 3,
+              "name": "Chedo · connecting stairs"
+            }
+          ]
+        },
+        {
+          "name": "Chedo · connecting stairs",
+          "mapId": 1159,
+          "section": 3,
+          "landmarks": [
+            {
+              "x": 3,
+              "z": 3,
+              "name": "Chedo · ruined building, first route"
+            },
+            {
+              "x": 3,
+              "z": 22,
+              "name": "Chedo · ruined building, far door"
+            }
+          ]
+        },
+        {
+          "name": "Chedo · ruined building, far door",
+          "mapId": 1159,
+          "section": 4,
+          "landmarks": [
+            {
+              "x": 8,
+              "z": 3,
+              "name": "Chedo · connecting stairs"
+            },
+            {
+              "x": 2,
+              "z": 6,
+              "name": "Chedo · ruined quarter"
+            }
+          ]
+        },
+        {
+          "name": "Chedo · opposite approach",
+          "mapId": 4146,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 11,
+              "name": "Chedo · ruined quarter"
+            },
+            {
+              "x": 74,
+              "z": 10,
+              "name": "World map"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Firecracker",
+          "where": "Ruined quarter",
+          "detail": "Search near the roof after taking the first stairs up through the house."
+        },
+        {
+          "name": "Damascus Helm",
+          "where": "Ruined building",
+          "detail": "Climb the inside ladder. Use the western door to reach the chest."
+        }
+      ]
+    },
+    {
+      "id": "castle",
+      "title": "The three castle charms",
+      "region": "Chapter IV · Imperial Castle",
+      "lead": "Open the sealed lifts and doors down to the throne.",
+      "hint": "Begin at the entrance crystal. Once inside, look in the room where the party can rest.",
+      "steps": [
+        "Take the key in the rest room, using Ershin to dislodge it. Unlock the stairs and descend through the castle.",
+        "At Dragonne, use a dragon breath attack to end its repeated healing. Collect the Blue Charm where it stood and check the nearby save point.",
+        "Use the blue seal to gain access to the next floors. Find the Yellow Charm and use it on the sealed rope. Follow the route down to the Red Charm.",
+        "Unlock the red door and the sealed lift. Rest and keep an ordinary save in a separate slot before entering the inner palace."
+      ],
+      "tip": "Remember the colour on any seal you leave behind. Once you have the matching charm, the lifts save a long climb back.",
+      "links": [
+        "castle-charms",
+        "late-battles",
+        "camp-and-card"
+      ],
+      "art": "iv-palace",
+      "sources": [
+        "dalez",
+        "routeRun",
+        "angel",
+        "western",
+        "field-layout"
+      ],
+      "landmarks": [
+        "Rest room",
+        "Dragon chamber",
+        "Sealed rope",
+        "Inner lift"
+      ],
+      "items": [
+        {
+          "name": "Blue Charm",
+          "where": "Dragon chamber",
+          "detail": "Collect it after Dragonne and check the nearby save point."
+        },
+        {
+          "name": "Yellow Charm",
+          "where": "Castle · lower floors",
+          "detail": "Open the blue seal first. Use the yellow charm on the sealed rope."
+        },
+        {
+          "name": "Red Charm",
+          "where": "Castle · last seal",
+          "detail": "Follow the route beyond the rope to the charm. It opens the red door and lift."
+        }
+      ],
+      "encounters": [
+        {
+          "name": "Dragonne",
+          "where": "Sealed passages",
+          "detail": "Dragon breath stops its repeated healing."
+        }
+      ],
+      "floors": [
+        {
+          "name": "Castle · entrance",
+          "mapId": 4145,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 40,
+              "z": 22,
+              "name": "Into the castle"
+            },
+            {
+              "x": 9,
+              "z": 21,
+              "name": "World map"
+            }
+          ]
+        },
+        {
+          "name": "Castle · first interior",
+          "mapId": 4135,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 13,
+              "z": 13,
+              "name": "Castle · entrance"
+            }
+          ]
+        },
+        {
+          "name": "Castle · lower lift",
+          "mapId": 1192,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 22,
+              "z": 2,
+              "name": "Castle · B4 diary"
+            }
+          ]
+        },
+        {
+          "name": "Castle · B4 diary",
+          "mapId": 1192,
+          "section": 2,
+          "landmarks": [
+            {
+              "x": 4,
+              "z": 7,
+              "name": "Castle · lower lift"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "meeting",
+      "title": "At the throne",
+      "region": "Chapter IV · Castle B4 and the inner palace",
+      "lead": "The diary on Castle B4 is the last place to rest before the throne. Leave its room to the south and take the stairs on the west side.",
+      "hint": "Keep your save from before the throne. Let the opening duel play out before choosing a side.",
+      "steps": [
+        "From the B4 diary, return to the passage and descend to the garden. Before approaching the throne, check behind the central platform for Moon Tears. Follow Fou-Lu behind the throne and ride the block. Keep Ryu alive in the duel until Whiteout.",
+        "In the conversation that follows, the fourth answer sets the ending. Reject Fou-Lu’s conclusion to return to your companions. Agree with him to take the other path.",
+        "If you stand with your companions, prepare for Tyrant followed by Astral. Keep recovery items for the second fight. Soul Rend leaves the active party at 1 HP.",
+        "If you side with Fou-Lu, you control the combined dragon against Ryu’s former companions. Reload the ordinary save from before the throne to choose the other path."
+      ],
+      "tip": "An ordinary pre-throne save lets you see either conclusion without replaying the castle. Use a separate slot if the game offers a clear save.",
+      "links": [
+        "late-battles",
+        "castle-charms",
+        "camp-and-card"
+      ],
+      "art": "iv-palace",
+      "sources": [
+        "angel",
+        "dalez",
+        "tricro",
+        "prima",
+        "western",
+        "field-layout",
+        "drawers"
+      ],
+      "landmarks": [
+        "Throne lift",
+        "The choice",
+        "The party’s path",
+        "The other path"
+      ],
+      "encounters": [
+        {
+          "name": "Astral",
+          "where": "Inner palace",
+          "detail": "Save a recovery action for Soul Rend, which leaves the active party at 1 HP."
+        },
+        {
+          "name": "Fou-Lu",
+          "where": "Solo duel",
+          "detail": "Keep Ryu alive until Whiteout ends the fight."
+        },
+        {
+          "name": "Tyrant",
+          "where": "Final confrontation",
+          "detail": "Prepare status protection and group healing before the second form."
+        }
+      ],
+      "warning": {
+        "label": "Before the choice",
+        "text": "Keep a separate File before entering the throne room if you want to see both endings."
+      },
+      "floors": [
+        {
+          "name": "Castle · B4 diary",
+          "mapId": 1192,
+          "section": 2,
+          "landmarks": [
+            {
+              "x": 4,
+              "z": 7,
+              "name": "Return to the lift"
+            }
+          ]
+        },
+        {
+          "name": "Castle · lower lift",
+          "mapId": 1192,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 22,
+              "z": 2,
+              "name": "B4 diary"
+            },
+            {
+              "x": 4,
+              "z": 11,
+              "name": "Lower passage"
+            }
+          ]
+        },
+        {
+          "name": "Castle · lower passage",
+          "mapId": 1026,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 12,
+              "z": 3,
+              "name": "Castle · lower lift"
+            }
+          ]
+        },
+        {
+          "name": "Castle · passage continuation",
+          "mapId": 1026,
+          "section": 5,
+          "landmarks": [
+            {
+              "x": 31,
+              "z": 6,
+              "name": "Castle · lower passage"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "name": "Royal Armor",
+          "where": "Tyrant · steal",
+          "detail": "If you fight beside your companions, use Steal on Tyrant before the form changes."
+        },
+        {
+          "name": "Royal Sword",
+          "where": "Astral · steal",
+          "detail": "Try to steal the sword during the final battle. Keep a healer ready for Soul Rend."
+        },
+        {
+          "name": "Moon Tears",
+          "where": "Garden below Castle B4",
+          "detail": "Check the chest southwest of the central platform before approaching the throne."
+        }
+      ]
+    }
+  ],
+  "articles": [
+    {
+      "id": "camp-and-card",
+      "title": "Saving on the road",
+      "category": "Camp & travel",
+      "lead": "Give yourself a return point before you try a route or change a choice.",
+      "sections": [
+        {
+          "title": "At the first map",
+          "text": "Once you have control on the world map, open the game menu and choose Save. You can also enter camp and save there. Choose the card slot, confirm, and wait for the write to finish."
+        },
+        {
+          "title": "Keep a place to return to",
+          "text": "Before a long dungeon or a conversation you want to revisit, choose a different ordinary save slot. Remember the place and play time on the entry. A campsite is particularly handy just before a path takes you indoors."
+        }
+      ],
+      "links": [
+        "north-desert",
+        "field-actions"
+      ],
+      "art": "iv-wreck",
+      "unlock": "crash",
+      "sources": [
+        "manual",
+        "eastern"
+      ]
+    },
+    {
+      "id": "field-actions",
+      "title": "Who should lead?",
+      "category": "Camp & travel",
+      "lead": "A change of leader can reveal a path the rest of the party cannot use.",
+      "sections": [
+        {
+          "title": "Look before you jump",
+          "text": "Nina rises briefly to survey the surroundings. Rotate the camera too. A ladder against the near wall or a plank behind a roof can disappear from a single angle. Ryu can swing his sword at growth in the way."
+        },
+        {
+          "title": "Match the obstacle",
+          "text": "As your group grows, try Cray on a movable crate or snowball and Ershin on a cracked wall or a tree that needs a jolt. Put the character in front, face the object, then use the field action. Their battle positions can still be changed separately."
+        }
+      ],
+      "links": [
+        "chamba",
+        "wyndia",
+        "ranks"
+      ],
+      "art": "iv-wreck",
+      "unlock": "crash",
+      "sources": [
+        "manual",
+        "deh2",
+        "drawers"
+      ]
+    },
+    {
+      "id": "sarai-salvage",
+      "title": "The digger’s dog",
+      "category": "Puzzles & errands",
+      "lead": "A sound cue can spare Nina a great deal of digging.",
+      "sections": [
+        {
+          "title": "Reach the workings",
+          "text": "Follow the wheel-controlled rudder through the grounded ships. Inside the wreck, operate the lever to lower the anchor outside, then ride up to the digger."
+        },
+        {
+          "title": "Use the barks",
+          "text": "The shovel alone costs 25 Zenny. Hiring the dog as well brings the total to 50. Walk the plot, pause for the dog’s indication and dig close to its strongest response. Check that you obtained the Ship Parts before heading back to Sarai."
+        }
+      ],
+      "links": [
+        "sarai",
+        "learning-skills"
+      ],
+      "art": "iv-wreck",
+      "unlock": "sarai",
+      "sources": [
+        "deh1",
+        "dxie"
+      ]
+    },
+    {
+      "id": "learning-skills",
+      "title": "Learning an enemy skill",
+      "category": "Battle",
+      "lead": "A fight with an ordinary monster can teach a move that stays useful for hours.",
+      "sections": [
+        {
+          "title": "Guard and watch",
+          "text": "Choose Guard and leave the monster alive long enough to demonstrate the move. Learning is a chance, so one unsuccessful turn proves little. A Mage Goo in Sandflier Valley is an early source of Burn. Kahn can later show you Focus."
+        },
+        {
+          "title": "Move a learned skill",
+          "text": "At camp, open Skill to take a learned move off one character and equip it on another. An Aurum pays for equipping it. Check who will actually take the next fight before spending one. Native spells that appear on levelling follow the character who learnt them."
+        }
+      ],
+      "links": [
+        "combination-magic",
+        "ranks",
+        "sarai"
+      ],
+      "art": "iv-training",
+      "unlock": "north-desert",
+      "sources": [
+        "manual",
+        "rx1",
+        "combos"
+      ]
+    },
+    {
+      "id": "ranks",
+      "title": "Front and rear ranks",
+      "category": "Battle",
+      "lead": "Pick the three people you need for this turn. The choice can change on the next one.",
+      "sections": [
+        {
+          "title": "Choose the active three",
+          "text": "When you have more than three people, give commands to the characters you want in front. A fourth member can replace a wounded fighter on the following turn. Put the healer in before confirming your last action."
+        },
+        {
+          "title": "Use a quiet turn",
+          "text": "A resting character recovers AP in the rear. Three consecutive rear turns also clear many temporary conditions. Poison and a fallen character still need treatment. Bring a reserve caster forward once their AP recovers."
+        }
+      ],
+      "links": [
+        "combination-magic",
+        "learning-skills"
+      ],
+      "art": "iv-training",
+      "unlock": "north-desert",
+      "sources": [
+        "manual",
+        "tricro"
+      ]
+    },
+    {
+      "id": "combination-magic",
+      "title": "Build a spell combo",
+      "category": "Battle",
+      "lead": "Link two actions in the right order and watch the name of the second spell.",
+      "sections": [
+        {
+          "title": "Try fire followed by wind",
+          "text": "Once someone has learnt Burn, have that character use it before Nina uses Sever. If the two spells connect, Firewind appears. Use a target with enough health to survive the first cast so you can see the result."
+        },
+        {
+          "title": "Read the result",
+          "text": "Fire leads into wind, wind into water, water into earth and earth into fire. Matching attributes can also chain. A combo can fail even with the right pair. A master who asks for hits counts the hits of one combo, so check that the attacks actually linked."
+        }
+      ],
+      "links": [
+        "learning-skills",
+        "apprentices",
+        "ranks"
+      ],
+      "art": "iv-training",
+      "unlock": "north-desert",
+      "sources": [
+        "combos",
+        "manual",
+        "rx2"
+      ]
+    },
+    {
+      "id": "fou-lu-forms",
+      "title": "Fou-Lu and Meditate",
+      "category": "Dragons",
+      "lead": "Recognise the emperor’s own dragon command when the story first changes hands.",
+      "sections": [
+        {
+          "title": "First transformation",
+          "text": "Fou-Lu can choose Astral from Meditate. It gives him a different set of attacks, including Eraser. He fights solo here, so look at his AP before committing to several rounds in dragon form."
+        },
+        {
+          "title": "Coming back to human form",
+          "text": "Choose Revert Form when you need his ordinary abilities again. The face of the transformed fighter on the battlefield differs from the full creature shown by a breath attack. Ryu has his own starting form, Aura."
+        }
+      ],
+      "links": [
+        "dragons",
+        "tomb",
+        "ranks"
+      ],
+      "art": "iv-dragon",
+      "unlock": "tomb",
+      "sources": [
+        "raiu",
+        "manual",
+        "eastern"
+      ]
+    },
+    {
+      "id": "apprentices",
+      "title": "Choosing a master",
+      "category": "Masters & villagers",
+      "lead": "Pick an apprenticeship for the way a character fights and check what the teacher wants in return.",
+      "sections": [
+        {
+          "title": "A first pupil at Kurok",
+          "text": "Rwolf’s per-level modifiers are +1 AP, −1 Power and +1 Wisdom compared with no master. A spellcaster such as Nina benefits from the extra AP and Wisdom. Her actual level-up also depends on her own growth for that level."
+        },
+        {
+          "title": "Bring the right result",
+          "text": "Rwolf checks your combo hit record. Stoll at the bandit hideout cares about the variety of items you have acquired. Once a master is on the camp scroll, you can assign a different pupil there. Visit the teacher in person to claim lessons for completed challenges."
+        }
+      ],
+      "links": [
+        "rwolf",
+        "masters",
+        "combination-magic",
+        "master-itinerary"
+      ],
+      "art": "iv-training",
+      "unlock": "dam-kyria",
+      "sources": [
+        "growth",
+        "almar",
+        "manual",
+        "slivers"
+      ]
+    },
+    {
+      "id": "master-itinerary",
+      "title": "Where to find the twelve masters",
+      "category": "Masters & villagers",
+      "lead": "Use your camp scroll to spot a missing name, then find the teacher on this circuit.",
+      "sections": [
+        {
+          "title": "Kurok, Synesta and Worent",
+          "text": "Rwolf waits in Kurok. Apprentice a pupil, then show him a five-hit combo for Eddy. Stoll at the hideout near Synesta asks for your entire purse, so buy supplies before agreeing. Una is upstairs at the elders’ house in Worent. She rewards the damage of a single combo."
+        },
+        {
+          "title": "Wyndia, the faeries and Chek",
+          "text": "Find Momo inside a windmill in Wyndia. Look for Njomo in the house near Ahm Fen once the faerie colony has a house of its own. In Chek, revisit the Abbess as you gather the dragons’ aid. She rewards the variety of monsters you have encountered."
+        },
+        {
+          "title": "Traders, sailors and fishing",
+          "text": "Take your upgraded treasure ball to Marlok’s house in Synesta. Kryrik in Shikk looks for a 25-hit combo. On Lyp’s waterfront, show Gyosil a fishing score of at least 3,000. After taking a pupil to Gyosil, revisit Lyta at the Synesta orphanage."
+        },
+        {
+          "title": "The last two visits",
+          "text": "Look for Kahn at the question mark north of Saldine. Once the other eleven teachers are on your scroll, take the side exit from the mountain trail south of Kwanso to reach Bunyan’s hut. His challenge concerns the damage you can do with a single attack."
+        }
+      ],
+      "links": [
+        "apprentices",
+        "masters",
+        "treasure-exchange",
+        "faerie-colony",
+        "fishing"
+      ],
+      "art": "iv-training",
+      "unlock": "astana-hq",
+      "sources": [
+        "almar",
+        "masterMap",
+        "dalez",
+        "rx2"
+      ]
+    },
+    {
+      "id": "treasure-exchange",
+      "title": "The treasure exchange",
+      "category": "Puzzles & errands",
+      "lead": "An unpromising ball in Sarai can become a much more valuable keepsake.",
+      "sections": [
+        {
+          "title": "Buy the starter",
+          "text": "Speak to the collector in the Sarai tavern and buy the Lead Ball. Treat it as a trade item. Collectors in other towns offer the next ball in the chain."
+        },
+        {
+          "title": "A time-sensitive stop",
+          "text": "During the night visit to Ludia, speak to the man standing in a doorway before leaving town. A later collector waits in the house by the exit from the Dragon Shrine. If you enjoy collecting, check unusual doorways and speak to people again on return visits."
+        }
+      ],
+      "links": [
+        "sarai",
+        "golden-plains",
+        "apprentices"
+      ],
+      "art": "iv-wreck",
+      "unlock": "sarai",
+      "sources": [
+        "slivers",
+        "rx2"
+      ]
+    },
+    {
+      "id": "wharf-cargo",
+      "title": "Working at the sandflier wharf",
+      "category": "Puzzles & errands",
+      "lead": "Clear the storeroom with the right people, then line up the crane over the deck.",
+      "sections": [
+        {
+          "title": "Sort the floor",
+          "text": "Read both signs before pushing anything. Cray can slide intact barrels and jars. Ershin can break the old barrels taking up space. Leave an open lane for moving the last pieces into their marked areas."
+        },
+        {
+          "title": "Work the crane",
+          "text": "Practise the swing with the first crate. Line the claw up over the load, lift, rotate towards the sandflier and lower it onto a clear section of deck. A stable stack gives the next crate a wider target. Speak with Marlok after the job."
+        }
+      ],
+      "links": [
+        "synesta",
+        "field-actions"
+      ],
+      "art": "iv-wreck",
+      "unlock": "synesta",
+      "sources": [
+        "deh1",
+        "dxie",
+        "eastern"
+      ]
+    },
+    {
+      "id": "plains-landmarks",
+      "title": "Three bearings on the plains",
+      "category": "Camp & travel",
+      "lead": "Face east from the entrance and find the boulder with a white band. Each trip starts there.",
+      "sections": [
+        {
+          "title": "Two routes from one rock",
+          "text": "For Tarhn, turn north-east and look for campfire smoke. For the blacksmith’s mountain, turn south towards the volcano. When the grass and sky all look alike, use the compass to regain your bearing."
+        },
+        {
+          "title": "The way to the shrine",
+          "text": "After the business in Ludia, visit Tarhn with Cray and take the Jadestone. From the big rock, keep riding east to the far edge for the shrine. Reaching the place early still leaves you needing the stone to open it."
+        }
+      ],
+      "links": [
+        "golden-plains",
+        "wyndia",
+        "shift-and-travel"
+      ],
+      "art": "sandsea",
+      "unlock": "golden-plains",
+      "sources": [
+        "deh2",
+        "rx2",
+        "dxie"
+      ]
+    },
+    {
+      "id": "faerie-colony",
+      "title": "Starting a faerie colony",
+      "category": "Masters & villagers",
+      "lead": "Balance food and housing before you give your first villagers specialist jobs.",
+      "sections": [
+        {
+          "title": "Feed the settlement",
+          "text": "The faeries ask for help on the road from Ahm Fen. Open the colony from camp after agreeing. Start with hunters and someone clearing land. Check the stores on your next visit and add a hunter if food is dwindling."
+        },
+        {
+          "title": "Give an empty plot a purpose",
+          "text": "Assign construction once land is clear. A finished house gives workers somewhere to set up a shop or service. Choose a job, return after battles outside and look at the result before moving more hunters away from food."
+        }
+      ],
+      "links": [
+        "apprentices",
+        "wyndia",
+        "camp-and-card"
+      ],
+      "art": "iv-river",
+      "unlock": "wyndia",
+      "sources": [
+        "faeries",
+        "prima",
+        "rx2"
+      ]
+    },
+    {
+      "id": "fishing",
+      "title": "Casting a first line",
+      "category": "Fishing",
+      "lead": "A fish that ignores one cast may be swimming at a different depth.",
+      "sections": [
+        {
+          "title": "Lure, depth and tension",
+          "text": "Equip a rod and lure at a fishing spot. Choose your direction and cast strength. Let the lure sink before giving it a rhythm. Once a fish bites, keep the tension indicator inside the yellow band. Ease off when the fish fights and reel as the line slackens."
+        },
+        {
+          "title": "Make the catch useful",
+          "text": "Check a Manillo shop’s recipe before using fish as items. A purchase asks for named species and quantities. If you are chasing fishing points, try a different spot or improve your record for a species you already have. Gyosil in Lyp takes pupils at 3,000 points."
+        }
+      ],
+      "links": [
+        "chiqua-bargain",
+        "apprentices",
+        "camp-and-card"
+      ],
+      "art": "iv-fishing",
+      "unlock": "sarai",
+      "sources": [
+        "fish",
+        "manillo",
+        "almar"
+      ]
+    },
+    {
+      "id": "dragon-crystals",
+      "title": "Dragon crystal gazetteer",
+      "category": "Dragons",
+      "lead": "Each glint in the field can add a form to Meditate. Two glints belong to different travellers.",
+      "sections": [
+        {
+          "title": "Water and fire",
+          "text": "Fou-Lu’s Water Gem is in the Sanctum and gives him Serpent. Ryu finds the Fire Gem on Mt. Giga for Wyvern. At the lifts, explore the side ledges and look for the glint on the rock."
+        },
+        {
+          "title": "Earth, wind and the flawed stone",
+          "text": "For Behemoth, search the overgrown mound on the Tidal Flats. For Mutant, break the false wall with Ershin and descend En Jhou to its Flawed Gem. For Myrmidon, check the bushes off the scorched ground near Fou-Lu’s Tomb."
+        },
+        {
+          "title": "Changes in battle",
+          "text": "Some forms grow into a stronger version when you use them after reaching a Game Points threshold. Their names change in the menu, for example Wyvern to Weyr. Mini-game performance contributes to those points."
+        }
+      ],
+      "links": [
+        "dragons",
+        "fou-lu-forms",
+        "chiqua-bargain"
+      ],
+      "art": "iv-dragon",
+      "unlock": "sanctum",
+      "sources": [
+        "raiu",
+        "crystalMap",
+        "saldineFilm"
+      ]
+    },
+    {
+      "id": "evocations",
+      "title": "Calling a dragon",
+      "category": "Dragons",
+      "lead": "Ryu can change form himself, or call on another dragon for a single intervention.",
+      "sections": [
+        {
+          "title": "Find the command",
+          "text": "Meditate changes the fighter taking the turn. Evocation is a separate option in Ryu’s Abilities. His audience with the Wind Dragon precedes his first call, Rainstorm, which arrives later at the shrine during the story."
+        },
+        {
+          "title": "Rest between calls",
+          "text": "After using a particular evocation, stay at an inn to regain that call. Saving in camp alone will not replenish it. Take the party to an inn before setting out if a boss plan relies on a call you have already spent."
+        }
+      ],
+      "links": [
+        "dragons",
+        "sinchon",
+        "dragon-pilgrimage"
+      ],
+      "art": "iv-dragon",
+      "unlock": "pung-tap",
+      "sources": [
+        "raiu",
+        "manual",
+        "evocationMap"
+      ]
+    },
+    {
+      "id": "dragon-pilgrimage",
+      "title": "The seven dragon calls",
+      "category": "Dragons",
+      "lead": "Follow the dragon sightings across the two continents and the inland sea.",
+      "sections": [
+        {
+          "title": "Wind, grass and mud",
+          "text": "Rainstorm comes through the story at Sinchon. Ask Tarhn about the shining bird and follow it across the Golden Plains for Healing Wind. Revisit the singer’s overlook near the Dam for Mud Flow."
+        },
+        {
+          "title": "Sand and trees",
+          "text": "Jump the dune into the enclosed oasis on the Shyde–Shikk sandflier course for Onslaught. On the road between Shikk and the checkpoint, take the side exit inside the question-mark area. The new map path leads to Holy Circle."
+        },
+        {
+          "title": "Water and stone",
+          "text": "Sail north-west of Shikk and use Explore by the reef to find Flood Tide. The Salt Stone at the Fane is a separate encounter. South of Chiqua, discuss the many shapes of dragons with the traveller by the river. Visit the quarry he reveals for Fulguration."
+        },
+        {
+          "title": "Kaiser control",
+          "text": "Collect all seven evocations to give Ryu control of Kaiser in battle. Reaching every gem location is a different collection. Compare the command list in Ryu’s Abilities with the seven calls above to find a missing visit."
+        }
+      ],
+      "links": [
+        "evocations",
+        "plains-landmarks",
+        "shikk",
+        "dragon-crystals"
+      ],
+      "art": "iv-dragon",
+      "unlock": "imperial-tomb",
+      "sources": [
+        "evocationMap",
+        "raiu",
+        "dxie",
+        "western"
+      ]
+    },
+    {
+      "id": "shift-and-travel",
+      "title": "Getting back with Shift",
+      "category": "Camp & travel",
+      "lead": "Make Shyde your first stop when you want to revisit the eastern map.",
+      "sections": [
+        {
+          "title": "Find the teacher",
+          "text": "At Shyde, climb up to the puppeteer above the sandflier dealer and speak to her. Shift then lets you select destinations from the world map. Use the in-game map command shown for your layout."
+        },
+        {
+          "title": "Open the route once",
+          "text": "If a place is missing, travel its connecting map road in person and check again. Shift is useful for returning to teachers, inns and settlements after opening routes. The sandflier and ship still have their own journeys and discoveries."
+        }
+      ],
+      "links": [
+        "shyde",
+        "plains-landmarks",
+        "evocations"
+      ],
+      "art": "iv-wreck",
+      "unlock": "shyde",
+      "sources": [
+        "rx3",
+        "angel"
+      ]
+    },
+    {
+      "id": "ship-and-fane",
+      "title": "The two stones at Shikk",
+      "category": "Camp & travel",
+      "lead": "A stone used at the shrine and a stone shown to the sailors have different jobs.",
+      "sections": [
+        {
+          "title": "Offer the Wave Stone",
+          "text": "Explore the lower flooded passage in the Fane for the Wave Stone. Carry it back to the inscribed slab and offer it there. The upper entrance leads to the audience that gives you the Salt Stone."
+        },
+        {
+          "title": "Get everyone aboard",
+          "text": "Back at the pub, show the Salt Stone to the sailor who challenged you. In the contest at the edge of the dock, draw him to the edge and strike from behind. The later tests take the crew into the hold. Talk to the captain when the party is ready to sail."
+        }
+      ],
+      "links": [
+        "shikk",
+        "dragon-pilgrimage",
+        "lyp"
+      ],
+      "art": "iv-river",
+      "unlock": "shikk",
+      "sources": [
+        "rx3",
+        "billy",
+        "western"
+      ]
+    },
+    {
+      "id": "chiqua-bargain",
+      "title": "Keep the Flawed Gem",
+      "category": "Puzzles & errands",
+      "lead": "One payment for directions costs a dragon form. Two others use replaceable items.",
+      "sections": [
+        {
+          "title": "Commission a pot",
+          "text": "Ask about the informant’s offers, then order a pot in Koshka. While it is being made, explore En Jhou. Break the suspect wall with Ershin and descend past the hanging treasure. The English pickup message calls the crystal an Earth Gem. Check your key items for its actual name, Flawed Gem."
+        },
+        {
+          "title": "Pay in fish instead",
+          "text": "The informant also takes the requested fish for shisu, including Sea Bream, Salmon or Martian Squid. Three of one accepted species are sufficient. Check the handover prompt and choose your catch or the pot. You can keep the gem even after the river route opens."
+        }
+      ],
+      "links": [
+        "chiqua",
+        "dragon-crystals",
+        "fishing"
+      ],
+      "art": "iv-river",
+      "unlock": "chiqua",
+      "sources": [
+        "raiu",
+        "fish",
+        "angel",
+        "crystalMap"
+      ]
+    },
+    {
+      "id": "tomb-mechanisms",
+      "title": "The Tomb’s two Beads",
+      "category": "Puzzles & errands",
+      "lead": "Two block puzzles lead back to the same central shaft.",
+      "sections": [
+        {
+          "title": "A bridge, then a ride",
+          "text": "For the first Bead, move the purple blocks until you can jump a continuous line to the middle. In the darker room, get on the cube yourself. Roll east, north twice, west, then north to reach the other Bead. Ride back to the central shaft."
+        },
+        {
+          "title": "Two different targets",
+          "text": "At the tablet, the enemies labelled I and II resist opposite kinds of damage. Direct spells at I and weapon strikes at II. Watch everyone’s HP after Revolution before queuing the next turn. Return with Won-qu’s Gem and take the block that offers to move ahead."
+        }
+      ],
+      "links": [
+        "imperial-tomb",
+        "combination-magic",
+        "ranks"
+      ],
+      "art": "iv-tomb",
+      "unlock": "imperial-tomb",
+      "sources": [
+        "rx4",
+        "routeRun",
+        "dalez"
+      ]
+    },
+    {
+      "id": "castle-charms",
+      "title": "Castle seals and shortcuts",
+      "category": "Puzzles & errands",
+      "lead": "Use the castle’s rest room and coloured seals to keep track of your descent.",
+      "sections": [
+        {
+          "title": "From the key to blue",
+          "text": "When the entrance crystal admits the party, use the bed if needed. Have Ershin strike the furniture to dislodge the key. Open the stair gate and find Dragonne below. Its regeneration stops after a breath attack. Pick up the Blue Charm from the battle site."
+        },
+        {
+          "title": "From yellow to red",
+          "text": "Take the lift back towards 5F for the blue-sealed door. In the lower floors, the Yellow Charm releases a rope as well as doors. Descend that way for the Red Charm, then return to the red-sealed lift to enter the core. Write down the floor of your last seal if you stop playing midway."
+        }
+      ],
+      "links": [
+        "castle",
+        "late-battles",
+        "camp-and-card"
+      ],
+      "art": "iv-palace",
+      "unlock": "castle",
+      "sources": [
+        "routeRun",
+        "angel",
+        "dalez"
+      ]
+    },
+    {
+      "id": "late-battles",
+      "title": "Surviving the palace fights",
+      "category": "Battle",
+      "lead": "Prepare for a run of fights where one healer may be too slow. Later sections reveal the final opponents.",
+      "sections": [
+        {
+          "title": "Before the inner palace",
+          "text": "Water resistance helps against A-tur’s Frost Breath. At Dragonne, use a dragon breath early to remove its healing. At the next save point, set aside an ordinary save and check your supplies for group healing and status recovery."
+        },
+        {
+          "title": "When you oppose the emperor",
+          "text": "Tyrant can spread several status effects at once. Avoid putting all your healing options in the same active trio. Astral follows Tyrant and can use Soul Rend to drop the front line to 1 HP. Give a group heal priority over a long attack chain on that turn."
+        }
+      ],
+      "links": [
+        "chedo",
+        "castle",
+        "meeting",
+        "ranks"
+      ],
+      "art": "iv-training",
+      "unlock": "meeting",
+      "sources": [
+        "prima",
+        "angel",
+        "western"
+      ]
+    }
+  ]
+}

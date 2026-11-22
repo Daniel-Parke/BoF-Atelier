@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Revision-bound BoF Atelier mod manifest v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "version",
+    "title",
+    "game",
+    "status",
+    "classification",
+    "supported_game_fingerprints",
+    "required_capabilities",
+    "dependencies",
+    "conflicts",
+    "save_impact",
+    "operations",
+    "rights"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9.-]+$"
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+\\.\\d+(?:-[A-Za-z0-9.-]+)?$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "game": {
+      "enum": [
+        "bof3",
+        "bof4"
+      ]
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "experimental",
+        "tested"
+      ]
+    },
+    "classification": {
+      "enum": [
+        "bug-fix",
+        "convenience",
+        "presentation",
+        "balance",
+        "new-content",
+        "research"
+      ]
+    },
+    "required_capabilities": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "version_constraint"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "version_constraint": {
+            "type": "string"
+          }
+        }
+      },
+      "maxItems": 64
+    },
+    "conflicts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
+      "maxItems": 64
+    },
+    "save_impact": {
+      "enum": [
+        "none",
+        "session-only",
+        "save-affecting",
+        "state-compatibility",
+        "new-campaign",
+        "migration-required",
+        "unknown"
+      ]
+    },
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "kind",
+          "target",
+          "expected_input_sha256",
+          "expected_output_sha256"
+        ],
+        "properties": {
+          "kind": {
+            "enum": [
+              "config-option",
+              "file-replacement",
+              "binary-patch"
+            ]
+          },
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expected_input_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "expected_output_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "payload_path": {
+            "type": "string"
+          },
+          "option_value": {
+            "type": [
+              "string",
+              "number",
+              "boolean",
+              "null"
+            ]
+          }
+        }
+      },
+      "minItems": 1,
+      "maxItems": 256
+    },
+    "rights": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "author",
+        "basis",
+        "publication_status"
+      ],
+      "properties": {
+        "author": {
+          "type": "string"
+        },
+        "basis": {
+          "type": "string"
+        },
+        "publication_status": {
+          "enum": [
+            "not-reviewed",
+            "private-only",
+            "cleared-for-described-use"
+          ]
+        }
+      }
+    },
+    "supported_game_fingerprints": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "uniqueItems": true,
+      "minItems": 1
+    }
+  }
+}

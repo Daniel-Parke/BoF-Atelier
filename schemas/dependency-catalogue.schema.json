@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BoF Atelier dependency catalogue",
+  "type": "object",
+  "required": ["version", "reviewed", "components"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "version": {"const": 1},
+    "reviewed": {"type": "string", "format": "date"},
+    "components": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/component"}}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "text": {"type": "string", "minLength": 1},
+    "url": {"type": "string", "pattern": "^https://"},
+    "digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "component": {
+      "type": "object",
+      "required": ["id","purpose","platforms","version","source","licence","licence_url","delivery","verification","maintenance"],
+      "properties": {
+        "id": {"type": "string","pattern": "^[a-z0-9][a-z0-9-]+$"},
+        "purpose": {"$ref": "#/$defs/text"}, "platforms": {"type": "array","minItems": 1,"uniqueItems": true,"items": {"$ref": "#/$defs/text"}},
+        "version": {"$ref": "#/$defs/text"}, "source": {"$ref": "#/$defs/url"},
+        "licence": {"$ref": "#/$defs/text"}, "licence_url": {"$ref": "#/$defs/url"},
+        "delivery": {"$ref": "#/$defs/text"}, "verification": {"$ref": "#/$defs/text"}, "maintenance": {"$ref": "#/$defs/text"},
+        "package": {"type": "object","required": ["url","metadata","release_id","source_commit","bytes","sha256","files_sha256","executable","executable_sha256"],"properties": {
+          "url": {"$ref": "#/$defs/url"}, "metadata": {"$ref": "#/$defs/url"}, "release_id": {"type": "integer","minimum": 1}, "asset_id": {"type": "integer","minimum": 1},
+          "source_commit": {"type": "string","pattern": "^[a-f0-9]{40}$"}, "bytes": {"type": "integer","minimum": 1},"sha256": {"$ref": "#/$defs/digest"},
+          "files_sha256": {"$ref": "#/$defs/digest"},"publisher_sha3_256": {"$ref": "#/$defs/digest"},"executable": {"type":"string","pattern":"^[A-Za-z0-9._-]+$"},"executable_sha256": {"$ref": "#/$defs/digest"}
+        }, "additionalProperties": false},
+        "member": {"type": "object","required": ["name","bytes","sha256"],"properties": {"name": {"$ref": "#/$defs/text"},"bytes": {"type":"integer","minimum": 1},"sha256": {"$ref": "#/$defs/digest"}},"additionalProperties": false}
+      },
+      "additionalProperties": false
+    }
+  }
+}

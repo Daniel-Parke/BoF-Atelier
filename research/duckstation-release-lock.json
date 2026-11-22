@@ -1,0 +1,27 @@
+{
+  "repository": "stenzek/duckstation",
+  "tag": "v0.1-12442",
+  "release_id": 423115112,
+  "source_commit": "dd4a0eb779296a525f8b10b6d9a45911ad6d088f",
+  "permitted_route": "owner-selected official stock acquisition for local qualification",
+  "assets": [
+    {
+      "name": "duckstation-mac-release.zip",
+      "id": 673935790,
+      "size": 96347390,
+      "digest": "sha256:b9f6f0e747ee2617988de33e1fafdd17d02e918d042fed691355aed9a86c11cd"
+    },
+    {
+      "name": "duckstation-windows-x64-release.zip",
+      "id": 673934896,
+      "size": 73988909,
+      "digest": "sha256:b55d1cf45bdb6d0326a9083cf787ca7d6386dff6c837f6d3b8713f48af2a02b7"
+    },
+    {
+      "name": "DuckStation-x64.AppImage",
+      "id": 673935456,
+      "size": 94519584,
+      "digest": "sha256:4d5c3dcfd9937dc9e77b8fcd5f879b8ec0c69551d5ed13462592073608542fca"
+    }
+  ]
+}
