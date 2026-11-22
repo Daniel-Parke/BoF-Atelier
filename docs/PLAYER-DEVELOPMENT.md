@@ -1,6 +1,6 @@
 # Run the Windows Player source
 
-This page is for contributors who want to change the Windows app. If you came here to play, [choose your game and setup](PLAYING.md). If you want help with a route, [open the Field Guide](../README.md#read-the-field-guide).
+This page is for contributors who want to change the Windows app. If you came here to play, [choose your game and setup](PLAYING.md). If you want help with a route, [open the Field Guide](https://daniel-parke.github.io/BoF-Atelier/).
 
 ## Inspect the app in an empty Lab
 

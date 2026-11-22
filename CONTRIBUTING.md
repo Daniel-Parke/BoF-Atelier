@@ -2,7 +2,7 @@
 
 ## Report a correction
 
-Open **Issues → New issue** on GitHub. Give the game, area, route page and edition or region if known. Describe what the page says, what you saw and how another player could check it. For a missable, give the last safe moment to act. Keep spoilers out of the issue title. A report in plain English is enough.
+[Report a Field Guide correction](https://github.com/Daniel-Parke/BoF-Atelier/issues/new?template=guide-correction.md). GitHub asks you to sign in to send the report. Give the game, area, route page and edition or region if known. Describe what the page says, what you saw and how another player could check it. For a missable, give the last safe moment to act. Keep spoilers out of the issue title. A report in plain English is enough.
 
 For example, on IV's *Kurok, the Dam and Kyria Woods* page, identify the fork and say which entrance you used. A direction such as “take the western path when entering from Chamba” is easier to reproduce than “turn left”. Say whether you played the route or found the information in a reference. Please keep private saves, disc images, firmware and screenshots containing identifying information off issues and pull requests.
 

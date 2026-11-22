@@ -33,7 +33,7 @@ On Windows, use `py -3` if `python` does not select your installed version. On L
 
 The repository owner enables this once for each repository or fork. In **Settings → Pages → Build and deployment**, choose **Deploy from a branch**, then **main** and **/docs**. Save. When the deployment completes, open the URL shown by GitHub. Add that verified URL to the repository's **About → Website** field. Do this only for the public, reviewed repository. [GitHub Pages publishing sources](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
 
-Once a public deployment is verified, link the actual address from the first action in the README. Its two volume captions can then link straight to the hosted reader at `#bof3/walk` and `#bof4/walk`. Keep the offline instructions. Fork owners should use their own verified deployment address.
+The [public Field Guide](https://daniel-parke.github.io/BoF-Atelier/) serves both volumes. The two paintings and walkthrough links in the README open `#bof3/walk` and `#bof4/walk`. If you publish a fork under your own address, update the website field and the links in the README and player documentation.
 
 After a change reaches `main`, wait for the Pages deployment to finish. Open both README walkthrough links. From the guide footer, download the offline copy and open it with the network disconnected.
 

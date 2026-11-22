@@ -1,6 +1,6 @@
 # Play Breath of Fire III or IV
 
-You can use the [Field Guide](../README.md#read-the-field-guide) alongside whichever version you already play. The walkthroughs use the North American PlayStation editions, so some details can differ on PC or in other regions.
+You can use the [Field Guide](https://daniel-parke.github.io/BoF-Atelier/) alongside whichever version you already play. The walkthroughs use the North American PlayStation editions, so some details can differ on PC or in other regions.
 
 | What do you have? | Start here |
 | --- | --- |
