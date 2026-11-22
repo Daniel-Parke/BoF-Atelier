@@ -14,6 +14,17 @@ ROOT = Path(__file__).resolve().parents[1] / "design/field-guide"
 
 
 class FieldGuideVolumeTests(unittest.TestCase):
+    def test_damaged_document_has_a_volume_error_at_any_level(self):
+        with TemporaryDirectory() as folder:
+            target = Path(folder) / "bof3.json"
+            volume = json.loads((ROOT / "wiki/bof3.json").read_bytes())
+            volume["sources"][next(iter(volume["sources"]))] = []
+            for broken in ([], None, volume, {"game": "bof3", "version": 2}):
+                with self.subTest(shape=type(broken).__name__):
+                    target.write_text(json.dumps(broken), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, "bof3 Field Guide"):
+                        read_book(target.parent, "bof3")
+
     def test_published_first_format_and_unsupported_versions(self):
         with TemporaryDirectory() as folder:
             data = json.loads((ROOT / "wiki/bof4.json").read_bytes())

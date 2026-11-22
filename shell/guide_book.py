@@ -101,7 +101,19 @@ def public_gene_recipe(selection: tuple[int, ...] | list[int]) -> dict:
 def read_book(directory: Path, game: str) -> dict:
     if game not in CORE_PAGES:
         raise ValueError("Unknown guide volume")
-    book = json.loads((directory / f"{game}.json").read_text(encoding="utf-8-sig"))
+    try:
+        book = json.loads((directory / f"{game}.json").read_text(encoding="utf-8-sig"))
+    except RecursionError as error:
+        raise ValueError(f"The {game} Field Guide contains too many nested sections.") from error
+    if not isinstance(book, dict):
+        raise ValueError(f"The {game} Field Guide must contain a JSON object.")
+    try:
+        return _prepare_book(book, game)
+    except (AttributeError, IndexError, KeyError, TypeError) as error:
+        raise ValueError(f"Invalid {game} Field Guide structure: {error}") from error
+
+
+def _prepare_book(book: dict, game: str) -> dict:
     if book.get("game") != game:
         raise ValueError(f"Expected the {game} Field Guide volume, found {book.get('game')!r}.")
     if type(book.get("version")) is not int or book["version"] not in (1, 2):
