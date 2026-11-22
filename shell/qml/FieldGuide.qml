@@ -36,10 +36,23 @@ FocusScope {
     readonly property var entities: book.entities || ({})
     readonly property var stop: route[Math.min(place, route.length - 1)] || ({})
     readonly property var article: articles.find(e => e.id === page) || null
+    readonly property var articleFloor: {
+        const ref = article?.floorRef
+        if (!ref) return null
+        const chapter = route.find(row => row.id === ref.stop)
+        const floor = chapter?.floors?.find(row => row.mapId === ref.mapId && row.section === ref.section)
+        if (!floor) return null
+        const area = (chapter.sectionsByArea || []).find(row => row.floorIds.includes(ref.mapId))
+        const target = area && sheets[area.id] ? area.id : chapter.id
+        const boundary = sheets[target]?.unlock || chapter.id
+        return isAvailable(target) || boundary === article.unlock ? {target, area, floor, stop: chapter.id} : null
+    }
     readonly property var entity: entities[page] || null
     readonly property var sheet: page === "walk" ? Object.values(sheets).find(s => s.stop === stop.id && (!area || s.area === area.name)) || null : null
     readonly property var subject: page === "walk" ? stop : article
-    readonly property string pageArt: sheet ? sheet.art : subject ? subject.art : page === "masters" ? "iv-training" : volume.theme
+    readonly property string pageArt: sheet ? sheet.art : subject ? subject.art : entity && readingOrigin ?
+        sheets[readingOrigin.area]?.art || route.find(row => row.id === readingOrigin.stop)?.art || volume.theme :
+        page === "masters" ? "iv-training" : volume.theme
     readonly property bool specimenArt: pageArt.startsWith("gene-") || ["flame","frost","thunder","iv-fishing","iv-training","iv-dragon"].includes(pageArt)
     readonly property string pinId: page === "walk" ? stop.id : page
     readonly property string bookmarkId: sheet ? sheet.id : pinId
@@ -53,6 +66,9 @@ FocusScope {
     readonly property var savedArea: areas.find(s => s.floorIds.includes(savedFloor)) || null
     readonly property var area: areas.find(s => s.name === chosenArea) || savedArea || chapterArea
     readonly property int firstStep: area ? area.firstStep : 0
+    readonly property var areaSteps: (stop.steps || []).slice(firstStep, area ? area.endStep : undefined)
+    readonly property string landmarkTitle: (stop.landmarks || [])[firstStep + selectedStep - 1] || stop.title || ""
+    readonly property string stepTopic: page === "walk" && !sheet ? stop.stepTopics?.[landmarkTitle] || "" : ""
     readonly property var visibleFloors: area ? (stop.floors || []).filter(f => area.floorIds.includes(f.mapId)) : stop.floors || []
     readonly property bool hasWarning: !!stop.warning && (!area || !!area.warning)
     readonly property bool schematicAvailable: !!stop.map && (!area || area.id === chapterArea?.id)
@@ -94,19 +110,30 @@ FocusScope {
     }
     property string page: "guide"
     property var history: []
+    property var readingOrigin: null
+    readonly property var previousPage: history.length ? history[history.length - 1] : null
+    readonly property string backLabel: picker ? "Master training" : page === "wiki" && category ? "All subjects" :
+        previousPage ? (previousPage.category && previousPage.id === "wiki" ? previousPage.category : titleOf(previousPage.id)) :
+        page === "walk" ? "Walkthrough" : entity ? entity.category : article ? article.category :
+        page === "guide" ? "" : "Contents"
     property var chosen: []
     property var partyAllies: []
     property bool partyKnown: false
     property int place: 0
     property bool hintOpen: false
     property bool stepOpen: false
+    property bool allChapterSteps: false
     property int selectedStep: 1
-    property bool readingFloor: false
     property bool afterOpen: false
     property bool enginesOpen: false
     property string atlasSection: ""
     property bool loreOpen: false
-    readonly property string activeSection: atlasSection || (stop.map || stop.floors ? "Map" : "Notes")
+    readonly property string activeSection: atlasSection || "Directions"
+    readonly property var areaItems: (stop.items || []).filter(row => !area || (row.areaIds || []).includes(area.id))
+    readonly property var areaEnemies: (stop.encounters || []).filter(row => !area || (row.areaIds || []).includes(area.id))
+    readonly property var sections: ["Directions"].concat(visibleFloors.length || schematicAvailable ? ["Map"] : [],
+        areaItems.length ? ["Items"] : [], areaEnemies.length ? ["Enemies"] : [],
+        (area || stop).tip || (stop.lore && (!area || area.lore)) ? ["Notes"] : [])
     property bool overview: false
     property bool mapExpanded: false
     property bool routeExpanded: false
@@ -122,16 +149,57 @@ FocusScope {
     }
     function chooseArea(name) {
         chosenArea = name
-        hintOpen = false; stepOpen = false; loreOpen = false; overview = false; afterOpen = false
-        readingFloor = false; mapExpanded = false; routeExpanded = false; enginesOpen = false; atlasSection = ""
+        hintOpen = false; stepOpen = false; allChapterSteps = false; loreOpen = false; overview = false; afterOpen = false
+        mapExpanded = false; routeExpanded = false; enginesOpen = false; atlasSection = ""
         selectedStep = sheet && sheet.id === "kurok" ? 2 : 1
         rememberReadingChoice()
     }
     function entityId(row, monsters) {
         return (monsters ? "enemy." : "item.") + row.name.trim().toLowerCase()
     }
+    function changeSection(section) {
+        atlasSection = section
+        rememberReadingChoice()
+    }
+    function openRecord(row, monsters, key) {
+        const id = entityId(row, monsters)
+        if (!known(id)) return
+        // Generated chapter ledgers own one stop; names alone can occur on many floors.
+        const originStop = page === "walk" ? stop.id : article?.unlock
+        const originArea = page === "walk" ? area?.id || "" : ""
+        visitFrom(id, key)
+        readingOrigin = {stop: originStop, area: originArea, where: row.where, detail: row.detail}
+    }
+    function matchesOrigin(row) {
+        return !!readingOrigin && row.stop === readingOrigin.stop && row.where === readingOrigin.where &&
+               row.detail === readingOrigin.detail && (!readingOrigin.area || !row.areaIds?.length || row.areaIds.includes(readingOrigin.area))
+    }
+    readonly property var sightings: (entity?.observations || []).filter(row =>
+        matchesOrigin(row) || canReadObservation(row) || revealedSubjects.includes(entity.category))
+    readonly property var firstSighting: sightings.find(row => matchesOrigin(row)) || null
+    readonly property var orderedSightings: firstSighting ? [firstSighting].concat(sightings.filter(row => !matchesOrigin(row))) : sightings
     function observationTargets(row) {
-        return row.areaIds?.length ? row.areaIds : [row.stop]
+        const destinations = row.areaIds?.length ? row.areaIds : [row.stop]
+        return destinations.filter(id => isAvailable(id) || revealedSubjects.includes(entity?.category))
+    }
+    function openObservation(row, target) {
+        if (matchesOrigin(row) && previousPage?.id === target) { goBack(); return }
+        visit(target)
+        if (page !== "walk" || !row.floorIds?.length) return
+        const position = visibleFloors.findIndex(floor => row.floorIds.includes(floor.mapId))
+        if (position >= 0) Qt.callLater(function() { floorSheet.index = position })
+    }
+    function openArticleFloor() {
+        const link = articleFloor
+        if (!link) return
+        visitFrom(link.target, "articleFloorPlan")
+        if (link.area && area?.id !== link.area.id) chooseArea(link.area.name)
+        changeSection("Map")
+        Qt.callLater(function() {
+            if (page !== "walk" || stop.id !== link.stop || activeSection !== "Map") return
+            const index = visibleFloors.findIndex(f => f.mapId === link.floor.mapId && f.section === link.floor.section)
+            if (index >= 0) { floorSheet.index = index; viewer.focusNamed("floorPicker") }
+        })
     }
     function canReadObservation(row) {
         return isAvailable(row.unlock || row.stop)
@@ -159,6 +227,7 @@ FocusScope {
         }
         sessionContext = inSession ? scope : ""
         history = []
+        readingOrigin = null
         chosen = []
         partyAllies = []
         partyKnown = false
@@ -209,13 +278,13 @@ FocusScope {
         notice = ""
         hintOpen = false
         stepOpen = false
+        allChapterSteps = false
         atlasSection = ""
         overview = false
         mapExpanded = false
         routeExpanded = false
         chosenArea = followSave ? "" : targetSheet?.area || areas.find(a => a.id === targetId)?.name || ""
         selectedStep = sheet && sheet.id === "kurok" ? 2 : 1
-        readingFloor = false
         afterOpen = false
         enginesOpen = false
         loreOpen = false
@@ -226,14 +295,17 @@ FocusScope {
             landing.forceActiveFocus()
         })
     }
-    function visit(id) {
+    function visit(id) { visitFrom(id, "") }
+    function visitFrom(id, sourceControl) {
         if (!known(id) || page === id || (page === "walk" && id === bookmarkId)) return
         const focused = controls().find(item => item.activeFocus)
         history = history.concat([{id: page === "walk" ? bookmarkId : page, chosenArea: chosenArea,
-                    step: selectedStep, expandedSteps: stepOpen, section: atlasSection, hint: hintOpen, lore: loreOpen,
-                    floor: readingFloor, floorIndex: floorSheet.index, floorPin: floorSheet.pin,
+                    step: selectedStep, expandedSteps: stepOpen, allSteps: allChapterSteps, section: atlasSection, hint: hintOpen, lore: loreOpen,
+                    floorIndex: floorSheet.index, floorPin: floorSheet.pin,
                     overview: overview, enlarged: mapExpanded, enlargedRoute: routeExpanded, after: afterOpen, engines: enginesOpen,
-                    category: category, y: scroller.contentY, focus: focused ? focused.objectName : ""}])
+                    category: category, origin: readingOrigin, sources: sourcesOpen, y: scroller.contentY,
+                    focus: sourceControl || (focused ? (focused.returnKey || focused.objectName) : "")}])
+        readingOrigin = null
         if (id === "walk") place = Math.max(0, currentPlace)
         setPage(id)
         rememberReadingChoice()
@@ -250,18 +322,23 @@ FocusScope {
             history = history.slice(0, -1)
             setPage(destination.id)
             chosenArea = destination.chosenArea
-            selectedStep = destination.step; stepOpen = destination.expandedSteps
+            selectedStep = destination.step; stepOpen = destination.expandedSteps; allChapterSteps = destination.allSteps
             atlasSection = destination.section; hintOpen = destination.hint; loreOpen = destination.lore
-            readingFloor = destination.floor; overview = destination.overview; mapExpanded = destination.enlarged
+            overview = destination.overview; mapExpanded = destination.enlarged
             routeExpanded = destination.enlargedRoute
             afterOpen = destination.after; enginesOpen = destination.engines; category = destination.category
+            readingOrigin = destination.origin; sourcesOpen = destination.sources
             Qt.callLater(function() {
                 floorSheet.index = Math.max(0, Math.min(destination.floorIndex, visibleFloors.length - 1))
                 floorSheet.pin = destination.floorPin
-                scroller.contentY = Math.min(destination.y, Math.max(0,scroller.contentHeight-scroller.height))
-                const target = controls().find(item => item.objectName && item.objectName === destination.focus)
+                const target = controls().find(item => !!destination.focus && (item.returnKey || item.objectName) === destination.focus)
                 if (target) target.forceActiveFocus()
+                scroller.contentY = Math.min(destination.y, Math.max(0,scroller.contentHeight-scroller.height))
             })
+        } else if (page !== "guide") {
+            const subjectName = entity?.category || article?.category
+            if (subjectName) { setPage("wiki"); openSubject(subjectName) }
+            else setPage(page === "walk" ? "route" : "guide")
         } else {
             exitRequested()
         }
@@ -423,8 +500,9 @@ FocusScope {
     }
     function firstAction() {
         return page === "guide" ? "guideSearch" : page === "genes" ? "gene0" :
-               page === "masters" ? "masterSlotA" : page === "walk" ? (sheet ? "routeDirection"+selectedStep : "guideHint") :
-               page === "route" ? "stop" + route[0].id : page === "wiki" ? (category ? "allSubjects" : "category0") :
+               page === "masters" ? "masterSlotA" : page === "walk" ? (activeSection !== "Directions" ? "atlasTab"+activeSection :
+               sheet ? "routeDirection"+selectedStep : areaSteps.length > 1 ? (selectedStep < areaSteps.length ? "nextStep" : "previousStep") : "guideHint") :
+               page === "route" ? "stop" + route[0].id : page === "wiki" ? (category ? (wikiRows().length ? "wiki"+wikiRows()[0].id : "revealSubject") : "category0") :
                article ? (references.related.length ? "related" + references.related[0] : "guideSources") : "pinEntry"
     }
     Keys.onPressed: event => {
@@ -501,27 +579,6 @@ FocusScope {
                     onClicked: viewer.visit(modelData.id)
                 }
             }
-            ColumnLayout {
-                id: nearby
-                Layout.fillWidth: true; Layout.leftMargin: 10; Layout.rightMargin: 12; Layout.topMargin: 10
-                visible: viewer.height >= (viewer.tv ? 770 : 645)
-                readonly property var stops: viewer.route.slice(Math.max(0, viewer.place-1), viewer.place+2)
-                    .filter(r => viewer.isAvailable(r.id))
-                spacing: 3
-                Rectangle { Layout.fillWidth: true; implicitHeight: 1; color: "#827963" }
-                Kicker { Layout.fillWidth: true; Layout.topMargin: 8; text: viewer.stop.region || "Walkthrough"; color: "#ecd198" }
-                Repeater {
-                    model: nearby.stops
-                    delegate: Action {
-                        required property var modelData
-                        readonly property bool fixedAction: true
-                        Layout.fillWidth: true; dark: true; quiet: true
-                        text: viewer.sheet && viewer.stop.id === modelData.id ? viewer.sheet.title : viewer.titleOf(modelData.id)
-                        selected: viewer.page === "walk" && viewer.stop.id === modelData.id
-                        onClicked: if (!selected) viewer.visit(modelData.id)
-                    }
-                }
-            }
         }
     }
     ColumnLayout {
@@ -537,7 +594,9 @@ FocusScope {
                 spacing: viewer.narrow ? 5 : 10
                 Action {
                     readonly property bool fixedAction: true
-                    visible: viewer.history.length > 0; text: "Back"; quiet: true
+                    visible: !!viewer.backLabel; text: "‹  " + viewer.backLabel; quiet: true
+                    Layout.maximumWidth: Math.max(110, topBar.width * (viewer.narrow ? .42 : .45))
+                    Accessible.name: "Back to " + viewer.backLabel
                     objectName: "readerBack"; onClicked: viewer.goBack()
                 }
                 Action {
@@ -545,6 +604,7 @@ FocusScope {
                     objectName: "guideIndex"
                     text: "Contents"
                     quiet: true
+                    visible: !viewer.narrow && viewer.page !== "guide" && viewer.backLabel !== "Contents" && viewer.backLabel !== "Field guide"
                     enabled: viewer.page !== "guide"
                     onClicked: viewer.visit("guide")
                 }
@@ -555,7 +615,7 @@ FocusScope {
                     onClicked: viewer.openSearch()
                 }
                 Copy {
-                    visible: viewer.inSession && !!viewer.gameStatus
+                    visible: viewer.inSession && !!viewer.gameStatus && !viewer.narrow
                     text: viewer.gameStatus
                     Layout.maximumWidth: viewer.width * 0.28
                     font.pixelSize: viewer.tv ? 18 : 13
@@ -590,7 +650,7 @@ FocusScope {
                     Layout.fillWidth: true
                     Layout.leftMargin: -column.x; Layout.rightMargin: -column.x
                     implicitHeight: Math.max(heroWords.implicitHeight + (viewer.narrow ? 28 : 36),
-                        cabinet ? (viewer.narrow ? 97 : 117) : viewer.narrow ? 154 : 172)
+                        cabinet ? (viewer.narrow ? 97 : 117) : viewer.narrow ? 104 : 141)
                     color: cabinet ? "#173845" : viewer.paper; clip: true
                     Image {
                         id: panorama; objectName: "guidePanorama"
@@ -635,7 +695,8 @@ FocusScope {
                         Copy {
                             Layout.fillWidth: true; visible: !!text
                             color: hero.cabinet ? "#f1e9d6" : viewer.ink
-                            text: viewer.sheet ? viewer.sheet.objective : hero.cabinet ? "Choose up to three specimens to see Ryu’s form and initial AP." : ""
+                            text: viewer.sheet ? viewer.sheet.objective : viewer.page === "walk" ? (viewer.area || viewer.stop).lead || "" :
+                                  hero.cabinet ? "Choose up to three specimens to see Ryu’s form and initial AP." : ""
                         }
                     }
                     Rectangle { anchors.bottom: parent.bottom; width: parent.width; height: hero.cabinet ? 3 : 1; color: "#bbac88" }
@@ -751,8 +812,9 @@ FocusScope {
                                  ? (viewer.gameStory.source || "").toUpperCase() : ""
                     }
                     Flow {
-                        Layout.fillWidth: true; spacing: 5
-                        visible: viewer.areas.length > 0
+                        Layout.fillWidth: true; spacing: 4
+                        visible: viewer.areas.length > 1
+                        Kicker { text: "Area"; topPadding: viewer.tv ? 13 : 10; rightPadding: 6 }
                         Repeater {
                             model: viewer.areas
                             delegate: Action {
@@ -761,180 +823,173 @@ FocusScope {
                                     !viewer.isAvailable(modelData.id)
                                 objectName: "routeArea"+modelData.name
                                 text: nextChapter ? "Next stop" : modelData.name
-                                selected: viewer.area?.id === modelData.id
+                                width: Math.min(implicitWidth, column.width)
+                                quiet: true; selected: viewer.area?.id === modelData.id
+                                Accessible.checkable: true; Accessible.checked: selected
                                 onClicked: nextChapter ? viewer.visit(modelData.id) : viewer.chooseArea(modelData.name)
                             }
                         }
                     }
+                    ColumnLayout {
+                        Layout.fillWidth: true; spacing: 0
+                        Flow {
+                            Layout.fillWidth: true; spacing: 3
+                            Repeater {
+                                model: viewer.sections
+                                delegate: Action {
+                                    required property string modelData
+                                    objectName: "atlasTab" + modelData
+                                    text: modelData === "Map" ? (viewer.visibleFloors.length ? "Floor plans" : "Area map") : modelData
+                                    quiet: true; tab: true; selected: viewer.activeSection === modelData
+                                    Accessible.checkable: true; Accessible.checked: selected
+                                    onClicked: viewer.changeSection(modelData)
+                                }
+                            }
+                        }
+                        Rule {}
+                    }
                     GuideRouteSpread {
                         id: worked; objectName: "workedRoute"
-                        reader: viewer; visible: !!viewer.sheet; Layout.fillWidth: true
+                        reader: viewer; visible: !!viewer.sheet && viewer.activeSection === "Directions"; Layout.fillWidth: true
                     }
-                    GridLayout {
-                        visible: !viewer.sheet || viewer.readingFloor
-                        Layout.fillWidth: true; columns: viewer.narrow ? 1 : 2
-                        columnSpacing: 25; rowSpacing: 12
+                    Action {
+                        objectName: "afterCedar"; quiet: true
+                        visible: viewer.sheet?.id === "cedar" && !viewer.sheet.nextSheet && viewer.activeSection === "Directions"
+                        text: viewer.afterOpen ? "Close the later route" : "After reaching McNeil"
+                        onClicked: viewer.afterOpen = !viewer.afterOpen
+                    }
+                    Repeater {
+                        model: viewer.sheet?.id === "cedar" && !viewer.sheet.nextSheet && viewer.afterOpen && viewer.activeSection === "Directions" ?
+                               viewer.stop.steps.slice(1) : []
+                        delegate: Copy { required property string modelData; text: modelData; Layout.fillWidth: true }
+                    }
+                    ColumnLayout {
+                        visible: !viewer.sheet && viewer.activeSection === "Directions"
+                        Layout.fillWidth: true; Layout.maximumWidth: viewer.tv ? 960 : 790; spacing: viewer.tv ? 13 : 10
+                        Rectangle {
+                            visible: viewer.hasWarning
+                            Layout.fillWidth: true; implicitHeight: warningCopy.implicitHeight + 20; color: "#f4e4cc"
+                            Rectangle { width: 3; height: parent.height; color: "#945221" }
+                            ColumnLayout {
+                                id: warningCopy
+                                anchors.left: parent.left; anchors.right: parent.right; anchors.margins: 12
+                                anchors.verticalCenter: parent.verticalCenter; spacing: 3
+                                Kicker { text: viewer.stop.warning?.label || "" }
+                                Copy { Layout.fillWidth: true; text: viewer.stop.warning?.text || "" }
+                            }
+                        }
+                        Kicker { visible: viewer.areaSteps.length > 1; text: "Step " + viewer.selectedStep + " of " + viewer.areaSteps.length }
+                        Title { objectName: "routeLandmark"; Layout.fillWidth: true; text: viewer.landmarkTitle }
+                        Copy { objectName: "chapterDirection"; Layout.fillWidth: true; text: viewer.areaSteps[viewer.selectedStep-1] || "" }
+                        Action {
+                            objectName: "stepTopic"; visible: !!viewer.stepTopic && viewer.known(viewer.stepTopic) && viewer.isAvailable(viewer.stepTopic)
+                            text: visible ? viewer.titleOf(viewer.stepTopic) + "  ›" : ""; quiet: true
+                            onClicked: viewer.visitFrom(viewer.stepTopic, objectName)
+                        }
+                        Flow {
+                            Layout.fillWidth: true; visible: viewer.areaSteps.length > 1; spacing: 6
+                            Action {
+                                objectName: "previousStep"; text: "Previous step"; visible: viewer.selectedStep > 1
+                                quiet: true; onClicked: { viewer.selectedStep--; viewer.rememberReadingChoice() }
+                            }
+                            Action {
+                                objectName: "nextStep"; text: "Next step"; visible: viewer.selectedStep < viewer.areaSteps.length
+                                primary: true; onClicked: { viewer.selectedStep++; viewer.rememberReadingChoice() }
+                            }
+                            Action {
+                                objectName: "guideStep"; text: viewer.stepOpen ? "Close step list" : "Choose a step"
+                                quiet: true; onClicked: viewer.stepOpen = !viewer.stepOpen
+                            }
+                        }
                         ColumnLayout {
-                            visible: !viewer.mapExpanded && !viewer.sheet
-                            Layout.fillWidth: true; Layout.preferredWidth: 520; Layout.alignment: Qt.AlignTop
-                            spacing: 11
-                            Copy { Layout.fillWidth: true; font.pixelSize: viewer.bodySize+2
-                                text: viewer.area ? viewer.area.lead : viewer.stop.lead || "" }
-                            Rectangle {
-                                visible: viewer.hasWarning
-                                Layout.fillWidth: true; implicitHeight: warningCopy.implicitHeight + 20; color: "#f4e4cc"
-                                Rectangle { width: 3; height: parent.height; color: "#945221" }
-                                ColumnLayout {
-                                    id: warningCopy
-                                    anchors.left: parent.left; anchors.right: parent.right; anchors.margins: 12
-                                    anchors.verticalCenter: parent.verticalCenter; spacing: 3
-                                    Kicker { text: viewer.stop.warning ? viewer.stop.warning.label.toUpperCase() : "" }
-                                    Copy { Layout.fillWidth: true; text: viewer.stop.warning ? viewer.stop.warning.text : "" }
-                                }
+                            visible: viewer.stepOpen; Layout.fillWidth: true; spacing: 1
+                            Action {
+                                objectName: "readChapterSteps"; quiet: true
+                                text: viewer.allChapterSteps ? "Show step titles" : "Read all directions"
+                                onClicked: viewer.allChapterSteps = !viewer.allChapterSteps
                             }
-                            Kicker { text: "START HERE" }
-                            Title { objectName: "routeLandmark"; Layout.fillWidth: true; text: (viewer.stop.landmarks || [])[viewer.firstStep] || viewer.stop.title || "" }
-                            Copy { Layout.fillWidth: true; text: (viewer.stop.steps || [])[viewer.firstStep] || "" }
-                            GridLayout {
-                                columns: viewer.width < 540 ? 1 : 2
-                                columnSpacing: 10
-                                Action {
-                                    objectName: "guideHint"; text: viewer.hintOpen ? "Hide hint" : "Give me a hint"
-                                    selected: viewer.hintOpen
-                                    onClicked: viewer.hintOpen = !viewer.hintOpen
-                                }
-                                Action {
-                                    objectName: "guideStep"; text: viewer.stepOpen ? "Fold route" : "Show full route"
-                                    visible: !viewer.area || viewer.area.endStep > viewer.firstStep+1
-                                    primary: true; onClicked: viewer.stepOpen = !viewer.stepOpen
-                                }
-                            }
-                            Copy { Layout.fillWidth: true; visible: viewer.hintOpen; text: viewer.area ? viewer.area.hint : viewer.stop.hint || "" }
                             Repeater {
-                                model: viewer.stepOpen && viewer.page === "walk" ? viewer.stop.steps.slice(viewer.firstStep+1, viewer.area ? viewer.area.endStep : undefined) : []
-                                delegate: RowLayout {
+                                model: viewer.stepOpen && !viewer.sheet ? viewer.areaSteps : []
+                                delegate: Action {
                                     required property int index
                                     required property string modelData
-                                    Layout.fillWidth: true; spacing: 12
-                                    Kicker { Layout.alignment: Qt.AlignTop; text: (index+2).toString() }
-                                    ColumnLayout {
-                                        Layout.fillWidth: true; spacing: 3
-                                        Title { Layout.fillWidth: true; text: (viewer.stop.landmarks || [])[viewer.firstStep+index+1] || "" }
-                                        Copy { Layout.fillWidth: true; text: modelData }
+                                    objectName: "chapterStep" + (index + 1)
+                                    Layout.fillWidth: true; quiet: true; selected: viewer.selectedStep === index + 1
+                                    text: (index + 1) + ".  " + ((viewer.stop.landmarks || [])[viewer.firstStep+index] || "Step " + (index+1))
+                                    detail: viewer.allChapterSteps ? modelData : ""
+                                    Accessible.checkable: true; Accessible.checked: selected
+                                    onClicked: {
+                                        viewer.selectedStep = index+1; viewer.stepOpen = false
+                                        viewer.rememberReadingChoice(); viewer.focusNamed("guideStep")
                                     }
                                 }
                             }
                         }
-                        ColumnLayout {
-                            Layout.fillWidth: true; Layout.preferredWidth: 470; Layout.minimumWidth: 0
-                            Layout.alignment: Qt.AlignTop; spacing: 8
-                            GridLayout {
-                                Layout.fillWidth: true
-                                visible: !viewer.sheet
-                                columns: viewer.tv || viewer.width < 970 ? 2 : 4
-                                columnSpacing: 4; rowSpacing: 4
-                                Repeater {
-                                    model: (viewer.stop.map || viewer.stop.floors ? ["Map"] : []).concat(viewer.stop.items ? ["Items"] : [],
-                                        viewer.stop.encounters ? ["Enemies"] : [], ["Notes"])
-                                    delegate: Action {
-                                        required property string modelData
-                                        objectName: "atlasTab" + modelData
-                                        text: modelData; selected: viewer.activeSection === modelData
-                                        Layout.fillWidth: true
-                                        onClicked: { viewer.atlasSection = modelData; if (modelData !== "Map") viewer.mapExpanded = false }
-                                    }
-                                }
-                            }
-                            FloorSheet {
-                                id: floorSheet; objectName: "floorSheet"; Layout.fillWidth: true
-                                visible: viewer.activeSection === "Map" && !!viewer.stop.floors && !viewer.overview
-                                floors: viewer.visibleFloors; images: viewer.roster.floors || ({})
-                                initialMapId: viewer.area && !viewer.area.floorIds.includes(viewer.savedFloor) ? viewer.area.firstFloor : viewer.savedFloor
-                                place: viewer.game + "/" + (viewer.stop.id || "") + "/" + (viewer.area ? viewer.area.name : "")
-                                status: fieldGuide.floorStatus; accent: viewer.accent; tv: viewer.tv
-                                expanded: viewer.mapExpanded
-                                onResizeMap: { viewer.mapExpanded = !viewer.mapExpanded; viewer.focusNamed("floorSize") }
-                            }
-                            Action {
-                                visible: !viewer.sheet && viewer.activeSection === "Map" && viewer.schematicAvailable && !!floorSheet.raster
-                                text: viewer.overview ? "View floor plans" : "Read route landmarks"; quiet: true
-                                onClicked: viewer.overview = !viewer.overview
-                            }
-                            Title {
-                                visible: !viewer.sheet && viewer.activeSection === "Map" && viewer.schematicAvailable && (!floorSheet.raster || viewer.overview)
-                                Layout.fillWidth: true; text: "Route landmarks"
-                            }
-                            FieldAtlas {
-                                objectName: "areaAtlas"; Layout.fillWidth: true
-                                visible: !viewer.sheet && viewer.activeSection === "Map" && viewer.schematicAvailable && (!floorSheet.raster || viewer.overview)
-                                chart: viewer.stop.map || null; accent: viewer.accent; tv: viewer.tv
-                            }
-                            FieldLedger {
-                                Layout.fillWidth: true; visible: ["Items","Enemies"].includes(viewer.activeSection)
-                                monsters: viewer.activeSection === "Enemies"
-                                records: ((monsters ? viewer.stop.encounters : viewer.stop.items) || []).filter(r => !viewer.area || (r.areaIds || []).includes(viewer.area.id))
-                                accent: viewer.accent; tv: viewer.tv
-                                onEntryRequested: (row) => viewer.visit(viewer.entityId(row, monsters))
-                            }
-                            Action {
-                                visible: ["Items","Enemies"].includes(viewer.activeSection)
-                                objectName: "openAtlasArticle"; quiet: true
-                                text: viewer.activeSection === "Items" ? "Open in item ledger  ›" : "Open in bestiary  ›"
-                                onClicked: viewer.visit(viewer.stop.id + (viewer.activeSection === "Items" ? "-items" : "-encounters"))
-                            }
-                            Copy { Layout.fillWidth: true; visible: viewer.activeSection === "Notes"; text: viewer.area ? viewer.area.tip : viewer.stop.tip || "" }
-                            Action {
-                                visible: viewer.activeSection === "Notes" && !!viewer.stop.lore && (!viewer.area || !!viewer.area.lore)
-                                objectName: "guideLore"; quiet: true
-                                text: viewer.loreOpen ? "Close field note" : "Field note"
-                                onClicked: viewer.loreOpen = !viewer.loreOpen
-                            }
-                            Copy { Layout.fillWidth: true; visible: viewer.activeSection === "Notes" && viewer.loreOpen; text: viewer.stop.lore || "" }
+                        Action {
+                            objectName: "guideHint"; visible: !!(viewer.area || viewer.stop).hint
+                            text: viewer.hintOpen ? "Close hint" : "Give me a hint"; quiet: true
+                            onClicked: viewer.hintOpen = !viewer.hintOpen
+                        }
+                        Copy { visible: viewer.hintOpen; Layout.fillWidth: true; text: (viewer.area || viewer.stop).hint || "" }
+                    }
+                    ColumnLayout {
+                        visible: viewer.activeSection === "Map"
+                        Layout.fillWidth: true; Layout.maximumWidth: viewer.mapExpanded ? 1500 : 870; spacing: 9
+                        FloorSheet {
+                            id: floorSheet; objectName: "floorSheet"; Layout.fillWidth: true
+                            visible: viewer.visibleFloors.length > 0 && !viewer.overview
+                            floors: viewer.visibleFloors; images: viewer.roster.floors || ({})
+                            initialMapId: viewer.area && !viewer.area.floorIds.includes(viewer.savedFloor) ? viewer.area.firstFloor : viewer.savedFloor
+                            place: viewer.game + "/" + (viewer.stop.id || "") + "/" + (viewer.area?.name || "")
+                            status: fieldGuide.floorStatus; accent: viewer.accent; tv: viewer.tv
+                            expanded: viewer.mapExpanded
+                            onResizeMap: { viewer.mapExpanded = !viewer.mapExpanded; viewer.focusNamed("floorSize") }
+                        }
+                        Action {
+                            visible: !viewer.sheet && viewer.schematicAvailable && !!floorSheet.raster
+                            text: viewer.overview ? "View floor plans" : "View route landmarks"; quiet: true
+                            onClicked: viewer.overview = !viewer.overview
+                        }
+                        FieldAtlas {
+                            objectName: "areaAtlas"; Layout.fillWidth: true
+                            visible: !viewer.sheet && viewer.schematicAvailable && (!floorSheet.raster || viewer.overview)
+                            chart: viewer.stop.map || null; accent: viewer.accent; tv: viewer.tv
                         }
                     }
                     ColumnLayout {
-                        visible: !!viewer.sheet; Layout.fillWidth: true; spacing: 12
-                        Rule {}
-                        GridLayout {
-                            Layout.fillWidth: true; columns: width < (viewer.tv ? 900 : 720) ? 1 : 2
-                            columnSpacing: 21; rowSpacing: 13
-                            ColumnLayout {
-                                Layout.fillWidth: true; Layout.preferredWidth: 1; Layout.minimumWidth: 0; Layout.alignment: Qt.AlignTop
-                                Title { text: "Treasure" }
-                                FieldLedger {
-                                    Layout.fillWidth: true; records: worked.scopedItems; monsters: false; accent: viewer.accent; tv: viewer.tv
-                                    onEntryRequested: (row) => viewer.visit(viewer.entityId(row,false))
-                                }
-                            }
-                            ColumnLayout {
-                                Layout.fillWidth: true; Layout.preferredWidth: 1; Layout.minimumWidth: 0; Layout.alignment: Qt.AlignTop
-                                Title { text: "Encounters" }
-                                FieldLedger {
-                                    Layout.fillWidth: true; records: worked.scopedEnemies; monsters: true; accent: viewer.accent; tv: viewer.tv
-                                    onEntryRequested: (row) => viewer.visit(viewer.entityId(row,true))
-                                }
-                            }
+                        visible: ["Items","Enemies"].includes(viewer.activeSection)
+                        Layout.fillWidth: true; Layout.maximumWidth: 1000; spacing: 12
+                        FieldLedger {
+                            id: localLedger; Layout.fillWidth: true
+                            monsters: viewer.activeSection === "Enemies"
+                            records: monsters ? viewer.areaEnemies : viewer.areaItems
+                            accent: viewer.accent; tv: viewer.tv
+                            onEntryRequested: (row, key) => viewer.openRecord(row, monsters, key)
                         }
                         Action {
+                            readonly property string target: viewer.stop.id + (localLedger.monsters ? "-encounters" : "-items")
+                            visible: viewer.areas.length > 1 && viewer.isAvailable(target) && viewer.known(target)
+                            objectName: "openAtlasArticle"; quiet: true
+                            text: localLedger.monsters ? "Enemies across this chapter" : "Items across this chapter"
+                            onClicked: viewer.visit(target)
+                        }
+                    }
+                    ColumnLayout {
+                        visible: viewer.activeSection === "Notes"; Layout.fillWidth: true
+                        Layout.maximumWidth: viewer.tv ? 960 : 790; spacing: 10
+                        Copy { Layout.fillWidth: true; text: (viewer.area || viewer.stop).tip || "" }
+                        Action {
                             visible: !!viewer.stop.lore && (!viewer.area || !!viewer.area.lore)
-                            objectName: "workedLore"; text: viewer.loreOpen ? "Close field note" : "Field note"; quiet: true
+                            objectName: viewer.sheet ? "workedLore" : "guideLore"
+                            text: viewer.loreOpen ? "Close field note" : "Field note"; quiet: true
                             onClicked: viewer.loreOpen = !viewer.loreOpen
                         }
                         Copy { visible: viewer.loreOpen; Layout.fillWidth: true; text: viewer.stop.lore || "" }
-                        Action {
-                            visible: viewer.sheet?.id === "cedar" && !viewer.sheet.nextSheet; quiet: true; objectName: "afterCedar"
-                            text: viewer.afterOpen ? "Close the later route" : "After reaching McNeil"
-                            onClicked: viewer.afterOpen = !viewer.afterOpen
-                        }
-                        Repeater {
-                            model: viewer.sheet?.id === "cedar" && !viewer.sheet.nextSheet && viewer.afterOpen ? viewer.stop.steps.slice(1) : []
-                            delegate: Copy { required property string modelData; text: modelData; Layout.fillWidth: true }
-                        }
                     }
                         Image {
                             objectName: "guideFieldFrame"
                             readonly property string frame: fieldGuide.photos[viewer.place] || ""
-                            visible: !!frame && (!viewer.sheet || (viewer.readingFloor && viewer.sheet.id === viewer.stop.id))
+                            visible: !!frame && viewer.activeSection === "Map" && (!viewer.sheet || viewer.sheet.id === viewer.stop.id)
                             Layout.preferredWidth: viewer.narrow ? 227 : 300
                             Layout.preferredHeight: viewer.narrow ? 170 : 225
                             Layout.alignment: Qt.AlignTop | (viewer.narrow ? Qt.AlignLeft : Qt.AlignRight)
@@ -944,17 +999,17 @@ FocusScope {
                             Accessible.role: Accessible.Graphic
                         }
                     Rule { }
-                    GridLayout {
-                        Layout.fillWidth: true; columns: viewer.narrow ? 1 : 2; rowSpacing: 8; columnSpacing: 10
+                    Flow {
+                        Layout.fillWidth: true; spacing: 6
                         Action {
-                            objectName: "guideRoute"; Layout.fillWidth: true
-                            text: "Route index"; quiet: true; onClicked: viewer.visit("route")
+                            objectName: "guideRoute"
+                            text: "All chapters"; quiet: true; onClicked: viewer.visitFrom("route", objectName)
                         }
                         Action {
-                            objectName: "guideReadAhead"; Layout.fillWidth: true
+                            objectName: "guideReadAhead"; width: Math.min(column.width, implicitWidth)
                             readonly property string nextRoute: viewer.sheet?.nextSheet || ""
                             visible: !!nextRoute || viewer.place + 1 < viewer.route.length
-                            text: nextRoute ? "Continue to " + (nextRoute === "dam" ? "the Dam" : viewer.titleOf(nextRoute)) : "Read the next stop  ›"
+                            text: nextRoute ? "Continue to " + (nextRoute === "dam" ? "the Dam" : viewer.titleOf(nextRoute)) : "Next chapter  ›"
                             onClicked: {
                                 if (nextRoute) {
                                     viewer.visit(nextRoute)
@@ -963,13 +1018,13 @@ FocusScope {
                             }
                         }
                         Action {
-                            objectName: "guideMark"; Layout.fillWidth: true; quiet: true
+                            objectName: "guideMark"; quiet: true
                             visible: fieldGuide.marker !== viewer.place || (viewer.sheet && fieldGuide.markTarget !== viewer.bookmarkId)
                             text: "Set my place here"
                             onClicked: { fieldGuide.markArea(viewer.place,viewer.sheet ? viewer.sheet.id : ""); viewer.focusNamed("guideRoute") }
                         }
                         Action {
-                            objectName: "followSave"; Layout.fillWidth: true; quiet: true
+                            objectName: "followSave"; quiet: true
                             visible: fieldGuide.marker >= 0
                             text: viewer.savedPlace >= 0 ? "Follow my save" : "Clear marked place"
                             onClicked: {
@@ -1271,11 +1326,6 @@ FocusScope {
                 ColumnLayout {
                     Layout.fillWidth: true; spacing: 12; visible: viewer.page === "wiki"
                     Title { Layout.fillWidth: true; text: viewer.category || "Browse by subject" }
-                    Action {
-                        objectName: "allSubjects"; visible: !!viewer.category
-                        text: "‹  All subjects"; quiet: true
-                        onClicked: { viewer.category = ""; viewer.focusNamed("category0") }
-                    }
                     GridLayout {
                         Layout.fillWidth: true; columns: viewer.narrow ? 1 : 2
                         rowSpacing: 8; columnSpacing: 14
@@ -1320,26 +1370,31 @@ FocusScope {
                         visible: !!viewer.article && !viewer.article.table
                         text: viewer.article ? viewer.article.lead : ""; font.pixelSize: viewer.bodySize+2
                     }
+                    Action {
+                        objectName: "articleFloorPlan"; visible: !!viewer.articleFloor; quiet: true
+                        Layout.maximumWidth: column.width
+                        text: viewer.articleFloor ? "Floor plan · " + viewer.articleFloor.floor.name + "  ›" : ""
+                        onClicked: viewer.openArticleFloor()
+                    }
                     FieldLedger {
                         Layout.fillWidth: true; visible: !!(viewer.article && viewer.article.table)
                         records: viewer.article ? viewer.article.records || [] : []
                         monsters: !!viewer.article && viewer.article.table === "encounters"
                         accent: viewer.accent; tv: viewer.tv
-                        onEntryRequested: (row) => viewer.visit(viewer.entityId(row, monsters))
+                        onEntryRequested: (row, key) => viewer.openRecord(row, monsters, key)
                     }
                     Repeater {
                         model: viewer.article ? viewer.article.sections : []
-                        delegate: GridLayout {
+                        delegate: ColumnLayout {
                             required property var modelData
-                            Layout.fillWidth: true; columns: viewer.narrow ? 1 : 2
-                            rowSpacing: 8; columnSpacing: 22
-                            Rule { Layout.columnSpan: viewer.narrow ? 1 : 2 }
+                            Layout.fillWidth: true; Layout.maximumWidth: viewer.tv ? 960 : 790; spacing: 7
+                            Rule { Layout.bottomMargin: 5 }
                             Title {
-                                Layout.fillWidth: true; Layout.preferredWidth: 285; Layout.alignment: Qt.AlignTop
+                                Layout.fillWidth: true
                                 text: modelData.title
                             }
                             Copy {
-                                Layout.fillWidth: true; Layout.preferredWidth: 630; Layout.alignment: Qt.AlignTop
+                                Layout.fillWidth: true
                                 text: modelData.text
                             }
                         }
@@ -1356,24 +1411,34 @@ FocusScope {
                 }
                 ColumnLayout {
                     visible: !!viewer.entity; Layout.fillWidth: true; Layout.maximumWidth: 860; spacing: 10
-                    Title { text: viewer.entity?.category === "Bestiary" ? "Where to fight it" : "Where to find it" }
+                    Title {
+                        visible: !viewer.firstSighting
+                        text: viewer.entity?.category === "Bestiary" ? "Encounters" : "Locations"
+                    }
                     Repeater {
-                        model: (viewer.entity?.observations || []).filter(r => viewer.canReadObservation(r) || viewer.revealedSubjects.includes(viewer.entity.category))
+                        model: viewer.orderedSightings
                         delegate: ColumnLayout {
                             id: sighting
                             required property var modelData
+                            required property int index
                             Layout.fillWidth: true; spacing: 6
-                            Rule {}
-                            Copy { Layout.fillWidth: true; text: sighting.modelData.where; font.weight: Font.DemiBold }
-                            Copy { Layout.fillWidth: true; text: sighting.modelData.detail }
+                            Title { visible: !!viewer.firstSighting && sighting.index === 1; Layout.topMargin: 7; text: "Other locations" }
+                            Rule { visible: sighting.index > 0 }
+                            Copy {
+                                objectName: "sightingPlace"+sighting.index
+                                Layout.fillWidth: true; text: sighting.modelData.where; font.weight: Font.DemiBold
+                                font.pixelSize: viewer.bodySize + 2
+                            }
+                            Copy { objectName: "sightingDetail"+sighting.index; Layout.fillWidth: true; text: sighting.modelData.detail }
                             Flow {
                                 Layout.fillWidth: true; spacing: 5
                                 Repeater {
-                                    model: viewer.observationTargets(sighting.modelData)
+                                    model: viewer.observationTargets(sighting.modelData).filter(id =>
+                                        !(viewer.matchesOrigin(sighting.modelData) && viewer.previousPage?.id === id))
                                     delegate: Action {
                                         required property string modelData
-                                        text: viewer.titleOf(modelData); quiet: true
-                                        onClicked: viewer.visit(modelData)
+                                        text: viewer.titleOf(modelData) + "  ›"; quiet: true
+                                        onClicked: viewer.openObservation(sighting.modelData, modelData)
                                     }
                                 }
                             }
@@ -1401,8 +1466,7 @@ FocusScope {
                 ColumnLayout {
                     Layout.fillWidth: true
                     readonly property var related: Array.from(new Set((viewer.sheet?.links || []).concat(viewer.subject?.links || []))).filter(id => viewer.isAvailable(id))
-                    readonly property var citations: viewer.entity ? Array.from(new Set(viewer.entity.observations
-                        .filter(r => viewer.canReadObservation(r) || viewer.revealedSubjects.includes(viewer.entity.category))
+                    readonly property var citations: viewer.entity ? Array.from(new Set(viewer.sightings
                         .reduce((list,r) => list.concat(viewer.route.find(s => s.id === r.stop)?.sources || []), []))) : (viewer.sheet?.sources || viewer.subject?.sources || [])
                     id: references
                     visible: !!viewer.subject || !!viewer.entity
@@ -1417,7 +1481,7 @@ FocusScope {
                                 objectName: "related" + modelData
                                 Layout.fillWidth: true; Layout.preferredWidth: 160
                                 quiet: true; text: viewer.titleOf(modelData) + "  ›"
-                                onClicked: viewer.visit(modelData)
+                                onClicked: viewer.visitFrom(modelData, objectName)
                             }
                         }
                     }

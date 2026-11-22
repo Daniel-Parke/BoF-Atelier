@@ -83,6 +83,50 @@ class FieldGuideVolumeTests(unittest.TestCase):
                 for stop in book["route"]:
                     self.assertGreaterEqual(len(stop["steps"]), 2, stop["id"])
 
+    def test_direction_topics_must_belong_to_the_named_step_and_chapter(self):
+        source = ROOT / "wiki/bof4.json"
+        original = json.loads(source.read_bytes())
+        town = next(stop for stop in original["route"] if stop["id"] == "synesta")
+        self.assertEqual("marloks-house", town["stepTopics"]["Back at the orphanage"])
+        self.assertEqual("bandit-hideout", town["stepTopics"]["Marlok's errand"])
+        with TemporaryDirectory() as folder:
+            book_path = Path(folder) / "bof4.json"
+            for broken in ({"Unknown door": "marloks-house"}, {"Back at the orphanage": "clear-save"}, []):
+                with self.subTest(topics=broken):
+                    town["stepTopics"] = broken
+                    book_path.write_text(json.dumps(original), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, "Unknown direction or topic link"):
+                        read_book(book_path.parent, "bof4")
+
+    def test_synesta_boss_references_keep_later_appearances_separate(self):
+        book = read_book(ROOT / "wiki", "bof4")
+        articles = {page["id"]: page for page in book["articles"]}
+        house, hideout = (articles[key] for key in ("marloks-house", "bandit-hideout"))
+        self.assertEqual(("synesta", "synesta"), (house["unlock"], hideout["unlock"]))
+        self.assertIn(hideout["id"], house["links"])
+        self.assertIn(house["id"], hideout["links"])
+        self.assertNotEqual(house["unlock"], articles["teacher-kahn"]["unlock"])
+        kahn = book["entities"]["enemy.kahn"]["observations"]
+        self.assertEqual(["synesta", "ludia", "shikk"], [record["stop"] for record in kahn])
+        ginseng = book["entities"]["item.ginseng"]["observations"]
+        at_door = [row for row in ginseng if row["stop"] == "synesta"]
+        self.assertEqual(1, len(at_door))
+        self.assertEqual(["synesta"], at_door[0]["areaIds"])
+        self.assertIn("Possible", at_door[0]["detail"])
+
+    def test_article_floor_link_uses_a_real_room_inside_a_linked_chapter(self):
+        raw = json.loads((ROOT / "wiki/bof4.json").read_bytes())
+        hideout = next(a for a in raw["articles"] if a["id"] == "bandit-hideout")
+        self.assertEqual({"stop": "synesta", "mapId": 1138, "section": 1}, hideout["floorRef"])
+        with TemporaryDirectory() as folder:
+            path = Path(folder) / "bof4.json"
+            for stop, mid, section in (("synesta", 1138, 9), ("synesta", 1138, True), ("sarai", 1138, 1)):
+                with self.subTest(stop=stop, section=section):
+                    hideout["floorRef"] = {"stop": stop, "mapId": mid, "section": section}
+                    path.write_text(json.dumps(raw), encoding="utf-8")
+                    with self.assertRaisesRegex(ValueError, "Unknown article floor"):
+                        read_book(path.parent, "bof4")
+
     def test_manifest_describes_every_new_plate_and_exact_bytes(self):
         wiki = ROOT / "wiki"
         manifest = json.loads((wiki / "illustrations.json").read_text(encoding="utf-8"))
@@ -113,6 +157,12 @@ class FieldGuideVolumeTests(unittest.TestCase):
                             self.assertEqual(stop["id"], page["unlock"])
                             self.assertEqual([stop["id"]], page["links"])
                             self.assertEqual(stop[table], page["records"])
+                            distinct = len({row["name"].strip().casefold() for row in stop[table]})
+                            self.assertNotEqual(page["title"], stop["title"])
+                            self.assertTrue(page["lead"].startswith(f"{distinct} "), page["id"])
+                    if stop.get("items") and stop.get("encounters"):
+                        self.assertNotEqual(articles[stop["id"] + "-items"]["title"],
+                                            articles[stop["id"] + "-encounters"]["title"])
                     if "map" in stop:
                         chart = stop["map"]
                         reached = {0}

@@ -12,7 +12,9 @@
   const readingHistory = new Map();
   const byGame = {};
   let game, book, volume, entries, page, params, routePage, area, sheet, reader;
-  let step, showAllSteps, currentAddress = "", dialogOpener;
+  let step, showAllSteps, currentAddress = "", dialogOpener, readingSection = "";
+  let slot = "", origin = null, nextOrigin = null, slotCount = 0;
+  const historySession = Date.now().toString(36) + Math.random().toString(36).slice(2);
   let storageAvailable = true;
   let preferences = {};
   const reveals = {bof3:false, bof4:false};
@@ -139,12 +141,15 @@
   }
   function displayed(row) { return reveals[game] || withinBoundary(row); }
   function titleOf(id) { return book.fieldSheets[id]?.title || entries.get(id)?.title || id; }
+  function observationAt(observation,id) {
+    return Boolean(id && (observation.areaIds?.length ? observation.areaIds.includes(id) : observation.stop === id));
+  }
   function canReadObservation(row) {
     if (reveals[game] || withinBoundary(entries.get(row.unlock || row.stop))) return true;
     // Following the treasure from its map opens that area's sighting even on a direct link.
     const origin = entries.get(params.get("at"));
     if (!origin) return false;
-    return row.areaIds?.length ? row.areaIds.includes(origin.id) : row.stop === origin.id;
+    return observationAt(row,origin.id);
   }
   function showReveal(label = "Show later names") {
     return button("reveal", reveals[game] ? "Hide later names" : label, "text-button", `aria-expanded="${reveals[game]}"`);
@@ -177,6 +182,63 @@
       <div class="eyebrow">${escape(section)}</div><h1>${escape(title)}</h1>
       ${lead ? `<p>${escape(lead)}</p>` : ""}</div></header>`;
   }
+  function detailTrail() {
+    const row = entries.get(page);
+    if (!row) return "";
+    let parent = href("wiki"), title = "Field wiki";
+    const at = entries.get(params.get("at"));
+    if (origin) {
+      parent = origin.address;
+      title = origin.title;
+    } else if (routePage) {
+      parent = href("walk"); title = "Walkthrough";
+    } else if (row.entity && at && row.observations.some(o => observationAt(o,at.id))) {
+      const selected = {entry:row.name,view:row.category === "Item ledger" ? "items" : "enemies"};
+      const sighting = params.get("sighting");
+      if (row.observations.some(o=>observationAt(o,at.id) && o.where === sighting)) selected.sighting = sighting;
+      parent = href(at.id,selected);
+      title = titleOf(at.id);
+    } else if (row.category === "Walkthrough" && entries.has(row.unlock)) {
+      parent = href(row.unlock); title = titleOf(row.unlock);
+    } else if (game === "bof3" && specimens.some(s => s.id === page)) {
+      parent = href("genes"); title = "Dragon genes";
+    } else if (page === "rwolf" || page.startsWith("teacher-")) {
+      parent = game === "bof4" ? href("masters") : href("wiki",{subject:row.category});
+      title = game === "bof4" ? "Master training" : row.category;
+    } else if (row.category) {
+      parent = href("wiki",{subject:row.category}); title = row.category;
+    }
+    return `<nav class="detail-trail" aria-label="Reader navigation"><a href="${escape(parent)}" ${origin ? "data-reading-back" : ""}
+      aria-label="${escape("Back to " + title)}"><span aria-hidden="true">←</span> ${escape(title)}</a></nav>`;
+  }
+  function readingPanels(choices) {
+    const panels = choices.filter(p => p.body);
+    if (!panels.length) return "";
+    if (!panels.some(p => p.id === readingSection)) readingSection = panels[0].id;
+    if (panels.length === 1) return panels[0].body;
+    return `<div class="reading-sections"><div class="section-tabs" role="tablist" aria-label="On this page">
+      ${panels.map(p => `<button type="button" role="tab" id="tab-${p.id}" aria-controls="panel-${p.id}" aria-selected="${p.id === readingSection}"
+        tabindex="${p.id === readingSection ? 0 : -1}" data-action="view" data-view="${p.id}">${escape(p.label)}</button>`).join("")}</div>
+      ${panels.map(p => `<section role="tabpanel" id="panel-${p.id}" aria-labelledby="tab-${p.id}" tabindex="0"
+        data-view-panel="${p.id}" ${p.id === readingSection ? "" : "hidden"}>${p.body}</section>`).join("")}</div>`;
+  }
+  function switchSection(id) {
+    const tab = [...main.querySelectorAll("[role=tab][data-view]")].find(t=>t.dataset.view === id);
+    if (!tab) return;
+    readingSection = id;
+    for (const t of main.querySelectorAll("[role=tab][data-view]")) {
+      const chosen = t === tab;
+      t.setAttribute("aria-selected",String(chosen));
+      t.tabIndex = chosen ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !chosen;
+    }
+    const next = new URLSearchParams(params);
+    next.delete("entry");
+    next.delete("sighting");
+    if (id === main.querySelector("[role=tab]").dataset.view && !next.has("floor")) next.delete("view");
+    else next.set("view",id);
+    replaceReadingAddress(next);
+  }
   function listed(rows, descriptive = true) {
     return `<ul class="entry-list">${rows.map(row =>
       `<li><a href="${escape(row.url || href(row.id))}"><strong>${escape(row.title || titleOf(row.id))}</strong>
@@ -196,7 +258,7 @@
       (record?.table ? entries.get(record.unlock)?.sourceSections : []) || [];
     const sources = [...new Set(keys || [])].filter(id => book.sources[id]);
     if (!sources.length && !detail) return "";
-    return `<details class="bibliography"><summary>Sources</summary>${detail ? `<p>${escape(detail)}</p>` : ""}
+    return `<details class="bibliography" data-panel="sources"><summary>Sources</summary>${detail ? `<p>${escape(detail)}</p>` : ""}
       <ul>${sources.map(id => {
         const source = book.sources[id];
         const names = chapters.filter(ref=>ref.source === id).map(ref=>escape(ref.section));
@@ -273,7 +335,9 @@
     const rows = (stop[kind] || []).filter(r => !part || r.areaIds.includes(part.id));
     const notes = kind === "items" ? routeSheet?.optional : routeSheet?.enemies;
     return rows.map(record => {
-      const extra = notes?.find(n => (n.record || n.name) === record.name);
+      const matching = (notes || []).filter(n => (n.record || n.name) === record.name);
+      const unique = matching.length === 1 && rows.filter(r=>r.name === record.name).length === 1;
+      const extra = unique ? matching[0] : matching.find(n=>n.where === record.where);
       if (!extra) return record;
       // Authored directions can add a turn or a battle cue. The named entry retains the complete source record.
       return {...record, place:kind === "items" ? extra.where : record.where,
@@ -288,20 +352,21 @@
       <thead><tr><th scope="col">${items ? "Item" : "Enemy"}</th><th scope="col">${items ? "Where to look" : "In battle"}</th></tr></thead>
       <tbody>${records.map(r => {
         const id = entityId(kind,r.name);
-        const url = href(id, fromPage ? {at:fromPage} : {});
-        return `<tr tabindex="-1" data-record="${escape(r.name)}"><th scope="row">
+        const at = r.areaIds?.length && !r.areaIds.includes(fromPage) ? r.areaIds[0] : fromPage;
+        const url = href(id, at ? {at,sighting:r.where} : {});
+        return `<tr tabindex="-1" data-record="${escape(r.name)}" data-sighting="${escape(r.where)}"><th scope="row">
           ${entries.has(id) ? link(url,r.name) : escape(r.name)}<small>${escape(r.place || r.where)}</small></th>
           <td>${escape(r.directions || r.detail)}</td></tr>`;
       }).join("")}</tbody></table></div>`;
   }
-  function ledger(stop,part,routeSheet) {
-    const items = areaRecords(stop,part,"items",routeSheet);
-    const encounters = areaRecords(stop,part,"encounters",routeSheet);
-    if (!items.length && !encounters.length) return "";
-    const section = (rows,kind,name) => rows.length ?
-      `<section><h3>${name}</h3>${recordTable(rows,kind,page)}</section>` : "";
-    return `<section class="ledger"><h2>Field reference</h2>
-      <div class="ledger-grid">${section(items,"items","Treasure")}${section(encounters,"encounters","Encounters")}</div></section>`;
+  function placePanels(stop, directionsBody, floorBody, notes) {
+    return readingPanels([
+      {id:"directions",label:"Directions",body:directionsBody},
+      {id:"floors",label:"Floors",body:floorBody},
+      {id:"items",label:"Items",body:recordTable(areaRecords(stop,area,"items",sheet),"items",page)},
+      {id:"enemies",label:"Enemies",body:recordTable(areaRecords(stop,area,"encounters",sheet),"encounters",page)},
+      {id:"notes",label:"Notes",body:notes}
+    ]);
   }
   function warning(text,label = "Missable") {
     return text ? `<aside class="warning" aria-label="${escape(label)}"><span aria-hidden="true">!</span>
@@ -315,7 +380,7 @@
     const i = Number.isInteger(requested) && requested >= 0 && requested < sheets.length ? requested : 0;
     const floor = sheets[i];
     const options = sheets.map((f,index)=>`<option value="${index}" data-map="${f.mapId}" data-section="${f.section}" ${i === index ? "selected" : ""}>${escape(f.name)}</option>`);
-    return `<details class="floor-key" data-panel="floor" ${params.has("floor") ? "open" : ""}><summary>Floor landmarks</summary>
+    return `<details class="floor-key" data-panel="floor" open><summary>Floor landmarks</summary>
       <label for="floor">Floor</label><select id="floor">${options.join("")}</select>
       ${floor.landmarks?.length ? `<ol>${floor.landmarks.map(p=>`<li>${escape(p.name)}</li>`).join("")}</ol>` :
         "<p>This floor has no numbered landmarks.</p>"}</details>`;
@@ -338,15 +403,26 @@
           aria-pressed="${s.key === step}" aria-label="${escape(s.key + ". " + s.title)}"`);
       }).join("")}</div>`;
   }
-  function sheetSteps(current) {
-    return `<ol class="steps">${current.steps.map(s => `<li>
+  function routeSteps() {
+    if (sheet) return sheet.steps;
+    if (!routePage || (routePage.sectionsByArea && !area)) return [];
+    const first = area?.firstStep || 0;
+    return routePage.steps.slice(first,area?.endStep).map((body,i)=>{
+      const title = routePage.landmarks?.[first+i] || ("Step " + (i+1));
+      return {key:i+1,title,body,topic:routePage.stepTopics?.[title]};
+    });
+  }
+  function stepList() {
+    return `<ol class="steps${sheet ? "" : " written"}">${routeSteps().map(s => `<li>
       <button type="button" data-action="step" data-number="${s.key}" class="step-button" aria-pressed="${s.key === step}">
         <span class="num">${s.key}</span><span>${s.optional ? "<small>Optional detour</small>" : ""}
           <strong>${escape(s.title)}</strong><span class="step-body" ${s.key === step || showAllSteps ? "" : "hidden"}>${escape(s.body)}</span>
-        </span></button></li>`).join("")}</ol>`;
+        </span></button>${s.topic ? `<div class="step-topic" data-step-topic="${s.key}" ${s.key === step || showAllSteps ? "" : "hidden"}>
+          ${articleLinks([s.topic],routePage.id)}</div>` : ""}</li>`).join("")}</ol>`;
   }
   function changeStep(n) {
-    const target = sheet?.steps.find(s=>s.key === n);
+    const steps = routeSteps();
+    const target = steps.find(s=>s.key === n);
     if (!target) return;
     step = n;
     document.querySelectorAll("[data-action=step]").forEach(el => {
@@ -355,13 +431,36 @@
       const text = $(".step-body",el);
       if (text) text.hidden = !(active || showAllSteps);
     });
+    for (const related of main.querySelectorAll("[data-step-topic]")) {
+      related.hidden = !(Number(related.dataset.stepTopic) === n || showAllSteps);
+    }
+    const chooser = $("#choose-step",main);
+    if (chooser) {
+      chooser.value = String(n);
+      $(".step-count",main).textContent = `${n} of ${steps.length}`;
+      chooser.closest(".directions").dataset.expanded = String(showAllSteps);
+      $("[data-action=previous-step]",main).disabled = n === steps[0].key;
+      $("[data-action=next-step]",main).disabled = n === steps.at(-1).key;
+    }
     if ($("#enlarged-direction")) $("#enlarged-direction").textContent = target.body;
+    const next = new URLSearchParams(params);
+    next.set("step",String(n));
+    replaceReadingAddress(next);
     note(target.title);
   }
-  function directions(lines) {
-    return `<ol class="written">${lines.map(({title,body},i) =>
-      `<li><span class="num">${i+1}</span><span>${title ? `<strong>${escape(title)}</strong>` : ""}${escape(body)}</span></li>`
-    ).join("")}</ol>`;
+  function directionReader(label) {
+    const steps = routeSteps();
+    const long = !sheet && steps.length > 6;
+    const expand = steps.length > 1 ? button("all-steps",showAllSteps ? "Show selected step" : "Read all steps","text-button",
+      `aria-expanded="${showAllSteps}"`) : "";
+    const travel = long ? `<nav class="step-travel" aria-label="Walkthrough steps">
+      ${button("previous-step","←","step-arrow",`aria-label="Previous step" ${step === steps[0].key ? "disabled" : ""}`)}
+      <label class="step-chooser"><span class="step-position" aria-hidden="true"><span class="step-prefix">Step </span><span class="step-count">${step} of ${steps.length}</span></span>
+        <select id="choose-step" aria-label="Choose a step">${steps.map(s=>`<option value="${s.key}" ${s.key === step ? "selected" : ""}>${s.key}. ${escape(s.title)}</option>`).join("")}</select></label>
+      ${button("next-step","→","step-arrow",`aria-label="Next step" ${step === steps.at(-1).key ? "disabled" : ""}`)}${expand}</nav>` : "";
+    return `<section class="directions${long ? " long-route" : ""}" data-expanded="${showAllSteps}" aria-label="Directions">${label ? `<div class="directions-head"><h2 class="eyebrow">${escape(label)}</h2>
+      ${button("enlarge","View map","quick-map",'aria-haspopup="dialog"')}</div>` : ""}
+      ${travel}${stepList()}${long ? "" : expand}</section>`;
   }
   function routeNotes(stop,part) {
     const tip = part?.tip || stop.tip;
@@ -388,14 +487,21 @@
       ${next ? link(href(next),sheet.unlock && !displayed(entries.get(next)) ? "Next stop →" : titleOf(next) + " →") : idx+1 < book.route.length ?
         link(href(book.route[idx+1].id),"Next stop →") : link(href("walk"),"Walkthrough contents")}</nav>`;
   }
+  function readableFrom(targetStop,fromStop) {
+    const boundary = Math.max(reader.through,book.route.findIndex(s=>s.id === fromStop));
+    return reveals[game] || book.route.findIndex(s=>s.id === targetStop) <= boundary;
+  }
   function articleLinks(ids,fromStop) {
     if (!ids?.length) return "";
-    const boundary = Math.max(reader.through,book.route.findIndex(s=>s.id === fromStop));
     const rows = [...new Set(ids)].map(id=>entries.get(id)).filter(Boolean);
-    const visible = rows.filter(r=>reveals[game] || book.route.findIndex(s=>s.id === (r.unlock || r.id)) <= boundary);
+    const visible = rows.filter(r=>readableFrom(r.unlock || r.id,fromStop));
     if (!visible.length && !rows.length) return "";
     return `<div class="links">${visible.map(r=>link(href(r.id),titleOf(r.id))).join("")}
       ${visible.length < rows.length ? showReveal("Show later references") : ""}</div>`;
+  }
+  function relatedReading(ids,fromStop) {
+    const links = articleLinks(ids,fromStop);
+    return links ? `<nav class="related-reading" aria-label="Related pages"><h2>Related pages</h2>${links}</nav>` : "";
   }
   function workedRoute(stop) {
     const mapTitle = sheet.mapTitle || sheet.area;
@@ -404,19 +510,14 @@
       `<details class="${part}" data-panel="${group}"><summary>${escape(title)}</summary>
         <ol>${lines.map(s=>`<li>${escape(typeof s === "string" ? s : s.body)}</li>`).join("")}</ol></details>` : "";
     const notes = sheet.after ? panel("after",sheet.after.title,"after",sheet.after.steps) : "";
-    return banner(sheet.title,sheet.objective,sheet.chapter,sheet.art) + areaNavigation(stop) +
-      `<div class="leaf">${warning(sheet.warning,sheet.warningLabel || "Missable")}
-        ${panel("arrival",sheet.opening?.title,"before",early)}
-        <div class="route-spread"><section><div class="row-head"><h2>${escape(mapTitle || sheet.area)}</h2>${button("enlarge","Enlarge map")}</div>
+    const directions = warning(sheet.warning,sheet.warningLabel || "Missable") + panel("arrival",sheet.opening?.title,"before",early) +
+        `<div class="route-spread">${directionReader(sheet.entry)}<section class="route-map"><div class="row-head"><h2>${escape(mapTitle || sheet.area)}</h2>${button("enlarge","Enlarge map")}</div>
           <figure>${sheetMap(sheet)}<figcaption><span>${escape(sheet.mapKind)}</span><span>Landmarks · not to scale</span></figcaption></figure>
-          <div class="map-tools"><details data-panel="key"><summary>Read the map</summary><p>${escape(sheet.mapAlt)}</p></details>
-            ${floors(stop,area)}</div></section>
-          <section class="directions" aria-label="Directions"><h2 class="eyebrow">${escape(sheet.entry)}</h2>
-            ${sheetSteps(sheet)}${button("all-steps",showAllSteps ? "Show selected step" : "Read all steps","text-button",
-              `aria-expanded="${showAllSteps}"`)}</section></div>
-        ${ledger(stop,area,sheet)}<div class="notes">${notes}${routeNotes(stop,area)}${bibliography(sheet.sources || stop.sources)}</div>
-        ${articleLinks([...(sheet.links || []),...(stop.links || [])],sheet.unlock || stop.id)}
-        ${controls(page,sheet.unlock || stop.id)}${adjacent(stop)}</div>`;
+          <div class="map-tools"><details data-panel="key"><summary>Read the map</summary><p>${escape(sheet.mapAlt)}</p></details></div></section></div>`;
+    return banner(sheet.title,sheet.objective,sheet.chapter,sheet.art) +
+      `<div class="leaf reading-leaf">${placePanels(stop,directions,floors(stop,area),notes+routeNotes(stop,area)+bibliography(sheet.sources || stop.sources))}
+        ${relatedReading([...(sheet.links || []),...(stop.links || [])],sheet.unlock || stop.id)}
+        ${controls(page,sheet.unlock || stop.id)}${areaNavigation(stop)}${adjacent(stop)}</div>`;
   }
   function ordinaryRoute(stop) {
     if (stop.sectionsByArea && !area) {
@@ -425,18 +526,11 @@
           id:a.id,url:href(a.id),title:titleOf(a.id),description:a.lead
         })))}${controls(page,stop.id)}${adjacent(stop)}</div>`;
     }
-    const first = area?.firstStep || 0;
-    const lines = stop.steps.slice(first,area?.endStep).map((body,i)=>({body,title:stop.landmarks[i+first]}));
     const name = area && area.id !== stop.id ? area.name : stop.title;
-    return banner(name,area?.lead || stop.lead,stop.region,stop.art,true) + areaNavigation(stop) +
-      `<div class="leaf">${warning(!area || area.warning ? stop.warning?.text : "",stop.warning?.label)}
-        <div class="columns"><section><h2>Directions</h2>${directions(lines)}</section>
-          <aside class="sidebar"><h2>Find your bearings</h2><p>${escape(area?.hint || stop.hint)}</p>
-          ${floors(stop,area)}${landmarks(stop,area)}</aside></div>
-        ${ledger(stop,area,null)}
-        <div class="notes">${(area?.tip || stop.tip) ? `<details data-panel="tip"><summary>Field note</summary><p>${escape(area?.tip || stop.tip)}</p></details>` : ""}
-          ${stop.lore && (!area || area.lore) ? `<details data-panel="lore"><summary>Local lore</summary><p>${escape(stop.lore)}</p></details>` : ""}
-          ${bibliography(stop.sources)}</div>${articleLinks(stop.links,stop.id)}${controls(page,stop.id)}${adjacent(stop)}</div>`;
+    const directions = warning(!area || area.warning ? stop.warning?.text : "",stop.warning?.label) + directionReader("");
+    return banner(name,area?.lead || stop.lead,stop.region,stop.art,true) +
+      `<div class="leaf reading-leaf">${placePanels(stop,directions,floors(stop,area)+landmarks(stop,area),routeNotes(stop,area)+bibliography(stop.sources))}
+        ${relatedReading(stop.links,stop.id)}${controls(page,stop.id)}${areaNavigation(stop)}${adjacent(stop)}</div>`;
   }
   function pageTable(title,columns,rows) {
     if (!rows?.length) return "";
@@ -454,16 +548,36 @@
     return (row.sections || []).map(section=>`<section class="article-block"><h2>${escape(section.title)}</h2><p>${escape(section.text)}</p></section>`).join("") +
       (row.referenceTables || []).map(t=>pageTable(t.title,t.columns,t.rows)).join("");
   }
+  function articleFloor(row) {
+    const ref = row.floorRef;
+    if (!ref) return "";
+    const stop = book.route.find(s=>s.id === ref.stop);
+    if (!stop) return "";
+    const part = stop.sectionsByArea?.find(a=>a.floorIds.includes(ref.mapId));
+    if (stop.sectionsByArea?.length && !part) return "";
+    const local = (stop.floors || []).filter(f=>!part || part.floorIds.includes(f.mapId));
+    const index = local.findIndex(f=>f.mapId === ref.mapId && f.section === ref.section);
+    if (index < 0) return "";
+    const id = part?.id || stop.id;
+    const scope = book.fieldSheets[id]?.unlock || stop.id;
+    const query = {view:"floors",floor:index,map:ref.mapId,section:ref.section};
+    if (part) query.area = part.name;
+    const reference = readableFrom(scope,row.unlock) ? link(href(id,query),"Floor landmarks · " + local[index].name) :
+      showReveal("Show later floor");
+    return `<div class="article-floor">${reference}</div>`;
+  }
   function regularArticle(row) {
-    const kind = row.table;
-    const content = kind ? recordTable(row.records,kind,row.unlock) : contentSections(row);
-    return banner(row.title,row.lead,row.category,row.art,true) + `<div class="leaf columns">
-      <article>${content}${bibliography(row.sources)}${controls()}</article>
-      <aside class="sidebar"><h2>Read alongside</h2>${articleLinks(row.links,row.unlock)}
-        ${link(href("wiki",{subject:row.category}),row.category,'class="text-button"')}</aside></div>`;
+    const content = row.table ? recordTable(row.records,row.table,row.unlock) : contentSections(row);
+    return banner(row.title,row.lead,row.category,row.art,true) + `<div class="leaf entry-leaf">${articleFloor(row)}
+      <article class="reader-prose">${content}</article>${relatedReading(row.links,row.unlock)}
+      ${bibliography(row.sources)}${controls()}</div>`;
   }
   function entityLeaf(row) {
-    const permitted = row.observations.filter(canReadObservation);
+    const at = params.get("at");
+    const nearer = observation => observationAt(observation,at);
+    const sighting = params.get("sighting");
+    const rank = observation => nearer(observation) ? (observation.where === sighting ? 2 : 1) : 0;
+    const permitted = row.observations.filter(canReadObservation).sort((a,b)=>rank(b)-rank(a));
     const first = permitted[0];
     const stop = first && entries.get(first.stop);
     const item = row.category === "Item ledger";
@@ -473,12 +587,12 @@
       const destinations = local.length ? local.map(a=>link(href(a.id),a.name)) : [link(href(r.id),titleOf(r.id))];
       return `<section class="article-block"><h2>${escape(o.where)}</h2><p>${escape(o.detail)}</p><div class="links">${destinations.join("")}</div></section>`;
     });
-    return banner(row.name,"",item ? "Item ledger" : "Bestiary",stop?.art || volume.theme,true) +
-      `<div class="leaf columns"><article>${places.join("")}${!first ? "<p>Its location is beyond your marked place.</p>" : ""}
+    const illustration = (first && nearer(first) && book.fieldSheets[at]?.art) || stop?.art || volume.theme;
+    const others = places.length > 1 ? `<details data-panel="sightings"><summary>Other locations (${places.length-1})</summary>${places.slice(1).join("")}</details>` : "";
+    return banner(row.name,"",item ? "Item ledger" : "Bestiary",illustration,true) +
+      `<div class="leaf entry-leaf"><article class="reader-prose">${places[0] || "<p>Its location is beyond your marked place.</p>"}${others}
       ${permitted.length < row.observations.length ? showReveal("Show later locations") : ""}
-      ${bibliography(permitted.flatMap(o=>entries.get(o.stop).sources))}${controls()}</article>
-      <aside class="sidebar"><h2>${item ? "Other items" : "Other enemies"}</h2>
-        ${link(href("wiki",{subject:row.category}),row.category,'class="text-button"')}</aside></div>`;
+      ${bibliography(permitted.flatMap(o=>entries.get(o.stop).sources))}</article>${controls()}</div>`;
   }
   function recipeAnswer() {
     const ids = specimens.map(s=>s.id).filter(id=>selectedGenes.has(id));
@@ -629,7 +743,8 @@
     $("#imprint").href = href();
     $("#search-link").href = href("search");
     $("#spine").innerHTML = sidebar();
-    main.innerHTML = pageContent();
+    main.classList.toggle("detail-reading",entries.has(page));
+    main.innerHTML = detailTrail() + pageContent();
     const heading = $("h1",main)?.textContent;
     document.title = (page ? heading + " · " : "") + volume.title + " · BoF Atelier Field Guide";
     if (page === "search") updateSearch($("#query").value);
@@ -663,7 +778,9 @@
     reader.spot = page;
     reveals[game] = false;
     savePreferences();
+    const open = openPanels();
     render();
+    restorePanels(open);
     $("[data-action=mark]")?.focus({preventScroll:true});
     note(storageAvailable ? "Reading place saved." : "Reading place set for this session.");
   }
@@ -679,15 +796,36 @@
   document.addEventListener("click",event=>{
     const el = event.target.closest("button[data-action]");
     if (!el) {
+      const anchor = event.target.closest("a[href]");
+      if (anchor && !event.defaultPrevented && event.button === 0 && !event.ctrlKey && !event.metaKey && !event.shiftKey && !event.altKey) {
+        if (anchor.hasAttribute("data-reading-back") && origin) {
+          event.preventDefault();
+          rememberReading(true,anchor);
+          history.back();
+          return;
+        }
+        const target = anchor.getAttribute("href");
+        if (target.startsWith("#bof") && target !== location.hash) {
+          rememberReading(true,anchor);
+          if (!anchor.closest(".detail-trail")) {
+            nextOrigin = {slot,address:currentAddress || href(),title:$("h1",main)?.textContent || volume.title};
+          }
+        }
+      }
       if (event.target.closest(".skip")) { event.preventDefault(); main.focus(); }
-      if (dialog.open && event.target.closest("a[href]")) dialog.close();
+      if (dialog.open && anchor) dialog.close();
       return;
     }
     switch (el.dataset.action) {
       case "contents": openDialog("Contents",`<div class="drawer">${sidebar()}</div>`,"contents-dialog",el); break;
       case "close": dialog.close(); break;
       case "enlarge": openMap(el); break;
+      case "view": switchSection(el.dataset.view); break;
       case "step": changeStep(Number(el.dataset.number)); break;
+      case "previous-step": case "next-step":
+        changeStep(step + (el.dataset.action === "next-step" ? 1 : -1));
+        if (el.disabled) $("#choose-step",main).focus({preventScroll:true});
+        break;
       case "all-steps":
         showAllSteps = !showAllSteps;
         el.textContent = showAllSteps ? "Show selected step" : "Read all steps";
@@ -699,8 +837,12 @@
       case "reveal": {
         const buttons = [...main.querySelectorAll("[data-action=reveal]")];
         const at = buttons.indexOf(el);
+        const open = openPanels();
         reveals[game] = !reveals[game];
         render();
+        restorePanels(open);
+        const sightings = main.querySelector("[data-panel=sightings]");
+        if (sightings && reveals[game]) sightings.open = true;
         main.querySelectorAll("[data-action=reveal]")[Math.max(0,at)]?.focus({preventScroll:true});
         break;
       }
@@ -720,6 +862,10 @@
   });
   main.addEventListener("change",event=>{
     const control = event.target.id;
+    if (control === "choose-step") {
+      changeStep(Number(event.target.value));
+      return;
+    }
     if (control === "apprentice" || control === "compare-master") {
       if (control === "apprentice") selectedMaster = event.target.value; else comparisonMaster = event.target.value;
       render();
@@ -733,21 +879,31 @@
     next.set("map",event.target.selectedOptions[0].dataset.map);
     next.set("section",event.target.selectedOptions[0].dataset.section);
     if (area) next.set("area",area.name);
-    location.hash = href(routePage.id,Object.fromEntries(next));
+    replaceReadingAddress(next);
+    render();
+    $("#floor").focus({preventScroll:true});
   });
   main.addEventListener("input",event=>{
     if (event.target.id !== "query") return;
     const value = event.target.value.slice(0,140);
-    const next = href("search",value ? {q:value} : {});
-    history.replaceState(history.state,"",next);
-    currentAddress = next;
-    params = new URLSearchParams(value ? {q:value} : {});
+    replaceReadingAddress(new URLSearchParams(value ? {q:value} : {}));
     updateSearch(value);
   });
   main.addEventListener("submit",event=>{
     if (event.target.id === "search") { event.preventDefault(); updateSearch($("#query").value); }
   });
   document.addEventListener("keydown",event=>{
+    const tab = event.target.closest("[role=tab][data-view]");
+    if (tab && ["ArrowRight","ArrowLeft","Home","End"].includes(event.key)) {
+      event.preventDefault();
+      const tabs = [...tab.parentElement.querySelectorAll("[role=tab]")];
+      const position = tabs.indexOf(tab);
+      const next = event.key === "Home" ? tabs[0] : event.key === "End" ? tabs.at(-1) :
+        tabs[(position + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length];
+      switchSection(next.dataset.view);
+      next.focus();
+      return;
+    }
     if (event.key === "/" && !event.ctrlKey && !event.altKey && !event.metaKey &&
         !event.target.closest("input,select,textarea,[contenteditable=true]")) {
       event.preventDefault();
@@ -755,46 +911,84 @@
       if (page === "search") $("#query").focus(); else location.hash = href("search");
     }
   });
-  function historyKey() { return currentAddress || href(); }
+  function focusIdentity(element) {
+    if (!element) return "";
+    return element.id || (element.matches("a[href]") ? element.getAttribute("href") :
+      element.matches("summary") ? "summary:" + element.parentElement.dataset.panel :
+      element.dataset.action ? [element.dataset.action,element.dataset.number,element.dataset.view,element.dataset.gene].join(":") :
+      element.dataset.record ? "row:" + element.dataset.record : "");
+  }
+  function matchingFocus(key) {
+    if (!key) return [];
+    return [...main.querySelectorAll("a[href],button[data-action],summary,input,select,[data-record]")].filter(el=>focusIdentity(el) === key);
+  }
+  function openPanels() {
+    return [...main.querySelectorAll("details[open][data-panel]")].map(el=>el.dataset.panel);
+  }
+  function restorePanels(open) {
+    for (const el of main.querySelectorAll("details[data-panel]")) el.open = open.includes(el.dataset.panel);
+  }
+  function readingSnapshot(target = document.activeElement) {
+    const key = focusIdentity(target);
+    return {step,showAllSteps,section:readingSection,scroll:scrollY,
+      focus:key,index:matchingFocus(key).indexOf(target),open:openPanels()};
+  }
+  function rememberReading(persist,target) {
+    if (!slot) return;
+    const view = readingSnapshot(target);
+    readingHistory.set(slot,view);
+    if (persist && currentAddress === location.hash)
+      history.replaceState({atelierReading:{slot,address:currentAddress,origin,view}},"");
+  }
+  function replaceReadingAddress(next) {
+    params = next;
+    currentAddress = href(page,Object.fromEntries(next));
+    const view = readingSnapshot();
+    readingHistory.set(slot,view);
+    history.replaceState({atelierReading:{slot,address:currentAddress,origin,view}},"",currentAddress);
+  }
   function navigate(event) {
-    if (event) {
-      const open = [...main.querySelectorAll("details[open][data-panel]")].map(el=>el.dataset.panel);
-      const activeLink = document.activeElement?.closest("a");
-      readingHistory.set(historyKey(),{step,showAllSteps,open,scroll:scrollY,focus:activeLink?.getAttribute("href")});
-    }
-    const lastPage = page, lastGame = game;
-    const lastFloor = params?.get("floor");
+    if (event && !nextOrigin) rememberReading(false);
+    const stored = history.state?.atelierReading;
+    const entry = stored?.address === location.hash ? stored : null;
+    slot = entry?.slot || historySession + "-" + (++slotCount);
+    origin = entry ? entry.origin : nextOrigin;
+    nextOrigin = null;
     readAddress();
-    const last = readingHistory.get(location.hash);
+    currentAddress = location.hash;
+    const last = readingHistory.get(slot) || entry?.view;
+    readingSection = last?.section || params.get("view") || (params.has("floor") ? "floors" : "");
+    if (!readingSection && params.has("entry") && routePage) {
+      const name = params.get("entry");
+      readingSection = areaRecords(routePage,area,"items",sheet).some(item=>item.name === name) ? "items" : "enemies";
+    }
     const requestedStep = Number(params.get("step"));
-    const availableSteps = sheet?.steps || [];
+    const availableSteps = routeSteps();
     step = [last?.step,requestedStep,sheet?.id === "kurok" ? 2 : 1]
       .find(n=>availableSteps.some(s=>s.key === n)) || availableSteps[0]?.key;
     showAllSteps = last?.showAllSteps || false;
     if (dialog.open) dialog.close();
     render();
-    currentAddress = location.hash;
+    if (last) restorePanels(last.open);
+    const rows = params.has("entry") ? [...main.querySelectorAll("[data-record]")].filter(el=>el.dataset.record === params.get("entry") && !el.closest("[hidden]")) : [];
+    const found = rows.find(el=>el.dataset.sighting === params.get("sighting")) || rows[0];
+    if (found) found.dataset.found = "true";
     if (last) {
-      for (const el of main.querySelectorAll("details[data-panel]")) {
-        if (last.open.includes(el.dataset.panel)) el.open = true;
-      }
-    }
-    const floorChange = lastGame === game && lastPage === page && lastFloor !== params.get("floor");
-    const found = params.has("entry") && [...main.querySelectorAll("[data-record]")].find(el=>el.dataset.record === params.get("entry"));
-    if (found) {
-      found.dataset.found = "true";
+      const target = matchingFocus(last.focus)[last.index];
+      (target || main).focus({preventScroll:true});
+      window.scrollTo(0,last.scroll);
+    } else if (found) {
       found.focus();
       found.scrollIntoView({block:"center"});
-    } else if (floorChange && $("#floor")) {
-      $("#floor").focus({preventScroll:true});
     } else if (page === "search") {
       $("#query").focus({preventScroll:true});
     } else if (event) {
-      const target = last?.focus && [...main.querySelectorAll("a")].find(a=>a.getAttribute("href") === last.focus);
-      (target || main).focus({preventScroll:true});
-      window.scrollTo(0,last?.scroll || 0);
+      main.focus({preventScroll:true});
+      window.scrollTo(0,0);
     }
+    rememberReading(true);
   }
+  window.addEventListener("pagehide",()=>rememberReading(true));
   window.addEventListener("hashchange",navigate);
   if ("scrollRestoration" in history) history.scrollRestoration = "manual";
   $("#download-guide").hidden = !["http:","https:"].includes(location.protocol);

@@ -145,6 +145,10 @@ def _prepare_book(book: dict, game: str) -> dict:
         raise ValueError(f"Duplicate, invalid or reserved page ID: {game}")
     places = {row["id"] for row in route}
     route_order = {row["id"]: index for index, row in enumerate(route)}
+    floor_addresses = {
+        (stop["id"], floor["mapId"], floor["section"])
+        for stop in route for floor in stop.get("floors", [])
+    }
     validate_field_sheets(book, ids | reserved)
     entities = {}
     book["entities"] = entities
@@ -170,6 +174,13 @@ def _prepare_book(book: dict, game: str) -> dict:
         if (row["unlock"] not in places or not row["category"].strip() or not row["sections"]
                 or not all(s["title"].strip() and s["text"].strip() for s in row["sections"])):
             raise ValueError(f"Incomplete wiki article: {row['id']}")
+        if "floorRef" in row:
+            ref = row["floorRef"]
+            if (not isinstance(ref, dict) or not isinstance(ref.get("stop"), str)
+                    or ref["stop"] not in row["links"] or type(ref.get("mapId")) is not int
+                    or type(ref.get("section")) is not int
+                    or (ref["stop"], ref["mapId"], ref["section"]) not in floor_addresses):
+                raise ValueError(f"Unknown article floor: {row['id']}")
         for table in row.get("referenceTables", []):
             columns = table["columns"]
             if (not table["title"] or len(columns) < 2 or not all(columns) or not table["rows"]
@@ -215,6 +226,11 @@ def _prepare_book(book: dict, game: str) -> dict:
         names = stop.get("landmarks", [])
         if len(names) != len(stop["steps"]) or not all(isinstance(s, str) and s.strip() for s in names):
             raise ValueError(f"Walkthrough landmarks must match the directions: {stop['id']}")
+        topics = stop.get("stepTopics", {})
+        if not isinstance(topics, dict) or any(
+                names.count(name) != 1 or topic not in stop["links"]
+                for name, topic in topics.items()):
+            raise ValueError(f"Unknown direction or topic link: {stop['id']}")
         chart = stop.get("map")
         if chart:
             points = chart["points"]
@@ -248,9 +264,13 @@ def _prepare_book(book: dict, game: str) -> dict:
             if page_id in ids | reserved:
                 raise ValueError(f"Duplicate atlas article: {page_id}")
             ids.add(page_id)
-            articles.append({"id": page_id, "title": stop["title"], "category": category,
-                             "lead": ("Items found along this route" if field == "items" else "Encounters along this route")
-                                     + " · " + ", ".join(r["name"] for r in records), "unlock": stop["id"],
+            count = len({record["name"].strip().casefold() for record in records})
+            if field == "items":
+                label, noun = "Treasure", "item" if count == 1 else "items"
+            else:
+                label, noun = "Encounters", "enemy" if count == 1 else "enemies"
+            articles.append({"id": page_id, "title": f"{stop['title']} · {label}", "category": category,
+                             "lead": f"{count} {noun} in this chapter.", "unlock": stop["id"],
                              "art": stop["art"], "sources": stop["sources"], "links": [stop["id"]],
                              "sections": [], "table": field, "records": records})
     return book

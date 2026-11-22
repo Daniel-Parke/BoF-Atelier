@@ -4,7 +4,9 @@ Open either volume and choose **Walkthrough** to follow the story or **Search** 
 
 ## Find the next turn
 
-Choose a number on the map to see the matching direction. A dashed path marks an optional detour. Use **Read all steps** for the full sequence. The text route is also available when a diagram is hard to read.
+Open **Directions** for the next turn. In a long chapter you can choose a step by its landmark. On an illustrated route, choose a map number to see its instruction. A dashed path marks an optional detour. **Read all steps** opens the full sequence.
+
+Use **Items** or **Enemies** to look up what is in the area. Selecting a name opens the sighting you chose. Back takes you to the same row. Look under **Floors** for a list of landmarks. The Windows app can also draw the floor from a supported local disc.
 
 - **III, Cedar Woods.** Find the downstairs door, cross the log and take the optional path to Skill Ink. [Open Cedar Woods](https://daniel-parke.github.io/BoF-Atelier/#bof3/cedar)
 - **III, McNeil.** The green sword sign marks the weapon shop. The road past the wheat fields takes you out of the village. [Open McNeil](https://daniel-parke.github.io/BoF-Atelier/#bof3/mcneil)
@@ -15,7 +17,7 @@ Choose a number on the map to see the matching direction. A dashed path marks an
 - **IV, Kyria Woods.** Follow the route from the well to the river. The fork above the waterfall separates the mayor's clearing from the Wisdom Seed. [Open Kyria Woods](https://daniel-parke.github.io/BoF-Atelier/#bof4/kyria-woods)
 - **IV, the passage to Synesta.** Follow the shallow water upstream. The marked side paths lead to the Water Bomb, Ammonia and 500 zenny before the well ladder. [Open the passage](https://daniel-parke.github.io/BoF-Atelier/#bof4/kyria-passage)
 
-Once you reach the town, search for **Chino** or **Synesta Cellar**. The town page follows the children’s clues and lists the treasure below the guarded stairs. [Open the children of Synesta](https://daniel-parke.github.io/BoF-Atelier/#bof4/synesta)
+In Synesta, follow the children’s clues and collect the treasure below the guarded stairs. After the rescue, the bodyguard across from the inn starts the first Kahn fight. The hideout has a separate page for the chase. [Synesta and its cellar](https://daniel-parke.github.io/BoF-Atelier/#bof4/synesta) · [Marlok’s house](https://daniel-parke.github.io/BoF-Atelier/#bof4/marloks-house) · [Bandits’ Hideout](https://daniel-parke.github.io/BoF-Atelier/#bof4/bandit-hideout)
 
 ## Look something up
 

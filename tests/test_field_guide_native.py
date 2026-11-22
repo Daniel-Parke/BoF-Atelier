@@ -92,6 +92,16 @@ class NativeFieldGuideTests(unittest.TestCase):
         self.assertTrue(QMetaObject.invokeMethod(item, "click", Qt.DirectConnection), name)
         self.pump()
 
+    def visible_controls(self, name):
+        def collect(item):
+            if not item.isVisible():
+                return
+            if item.objectName() == name:
+                yield item
+            for child in item.childItems():
+                yield from collect(child)
+        return list(collect(self.reader))
+
     def open(self, game, page="guide", branch="lab/test", rev="unregistered"):
         self.reader.openBook(game, rev, branch, page)
         self.pump()
@@ -133,6 +143,7 @@ class NativeFieldGuideTests(unittest.TestCase):
         self.assertEqual("kyria-passage", self.reader.property("bookmarkId"))
         self.assertFalse(self.reader.isAvailable("synesta"))
         self.click("pinEntry")
+        self.click("atlasTabItems")
         self.click("item.ammonia")
         self.assertFalse(self.reader.isAvailable("synesta"))
         self.reader.goBack()
@@ -469,16 +480,18 @@ class NativeFieldGuideTests(unittest.TestCase):
             with self.subTest(game=game):
                 self.reader.setProperty("gameStory", {"game": game, "place": stop, "source": "Last in-game save"})
                 self.open(game)
-                self.assertEqual("Map", self.reader.property("activeSection"))
+                self.assertEqual("Directions", self.reader.property("activeSection"))
                 self.click("atlasPoint2")
                 self.assertEqual(3, self.reader.property("selectedStep"))
                 self.assertTrue(self.control("routeDirection3").property("selected"))
                 self.click("routeDirection2")
                 self.assertEqual(2, self.reader.property("selectedStep"))
                 self.assertFalse(self.reader.property("loreOpen"))
+                self.click("atlasTabNotes")
                 self.click("workedLore")
                 self.assertTrue(self.reader.property("loreOpen"))
                 item_id = "item." + item.lower()
+                self.click("atlasTabItems")
                 self.click(item_id)
                 self.assertEqual(item_id, self.reader.property("page"))
                 self.assertEqual(item, self.control("guidePageTitle").property("text"))
@@ -501,6 +514,7 @@ class NativeFieldGuideTests(unittest.TestCase):
                     self.reader.setProperty("tv", True)
                     self.reader.visit(stop)
                     self.pump()
+                    self.click("atlasTabEnemies")
                     self.click("enemy." + enemy.lower())
                     self.assertEqual(enemy, self.control("guidePageTitle").property("text"))
                     self.assertLessEqual(self.control("guideScroller").property("contentWidth"), 555)
@@ -620,15 +634,205 @@ class NativeFieldGuideTests(unittest.TestCase):
             self.win.resize(width, 700)
             self.reader.setWidth(width)
             self.reader.setProperty("tv", tv)
-            for game, page in (("bof3","cedar"),("bof4","kurok"),("bof4","dam"),("bof4","teacher-rwolf"),
+            for game, page in (("bof3","cedar"),("bof4","kurok"),("bof4","dam"),("bof4","synesta"),("bof4","teacher-rwolf"),
                                ("bof4","combination-magic"),("bof3","genes"),("bof4","masters"),("bof4","wiki")):
                 with self.subTest(width=width, game=game, page=page):
                     self.open(game, page)
                     if page in ("cedar", "kurok", "dam"):
-                        for state in ("stepOpen", "readingFloor", "enginesOpen"):
+                        for state in ("stepOpen", "enginesOpen"):
                             self.reader.setProperty(state, True)
                         self.pump()
                     inspect(self.reader, width)
+                    if page in ("cedar", "kurok", "dam", "synesta"):
+                        for section in ("Map", "Items", "Enemies", "Notes"):
+                            self.click("atlasTab" + section)
+                            inspect(self.reader, width)
+
+    def test_ordinary_chapter_step_floor_and_item_survive_a_controller_drilldown(self):
+        self.win.resize(650, 650)
+        self.reader.setWidth(650)
+        self.reader.setHeight(650)
+        self.reader.setProperty("tv", True)
+        self.open("bof4", "synesta")
+        direction = self.control("chapterDirection")
+        self.assertLess(direction.mapToScene(QPointF()).y(), 650)
+        self.click("nextStep")
+        self.assertEqual("Catch Chino", self.control("routeLandmark").property("text"))
+        self.click("guideStep")
+        self.click("readChapterSteps")
+        self.assertIn("Protein", self.control("chapterStep7").property("detail"))
+        self.click("chapterStep7")
+        self.assertEqual("Across the kitchen", self.control("routeLandmark").property("text"))
+        self.click("atlasTabMap")
+        self.click("floorPicker")
+        self.click("floorChoice2")
+        self.click("atlasTabItems")
+        row = self.control("item.ammonia")
+        self.reader.showControl(row)
+        self.pump()
+        scroller = self.control("guideScroller")
+        y = scroller.property("contentY")
+        self.assertGreater(y, 0)
+        self.reader.navigate("confirm")
+        self.pump()
+        self.assertEqual("Synesta Cellar · first side room", self.control("sightingPlace0").property("text"))
+        self.assertIn("The children of Synesta", self.control("readerBack").property("text"))
+        QTest.keyClick(self.win, Qt.Key_Escape)
+        self.pump()
+        self.assertEqual("Items", self.reader.property("activeSection"))
+        self.assertEqual(7, self.reader.property("selectedStep"))
+        self.assertEqual(2, self.control("floorSheet", include_hidden=True).property("index"))
+        self.assertEqual("synesta", self.reader.property("area")["id"])
+        self.assertTrue(self.control("item.ammonia").hasActiveFocus())
+        self.assertAlmostEqual(y, scroller.property("contentY"), delta=2)
+        self.click("atlasTabDirections")
+        self.assertEqual("Across the kitchen", self.control("routeLandmark").property("text"))
+
+    def test_duplicate_ammonia_rows_lead_with_the_selected_pickup_and_return_to_its_row(self):
+        self.open("bof4", "synesta")
+        self.click("atlasTabItems")
+        self.click("openAtlasArticle")
+        locations = ["Synesta Cellar · first side room", "Passage to Synesta · north spur"]
+        for index, location in enumerate(locations):
+            rows = self.visible_controls("item.ammonia")
+            self.assertEqual(2, len(rows))
+            row = rows[index]
+            key = row.property("returnKey")
+            self.reader.showControl(row)
+            self.pump()
+            self.reader.navigate("confirm")
+            self.pump()
+            self.assertEqual(location, self.control("sightingPlace0").property("text"))
+            sightings = self.reader.property("orderedSightings").toVariant()
+            self.assertEqual(3, len(sightings))
+            self.assertEqual(3, len({s["where"] for s in sightings}))
+            self.click("readerBack")
+            self.assertEqual("synesta-items", self.reader.property("page"))
+            self.assertEqual(key, self.win.activeFocusItem().property("returnKey"))
+
+    def test_each_vitamin_and_mouse_row_has_its_own_visible_advice_and_return(self):
+        def captions(item):
+            if item.isVisible():
+                text = item.property("text")
+                if text:
+                    yield text
+                for child in item.childItems():
+                    yield from captions(child)
+
+        cases = (
+            ("bof3", "mcneil", "Items", "item.vitamin", [
+                ("Inn hedge", "woodshed"), ("Manor approach", "little hut")]),
+            ("bof4", "synesta", "Enemies", "enemy.mouse", [
+                ("Bandits’ Hideout", "Marlok’s errand"), ("Synesta Cellar", "Fire is effective")]),
+        )
+        for game, place, section, entity, expected in cases:
+            with self.subTest(game=game, entity=entity):
+                self.open(game, place)
+                self.click("atlasTab" + section)
+                self.assertEqual(2, len(self.visible_controls(entity)))
+                for index, (location, advice) in enumerate(expected):
+                    row = self.visible_controls(entity)[index]
+                    key = row.property("returnKey")
+                    rendered = list(captions(row))
+                    self.assertIn(location, rendered)
+                    local_detail = next(text for text in rendered if advice in text)
+                    self.reader.showControl(row)
+                    self.pump()
+                    self.reader.navigate("confirm")
+                    self.pump()
+                    self.assertEqual(location, self.control("sightingPlace0").property("text"))
+                    self.assertEqual(local_detail, self.control("sightingDetail0").property("text"))
+                    observed = [r["where"] for r in self.reader.property("orderedSightings").toVariant()]
+                    for sibling, _ in expected:
+                        self.assertEqual(1, observed.count(sibling))
+                    self.click("readerBack")
+                    self.assertEqual(key, self.win.activeFocusItem().property("returnKey"))
+                    self.assertEqual(place, self.reader.property("bookmarkId"))
+                    self.assertEqual(section, self.reader.property("activeSection"))
+                self.open(game, entity)
+                self.reader.setProperty("showLater", True)
+                self.pump()
+                self.assertFalse(self.reader.property("firstSighting"))
+                observed = [r["where"] for r in self.reader.property("orderedSightings").toVariant()]
+                self.assertTrue(all(observed.count(location) == 1 for location, _ in expected))
+
+    def test_house_hideout_and_direct_detail_parents(self):
+        self.open("bof4", "synesta")
+        self.click("guideStep")
+        self.click("chapterStep11")
+        self.assertEqual("Back at the orphanage", self.control("routeLandmark").property("text"))
+        scroller = self.control("guideScroller")
+        house_link = self.control("stepTopic")
+        self.assertIn("Marlok’s house", house_link.property("text"))
+        self.reader.showControl(house_link)
+        self.pump()
+        chapter_y = scroller.property("contentY")
+        self.reader.navigate("confirm")
+        self.pump()
+        self.assertEqual("marloks-house", self.reader.property("page"))
+        hideout = self.control("relatedbandit-hideout")
+        self.reader.showControl(hideout)
+        self.pump()
+        house_y = scroller.property("contentY")
+        self.reader.navigate("confirm")
+        self.pump()
+        self.assertEqual("bandit-hideout", self.reader.property("page"))
+        self.click("readerBack")
+        self.assertTrue(self.control("relatedbandit-hideout").hasActiveFocus())
+        self.assertAlmostEqual(house_y, scroller.property("contentY"), delta=2)
+        self.click("readerBack")
+        self.assertTrue(self.control("stepTopic").hasActiveFocus())
+        self.assertEqual(11, self.reader.property("selectedStep"))
+        self.assertAlmostEqual(chapter_y, scroller.property("contentY"), delta=2)
+        for page, parent, destination in (("enemy.army bat","Bestiary","wiki"),("item.ammonia","Item ledger","wiki"),
+                                           ("combination-magic","Battle","wiki"),("synesta","Walkthrough","route")):
+            with self.subTest(page=page):
+                self.open("bof4", page)
+                self.assertIn(parent, self.control("readerBack").property("text"))
+                self.click("readerBack")
+                self.assertEqual(destination, self.reader.property("page"))
+                if destination == "wiki":
+                    self.assertEqual(parent, self.reader.property("category"))
+
+    def test_iii_chapter_links_the_selected_mechanic_and_returns_to_that_direction(self):
+        self.open("bof3", "rhapala")
+        stop = next(row for row in self.bridge.book["route"] if row["id"] == "rhapala")
+        self.click("guideStep")
+        step = stop["landmarks"].index("Training nights") + 1
+        self.click("chapterStep" + str(step))
+        self.click("stepTopic")
+        self.assertEqual("beyd-practice", self.reader.property("page"))
+        self.click("readerBack")
+        self.assertEqual("Training nights", self.control("routeLandmark").property("text"))
+        self.assertTrue(self.control("stepTopic").hasActiveFocus())
+
+    def test_article_plan_opens_the_exact_grouped_floor_and_returns_to_the_article(self):
+        for game, page, area, map_id, section, name in (
+                ("bof3","mcneil-shops","mcneil",7,0,"McNeil Village"),
+                ("bof4","marloks-house","synesta",4098,0,"Synesta · streets and well"),
+                ("bof4","bandit-hideout","synesta",1138,1,"Bandits’ Hideout · chase clearing")):
+            with self.subTest(game=game, page=page):
+                self.open(game, page)
+                link = self.control("articleFloorPlan")
+                self.assertIn(name, link.property("text"))
+                self.reader.showControl(link)
+                self.pump()
+                article_y = self.control("guideScroller").property("contentY")
+                self.reader.navigate("confirm")
+                self.pump()
+                self.assertEqual("walk", self.reader.property("page"))
+                self.assertEqual("Map", self.reader.property("activeSection"))
+                self.assertEqual(area, self.reader.property("area")["id"])
+                floor = self.control("floorSheet").property("floor")
+                self.assertEqual((map_id, section, name), (floor["mapId"],floor["section"],floor["name"]))
+                self.assertIn(name, self.control("floorPicker").property("text"))
+                self.assertTrue(self.control("floorPicker").hasActiveFocus())
+                self.click("readerBack")
+                self.assertEqual(page, self.reader.property("page"))
+                self.assertTrue(self.control("articleFloorPlan").hasActiveFocus())
+                self.assertAlmostEqual(article_y, self.control("guideScroller").property("contentY"), delta=2)
+        self.open("bof4", "combination-magic")
+        self.assertFalse(self.control("articleFloorPlan", include_hidden=True).isVisible())
 
     def test_offline_roster_preserves_lessons_and_spoiler_controls(self):
         self.open("bof4", "masters")

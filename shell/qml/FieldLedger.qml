@@ -10,7 +10,7 @@ ColumnLayout {
     required property color accent
     property bool tv: false
     readonly property bool compact: width < (tv ? 470 : 295)
-    signal entryRequested(var row)
+    signal entryRequested(var row, string returnKey)
     spacing: 0
     Rectangle { Layout.fillWidth: true; implicitHeight: 2; color: ledger.accent }
     GridLayout {
@@ -32,15 +32,20 @@ ColumnLayout {
         delegate: Button {
             id: record
             required property var modelData
+            required property int index
             readonly property bool guideAction: true
             objectName: (ledger.monsters ? "enemy." : "item.") + modelData.name.toLowerCase()
+            readonly property string returnKey: JSON.stringify([objectName, modelData.where, index])
             Layout.fillWidth: true; Layout.minimumWidth: 0
             implicitHeight: cells.implicitHeight + 17
             leftPadding: 4; rightPadding: 4; topPadding: 8; bottomPadding: 9
             focusPolicy: Qt.StrongFocus; hoverEnabled: true
             Accessible.name: modelData.name; Accessible.description: [modelData.where,modelData.detail].filter(Boolean).join(". ")
             function activate() { clicked() }
-            onClicked: ledger.entryRequested(modelData)
+            onClicked: {
+                forceActiveFocus()
+                ledger.entryRequested(modelData, returnKey)
+            }
             Keys.onReturnPressed: event => { if (!event.isAutoRepeat) activate(); event.accepted=true }
             Keys.onEnterPressed: event => { if (!event.isAutoRepeat) activate(); event.accepted=true }
             background: Rectangle {

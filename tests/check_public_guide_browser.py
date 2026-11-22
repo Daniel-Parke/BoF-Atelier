@@ -298,7 +298,13 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
         stop = next(s for s in volumes[game]["route"] if s["id"] == sheet["stop"])
         for kind, label in (("items","Items"), ("encounters","Enemies")):
             expected = [r["name"] for r in stop.get(kind,[]) if not stop.get("sectionsByArea") or location in r["areaIds"]]
-            assert main.get_by_role("table",name=label).locator("tbody th a").all_text_contents() == expected, (location,label)
+            tab = main.get_by_role("tab", name=label, exact=True)
+            if expected:
+                tab.click()
+                assert main.get_by_role("table",name=label).locator("tbody th a").all_text_contents() == expected, (location,label)
+            else:
+                expect(tab).to_have_count(0)
+        main.get_by_role("tab",name="Directions").click()
         screenshot(page, destination, location)
         opener = main.get_by_role("button", name="Enlarge map")
         opener.click()
@@ -316,12 +322,14 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
 
     set_route(page,base,"bof4","kurok")
     main.locator(".map-pin[data-number='3']").click()
+    main.get_by_role("tab",name="Items").click()
     treasure = main.get_by_role("table", name="Items").get_by_role("link",name="Deep Diver")
     treasure.click()
     expect(main.get_by_text(re.compile("Open the chest on the upper western path"))).to_be_visible()
-    page.go_back()
+    main.get_by_role("navigation",name="Reader navigation").get_by_role("link").click()
     expect(treasure).to_be_focused()
     expect(main.locator(".step-button[data-number='3']")).to_have_attribute("aria-pressed", "true")
+    main.get_by_role("tab",name="Enemies").click()
     main.get_by_role("table", name="Enemies").get_by_role("link",name="Mage Goo").click()
     expect(main.get_by_role("heading",level=1)).to_have_text("Mage Goo")
     page.go_back()
@@ -329,20 +337,24 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
     danger = main.get_by_label("Missable", exact=True)
     for name in ("Short Sword", "two Vitamins", "two Swallow Eyes"):
         expect(danger).to_contain_text(name)
+    main.get_by_role("tab",name="Items").click()
     for name in ("Sluice Key","Flywheel prize","Crank"):
         expect(main.get_by_role("table",name="Items")).to_contain_text(name)
+    main.get_by_role("tab",name="Enemies").click()
     expect(main.get_by_role("table",name="Enemies")).to_contain_text("Army Bat")
     for key,panel in (("opening","before"),("after","after")):
+        main.get_by_role("tab",name="Directions" if key == "opening" else "Notes").click()
         detail = main.locator(f"details[data-panel='{panel}']")
         detail.locator("summary").click()
         for line in volumes["bof4"]["fieldSheets"]["dam"][key]["steps"]:
             expect(detail.get_by_text(line,exact=True)).to_be_visible()
-    main.locator("details[data-panel=floor] summary").click()
+    main.get_by_role("tab",name="Floors").click()
     floor = main.get_by_role("combobox",name="Floor")
     floors = floor.locator("option").all_text_contents()
     floor.select_option(label=next(name for name in floors if "gate tunnel" in name))
     expect(main.get_by_text("Flywheel controls",exact=True)).to_be_visible()
     expect(floor).to_be_focused()
+    main.get_by_role("tab",name="Notes").click()
     main.locator(".bibliography summary").click()
     stop = next(r for r in volumes["bof4"]["route"] if r["id"] == "dam-kyria")
     for key in stop["sources"]:
@@ -360,6 +372,7 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
     directions = main.locator("ol.written")
     for landmark in ("orphanage", "bookcase", "Chino"):
         expect(directions).to_contain_text(re.compile(landmark, re.I))
+    main.get_by_role("tab",name="Items").click()
     town_items = main.get_by_role("table", name="Items")
     for item in ("Ammonia", "Protein", "80 zenny", "Raptor Claws"):
         expect(town_items.get_by_role("rowheader").filter(has_text=item)).to_be_visible()
@@ -388,6 +401,8 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
 def check_responsive(page, base, destination):
     wide_routes = [("bof3","cedar"),("bof3","mcneil"),("bof3","glaus"),("bof4","kurok"),("bof4","dam"),
                    ("bof4","kyria"),("bof4","kyria-woods"),("bof4","kyria-passage"),("bof4","teacher-rwolf"),
+                   ("bof4","synesta?step=11"),("bof4","marloks-house"),("bof4","bandit-hideout"),
+                   ("bof3","item.vitamin?at=mcneil&sighting=Manor+approach"),("bof4","enemy.mouse?at=synesta"),
                    ("bof3","genes"),("bof4","combination-magic"),("bof3","wiki")]
     for width,height in ((1920,1080),(1280,720),(850,800),(768,900),(390,844),(320,568)):
         page.set_viewport_size({"width":width, "height":height})
@@ -423,6 +438,204 @@ def check_responsive(page, base, destination):
     page.set_viewport_size({"width":1360,"height":900})
 
 
+def check_detail_navigation(page, base, volumes):
+    main = page.get_by_role("main")
+    back = main.get_by_role("navigation", name="Reader navigation").get_by_role("link")
+    tabs = main.get_by_role("tablist", name="On this page")
+    page.set_viewport_size({"width": 390, "height": 844})
+
+    def saved_y(link):
+        link.evaluate("el=>el.scrollIntoView({block:'center'})")
+        link.focus()
+        return page.evaluate("scrollY")
+
+    def returned_to(link, position):
+        expect(link).to_be_focused()
+        assert abs(page.evaluate("scrollY") - position) <= 2, (page.url, position, page.evaluate("scrollY"))
+
+    def follow_article_floor(game, stop_id, area_id, map_id, section):
+        stop = next(s for s in volumes[game]["route"] if s["id"] == stop_id)
+        floor = next(f for f in stop["floors"] if (f["mapId"], f["section"]) == (map_id, section))
+        article_title = main.get_by_role("heading",level=1).inner_text()
+        reference = main.get_by_role("link",name=f"Floor landmarks · {floor['name']}",exact=True)
+        expect(reference).to_have_attribute("href",re.compile(rf"^#{game}/{area_id}\?"))
+        origin_y = saved_y(reference)
+        reference.press("Enter")
+        expect(tabs.get_by_role("tab",name="Floors")).to_have_attribute("aria-selected","true")
+        current = main.get_by_role("combobox",name="Floor").locator("option:checked")
+        expect(current).to_have_text(floor["name"])
+        expect(current).to_have_attribute("data-map",str(map_id))
+        expect(current).to_have_attribute("data-section",str(section))
+        for landmark in floor["landmarks"]:
+            expect(main.locator("[data-panel=floor]").get_by_text(landmark["name"],exact=True)).to_be_visible()
+        expect(back).to_have_accessible_name("Back to " + article_title)
+        back.click()
+        returned_to(reference,origin_y)
+
+    set_route(page,base,"bof4","wiki?subject=Walkthrough")
+    later = main.get_by_role("button",name="Show later articles")
+    house_entry = main.locator("a[href='#bof4/marloks-house']")
+    expect(house_entry).to_have_count(0)
+    later.click()
+    expect(house_entry).to_be_visible()
+    main.get_by_role("button",name="Hide later names").click()
+    expect(house_entry).to_have_count(0)
+    set_route(page,base,"bof4","marloks-house")
+    expect(back).to_have_accessible_name("Back to The children of Synesta")
+    assert back.get_attribute("data-reading-back") is None
+    back.click()
+    expect(main.get_by_role("heading",level=1)).to_have_text("The children of Synesta")
+    town = next(s for s in volumes["bof4"]["route"] if s["id"] == "synesta")
+    part = next(a for a in town["sectionsByArea"] if a["id"] == "synesta")
+    first = next(title for title, target in town["stepTopics"].items() if target == "marloks-house")
+    step = town["landmarks"].index(first) - part["firstStep"] + 1
+    set_route(page, base, "bof4", f"synesta?step={step}")
+    chooser = main.get_by_role("combobox",name="Choose a step")
+    buttons = main.locator(".directions .step-button:visible")
+    expect(buttons).to_have_count(1)
+    expect(buttons).to_contain_text(first)
+    assert 0 <= buttons.bounding_box()["y"] < 500
+    expect(chooser).to_have_value(str(step))
+    main.get_by_role("button",name="Next step",exact=True).click()
+    expect(chooser).to_have_value(str(step+1))
+    main.get_by_role("button",name="Previous step",exact=True).click()
+    expect(chooser).to_have_value(str(step))
+    chooser.select_option("1")
+    expect(main.get_by_role("button",name="Previous step",exact=True)).to_be_disabled()
+    last_step = str(part["endStep"] - part["firstStep"])
+    chooser.select_option(last_step)
+    expect(main.get_by_role("button",name="Next step",exact=True)).to_be_disabled()
+    main.get_by_role("button",name="Read all steps").click()
+    expect(buttons).to_have_count(int(last_step))
+    main.get_by_role("button",name="Show selected step").click()
+    chooser.select_option(str(step))
+    topic = main.locator(f"[data-step-topic='{step}'] a")
+    expect(topic).to_have_text("Marlok’s house")
+    route_y = saved_y(topic)
+    topic.press("Enter")
+    expect(back).to_have_accessible_name("Back to The children of Synesta")
+    expect(main.get_by_role("table", name="Kahn at the door")).to_be_visible()
+    follow_article_floor("bof4","synesta","synesta",4098,0)
+    main.locator("[data-panel=sources] summary").click()
+    hideout = main.locator(".related-reading a[href='#bof4/bandit-hideout']")
+    house_y = saved_y(hideout)
+    hideout.press("Enter")
+    expect(back).to_have_accessible_name("Back to Marlok’s house")
+    expect(main.get_by_role("table",name="Enemies in the hideout")).to_be_visible()
+    follow_article_floor("bof4","synesta","synesta",1138,1)
+
+    # Opening the house again is a fresh visit; Back restores each actual history entry.
+    new_house = main.locator(".related-reading a[href='#bof4/marloks-house']")
+    hideout_y = saved_y(new_house)
+    new_house.press("Enter")
+    expect(main.locator("[data-panel=sources]")).not_to_have_attribute("open","")
+    back.click()
+    returned_to(new_house,hideout_y)
+    back.click()
+    expect(main.locator("[data-panel=sources]")).to_have_attribute("open","")
+    returned_to(hideout,house_y)
+    back.click()
+    returned_to(topic,route_y)
+    expect(main.locator(f".step-button[data-number='{step}']")).to_have_attribute("aria-pressed","true")
+    page.go_forward()
+    expect(main.get_by_role("heading",level=1)).to_have_text("Marlok’s house")
+
+    # Opening a file from a fresh bookmark has no native parent history.
+    set_route(page,base,"bof4","item.ammonia?at=kyria-passage")
+    expect(main.locator("article h2").first).to_contain_text("north spur")
+    expect(back).to_have_accessible_name("Back to The passage to Synesta")
+    assert back.get_attribute("data-reading-back") is None
+    back.click()
+    expect(tabs.get_by_role("tab",name="Items")).to_have_attribute("aria-selected","true")
+    row = main.locator("tr[data-record='Ammonia']")
+    expect(row).to_be_focused()
+    item = row.get_by_role("link",name="Ammonia")
+    row_y = saved_y(item)
+    item.press("Enter")
+    back.click()
+    returned_to(item,row_y)
+    active = tabs.get_by_role("tab",name="Items")
+    active.focus()
+    active.press("ArrowLeft")
+    floor_tab = tabs.get_by_role("tab",name="Floors")
+    expect(floor_tab).to_be_focused()
+    expect(floor_tab).to_have_attribute("aria-selected","true")
+    floor = main.get_by_label("Floor",exact=True)
+    names = floor.locator("option").all_text_contents()
+    floor.select_option(label=names[-1])
+    expect(floor).to_be_focused()
+    other = main.locator(".related-reading a").first
+    floor_y = saved_y(other)
+    other.press("Enter")
+    back.click()
+    returned_to(other,floor_y)
+    expect(floor_tab).to_have_attribute("aria-selected","true")
+    expect(floor.locator("option:checked")).to_have_text(names[-1])
+    floor_tab.focus()
+    floor_tab.press("Home")
+    expect(tabs.get_by_role("tab",name="Directions")).to_be_focused()
+    page.reload()
+    expect(tabs.get_by_role("tab",name="Directions")).to_have_attribute("aria-selected","true")
+    expect(main.get_by_role("img")).to_be_visible()
+
+    # Two rooms can contain the same item or enemy. Both the chosen sighting and its row matter.
+    for game,place,section,entity,room in (
+        ("bof4","synesta","Items","Ammonia","Synesta Cellar"),
+        ("bof4","synesta","Enemies","Mouse","Synesta Cellar"),
+        ("bof3","mcneil","Items","Vitamin","Manor approach"),
+    ):
+        set_route(page,base,game,place)
+        tabs.get_by_role("tab",name=section).click()
+        sighting = main.locator("tr[data-record]").filter(has_text=room).get_by_role("link",name=entity,exact=True)
+        position = saved_y(sighting)
+        sighting.press("Enter")
+        expect(main.locator("article h2").first).to_contain_text(room)
+        path = page.url
+        back.click()
+        returned_to(sighting,position)
+        # Paste that same book address with no parent. Its local return selects the same row.
+        set_route(page,base,game,"walk")
+        page.goto(path)
+        assert back.get_attribute("data-reading-back") is None
+        back.click()
+        focused = main.locator("tr:focus")
+        expect(focused).to_have_attribute("data-record",entity)
+        expect(focused).to_have_attribute("data-sighting",re.compile(re.escape(room)))
+
+    # III's ordinary chapters also put the relevant reference at the selected turn.
+    set_route(page,base,"bof3","mcneil-shops")
+    follow_article_floor("bof3","cedar","mcneil",7,0)
+    stop = next(s for s in volumes["bof3"]["route"] if s["id"] == "contest")
+    title,target = next(iter(stop["stepTopics"].items()))
+    chosen = stop["landmarks"].index(title) + 1
+    set_route(page,base,"bof3",f"contest?step={chosen}")
+    reference = main.locator(f"[data-step-topic='{chosen}'] a[href='#bof3/{target}']")
+    ref_y = saved_y(reference)
+    reference.press("Enter")
+    back.click()
+    returned_to(reference,ref_y)
+
+    for width in (320,390):
+        page.set_viewport_size({"width":width,"height":844})
+        set_route(page,base,"bof4",f"synesta?step={step}")
+        chosen_body = main.locator(".step-body:visible")
+        expect(chosen_body).to_have_count(1)
+        instruction_y = chosen_body.bounding_box()["y"]
+        assert 0 <= instruction_y < 500, (width, instruction_y, page.evaluate("scrollY"))
+        no_overflow(page)
+        set_route(page,base,"bof3","cedar?step=1")
+        instruction = main.locator(".step-body:visible").first.bounding_box()
+        drawing = main.locator(".map-board").bounding_box()
+        assert instruction["y"] < 490 and instruction["y"] < drawing["y"], (width,instruction,drawing)
+        no_overflow(page)
+        view_map = main.get_by_role("button",name="View map")
+        view_map.click()
+        expect(page.get_by_role("dialog")).to_be_visible()
+        page.keyboard.press("Escape")
+        expect(view_map).to_be_focused()
+    page.set_viewport_size({"width":1360,"height":900})
+
+
 def check_storage(browser, base):
     store_key = "bof-atelier.public-guide.v1"
     seed = {"bof3":{"through":4,"pins":["diary","cedar"]},"bof4":{"through":5,"pins":["dam-kyria","dragons","kyria-passage"]}}
@@ -446,11 +659,14 @@ def check_storage(browser, base):
         expect(main.get_by_role("heading",level=1)).to_have_text("The passage to Synesta")
         main.get_by_role("button",name="Mark my place").click()
         assert page.evaluate("key=>JSON.parse(localStorage.getItem(key)).bof4.through",store_key) == 5
+        main.get_by_role("tab",name="Items").click()
         main.get_by_role("table",name="Items").get_by_role("link",name="Ammonia",exact=True).click()
         expect(main.get_by_role("heading",level=1)).to_have_text("Ammonia")
         expect(main.locator("article a[href='#bof4/kyria-passage']")).to_be_visible()
         expect(main.get_by_role("button",name="Show later locations")).to_be_visible()
         expect(main.get_by_role("heading",name=re.compile("cellar",re.I))).to_have_count(0)
+        main.get_by_role("button",name="Show later locations").click()
+        expect(main.get_by_role("heading",name=re.compile("cellar",re.I))).to_be_visible()
     with browser.new_context(offline=True) as context:
         context.add_init_script("Object.defineProperty(window,'localStorage',{get(){throw Error('off')}})")
         page = context.new_page()
@@ -505,6 +721,7 @@ def check_transport(browser, base: str, document: bytes, volumes: dict,
             page.evaluate("window.scrollTo(0,0)")
         screenshot(page,destination,"desktop")
         check_reader_actions(page,base,volumes,destination)
+        check_detail_navigation(page,base,volumes)
         counts = check_pages_and_links(page,volumes)
         check_responsive(page,base,destination)
         if offline:
@@ -513,6 +730,7 @@ def check_transport(browser, base: str, document: bytes, volumes: dict,
         assert not external, external
         return {**counts,"decoded_illustrations":art_count,"fonts":fonts,
                 "widths_css_px":[320,390,640,768,850,1280,1360,1920],"text_200_percent":True,
+                "contextual_step_and_row_returns":True,"floor_return":True,"article_floor_links":3,"nested_article_history":True,
                 "gameplay_inputs":False,"page_errors":errors,"external_requests":external}
     finally:
         context.close()

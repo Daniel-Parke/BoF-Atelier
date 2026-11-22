@@ -11,9 +11,6 @@ ColumnLayout {
     readonly property var diagram: sheet.id ? fieldGuide.routeDiagram(sheet.id) : ({})
     readonly property bool stacked: reader.routeExpanded || width < (reader.tv ? 910 : 720)
     readonly property int chosen: reader.selectedStep - 1
-    readonly property var scopedItems: (reader.stop.items || []).filter(belongs)
-    readonly property var scopedEnemies: (reader.stop.encounters || []).filter(belongs)
-    function belongs(row) { return !reader.area || (row.areaIds || []).includes(reader.area.id) }
     function choose(key) {
         reader.selectedStep = key
         if (reader.routeExpanded) mapViewport.showPin()
@@ -170,12 +167,6 @@ ColumnLayout {
     }
     Flow {
         Layout.fillWidth: true; spacing: 6
-        Action {
-            objectName: "workedFloors"; visible: spread.reader.visibleFloors.length > 0
-            text: spread.reader.readingFloor ? "Close floor landmarks" : "Floor landmarks"
-            selected: spread.reader.readingFloor
-            onClicked: { spread.reader.readingFloor = !spread.reader.readingFloor; spread.reader.mapExpanded = false }
-        }
         Action {
             objectName: "guideHint"; text: spread.reader.hintOpen ? "Close hint" : "Give me a hint"
             quiet: true; onClicked: spread.reader.hintOpen = !spread.reader.hintOpen

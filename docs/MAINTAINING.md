@@ -17,6 +17,10 @@ For directions, timings, rewards and skill conditions, follow the [editorial sta
 
 Keep page IDs stable. A new stop needs a unique ID. A reference to an item, encounter, source or related page must resolve in the same volume. Use original writing and record evidence against the exact edition. A public map can show an original schematic with a text route. A privately decoded game map stays in the local Player.
 
+When one direction needs a longer explanation, add its exact landmark title to the stop’s optional `stepTopics` object. Set the value to an existing page ID in the stop’s `links`. For example, **Boiler lever** in III links to `lighthouse-gauge`. The reader shows the page title beside that instruction and can return to the same step. Keep a short action in the walkthrough so the link remains optional.
+
+If a room matters to an article, use `floorRef` to open its floor directly. Supply the chapter’s `stop` ID, the integer `mapId` and `section` from its floor list. Include that chapter in the article’s `links`. A grouped chapter also needs to open the right area. McNeil’s shops, for example, point to map 7, section 0 of the Cedar chapter. Check the actual room in both readers, then check Back.
+
 ## Build and check
 
 From the repository root, run the following with Python 3.11 or later. The guide builder uses the standard library.

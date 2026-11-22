@@ -2241,6 +2241,9 @@
         "enemy-db",
         "skills"
       ],
+      "stepTopics": {
+        "Preliminary halls": "arena-rules"
+      },
       "landmarks": [
         "Registration",
         "Preliminary halls",
@@ -2452,6 +2455,9 @@
         "puzzles",
         "tri"
       ],
+      "stepTopics": {
+        "Training nights": "beyd-practice"
+      },
       "landmarks": [
         "Wharf and inn",
         "Practice equipment",
@@ -2576,6 +2582,9 @@
         "gene-faq",
         "a-genes"
       ],
+      "stepTopics": {
+        "Boiler lever": "lighthouse-gauge"
+      },
       "landmarks": [
         "Fuel store",
         "Boiler lever",
@@ -3950,6 +3959,9 @@
         "dk",
         "electro-fish"
       ],
+      "stepTopics": {
+        "The kitchen": "shisu-kitchen"
+      },
       "landmarks": [
         "Mayor’s house",
         "Four ingredients",
@@ -4864,6 +4876,9 @@
         "skills",
         "enemy-db"
       ],
+      "stepTopics": {
+        "First nights": "desert-stars"
+      },
       "landmarks": [
         "First nights",
         "Eastern leg",
@@ -7065,6 +7080,7 @@
     {
       "id": "mcneil-shops",
       "title": "McNeil’s shops, dressers and inn",
+      "floorRef": {"stop": "cedar", "mapId": 7, "section": 0},
       "category": "Camp & village",
       "lead": "After the farm scene, turn back to town with Rei and Teepo. The houses are open, and the inn has a diary.",
       "art": "iii-woods",

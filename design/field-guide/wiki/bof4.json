@@ -630,6 +630,9 @@
         "field-layout",
         "rx1"
       ],
+      "stepTopics": {
+        "Salvage yard": "sarai-salvage"
+      },
       "landmarks": [
         "Sarai tavern",
         "Merchant’s road",
@@ -2008,17 +2011,18 @@
         "A barrel blocks the door to Chino’s cell. Go to the neighbouring cell on its north side. Face the door from the hall and use Talk to open it. The bag inside holds Raptor Claws for Ershin.",
         "Go up the stairs at the north end of the jail. Open the far cell, the one with the wooden patch in the floor. Walk onto the boards to drop into Chino’s cell below.",
         "Walk around the jar on the right and talk to Chino. The scene returns the party to the orphanage. When he names Marlok, look for the house opposite the inn. Speak to the bodyguard at its door when you are ready to fight Kahn.",
-        "Once Marlok gives you the errand, ask the merchant at the town gate about the thief. Stop at the question mark on the road to the hideout. In the cave, Cray can move barrels across a side passage. Cut across the thief’s route to catch him.",
+        "Speak to the merchant beside the pack animal at the gate. Take the eastern road and press Confirm at the red question mark. In the hideout, use Cray to block the southern passage with two barrels. Follow the thief round the upper-right loop and use Talk when he reaches the barrier.",
         "Return to Marlok and work at the Sandflier Wharf. Help clear the store, then use the crane to load the sandflier.",
         "Speak to Marlok after loading the sandflier. When play switches to Fou-Lu, leave Bunyan’s hut and follow the mountain trail to Yohm. Use Astral against his flying summon Khafu."
       ],
       "tip": "Speak to the children you find. Each one describes the next hiding place.",
       "links": [
         "kyria-passage",
+        "marloks-house",
+        "bandit-hideout",
         "wharf-cargo",
         "learning-skills",
-        "treasure-exchange",
-        "bandit-hideout"
+        "treasure-exchange"
       ],
       "art": "iv-wreck",
       "sources": [
@@ -2035,6 +2039,11 @@
         "enemy-research",
         "angel"
       ],
+      "stepTopics": {
+        "Back at the orphanage": "marloks-house",
+        "Marlok's errand": "bandit-hideout",
+        "Sandflier Wharf": "wharf-cargo"
+      },
       "landmarks": [
         "Passage from Kyria",
         "The orphanage by the well",
@@ -2056,7 +2065,7 @@
         {
           "name": "Kahn",
           "where": "Marlok’s door",
-          "detail": "Guard while he uses Focus for a chance to learn it.",
+          "detail": "Shout can stun several allies. Choose Guard to learn Focus when he raises his attack. Victory gives 1,000 EXP, and may also yield Ginseng.",
           "areaIds": [
             "synesta"
           ],
@@ -2249,6 +2258,16 @@
               "x": 41,
               "z": 16,
               "name": "Modo on the lower street"
+            },
+            {
+              "x": 33,
+              "z": 18,
+              "name": "Bodyguard outside Marlok’s house"
+            },
+            {
+              "x": 19,
+              "z": 32,
+              "name": "Merchant by the pack animal"
             }
           ]
         },
@@ -2351,6 +2370,16 @@
               "x": 6,
               "z": 8,
               "name": "World map"
+            },
+            {
+              "x": 12,
+              "z": 10,
+              "name": "Arrival after the roadside scene"
+            },
+            {
+              "x": 16,
+              "z": 10,
+              "name": "Rock cleft into the cave"
             }
           ]
         },
@@ -2604,6 +2633,19 @@
               "name": "Wooden cover above Chino"
             }
           ]
+        },
+        {
+          "mapId": 1138,
+          "section": 1,
+          "name": "Bandits’ Hideout · chase clearing",
+          "landmarks": [
+            {"x": 2, "z": 25, "name": "Cave mouth"},
+            {"x": 25, "z": 17, "name": "Thief at the start of the chase"},
+            {"x": 25, "z": 13, "name": "Middle barrel"},
+            {"x": 29, "z": 20, "name": "Northern barrel in the two-wide gap"},
+            {"x": 29, "z": 21, "name": "Southern barrel in the two-wide gap"},
+            {"x": 32, "z": 21, "name": "Speak to the trapped thief from this side"}
+          ]
         }
       ],
       "items": [
@@ -2683,6 +2725,13 @@
           "floorIds": [
             1094
           ]
+        },
+        {
+          "name": "Ginseng",
+          "where": "Synesta · Marlok’s door",
+          "detail": "Possible treasure after the first Kahn fight. A single Ginseng can appear on the victory screen even if nobody stole.",
+          "areaIds": ["synesta"],
+          "floorIds": [4098]
         }
       ],
       "sourceSections": [
@@ -3114,6 +3163,9 @@
         "mhobbs",
         "dalez"
       ],
+      "stepTopics": {
+        "Painted boulder": "plains-landmarks"
+      },
       "landmarks": [
         "Smoke on the plains",
         "Painted boulder",
@@ -3328,6 +3380,9 @@
         "field-layout",
         "dalez"
       ],
+      "stepTopics": {
+        "Coloured beams": "wyndia-basement"
+      },
       "landmarks": [
         "Coloured beams",
         "Ahm Fen",
@@ -4764,6 +4819,9 @@
         "drawers",
         "pab-words"
       ],
+      "stepTopics": {
+        "Pabpab": "pabpab-notebook"
+      },
       "landmarks": [
         "Pabpab",
         "Herb landing",
@@ -5227,6 +5285,9 @@
         "drawers",
         "crystalMap"
       ],
+      "stepTopics": {
+        "Rolling cube": "tomb-mechanisms"
+      },
       "landmarks": [
         "Pauk",
         "Tomb grounds",
@@ -6457,19 +6518,24 @@
       "id": "wharf-cargo",
       "title": "Working at the sandflier wharf",
       "category": "Puzzles & errands",
-      "lead": "Clear the storeroom with the right people, then line up the crane over the deck.",
+      "lead": "Take the road north from Synesta. At the wharf, go up the stairs and speak to the foreman.",
       "sections": [
         {
-          "title": "Sort the floor",
-          "text": "Read both signs before pushing anything. Cray can slide intact barrels and jars. Ershin can break the old barrels taking up space. Leave an open lane for moving the last pieces into their marked areas."
+          "title": "Before boarding",
+          "text": "Save in Synesta before starting work if you want to try for another prize or revisit an earlier fishing spot. Finishing the job takes the party west."
+        },
+        {
+          "title": "Barrels south, jars north",
+          "text": "Read the two signs in the storeroom. Put Cray in front to push sound barrels to the southern sign and jars to the northern one. Switch to Ershin to smash the old barrels. Keep a space open on the platform for the last piece."
         },
         {
           "title": "Work the crane",
-          "text": "Practise the swing with the first crate. Line the claw up over the load, lift, rotate towards the sandflier and lower it onto a clear section of deck. A stable stack gives the next crate a wider target. Speak with Marlok after the job."
+          "text": "Use left and right to swing the arm. Up shortens its reach and down extends it. Lower the claw over a crate, swing it over the deck and lower it again. Aim for the blue outlines for extra points. Marlok awards a Straw, Spoon or Fork according to your score."
         }
       ],
       "links": [
         "synesta",
+        "bandit-hideout",
         "field-actions"
       ],
       "art": "iv-wreck",
@@ -6477,7 +6543,13 @@
       "sources": [
         "deh1",
         "dxie",
-        "eastern"
+        "eastern",
+        "dalez",
+        "billy"
+      ],
+      "sourceSections": [
+        {"source": "dalez", "section": "I.P, Sandflier Wharf. Storeroom signs, crate outlines and departure."},
+        {"source": "billy", "section": "Marlok’s jobs. Sorting the storeroom and Crane Man controls."}
       ]
     },
     {
@@ -7249,31 +7321,86 @@
       ]
     },
     {
+      "id": "marloks-house",
+      "title": "Marlok’s house",
+      "floorRef": {"stop": "synesta", "mapId": 4098, "section": 0},
+      "aliases": ["Marlok's house", "Marlok's door", "Marlok's bodyguard", "Burly Guard", "Kahn at Synesta", "Kahn boss fight", "First Kahn fight"],
+      "category": "Walkthrough",
+      "lead": "Once Chino names Marlok, go back to the inn. A bodyguard stands outside the house opposite it.",
+      "art": "iv-wreck",
+      "unlock": "synesta",
+      "sections": [
+        {
+          "title": "Before you speak to the guard",
+          "text": "Rest at the inn for 50 zenny if you need to. Cross the square to the house, stand beside the guard and use Talk to start the fight."
+        },
+        {
+          "title": "When Kahn uses Focus",
+          "text": "His opening Shout can stun more than one ally. Choose Guard on the next round to try to learn Focus when he raises his attack. Once you have the skill, Ryu’s Aura dragon can use Flame Strike while Nina heals or casts Sever."
+        },
+        {
+          "title": "Pick up the trail",
+          "text": "After the fight, hear Marlok out inside the house. Nina stays behind. Look for the merchant beside the loaded pack animal just inside the town gate. Ask about the man with the bag. He points you towards the Eastern Highway."
+        }
+      ],
+      "referenceTables": [
+        {
+          "title": "Kahn at the door",
+          "columns": ["Detail", "First fight"],
+          "rows": [
+            ["HP", "3,000"],
+            ["Victory", "1,000 EXP in total. No zenny."],
+            ["Treasure", "Can yield one Ginseng. The enemy table also lists it as a steal."],
+            ["Learnable skill", "Focus · 0 AP"]
+          ]
+        }
+      ],
+      "links": ["bandit-hideout", "synesta", "learning-skills"],
+      "sources": ["dalez", "rx1", "enemy-research", "billy"],
+      "sourceSections": [
+        {"source": "dalez", "section": "I.N, Synesta. The guard outside Marlok’s house and the journey to the hideout."},
+        {"source": "rx1", "section": "Marlok’s Errands. First Kahn fight, party change and the merchant."},
+        {"source": "enemy-research", "section": "Kahn, first encounter. HP, actions, experience and item data."},
+        {"source": "billy", "section": "Missing Princess. Marlok’s bodyguard in Synesta."}
+      ]
+    },
+    {
       "id": "bandit-hideout",
       "title": "Bandits’ Hideout",
+      "floorRef": {"stop": "synesta", "mapId": 1138, "section": 1},
       "aliases": [
         "Bandit Hideout",
         "Bandit’s Hideout",
         "Bandits Hideout",
         "Thief’s Hideout",
+        "Hideout chase",
+        "Catch the thief",
         "Stop, Thief!"
       ],
       "category": "Walkthrough",
-      "lead": "Marlok sends Ryu, Cray and Ershin after the thief. Before leaving Synesta, ask the merchant beside the town gate where he went.",
+      "lead": "With Nina at Marlok’s house, speak to the merchant beside the pack animal at the town gate. He saw the thief take the Eastern Highway.",
       "art": "iv-wreck",
       "unlock": "synesta",
       "sections": [
         {
-          "title": "Take the eastern road",
-          "text": "Leave Synesta and enter the question mark on the eastern path. After the encounter, follow the route to the hideout. Enter through the cleft in the rock and head east into the clearing."
+          "title": "Catch the red question mark",
+          "text": "Leave Synesta on the eastern road. When a red question mark appears above the party, press Confirm to stop. If you reach the Hideout without meeting the thief, turn around. You can catch the same roadside scene on the way back."
         },
         {
-          "title": "Close a gap before taking chase",
-          "text": "Put Cray in front. Push barrels together across an opening in the southern half of the room. Approach the thief, then watch where his route turns back at the barricade. Cut across to meet him."
+          "title": "Enter the rock cleft",
+          "text": "Advance the roadside conversation. After a scene at Marlok’s house, you regain control between two rock walls. Walk east through the cleft. Inside the cave, head east to the clearing and approach the man standing there to start the chase."
         },
         {
-          "title": "Return or recruit",
-          "text": "Catching the thief frees you to return to Marlok, then go north to the Sandflier Wharf. For an optional master, re-enter the hideout and talk to Stoll. He asks for every zenny you carry, so buy any supplies you want first."
+          "title": "Block both lanes",
+          "text": "Put Cray in front and keep walking into a barrel to push it. Move the middle barrel south, then east into the narrow passage on the lower-right loop. Push a second barrel alongside it to fill the gap. The thief can slip past one. Ershin’s field action will break a barrel."
+        },
+        {
+          "title": "Catch him from the east",
+          "text": "Follow him north up the middle of the clearing. Turn east along the upper lane, then south along the outer wall. He reaches the barrels from this side. Close the gap and use Talk to catch him. If a battle interrupts you, the barrels stay where you put them."
+        },
+        {
+          "title": "Report back to Marlok",
+          "text": "After a scene at Marlok’s house, you regain control outside the cave. Cross the grass to the world map and travel back to Synesta. Speak to Marlok for the job at the Sandflier Wharf. To study under Stoll, re-enter the hideout and speak to him. He asks for all your zenny. You can come back later."
         }
       ],
       "referenceTables": [
@@ -7300,6 +7427,7 @@
         }
       ],
       "links": [
+        "marloks-house",
         "synesta",
         "teacher-stoll",
         "wharf-cargo",
@@ -7311,6 +7439,12 @@
         "dalez",
         "enemy-research",
         "mhobbs"
+      ],
+      "sourceSections": [
+        {"source": "dalez", "section": "I.N to I.O. The eastern road, the chase and the return to Marlok."},
+        {"source": "rx1", "section": "Marlok’s Errands. Reaching the clearing and cutting off the thief."},
+        {"source": "billy", "section": "Missing Princess. Barrel positions and Stoll’s offer."},
+        {"source": "enemy-research", "section": "Mouse, Rat and Army Bat. Enemy behaviour and skills."}
       ]
     },
     {

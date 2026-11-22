@@ -11,6 +11,7 @@ Button {
     property bool selected: false
     property bool primary: false
     property bool quiet: false
+    property bool tab: false
     property bool dark: false
     property bool tv: false
     readonly property bool guideAction: true
@@ -20,7 +21,7 @@ Button {
     rightPadding: quiet ? 10 : 13
     topPadding: 8
     bottomPadding: 8
-    implicitWidth: Math.max(96, (art && !largePlate ? thumbnail.width + 12 : 0) + Math.max(caption.implicitWidth, note.implicitWidth) + leftPadding + rightPadding)
+    implicitWidth: Math.max(tab ? 44 : 96, (art && !largePlate ? thumbnail.width + 12 : 0) + Math.max(caption.implicitWidth, note.implicitWidth) + leftPadding + rightPadding)
     implicitHeight: Math.max(tv ? 55 : 43, visual.implicitHeight + topPadding + bottomPadding)
     Accessible.name: text
     Accessible.description: detail
@@ -39,8 +40,13 @@ Button {
               : control.primary ? control.accent : control.selected ? Qt.tint(control.paper, Qt.rgba(control.accent.r, control.accent.g, control.accent.b, 0.10))
               : control.hovered || control.down ? Qt.tint(control.paper, Qt.rgba(control.accent.r, control.accent.g, control.accent.b, 0.08))
               : control.quiet ? "transparent" : control.paper
-        border.width: control.activeFocus || control.selected ? 2 : control.quiet ? 0 : 1
+        border.width: control.activeFocus || (control.selected && !control.tab) ? 2 : control.quiet ? 0 : 1
         border.color: control.activeFocus ? (control.dark ? "#f6d08e" : "#006383") : control.selected ? (control.largePlate ? "#e0ab4e" : control.dark ? "#a6aa8a" : control.accent) : "#bcb7a4"
+        Rectangle {
+            visible: control.tab && control.selected
+            anchors.left: parent.left; anchors.right: parent.right; anchors.bottom: parent.bottom
+            anchors.leftMargin: 6; anchors.rightMargin: 6; height: 3; color: control.accent
+        }
         Rectangle {
             visible: control.activeFocus && control.primary
             anchors.fill: parent
