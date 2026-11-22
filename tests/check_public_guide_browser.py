@@ -434,7 +434,8 @@ def check_storage(browser, base):
         main.get_by_role("button",name="Mark my place").click()
         assert page.evaluate("key=>JSON.parse(localStorage.getItem(key)).bof4.through",store_key) == 5
         main.get_by_role("table",name="Items").get_by_role("link",name="Ammonia",exact=True).click()
-        expect(main.locator("a[href='#bof4/kyria-passage']")).to_be_visible()
+        expect(main.get_by_role("heading",level=1)).to_have_text("Ammonia")
+        expect(main.locator("article a[href='#bof4/kyria-passage']")).to_be_visible()
         expect(main.get_by_role("button",name="Show later locations")).to_be_visible()
         expect(main.get_by_role("heading",name=re.compile("cellar",re.I))).to_have_count(0)
     with browser.new_context(offline=True) as context:
