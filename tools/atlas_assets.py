@@ -1,6 +1,8 @@
 """Reviewed, redistributable editorial assets. New bytes require a provenance review."""
 
 ATLAS_HASHES = {
+    "design/field-guide/atlas/kyria-passage.svg": "0f99167e61d272b4853806f1ee9c262657dafd556ac772b2f7c1c48046866618",
+    "design/field-guide/atlas/kyria-passage.webp": "e1992ed248db9fa4a7c6d738cc7458d755ba8e283dba2381fe05082b6c2e8dbb",
     "design/field-guide/atlas/mcneil.svg": "a6092186e572e4dd61ecd2de270a99d9afea5d8a894cdb080660e9b7c230614c",
     "design/field-guide/atlas/mcneil.webp": "334434751f6afa622c588a7a0a52a2623262b719cbb3ddb336f986d2805beb2d",
     "design/field-guide/atlas/glaus.svg": "3f92eb56e823594613dc92f4ec4fed079703e06cf15d1f4cc2aaf0c0d7d2aaa0",

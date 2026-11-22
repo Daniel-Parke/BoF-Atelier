@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="390" viewBox="0 0 760 390" role="img" aria-labelledby="route-name route-desc">
+  <title id="route-name">The passage from Kyria to Synesta’s well</title>
+  <desc id="route-desc">Five numbered landmarks in a cutaway of the caves. Cross the first stream for the Water Bomb, then return to the shallows and follow them upstream. Jump the deep pool by its stepping stone. At the dry fork the north spur holds Ammonia; the south tunnel leads to flooded steps. The 500-zenny chest is on a side ledge across a gap. Return to the steps and climb to the upper tunnel and the ladder beneath Synesta’s well.</desc>
+  <metadata>Original editorial illustration by BoF Atelier contributors, 2026. CC BY 4.0. Hand-authored SVG paths, assisted by OpenAI Codex, in the BoF Atelier Chrysm atlas style. Geographical relationships informed by Dalez (section I.L), RealXaenith (Synesta Pathway), Billy Lee (Passage to Synesta) and the game's local Lab observations. No game graphics, captured layouts or third-party illustrations are reproduced. The companion WebP is a lossless rendering of this drawing.</metadata>
+  <defs>
+    <linearGradient id="paper" x2=".88" y2="1"><stop stop-color="#f8f1dd"/><stop offset=".6" stop-color="#f4ead3"/><stop offset="1" stop-color="#e8dbbd"/></linearGradient>
+    <linearGradient id="stone" x2=".65" y2="1"><stop stop-color="#b6aa91"/><stop offset=".4" stop-color="#b9a486"/><stop offset="1" stop-color="#958071"/></linearGradient>
+    <linearGradient id="shade" x2=".15" y2="1"><stop stop-color="#585461"/><stop offset=".42" stop-color="#777076"/><stop offset="1" stop-color="#a7a08d"/></linearGradient>
+    <linearGradient id="shallows" x2=".7" y2="1"><stop stop-color="#779d91"/><stop offset=".52" stop-color="#a6c6ad"/><stop offset="1" stop-color="#cad5b7"/></linearGradient>
+    <linearGradient id="pool" x2="1" y2=".5"><stop stop-color="#92b5a7"/><stop offset=".32" stop-color="#517e7c"/><stop offset=".62" stop-color="#446c73"/><stop offset=".9" stop-color="#77a39a"/><stop offset="1" stop-color="#abc4ae"/></linearGradient>
+    <linearGradient id="cut" x2="0" y2="1"><stop stop-color="#b8a786"/><stop offset=".34" stop-color="#b4a187"/><stop offset=".79" stop-color="#c9ae88"/><stop offset="1" stop-color="#dcc7a0"/></linearGradient>
+    <linearGradient id="sun" x2=".25" y2="1"><stop stop-color="#faedc9"/><stop offset="1" stop-color="#c9b896" stop-opacity="0"/></linearGradient>
+    <pattern id="strata" patternUnits="userSpaceOnUse" width="73" height="25" patternTransform="rotate(-6)">
+      <path d="M0 5q12-2 20 0t15 0m10-2 12-1m8 1 8 0M3 19l8-1m6 0q9 0 17-3m18 6 8-2" fill="none" stroke="#826f61" stroke-width=".85"/>
+      <path d="m31 7 6 0m4 10 4-1m17-7 5-1m-46 6 3-1" fill="none" stroke="#ecdbb4" stroke-width="1"/>
+    </pattern>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="12" height="13" patternTransform="rotate(15)">
+      <path d="M1 12 4 4m3 3 3-7" fill="none" stroke="#716575" stroke-width=".75"/>
+    </pattern>
+    <ellipse id="chest-shadow" cx="1.4" cy="4" rx="13.5" ry="3.8" fill="#554a40" opacity=".23"/>
+    <path id="chest-body" d="m-11-6 13-4 10 4v10L-2 8l-9-4z" stroke="#454a4c" stroke-width="1.15"/>
+    <path id="chest-lid" d="m-12-6 1-5q1-4 4-5l13-3q5 0 6 6v7L-2-2z" stroke="#454a4c" stroke-width="1.15"/>
+    <path id="chest-wash" d="m-10-11 2-3 14-3 2 2-14 4z"/>
+    <g id="chest-bands">
+      <path d="m-8-6 1-7 3-3m9 10 1-6-2-4M-11-3l9 4 14-4" fill="none" stroke="#ddba78" stroke-width="1.45"/>
+      <path d="m1-3 3-1v4L1 1z" fill="#e8c77e" stroke="#675347" stroke-width=".65"/>
+    </g>
+    <g id="chest" stroke-linejoin="round"><use href="#chest-shadow"/><use href="#chest-body" fill="#536475"/><use href="#chest-lid" fill="#5c8194"/><use href="#chest-wash" fill="#94abba"/><use href="#chest-bands"/></g>
+    <g id="coin-chest" stroke-linejoin="round"><use href="#chest-shadow"/><use href="#chest-body" fill="#935748"/><use href="#chest-lid" fill="#b8644e"/><use href="#chest-wash" fill="#d79169"/><use href="#chest-bands"/></g>
+    <g id="boulder" stroke-linejoin="round"><path d="m-12 0 5-8 7-3 10 7 1 5-9 4-13-1z" fill="#a49d85" stroke="#73857a"/><path d="m-9-2 6-7 5 1 4 4-10 3z" fill="#d5d0a9"/></g>
+    <g id="grass" fill="none" stroke="#87835d" stroke-width="1" stroke-linecap="round"><path d="m-3 0-4-4m6 4-2-8m4 8 4-8m0 8 5-4"/></g>
+    <g id="mark"><circle r="16.1" fill="#fff8e7" stroke="#2e6256" stroke-width="1.8"/><circle r="13.1" fill="#27594f"/></g>
+    <path id="massif" d="M0 187q11-8 24-20l19-8 18-17q24-11 39-23l25-4 21-12q24-10 43-9l18 5 25-4 18-9 29 4 30-7 28 5 33-8 24 7q20 10 38 7l29-8 22 4 26-9 27 4 19-9 28 1 20-7 31 5 20-4 27 3 33-8 31 2v176l-18 21-36 17-58 5-68-2-53 7-75-1-49 4-60-7-45 2-48-6-41 3-35-2-41 5-50-2-60 14-34-11z"/>
+    <path id="cave" d="M0 219q23-5 44-26 19-18 44-16l14-11q11-9 25-12l9-15 18 3 10 13 16-2q17-12 33-20l17-2 17 7 17-8 15 10 13 1 15 11 19-1 16-8 12-12 5-12 16-2 12 7 4 20-11 20-2 10 16 11q18 9 33 19l18 8 14-4 7-17-6-16 9-17 17-4 16 5 8 13 19 2 10-10 7-16 16-2 7-17 11-8 33 1 14-10 24 3 13-6 12 3 6 14 16 4 3 21-22 10-9 6-37 2-25 11-10 15-9 23-17 12-7 20-15 17-20 3-11 10-22 3-19-4-18 0-15-9-8-15-21-13-21 2-26 8-39-5-22 4-11 10-24 2-12 11-25 7-22-2-26 4-27 8-27 0-23 8-26 0-16 4z"/>
+    <clipPath id="chambers"><use href="#cave"/></clipPath>
+    <clipPath id="stonecut"><use href="#massif"/></clipPath>
+    <path id="route" d="M9 249q26-9 48-12 14 0 29 1 32 2 59-11l29-15 21-11q13-11 28-5 12-8 24 0l14-1 12 2 17-9 16-6q16-4 31-1l16 11 11 22 22 11 35 17q22 12 39 9l22-6 13-16 9-15 12-14 14-10 10-18 13-14 17-12 17-5 23-5 18 1 20-3 7 4 7 1"/>
+    <path id="foreground" d="M-5 260q22-8 44-10l20-2 18-5 18 2 33-5 24-6 25-7 18 0 16-5 19-2 17-10 14-4 12-3 15-8 15 0 10-4 13 4 9 12 7 13 15 12 18 5 24 10 17 9 20 10 26-4 16-11 15-5 12-16 12-7 8-14 9-4 7-12 10-4 8-13 13-2 9-12 17-6 19-2 14-3 9-4 19-1 17-5 8 0 5 118-27 19-41 14-90 4-77-2-33 3-64 0-53-7-45 2-47-7-44 2-32-1-50 6-42-1-51 13-34-7z"/>
+    <clipPath id="frontcut"><use href="#foreground"/></clipPath>
+  </defs>
+  <style>
+    .thin,.grain,.main,.spur,.leader,.washline,.edge {fill:none;stroke-linecap:round;stroke-linejoin:round}
+    .thin{stroke:#746e63;stroke-width:1.1}.grain{stroke:#d3c4a2;stroke-width:1.05}
+    .main{stroke:#315f55;stroke-width:3.25}.spur{stroke:#855b36;stroke-width:2.6;stroke-dasharray:4.5 4.5}
+    .leader{stroke:#7e775f;stroke-width:1}.washline{stroke:#d6ddbe;stroke-width:1.5}.edge{stroke:#766d60;stroke-width:1.1}
+    .name{font:bold 22px Georgia,'Times New Roman',serif;fill:#304b40}.sub,.item,.legend{font:600 14px 'Segoe UI',Arial,sans-serif;fill:#425347}
+    .item{font-size:15.5px;fill:#594832;stroke:#efe4c9;stroke-width:3.3px;stroke-linejoin:round;paint-order:stroke fill}.legend{font-size:13px}
+    .selection{fill:none;stroke:#ac523c;stroke-width:3;opacity:0}.pin.active .selection,.pin:target .selection{opacity:1}
+    .pin text{font:bold 17px 'Segoe UI',Arial,sans-serif;fill:#fff9e7;text-anchor:middle}
+  </style>
+  <rect width="760" height="390" fill="url(#paper)"/>
+  <!-- The surface and its exposed beds are drawn as one section with a light source above the well. -->
+  <path d="M0 159q29-10 50-30l25-8 24-13 40-7 22-13 23-1 25 4 25-2 28-9q19-1 34 3l23-8 25 1 33-9 23 7 19 2 34-7 29 1 21-6 37-1 16-4 28 1 22-4 28 4 21-3 25 4 27-6 26-2 17 2v32l-60 6-65 0-84 9-61-1-71 11-69 0-50 13-61 8-56 16-53 21-55 27z" fill="#d4cfac" opacity=".87"/>
+  <path d="M4 152q30-13 47-26l30-8m53-14 35-12 21-2m33 4 32-9 27-2m29-1 28-5m69 4 31-6 18 0m60-7 30 2 22-6m115-4 35-4 27 0" class="thin" opacity=".48"/>
+  <use href="#massif" fill="url(#stone)" stroke="#8c826b" stroke-width="1.2"/>
+  <g clip-path="url(#stonecut)">
+    <path d="M-5 198q43-20 74-42 32-20 68-29l65-12 39 1 50-12 45 1 32-11 46 5 30-3 43-8 40 2 42-8 43 1 45-8 44 6 59-5v13l-69 7-24-4-57 7-39 1-41 9-41-1-61 10-47-2-36 6-41-1-51 10-46-2-61 15q-48 12-79 34l-40 19z" fill="#d0bc98"/>
+    <path d="M-6 231q75-15 137-65l39-15 66-13 69-6 30-2 44-11 41 7 35-3 56-14 51 1 46-9 48 2 48-8 58-2 20 8v8l-79 5-38 5-42 1-56 12-52 3-48 14-69-5-25 8-56-1-65 8-41 13-57 23-58 37z" fill="#b89b7f"/>
+    <path d="M0 268q52-7 92-24l52-14 54 0 39-12 58 1 53 7 34-4 40 12 51 2 62-9 46-11 63-2 32-12 84-1v130H0z" fill="url(#cut)"/>
+    <path d="M0 277q50-4 93-16l50-12 52-1 24-7 68 2 59 7 40-4 38 13 49 2 49-10 42-3 25-9 54-1 45-13 72 1m-761 64q45-3 89-15l69-15 54-1 24-5 51 3 59 7 49-4 29 10 46 3 58-10 35-1 35-11 45 0 50-13 66 2" class="thin" opacity=".66"/>
+    <use href="#massif" fill="url(#strata)" opacity=".5"/>
+    <g class="edge" opacity=".68"><path d="m29 170 7 10-5 12 5 11m38-63 5 8-3 7 8 7m68-57 8 7-3 10 7 6m33-32 9 8 2 9 7 3m60-19 5 10-3 8 9 8m57-36-1 10 11 6-1 10m59-23 8 12-6 8 10 8m67-44-6 10 6 8-2 9m45-33 5 11-4 13 7 5m61-32-3 8 9 8-2 8m91-34-4 12 6 8m26-17 5 11-4 10m-728 152 13 7-6 11m108-18 10 8-4 10m43-26 4 11 14 8m44-34 2 10 13 8-3 12m72-26 5 10-7 10m61-20 6 9-3 11m45-22-2 9 9 11m53-28 9 4-1 9 10 5m52-39-3 10 10 7m51-31-4 12 5 7"/></g>
+  </g>
+  <use href="#cave" fill="url(#shade)" stroke="#73696a" stroke-width="1.3"/>
+  <g clip-path="url(#chambers)">
+    <path d="M0 199 40 183 61 164l21-4 6-12 15 4 11-11 12 1 5-15 34 3 12 12 28-20 45-2 37 9 39-9 35-15 31 14 6 31-7 18 37 15 23 19 19-36 16-8 19-9 30 1 10-16 14-3 12-24 21-2 17-11 26 0 17-11 32 12 2 24-25-7-19 5-27-1-24 7-6 15-19 6-5 19-22 12-18-6-20 8-5 20-17 16-16 2-25-17-26-12-11-14 2-12-6-7-17 5-17 14-29-4-24 7-20-8-18 5-12-7-26 4-23 16-15 4-8-5-13 3-11 12-25 4-33 28z" fill="#645e6a" opacity=".79"/>
+    <path d="m65 184 13-18 18-6-12 23-15 13zm52-15 7-23 8-3-6 13zm75-15 17-18 22-3-10 11-8 3-15 16zm71-17 12 6-2 19-7-9zm52 15 12 0-5 12-13 3zm43-20 8-9 5 6-3 12-6 1zm74 73 18 7 11 13-18-3zm38-16 1-18 11-11 10 5-16 12zm84-27 6-13 17-10-13 16zm70-21 14-9 13 1-12 8z" fill="url(#hatch)" opacity=".8"/>
+    <g class="grain" opacity=".57"><path d="m44 189 16-12m6-2 11-6m21-3 6-7m18-3 12-8m18-2 12 10m20-3 15-10m8-4 7-3m27 3 11 6m19-7 12 7m40 12 11-3m46 42 16 10m31 16 10 5m38-45 4-7 8-4m64-18 9-7m21-13 19-5m38-11 9-3"/></g>
+    <!-- The deep pool continues below the jump; shallow margins stay lighter. -->
+    <path d="M-5 238q25-12 50-17l32-3 14-13q22-9 45-11l25-7q23-13 42-18 17-5 38-3t36 10l8 15-4 17-23 16-67 13-61 10-59 14-80 3z" fill="url(#shallows)"/>
+    <path d="M163 201q13-19 34-28 19-9 31-9 24-1 39 6l11 12-8 21-29 14-29 1-25 12-20-1-13-8z" fill="url(#pool)"/>
+    <path d="M167 210q12-15 29-23m-6-8 9-4m35-5q12-2 25 2m-32 39q12 1 22-4m-91 18 14-4m-122 15 17-3m-40 10 12-1m49-17 15-3m17-6 17-3m69-20 10 1" class="washline" opacity=".93"/>
+    <g fill="none" stroke-linecap="round"><path d="m208 142-2 19 1 8m4-27-2 20m39-14-1 15-3 6m4-25 2 4" stroke="#a5b6ad" stroke-width="1.05"/><path d="m205 142-1 12m44-3-1 6m-48 15 6 1 5-2m31 1 8-2" stroke="#d2dbca" stroke-width=".95"/></g>
+    <path d="M0 249q21-12 41-16 19-1 38-12l23-15 12 1-10 9-22 11-14 12-36 6L0 261z" fill="#bdba99"/>
+    <path d="m73 207 22-13 11-16 27-7 19 3 13-3-5 8-20 6-25-2-14 16-23 12z" fill="#c6b798" stroke="#817e71" stroke-width="1"/>
+    <path d="m101 201 16-15 23 2 15-4-5 9-16 4-16-3-16 13z" fill="#998a7c" opacity=".86"/>
+    <path d="M241 203l28-20 27-9 18-1 22 3 12 6 12 17 10 20 28 10 34 16 13 5-13 5-28-7-35-15-21-13-12-23-14-8-21 2-21 10-31 14z" fill="#cfba92" stroke="#a18f79" stroke-width="1"/>
+    <path d="m341 184 12-18 4-15 4-9 15-3 6 4-18 6-4 22-12 19z" fill="#c2af91"/>
+    <path d="m363 141 8-9 13 0 2 6-11 5-12 2z" fill="#cdbb97"/>
+    <path d="M417 240q18-3 35-15l16-7 18-13 20-6 12-20 20-9 14-15 29-9 27-3 26-12 13 6-9 13-25 13-22 20-15 24-18 16-13 21-21 12-38 10-40 0z" fill="url(#shallows)"/>
+    <path d="m451 242 25-13 12-3m-5 11 15-6m21-27 12-9m14-13 10-8m6 12 10-8m-20 32 14-9" class="washline"/>
+    <path d="m427 251 19-8 14 1 13-6 7-11 10-4 5-13 10-4 7-15 11-4 6-12 11-4 7-11 12-2 8-14 16-6 24 1 14-9 19 0 22-7 16 3-2 10-20 5-19 2-20 7-18 1-17 8-7 12-12 6-8 12-9 4-8 11-12 6-6 15-13 5-9 15-18 7-24 1z" fill="#b6a791" stroke="#7c8176" stroke-width="1.2"/>
+    <path d="m427 249 19-10 15 2 9-6 8-11 9-3 5-12 12-5 6-13 13-5 7-13 11-4 5-11 12-3 8-13 17-7 21 1 16-8 20-2 24-6 14 3-3 4-19 3-19 3-18 7-21 1-18 9-8 12-10 3-7 12-11 5-7 12-10 4-8 13-10 4-8 13-14 7-26 3z" fill="#d6c49c"/>
+    <g class="thin"><path d="m470 235 11 4m-2-15 11 3m2-17 12 2m6-21 12 3m6-19 12 2m7-18 10 2m8-15 8 2m-29 29 6 2m-27 21 8 2"/></g>
+    <path d="m470 171 8-2 9 9-2 9-8 6-5-2 2-11z" fill="#86a69b"/><path d="m476 185 4-3m-1 7 3-2" class="washline"/>
+    <path d="m438 177 12-7 15-1 9 5 0 8-15 7-20-1-5-5z" fill="#978779" stroke="#796e69" stroke-width="1"/><path d="m435 176 17-8 15 1 8 5-16 8-19-1z" fill="#cfbc98"/>
+    <path d="m481 182 13-6 11 4 10 7-8 4-11-4-15 2z" fill="#c5b18e" stroke="#8a8170" stroke-width=".9"/>
+    <path d="m210 197 5-5 10-3 12 3 3 3-4 8-16 3-8-3z" fill="#8f8b7e" stroke="#657875" stroke-width="1.1"/><path d="m209 196 8-6 10-2 11 3 3 3-13 5-13 1z" fill="#d6d0ae" stroke="#84978a" stroke-width="1"/><path d="m216 202 7 1 8-2" class="thin"/>
+    <use href="#boulder" transform="translate(175 213) scale(.43 .27)"/>
+    <use href="#boulder" transform="translate(260 191) scale(.43 .36)"/>
+    <path d="M4 248q19-6 34-6m77-46 11-7m14 0 10-3m136-3 16-3m12 2 10 3m46 39 9 5m36 12 9 4m147-81 12-5m26-10 16-3m-177 99 9-2" class="grain"/>
+  </g>
+  <!-- The near bank exposes weathered limestone under the two water levels. -->
+  <g clip-path="url(#stonecut)">
+    <use href="#foreground" fill="url(#cut)" stroke="#96816e" stroke-width="1"/>
+    <g clip-path="url(#frontcut)">
+      <path d="M-4 269q40-15 70-15l18-5 23 0 47-11 18-5 23-1 21-6 16-2 21-10 21-10 16-8 17-2 14 0 12 9 15 27 22 14 14 3 17 7 19 10 13 8 21 8 20-2 16-7 12-9 17-7 8-16 14-6 5-12 10-5 9-12 12-6 9-12 11-2 8-12 14-5 24-5 27-7 15-1 26-8-2 8-22 8-14 1-23 6-30 7-13 5-9 12-10 4-7 10-14 6-8 11-10 5-6 12-12 6-10 16-15 6-15 10-17 6-19 3-24-8-14-9-17-10-18-7-14-3-18-9-15-15-13-24-14-5-20 3-16 4-22 14-24 8-19 4-23 5-27 0-26 8-35 8-25 6-20 0-14 5-30 3-32 11z" fill="#9a8a79" opacity=".68"/>
+      <path d="M0 279q36-11 72-12l27-5 22 0 35-11 32-5 30-4 22-5 20-11 20-7 21-5 16 2 16 22 18 14 32 12 30 13 22 10q25 10 60-3l27-17 16-11 20-26 14-10 11-16 13-7 9-13 12-5 13-15 25-9 28-7 31-6" class="edge" opacity=".7"/>
+      <path d="M3 284q25-10 47-11m30-2 36-4 20-5m22-4 39-6m17-2 29-6 16-7m17-8 22-6m16-1 15 14m23 25 20 10m24 6 23 13m38 7 23-4m45-25 15-12m53-60 12-9m38-23 21-5m8-2 11-4" class="grain"/>
+      <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+        <path d="M40 290q42-6 72-11l20 1 30-6 29 2 25-5 16 2m-71 7 19-2m63-9 26-9 34-5 27 17 18 7m4 9 19 5m183-31 20-13 16-15 15-8 11-14 17-7 13-9 25-6 26-4m-55 22 15-7 27-5 12-2m-49 24 17-7 16-3m-56 27 25-9 19-4m-9 11 13-4" stroke="#9e8b76" stroke-width="1" opacity=".69"/>
+        <path d="m10 278 20-6 8 0m82-8 16-3 9 1m20 6 18-2 12-1m21-6 12-3m22-16 17-7 11-2m19 6 12 3m24 14 9 4m238-21 11-10 7-3m14-15 8-6m18-9 13-6m-38 35 22-9m13-5 13-3m-24 20 21-5m-33 19 12-4" stroke="#ddc9a4" stroke-width="1.3"/>
+        <path d="m77 267 5 2 8-1m70-13 7 2 6-1m81-21 6 1 3-1m22-10 7 2 7-2m39 30 6 2m18 6 8 1m241-42 8-3 4-5m18 2 8-4m22-9 5-4" stroke="#8e7f70" stroke-width=".9"/>
+      </g>
+      <g class="thin" opacity=".5"><path d="m29 259 2 9 6 4-2 7m42-29 8 4-1 7 6 2m37-20 4 10-3 11m31-28 8 4 3 7m38-26 6 8-3 7m48-28 3 8-2 10m38-25 1 10 5 9m42-1-6 6 4 7m34-1-1 9 9 9m21-15 2 9 7 4m36-6 1 8-5 9m38-23 4 9-3 7m27-40 6 10-3 8m27-39 2 12 8 4m29-45 1 8 5 5m26-34 5 7 1 6m32-24-2 7 7 7"/></g>
+    </g>
+  </g>
+  <!-- A small section of the town is visible at the top of the shaft. -->
+  <path d="m626 81 16-10 31 3 25-9 27 4 25-4 10 2v14l-24 4-43-2-35 6-22-1z" fill="#d4c3a0" stroke="#ab9a7e" stroke-width="1"/>
+  <g fill="#cfb68d" stroke="#a18d75" stroke-width=".9">
+    <path d="m714 68 1-15 17-4 12 4v14l-15 3z"/><path d="m711 53 19-6 16 4-3 4-11-3-16 4z" fill="#e0c9a0"/>
+    <path d="m742 64 0-20 11-3 10 3v22z"/><path d="m740 44 11-5 11 3v4l-10-2-12 3z" fill="#e2ca9b"/>
+    <path d="m735 57 4-1v8l-4 1zm15-8 3-1v6l-3 1z" fill="#8c7b70" stroke="none"/>
+  </g>
+  <g stroke-linejoin="round"><path d="m683 80 30-10 41 2-1 5-11 4-1 4-12 3-1 4-13 4-37-2 1-5 7-3z" fill="#b9a78c" stroke="#9b8b77" stroke-width=".95"/>
+    <path d="m681 83 32-10 39 1-11 4-37 0-15 6zm-2 7 26-10 36 0-10 4-35 1-10 5zm0 4 18-7 31-1-11 5-27 1z" fill="#dbcaab"/>
+    <path d="m700 80 41-1m-48 7 38-2m-44 8 31-2m5-18 7 0m-13 3 6 0m-9 6 5 0" fill="none" stroke="#968774" stroke-width=".8"/>
+    <path d="m621 84 20-6m-11 10 15-5m44-11 12-4m-8 9 12-4" fill="none" stroke="#ada289" stroke-width=".9"/>
+  </g>
+  <!-- Paved well chamber. The upper passage enters beside the ladder, clear of the water. -->
+  <path d="m642 133 8-12 15-7 24-3 17 5 9 7-1 18-9 10-25 5-22-3-14-7z" fill="#8d8580" stroke="#7e766a" stroke-width="1.1"/>
+  <path d="m647 130 9-9 30-5 18 3 8 7-1 10-13 7-25 1-25-6z" fill="#9e9a88"/>
+  <path d="m645 139 18-7 28-1 19 5 3 4-10 8-20 5-23-3-12-4z" fill="#c8b995" stroke="#948a77" stroke-width=".9"/>
+  <path d="m652 126 12-5 15-3m17 1 12 6m-59 9 13-6m36-2 13 5m-7-9 0 4m-43-5v5m38 23-8-3m-33 1 11 2" fill="none" stroke="#847e70" stroke-width=".9"/>
+  <path d="m673 139 5-4 10-2 10 1 6 4-1 3-7 4-11 1-10-2z" fill="#ab9b7b" stroke="#8b816d" stroke-width=".8"/>
+  <path d="m673 137 6-4 11-2 9 2 5 3-3 4-9 3-11 0-7-2z" fill="#d6c8a5" stroke="#8b8573" stroke-width="1"/>
+  <path d="m678 137 6-3 8-1 7 2 0 2-7 3-8 0-5-1z" fill="#78978b"/><path d="m684 137 7-2 4 0" fill="none" stroke="#b4c6aa" stroke-width=".9"/>
+  <path d="m652 137 1-50 23-4 7 2-1 50-15 6z" fill="url(#shade)" stroke="#827965" stroke-width="1.2"/>
+  <path d="m653 87 13-4 9 1-5 53-15 4z" fill="url(#sun)"/>
+  <path d="m674 91 6-1m-8 8 9-2m-7 9 6-2m-7 10 7-2m-7 9 7-2m-9 11 8-3" class="grain" opacity=".85"/>
+  <g stroke="#756749" fill="none" stroke-linecap="round"><path d="m660 137 3-53m8 51 3-53" stroke-width="2.6"/><path d="m661 130 10-2m-9-6 10-2m-10-6 11-2m-10-6 10-2m-10-6 10-2m-10-5 11-2" stroke-width="1.8"/></g>
+  <g stroke-linejoin="round"><ellipse cx="670" cy="83" rx="22" ry="6" fill="#8b826a" opacity=".35"/>
+    <path d="M651 75q18 8 36-3l-1 10q-18 10-35 2z" fill="#bbab89" stroke="#817a65" stroke-width="1.2"/>
+    <path d="m657 78 0 7m12-5-1 7m12-10 0 7" class="thin"/><ellipse cx="668.5" cy="74" rx="18.7" ry="6.9" fill="#e4d1a7" stroke="#8f826a" stroke-width="1.2"/>
+    <ellipse cx="668.5" cy="74" rx="12.6" ry="3.9" fill="#736d62"/><path d="M657 74q10-5 22-1" fill="none" stroke="#a29a7b" stroke-width="1.1"/>
+    <g stroke="#73644d" stroke-linecap="round" stroke-linejoin="round"><path d="m655 74 0-24 3-1 0 24zm22 0 0-26 3-1 0 26z" fill="#a18b67" stroke-width="1"/><path d="m651 52 1-4 30-3 3 3-29 5z" fill="#ad956e" stroke-width="1.1"/><path d="m658 58 6-7m14 4-4-5" fill="none" stroke-width="1.15"/><path d="m668 50 0 14m1-13 0 10" fill="none" stroke-width=".9"/><path d="m665 63 6-1-1 5-5 1z" fill="#9d8d71" stroke-width=".8"/></g>
+  </g>
+  <g opacity=".86"><use href="#grass" transform="translate(36 158) scale(.85)"/><use href="#grass" transform="translate(102 121) scale(.8)"/><use href="#grass" transform="translate(285 90) scale(.7)"/><use href="#grass" transform="translate(590 81) scale(.72)"/><use href="#grass" transform="translate(709 76) scale(.67)"/></g>
+  <!-- A pale keyline separates the route from water and shale. The north detour and main southern tunnel branch at the same pin. -->
+  <use href="#route" fill="none" stroke="#f3e7c7" stroke-width="6.8" stroke-linecap="round" stroke-linejoin="round"/>
+  <use href="#route" class="main"/>
+  <path d="M86 238q9-14 17-25l9-17 8-10 12-8m205 3 15-15 5-17 11-11m154 52-12-10-12-3-9 4-15-5-13-2" fill="none" stroke="#eadcc0" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M86 238q9-14 17-25l9-17 8-10 12-8m205 3 15-15 5-17 11-11m154 52-12-10-12-3-9 4-15-5-13-2" class="spur"/>
+  <use href="#chest" transform="translate(137 174) scale(.89)"/><use href="#chest" transform="translate(370 138) scale(.87)"/><use href="#coin-chest" transform="translate(454 176) scale(.86)"/>
+  <g fill="#315f55"><path d="m154 217 9-4-4 8-1-4zm141-37 9-2-6 6-1-3zm81 41 8 1-4-7-1 5zm174-64 4-8-8 3 4 1zm66-25 7-4-8 0 3 2z"/></g>
+  <!-- Short leaders put the text on paper and leave cave silhouettes unobscured. -->
+  <g class="leader"><path d="M46 291v-11l30-28m131-183v24l-10 18v65m135 119v-17l14-15 1-54m155 84v-12l-7-13 3-29M619 60l11 5 17 7"/>
+    <path d="m66 125 20 0 21 13 22 17m229-56v13l9 12m87-30v18l-6 14 5 25"/></g>
+  <g class="name">
+    <text x="21" y="317">First stream</text><text x="169" y="39">Deep pool</text><text x="309" y="317">Dry fork</text><text x="475" y="317">Flooded steps</text><text x="536" y="34">Synesta well</text>
+  </g>
+  <g class="sub"><text x="22" y="337">From Kyria</text><text x="171" y="59">Jump by the stepping stone</text><text x="310" y="337">Take the south tunnel</text><text x="476" y="337">Climb to the upper passage</text><text x="537" y="55">Climb the ladder</text></g>
+  <g class="item"><text x="20" y="118">Water Bomb</text><text x="326" y="92">Ammonia</text><text x="426" y="86">500 zenny</text></g>
+  <g id="pin-1" class="pin" data-step="1"><circle class="selection" cx="86" cy="238" r="21"/><use href="#mark" x="86" y="238"/><text x="86" y="244">1</text></g>
+  <g id="pin-2" class="pin" data-step="2"><circle class="selection" cx="188" cy="205" r="21"/><use href="#mark" x="188" y="205"/><text x="188" y="211">2</text></g>
+  <g id="pin-3" class="pin" data-step="3"><circle class="selection" cx="337" cy="181" r="21"/><use href="#mark" x="337" y="181"/><text x="337" y="187">3</text></g>
+  <g id="pin-4" class="pin" data-step="4"><circle class="selection" cx="497" cy="221" r="21"/><use href="#mark" x="497" y="221"/><text x="497" y="227">4</text></g>
+  <g id="pin-5" class="pin" data-step="5"><circle class="selection" cx="648" cy="133" r="21"/><use href="#mark" x="648" y="133"/><text x="648" y="139">5</text></g>
+  <g transform="translate(20 365)"><path d="M0-15h720" stroke="#b8af8a"/><path d="M0 4h29" class="main"/><text x="38" y="9" class="legend">Main route</text><path d="M154 4h29" class="spur"/><text x="193" y="9" class="legend">Optional treasure</text></g>
+</svg>

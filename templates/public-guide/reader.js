@@ -67,7 +67,8 @@
         if (id === stop.id) continue;
         const illustration = data.fieldSheets[id];
         records.set(id, {id, title:illustration?.title || part.name, lead:illustration?.objective || part.lead,
-          area:part.name, unlock:stop.id, category:"Walkthrough", art:illustration?.art || stop.art});
+          area:part.name, stop:stop.id, unlock:illustration?.unlock || stop.id,
+          category:illustration?.category || "Walkthrough", art:illustration?.art || stop.art});
       }
     }
     return records;
@@ -98,10 +99,21 @@
     area = null;
     const areaSheet = book.fieldSheets[page];
     if (!routePage && areaSheet) routePage = book.route.find(r => r.id === areaSheet.stop);
-    if (!routePage && entries.get(page)?.area) routePage = entries.get(entries.get(page).unlock);
+    if (!routePage && entries.get(page)?.area) routePage = entries.get(entries.get(page).stop);
     if (routePage?.sectionsByArea) {
       const parts = routePage.sectionsByArea;
       area = parts.find(a => a.name === params.get("area")) || parts.find(a => a.id === page);
+      // A chapter URL saved before the split identifies a floor in the original chapter-wide list.
+      if (page === routePage.id && !areaSheet && !params.has("area") && params.has("floor")) {
+        const original = routePage.floors || [];
+        const floor = params.has("map") ? original.find(f => f.mapId === Number(params.get("map")) &&
+          f.section === Number(params.get("section"))) : original[Number(params.get("floor"))];
+        const owner = floor && parts.find(a => a.floorIds.includes(floor.mapId));
+        if (owner) {
+          area = owner;
+          params.set("floor",String(original.filter(f => owner.floorIds.includes(f.mapId)).indexOf(floor)));
+        }
+      }
       // Before the village and woodland pages were split, these URLs numbered their floors together.
       if (!params.has("map") && params.has("floor")) {
         const legacy = Number(params.get("floor"));
@@ -127,11 +139,12 @@
   }
   function displayed(row) { return reveals[game] || withinBoundary(row); }
   function titleOf(id) { return book.fieldSheets[id]?.title || entries.get(id)?.title || id; }
-  function contextualStop() {
-    // Following a row on a later route explicitly opens that location, without changing the saved boundary.
+  function canReadObservation(row) {
+    if (reveals[game] || withinBoundary(entries.get(row.unlock || row.stop))) return true;
+    // Following the treasure from its map opens that area's sighting even on a direct link.
     const origin = entries.get(params.get("at"));
-    if (!origin || (!origin.region && !origin.area)) return "";
-    return origin.area ? origin.unlock : origin.id;
+    if (!origin) return false;
+    return row.areaIds?.length ? row.areaIds.includes(origin.id) : row.stop === origin.id;
   }
   function showReveal(label = "Show later names") {
     return button("reveal", reveals[game] ? "Hide later names" : label, "text-button", `aria-expanded="${reveals[game]}"`);
@@ -157,7 +170,7 @@
         ${combat}${game === "bof4" ? navItem("learning-skills","Enemy skills") : ""}${topic("Item ledger","Items")}${topic("Bestiary","Bestiary")}</nav>
         <hr class="rule"><p class="eyebrow">${mark ? "Your reading place" : "On the journey"}</p>
         <nav aria-label="Reading place">${mark ? navItem(mark.id,titleOf(mark.id)) :
-          nearby.filter(r => displayed(r) || r.id === routePage?.id).map(r => navItem(r.id,titleOf(r.id))).join("")}</nav></div>`;
+          nearby.filter(r => displayed(r) || (!sheet?.unlock && r.id === routePage?.id)).map(r => navItem(r.id,titleOf(r.id))).join("")}</nav></div>`;
   }
   function banner(title,lead,section,art,compact = false) {
     return `<header class="panorama${compact ? " compact" : ""}" style="${scene(art)}"><div class="hero-copy">
@@ -179,7 +192,7 @@
   }
   function bibliography(keys, detail = "") {
     const record = entries.get(page);
-    const chapters = routePage?.sourceSections || record?.sourceSections ||
+    const chapters = sheet?.sourceSections || routePage?.sourceSections || record?.sourceSections ||
       (record?.table ? entries.get(record.unlock)?.sourceSections : []) || [];
     const sources = [...new Set(keys || [])].filter(id => book.sources[id]);
     if (!sources.length && !detail) return "";
@@ -215,14 +228,15 @@
         <span class="copy"><strong>${escape(name)}</strong><small>${escape(desc)}</small></span></a>`).join("")}</div>`;
   }
   function routeIndex() {
-    const visible = book.route.filter(displayed);
+    const visible = book.route.filter(stop => displayed(stop) ||
+      stop.sectionsByArea?.some(part => displayed(entries.get(part.id))));
     const grouped = new Map();
     for (const stop of visible) {
       if (!grouped.has(stop.region)) grouped.set(stop.region,[]);
       grouped.get(stop.region).push(stop);
     }
     const parts = [...grouped].map(([chapter,stops]) => {
-      const rows = stops.flatMap(r => r.sectionsByArea ? r.sectionsByArea.map(a => {
+      const rows = stops.flatMap(r => r.sectionsByArea ? r.sectionsByArea.filter(a => displayed(entries.get(a.id))).map(a => {
         return {id:a.id,title:titleOf(a.id),description:a.lead};
       }) : [{id:r.id,title:titleOf(r.id)}]);
       return `<section><h2 class="chapter-name">${escape(chapter)}</h2>${listed(rows)}</section>`;
@@ -234,7 +248,7 @@
         ${showReveal("Show later stops")}</aside><div>${parts.join("")}</div></div>`;
   }
   function wiki() {
-    const all = [...entries.values()].filter(r => !r.region && !r.area);
+    const all = [...entries.values()].filter(r => (!r.region && !r.area) || book.fieldSheets[r.id]?.category);
     const categories = [...new Set(all.map(r=>r.category).filter(Boolean))];
     const current = categories.includes(params.get("subject")) ? params.get("subject") : "";
     const eligible = all.filter(r => (!current || r.category === current) && displayed(r));
@@ -308,8 +322,11 @@
   }
   function areaNavigation(stop) {
     if (!stop.sectionsByArea) return "";
-    const areas = stop.sectionsByArea.map(a => link(href(a.id), a.name === "Dam" ? "The Dam" : a.name,
-      a.name === area?.name ? 'aria-current="page"' : ""));
+    const areas = stop.sectionsByArea.map(a => {
+      const nextChapter = sheet?.unlock && sheet.nextSheet === a.id && !displayed(entries.get(a.id));
+      return link(href(a.id), nextChapter ? "Next stop" : a.name === "Dam" ? "The Dam" : a.name,
+        a.name === area?.name ? 'aria-current="page"' : "");
+    });
     return `<nav class="region-strip" aria-label="Area"><span class="eyebrow">On this road</span>${areas.join("")}</nav>`;
   }
   function sheetMap(current) {
@@ -355,7 +372,8 @@
       (lore ? `<details data-panel="lore"><summary>Local lore</summary><p>${escape(lore)}</p></details>` : "");
   }
   function landmarks(stop,part) {
-    if (!stop.map || (part && part !== stop.sectionsByArea[0])) return "";
+    const chapterArea = stop.sectionsByArea?.find(a => a.id === stop.id) || stop.sectionsByArea?.[0];
+    if (!stop.map || (part && part !== chapterArea)) return "";
     return `<details data-panel="landmarks"><summary>${escape(stop.map.title)} landmarks</summary><ul>
       ${stop.map.points.map(p=>`<li><strong>${escape(p.name)}</strong> ${escape(p.note)}</li>`).join("")}</ul></details>`;
   }
@@ -367,7 +385,7 @@
     const previous = previousSheet?.id || previousStop?.sectionsByArea?.at(-1)?.id || previousStop?.id;
     return `<nav class="page-ends" aria-label="Walkthrough pages">
       ${previous ? link(href(previous),"← " + titleOf(previous)) : link(href("walk"),"Walkthrough contents")}
-      ${next ? link(href(next),titleOf(next) + " →") : idx+1 < book.route.length ?
+      ${next ? link(href(next),sheet.unlock && !displayed(entries.get(next)) ? "Next stop →" : titleOf(next) + " →") : idx+1 < book.route.length ?
         link(href(book.route[idx+1].id),"Next stop →") : link(href("walk"),"Walkthrough contents")}</nav>`;
   }
   function articleLinks(ids,fromStop) {
@@ -396,9 +414,9 @@
           <section class="directions" aria-label="Directions"><h2 class="eyebrow">${escape(sheet.entry)}</h2>
             ${sheetSteps(sheet)}${button("all-steps",showAllSteps ? "Show selected step" : "Read all steps","text-button",
               `aria-expanded="${showAllSteps}"`)}</section></div>
-        ${ledger(stop,area,sheet)}<div class="notes">${notes}${routeNotes(stop,area)}${bibliography([...(sheet.sources || []),...stop.sources])}</div>
-        ${articleLinks([...(sheet.links || []),...(stop.links || [])],stop.id)}
-        ${controls(page,stop.id)}${adjacent(stop)}</div>`;
+        ${ledger(stop,area,sheet)}<div class="notes">${notes}${routeNotes(stop,area)}${bibliography(sheet.sources || stop.sources)}</div>
+        ${articleLinks([...(sheet.links || []),...(stop.links || [])],sheet.unlock || stop.id)}
+        ${controls(page,sheet.unlock || stop.id)}${adjacent(stop)}</div>`;
   }
   function ordinaryRoute(stop) {
     if (stop.sectionsByArea && !area) {
@@ -409,7 +427,7 @@
     }
     const first = area?.firstStep || 0;
     const lines = stop.steps.slice(first,area?.endStep).map((body,i)=>({body,title:stop.landmarks[i+first]}));
-    const name = area?.name || stop.title;
+    const name = area && area.id !== stop.id ? area.name : stop.title;
     return banner(name,area?.lead || stop.lead,stop.region,stop.art,true) + areaNavigation(stop) +
       `<div class="leaf">${warning(!area || area.warning ? stop.warning?.text : "",stop.warning?.label)}
         <div class="columns"><section><h2>Directions</h2>${directions(lines)}</section>
@@ -445,7 +463,7 @@
         ${link(href("wiki",{subject:row.category}),row.category,'class="text-button"')}</aside></div>`;
   }
   function entityLeaf(row) {
-    const permitted = row.observations.filter(o=>reveals[game] || o.stop === contextualStop() || withinBoundary(entries.get(o.stop)));
+    const permitted = row.observations.filter(canReadObservation);
     const first = permitted[0];
     const stop = first && entries.get(first.stop);
     const item = row.category === "Item ledger";
@@ -550,7 +568,7 @@
       ...(row.sections || []).map(s=>s.title + " " + s.text),
       ...(row.referenceTables || []).map(t=>t.title+" "+t.rows.flat().join(" ")),
       ...(row.records || []).map(r=>r.name+" "+r.where+" "+r.detail),
-      ...(row.observations || []).filter(o=>reveals[game] || withinBoundary(entries.get(o.stop))).map(o=>o.where+" "+o.detail),
+      ...(row.observations || []).filter(canReadObservation).map(o=>o.where+" "+o.detail),
     ];
     const local = book.fieldSheets[row.id];
     if (local) details.push(local.area,...(local.aliases || []),local.objective,...local.steps.map(s=>s.title+" "+s.body),...(local.enemies || []).map(e=>e.detail));

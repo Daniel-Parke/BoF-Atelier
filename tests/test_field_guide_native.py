@@ -99,6 +99,7 @@ class NativeFieldGuideTests(unittest.TestCase):
     def test_search_finds_illustrated_areas_and_plain_keyboard_names(self):
         for game, term, destination in (("bof3","McNeil village","mcneil"), ("bof3","Mount Glaus","glaus"),
                 ("bof4","Kyria Woods","kyria-woods"), ("bof4","Kyria village","kyria"), ("bof3","D'Lonzo","teacher-dlonzo"),
+                ("bof4","Synesta Pathway","kyria-passage"), ("bof4","Kyria passage","kyria-passage"), ("bof4","Synesta","synesta"),
                 ("bof4","Dam","dam"), ("bof4","Kurok","kurok"), ("bof3","Momo's Tower","momo-tower"),
                 ("bof4","Bandit's Hideout","bandit-hideout"), ("bof4","Wyndia Castle Basement","wyndia-basement"),
                 ("bof4","Mt. Grom","mt-glom"), ("bof4","Yaen","enemy.yaen")):
@@ -121,6 +122,30 @@ class NativeFieldGuideTests(unittest.TestCase):
                 self.assertEqual(self.reader.property("area")["name"],self.bridge.campaignPlace(game,chapter,floor))
                 self.open(game,"cedar" if game == "bof3" else "kyria")
                 self.assertNotEqual(sheet,self.reader.property("bookmarkId"))
+
+    def test_passage_bookmark_at_kyria_and_town_floor_are_distinct(self):
+        self.reader.setProperty("gameStory", {"game":"bof4", "place":"dam-kyria", "floorId":4097})
+        self.open("bof4", "wiki")
+        self.reader.openSubject("Walkthrough")
+        self.pump()
+        self.click("wikikyria-passage")
+        self.assertEqual("kyria-passage", self.reader.property("bookmarkId"))
+        self.assertFalse(self.reader.isAvailable("synesta"))
+        self.click("pinEntry")
+        self.click("item.ammonia")
+        self.assertFalse(self.reader.isAvailable("synesta"))
+        self.reader.goBack()
+        self.pump()
+        self.assertEqual("kyria-passage", self.reader.property("bookmarkId"))
+        self.open("bof4", "bookmarks")
+        self.click("bookmarkkyria-passage")
+        self.assertEqual("kyria-passage", self.reader.property("bookmarkId"))
+        for map_id, expected in ((1032, "kyria-passage"), (4098, "synesta")):
+            self.reader.setProperty("gameStory", {"game":"bof4", "place":"synesta", "floorId":map_id})
+            self.open("bof4")
+            self.assertEqual(expected, self.reader.property("bookmarkId"))
+        self.open("bof4", "synesta")
+        self.assertEqual("The children of Synesta", self.control("guidePageTitle").property("text"))
 
     def test_search_recipe_articles_and_direct_return(self):
         self.open("bof3")
@@ -534,7 +559,7 @@ class NativeFieldGuideTests(unittest.TestCase):
     def test_worked_page_contours_full_directions_and_teacher_lessons(self):
         for game, sheet, title in (("bof3", "cedar", "Cedar Woods"), ("bof3", "mcneil", "McNeil village"),
                 ("bof3", "glaus", "Mt. Glaus"), ("bof4", "kyria", "Kyria village"), ("bof4", "kyria-woods", "Kyria Woods"),
-                ("bof4", "kurok", "Kurok ridge"), ("bof4", "dam", "The Dam")):
+                ("bof4", "kyria-passage", "The passage to Synesta"), ("bof4", "kurok", "Kurok ridge"), ("bof4", "dam", "The Dam")):
             with self.subTest(sheet=sheet):
                 self.open(game, sheet)
                 self.assertEqual(title, self.control("guidePageTitle").property("text"))

@@ -1996,8 +1996,8 @@
       "lead": "The orphanage and a trader’s errands hold the next lead on Elina.",
       "hint": "Begin at the orphanage. Rotate the view before counting a hiding place as empty.",
       "steps": [
-        "From Kyria, climb the northern trail to the cavern. Wade upstream and cross the deep pool by its stepping stone. At the next fork take the southern tunnel. Follow the stairs to the upper cavern, then climb the well ladder into Synesta.",
-        "Cut across Chino’s circuit to catch him. Speak to the children in the orphanage, then search the doorway east of the well, the town exit stairs, the steps north of the well and the inn’s upper floor. Check the stairs between the circular walkway and the upper town for the last hiding place. Return to the nun, then pass the cellar guard when the water seller draws him away.",
+        "Leave Kyria by the uphill road behind the mayor's house. Wade upstream and jump east across the stepping stone. At the dry fork take the south tunnel to the flooded steps. Climb to the upper cavern and follow it to the well ladder.",
+        "From the well, enter the orphanage opposite and talk to the nun. Follow her outside. Cut across Chino’s circuit to catch him. Speak to the children inside, then check the doorway east of the well, the town exit stairs, the steps north of the well and the inn upstairs. Check the stairs between the circular walkway and upper town before returning to the nun. Pass the cellar guard when the water seller draws him away.",
         "Follow the lead to Marlok. Fight Kahn at the door, then take Marlok’s errand to the hideout. Cut across the thief’s route to catch him.",
         "Return to Marlok and work at the Sandflier Wharf. Help clear the store, then use the crane to load the sandflier.",
         "Speak to Marlok after loading the sandflier. When play switches to Fou-Lu, leave Bunyan’s hut and follow the mountain trail to Yohm. Use Astral against his flying summon Khafu."
@@ -2021,7 +2021,8 @@
         "deh1",
         "field-layout",
         "rx1",
-        "drawers"
+        "drawers",
+        "enemy-research"
       ],
       "landmarks": [
         "Passage from Kyria",
@@ -2034,57 +2035,109 @@
         {
           "name": "Kahn",
           "where": "Marlok’s door",
-          "detail": "Guard while he uses Focus for a chance to learn it."
+          "detail": "Guard while he uses Focus for a chance to learn it.",
+          "areaIds": [
+            "synesta"
+          ],
+          "floorIds": [
+            4098
+          ]
         },
         {
           "name": "Rat",
-          "where": "Bandit hideout",
-          "detail": "Use magic before it flees. Physical attacks often miss."
+          "where": "Bandits’ Hideout",
+          "detail": "Often dodges and usually tries to flee. Use a spell for damage, or Guard in case it uses Chlorine.",
+          "areaIds": [
+            "synesta"
+          ]
         },
         {
           "name": "Khafu",
           "where": "Zhinga Mountains",
-          "detail": "Fou-Lu faces Yohm’s flying summon on the route after the wharf."
+          "detail": "Fou-Lu faces Yohm’s flying summon on the route after the wharf.",
+          "areaIds": [
+            "synesta"
+          ]
         },
         {
           "name": "Cadaver",
-          "where": "Passage from Kyria",
-          "detail": "Guard when it uses Feint to try to learn the skill."
+          "where": "Passage to Synesta · upper caverns",
+          "detail": "1,000 HP. Guard early in the fight to learn Feint. Its moves change when it is close to defeat.",
+          "areaIds": [
+            "kyria-passage"
+          ]
         },
         {
           "name": "Army Bat",
-          "where": "Passage from Kyria · 8 HP",
-          "detail": "Shadowwalk is a rare early lesson. At very low HP the bat can use it. Guarding only helps if it survives long enough to take a turn."
+          "where": "Passage to Synesta · lower and upper caverns",
+          "detail": "8 HP. At exactly 1 HP it can use Shadowwalk. Have someone Guard to learn it. Leave this for a later encounter if your weakest attack defeats it.",
+          "areaIds": [
+            "kyria-passage"
+          ]
         },
         {
           "name": "Puspool",
-          "where": "Passage from Kyria · flooded caverns",
-          "detail": "A fire hit changes its form. Guard against Molasses to try to learn it."
+          "where": "Passage to Synesta · lower streams",
+          "detail": "300 HP. Guard to learn Molasses. A fire hit raises its EXP from 60 to 120 and removes its chance to drop a Silver Top.",
+          "areaIds": [
+            "kyria-passage"
+          ]
         },
         {
           "name": "Tadpole",
-          "where": "Passage from Kyria · flooded caverns",
-          "detail": "Use Guard when it rests for a chance to learn Snooze."
+          "where": "Passage to Synesta · lower and upper caverns",
+          "detail": "580 HP. Leave it at half health or higher and Guard for Snooze. Below half health it can use Devour instead.",
+          "areaIds": [
+            "kyria-passage"
+          ]
         },
         {
           "name": "Zombie",
-          "where": "Passage from Kyria · upper caverns",
-          "detail": "Fire works well against the undead here. Ershin can use her Flame Punch from Maman."
+          "where": "Passage to Synesta · upper caverns",
+          "detail": "650 HP. Fire is effective. Ershin can use the Flame Punch from Kyria Woods.",
+          "areaIds": [
+            "kyria-passage"
+          ]
         },
         {
           "name": "Mouse",
           "where": "Bandits’ Hideout",
-          "detail": "Guard to learn Snap during Marlok’s errand."
-        },
-        {
-          "name": "Rat",
-          "where": "Bandits’ Hideout",
-          "detail": "Guard to learn Chlorine."
+          "detail": "Guard to learn Snap during Marlok’s errand.",
+          "areaIds": [
+            "synesta"
+          ]
         },
         {
           "name": "Army Bat",
           "where": "Bandits’ Hideout",
-          "detail": "This species also appears on the path to Synesta."
+          "detail": "This species also appears on the path to Synesta.",
+          "areaIds": [
+            "synesta"
+          ]
+        },
+        {
+          "name": "Mouse",
+          "where": "Synesta Cellar",
+          "detail": "Guard when it uses Snap for a chance to learn it.",
+          "areaIds": [
+            "synesta"
+          ]
+        },
+        {
+          "name": "Roach",
+          "where": "Synesta Cellar",
+          "detail": "Appears alone or alongside mice in the cellar encounter groups.",
+          "areaIds": [
+            "synesta"
+          ]
+        },
+        {
+          "name": "ToxicFly",
+          "where": "Synesta Cellar",
+          "detail": "Can appear in groups on the way to the cells.",
+          "areaIds": [
+            "synesta"
+          ]
         }
       ],
       "map": {
@@ -2266,73 +2319,264 @@
               "name": "World map"
             }
           ]
+        },
+        {
+          "name": "First stream and deep pool",
+          "mapId": 1032,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 2,
+              "z": 69,
+              "name": "Back to Kyria"
+            },
+            {
+              "x": 27,
+              "z": 51,
+              "name": "Water Bomb"
+            },
+            {
+              "x": 38,
+              "z": 8,
+              "name": "Jump east from this bank"
+            },
+            {
+              "x": 49,
+              "z": 12,
+              "name": "Dry fork"
+            }
+          ]
+        },
+        {
+          "name": "Dry fork",
+          "mapId": 1041,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 3,
+              "z": 64,
+              "name": "First stream"
+            },
+            {
+              "x": 20,
+              "z": 40,
+              "name": "Ammonia"
+            },
+            {
+              "x": 40,
+              "z": 3,
+              "name": "Flooded steps"
+            }
+          ]
+        },
+        {
+          "name": "Flooded steps",
+          "mapId": 1033,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 22,
+              "z": 50,
+              "name": "Dry fork"
+            },
+            {
+              "x": 16,
+              "z": 26,
+              "name": "Jump north for the chest"
+            },
+            {
+              "x": 14,
+              "z": 15,
+              "name": "500 zenny"
+            },
+            {
+              "x": 30,
+              "z": 3,
+              "name": "Upper cavern"
+            }
+          ]
+        },
+        {
+          "name": "Upper cavern",
+          "mapId": 1033,
+          "section": 2,
+          "landmarks": [
+            {
+              "x": 10,
+              "z": 25,
+              "name": "Flooded steps"
+            },
+            {
+              "x": 3,
+              "z": 4,
+              "name": "Well shaft"
+            }
+          ]
+        },
+        {
+          "name": "Well shaft",
+          "mapId": 1031,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 7,
+              "z": 3,
+              "name": "Upper cavern"
+            },
+            {
+              "x": 3,
+              "z": 7,
+              "name": "Town well"
+            }
+          ]
         }
       ],
       "items": [
         {
           "name": "Raptor Claws",
           "where": "Cellar cells",
-          "detail": "Open the chest beside the cell where Chino is hiding."
+          "detail": "Search the bag in the cell beside Chino’s.",
+          "areaIds": [
+            "synesta"
+          ]
         },
         {
           "name": "Protein",
           "where": "Cellar bar",
-          "detail": "Cross the broken furniture and search the cabinet behind the bar."
+          "detail": "Cross the broken furniture and search the cabinet behind the bar.",
+          "areaIds": [
+            "synesta"
+          ]
         },
         {
           "name": "Ammonia",
           "where": "Cellar corridor",
-          "detail": "Check the cabinet in the first side room off the hallway."
+          "detail": "Check the cabinet in the first side room off the hallway.",
+          "areaIds": [
+            "synesta"
+          ]
         },
         {
           "name": "Water Bomb",
-          "where": "Passage from Kyria · first cavern",
-          "detail": "In the first cave, cross the stream to the east and check the dead end before following the water onwards."
+          "where": "Passage to Synesta · east bank",
+          "detail": "Wade straight across the first stream. Follow the eastern bank into its dead end and open the chest. Walk back to the stream.",
+          "areaIds": [
+            "kyria-passage"
+          ],
+          "floorIds": [
+            1032
+          ]
         },
         {
           "name": "500 zenny",
-          "where": "Passage · flooded steps",
-          "detail": "Partway up the stairs, jump the side gap to the chest, then jump back for the upper passage."
+          "where": "Passage to Synesta · flooded steps",
+          "detail": "Turn west partway up the stairs. At the end of that spur, jump north to the ledge. Open the chest, then jump back towards the steps.",
+          "areaIds": [
+            "kyria-passage"
+          ],
+          "floorIds": [
+            1033
+          ]
         },
         {
           "name": "Ammonia",
-          "where": "Passage · dry fork",
-          "detail": "The fork’s north branch ends at this chest. Return to the fork and go south to continue to Synesta."
+          "where": "Passage to Synesta · north spur",
+          "detail": "In the dry tunnel, take the north arm of the fork to the chest. The southern arm is the way onwards.",
+          "areaIds": [
+            "kyria-passage"
+          ],
+          "floorIds": [
+            1041
+          ]
+        },
+        {
+          "name": "80 zenny",
+          "where": "Cellar · above the kitchen",
+          "detail": "Cross the broken furniture in the kitchen and go upstairs. Search the bookcase against the west wall before leaving the room.",
+          "areaIds": [
+            "synesta"
+          ]
         }
       ],
       "sourceSections": [
         {
-          "source": "rx1",
-          "section": "Synesta Pathway and Synesta"
-        },
-        {
-          "source": "drawers",
-          "section": "Passage to Synesta, first section"
-        },
-        {
           "source": "dalez",
-          "section": "Find the children in Synesta"
+          "section": "Chapter I.L, Passage to Synesta. The route, three chests and enemy skills."
         },
         {
           "source": "rx1",
-          "section": "Synesta Pathway and Synesta"
+          "section": "Synesta Pathway. The route from the mayor, the Army Bat and the Cadaver."
         },
         {
           "source": "billy",
-          "section": "Passage to Synesta: flood channels, staircase and town well"
+          "section": "Missing Princess. The stream and stair ledges, the well ladder and the world-map road."
         },
         {
           "source": "drawers",
-          "section": "Entries 039–041: the three passage chests"
+          "section": "Treasure 039 to 041. Water Bomb, Ammonia and 500 zenny, including whether each can be missed."
+        },
+        {
+          "source": "enemy-research",
+          "section": "Encounter areas 020 and 022. Army Bat, Puspool, Tadpole, Cadaver and Zombie behaviour."
+        },
+        {
+          "source": "field-layout",
+          "section": "Field geometry and section numbers for the US PlayStation floors."
         },
         {
           "source": "rx1",
-          "section": "Marlok’s Errands, the road encounter and hideout"
+          "section": "Synesta and Marlok’s Errands. The water seller, the cellar cells and the hideout."
         },
         {
           "source": "dalez",
-          "section": "Chapter I.O, Bandit Hideout and the barrel chase"
+          "section": "Chapter I.M to I.O. The children of Synesta, the cellar and the bandit hideout."
+        },
+        {
+          "source": "drawers",
+          "section": "Treasure 042 to 045. The cellar shelves, kitchen, bookcase and jail cells."
+        },
+        {
+          "source": "enemy-research",
+          "section": "Encounters 024 and 028. The town cellar and the bandit hideout."
         }
+      ],
+      "sectionsByArea": [
+        {
+          "id": "kyria-passage",
+          "name": "Passage to Synesta",
+          "lead": "Follow the stream through the mountain and climb out through the town well.",
+          "hint": "When the stream deepens, look for the rock between the banks. Jump east across it to reach the dry tunnel.",
+          "tip": "The three chest detours lead back to the main route. You can come back for any of them.",
+          "firstStep": 0,
+          "endStep": 1,
+          "firstFloor": 1032,
+          "floorIds": [
+            1032,
+            1041,
+            1033,
+            1031
+          ]
+        },
+        {
+          "id": "synesta",
+          "name": "Synesta and the Sandflier Wharf",
+          "lead": "The orphanage and a trader’s errands hold the next lead on Elina.",
+          "hint": "Begin at the orphanage. Rotate the view before counting a hiding place as empty.",
+          "tip": "Kahn can demonstrate Focus. Have someone Guard while he uses it if you want to learn the skill.",
+          "firstStep": 1,
+          "endStep": 5,
+          "firstFloor": 4098,
+          "floorIds": [
+            4098,
+            1093,
+            1138,
+            4103
+          ]
+        }
+      ],
+      "aliases": [
+        "Synesta",
+        "Town of Synesta"
       ]
     },
     {
@@ -6736,46 +6980,6 @@
       ]
     },
     {
-      "id": "kyria-passage",
-      "title": "The passage to Synesta",
-      "category": "Walkthrough",
-      "unlock": "dam-kyria",
-      "art": "iv-river",
-      "lead": "After helping the mayor, take the zigzag trail north of his house. The cavern comes out through the town well.",
-      "sections": [
-        {
-          "title": "Upstream to the dry fork",
-          "text": "At the first stream, the eastern bank has the Water Bomb chest. Get back in the shallows and wade upstream. Circle the deeper pool and jump across on the stepping stone. Enter the eastern tunnel."
-        },
-        {
-          "title": "From the fork to the well",
-          "text": "The north branch ends at the Ammonia chest. Take the south branch to the flooded steps and climb. Partway up, jump sideways for 500 zenny. Double back, keep climbing and enter the upper cavern. Its ladder opens into Synesta, close to the orphanage."
-        },
-        {
-          "title": "Learning along the way",
-          "text": "Guard when a Cadaver uses Feint or a Tadpole uses Snooze. Army Bats can use Shadowwalk at very low HP, but their total is only 8 HP. You can leave this lesson until another encounter."
-        }
-      ],
-      "links": [
-        "dam-kyria",
-        "synesta",
-        "learning-skills",
-        "kyria-woods"
-      ],
-      "sources": [
-        "rx1",
-        "billy",
-        "dalez",
-        "drawers",
-        "enemy-research"
-      ],
-      "aliases": [
-        "Kyria passage",
-        "Passage to Synesta",
-        "Synesta Pathway"
-      ]
-    },
-    {
       "id": "manillo-stamp-cards",
       "title": "Spending Manillo stamp cards",
       "category": "Fishing",
@@ -7401,7 +7605,152 @@
         "kyria-passage",
         "learning-skills",
         "combination-magic"
-      ]
+      ],
+      "nextSheet": "kyria-passage"
+    },
+    "kyria-passage": {
+      "id": "kyria-passage",
+      "stop": "synesta",
+      "area": "Passage to Synesta",
+      "unlock": "dam-kyria",
+      "title": "The passage to Synesta",
+      "category": "Walkthrough",
+      "aliases": [
+        "Kyria passage",
+        "Passage to Synesta",
+        "Synesta Pathway"
+      ],
+      "art": "iv-river",
+      "chapter": "The Awakening · Passage to Synesta",
+      "entry": "From Kyria, the morning after finding the mayor",
+      "objective": "Follow the stream through the mountain and climb out through the town well.",
+      "map": "kyria-passage.svg",
+      "mapTitle": "From the shallows to the well",
+      "mapKind": "Cavern route and chest detours",
+      "mapAlt": "The stream leads from Kyria to a deep pool. Cross the stepping stone to the dry fork. Take the south branch to the flooded steps and climb to the well. Three short detours lead to the east-bank chest, the north spur and a ledge beside the steps.",
+      "opening": {
+        "title": "Finding the entrance in Kyria",
+        "steps": [
+          "The mayor opens the way after the night at the inn. Climb out of the village pit if Cray falls in. Cross the bridge and follow the rising road north of the mayor's house to the cavern."
+        ]
+      },
+      "steps": [
+        {
+          "key": 1,
+          "title": "Cross the first stream",
+          "body": "Follow the entrance tunnel to the shallows. The eastern bank leads to a chest with a Water Bomb. For the way through, stay in the stream and head upstream."
+        },
+        {
+          "key": 2,
+          "title": "Jump the deep pool",
+          "body": "Follow the stream to the deep pool. From its west bank, face the exposed stone and press Jump once to cross east. Follow the far bank round to the tunnel."
+        },
+        {
+          "key": 3,
+          "title": "Take the south fork",
+          "body": "The short north branch ends at an Ammonia chest. Come back to the fork and take the southern tunnel. Follow its bends to the opening at the far north end."
+        },
+        {
+          "key": 4,
+          "title": "Climb the flooded steps",
+          "body": "Wade to the stone steps and climb. For 500 zenny, take the western spur and jump north across the gap to the chest. Retrace your steps to the fork and climb to the high opening."
+        },
+        {
+          "key": 5,
+          "title": "Climb the well ladder",
+          "body": "Go through the opening at the top of the steps. Follow the upper tunnel to the short well shaft. Climb the ladder to reach Synesta’s paved terrace, beside the stairs."
+        }
+      ],
+      "optional": [
+        {
+          "name": "Water Bomb",
+          "where": "East bank",
+          "advice": "Wade straight across the first stream. Follow the eastern bank into its dead end and open the chest. Walk back to the stream."
+        },
+        {
+          "name": "Ammonia",
+          "where": "North spur",
+          "advice": "In the dry tunnel, take the north arm of the fork to the chest. The southern arm is the way onwards."
+        },
+        {
+          "name": "500 zenny",
+          "where": "Flooded steps",
+          "advice": "Turn west partway up the stairs. At the end of that spur, jump north to the ledge. Open the chest, then jump back towards the steps."
+        }
+      ],
+      "enemies": [
+        {
+          "name": "Army Bat",
+          "detail": "8 HP. At exactly 1 HP it can use Shadowwalk. Have someone Guard to learn it. Leave this for a later encounter if your weakest attack defeats it."
+        },
+        {
+          "name": "Puspool",
+          "detail": "300 HP. Guard to learn Molasses. A fire hit raises its EXP from 60 to 120 and removes its chance to drop a Silver Top."
+        },
+        {
+          "name": "Tadpole",
+          "detail": "580 HP. Leave it at half health or higher and Guard for Snooze. Below half health it can use Devour instead."
+        },
+        {
+          "name": "Cadaver",
+          "detail": "1,000 HP. Guard early in the fight to learn Feint. Its moves change when it is close to defeat."
+        },
+        {
+          "name": "Zombie",
+          "detail": "650 HP. Fire is effective. Ershin can use the Flame Punch from Kyria Woods."
+        }
+      ],
+      "warning": null,
+      "after": {
+        "title": "At the well",
+        "steps": [
+          "For the town story, enter the orphanage across from the well. To go back for treasure, wait for the arrival conversation to finish, face the well from the terrace and press Confirm to climb down.",
+          "The town gate also opens a world-map road back to Kyria. You can collect all three cave chests on a later visit."
+        ]
+      },
+      "nextSheet": "synesta",
+      "links": [
+        "kyria",
+        "kyria-woods",
+        "learning-skills",
+        "synesta",
+        "dam-kyria"
+      ],
+      "sources": [
+        "dalez",
+        "rx1",
+        "billy",
+        "drawers",
+        "enemy-research",
+        "field-layout"
+      ],
+      "sourceSections": [
+        {
+          "source": "dalez",
+          "section": "Chapter I.L, Passage to Synesta. The route, three chests and enemy skills."
+        },
+        {
+          "source": "rx1",
+          "section": "Synesta Pathway. The route from the mayor, the Army Bat and the Cadaver."
+        },
+        {
+          "source": "billy",
+          "section": "Missing Princess. The stream and stair ledges, the well ladder and the world-map road."
+        },
+        {
+          "source": "drawers",
+          "section": "Treasure 039 to 041. Water Bomb, Ammonia and 500 zenny, including whether each can be missed."
+        },
+        {
+          "source": "enemy-research",
+          "section": "Encounter areas 020 and 022. Army Bat, Puspool, Tadpole, Cadaver and Zombie behaviour."
+        },
+        {
+          "source": "field-layout",
+          "section": "Field geometry and section numbers for the US PlayStation floors."
+        }
+      ],
+      "evidence": "A US PlayStation party collected the Water Bomb and Ammonia, climbed into Synesta, then descended the well for the unopened 500-zenny chest. All five listed enemies appeared in battle. The skill conditions come from the enemy tables."
     }
   },
   "teachers": [

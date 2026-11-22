@@ -32,6 +32,7 @@ FocusScope {
     }))
     readonly property var articles: book.articles || []
     readonly property var sheets: book.fieldSheets || ({})
+    readonly property var wikiEntries: articles.concat(Object.values(sheets).filter(s => s.category))
     readonly property var entities: book.entities || ({})
     readonly property var stop: route[Math.min(place, route.length - 1)] || ({})
     readonly property var article: articles.find(e => e.id === page) || null
@@ -48,13 +49,15 @@ FocusScope {
                                       && gameStory.floorId !== undefined ? gameStory.floorId : -1
     property string chosenArea: ""
     readonly property var areas: stop.sectionsByArea || []
+    readonly property var chapterArea: areas.find(s => s.id === stop.id) || areas[0] || null
     readonly property var savedArea: areas.find(s => s.floorIds.includes(savedFloor)) || null
-    readonly property var area: areas.find(s => s.name === chosenArea) || savedArea || areas[0] || null
+    readonly property var area: areas.find(s => s.name === chosenArea) || savedArea || chapterArea
     readonly property int firstStep: area ? area.firstStep : 0
     readonly property var visibleFloors: area ? (stop.floors || []).filter(f => area.floorIds.includes(f.mapId)) : stop.floors || []
     readonly property bool hasWarning: !!stop.warning && (!area || !!area.warning)
-    readonly property bool schematicAvailable: !!stop.map && (!area || area.name === areas[0].name)
-    readonly property int readableThrough: Math.max(0, currentPlace, visitedThrough)
+    readonly property bool schematicAvailable: !!stop.map && (!area || area.id === chapterArea?.id)
+    readonly property int readableThrough: Math.max(0, sheets[fieldGuide.markTarget]?.unlock
+        ? route.findIndex(p => p.id === sheets[fieldGuide.markTarget].unlock) : currentPlace, visitedThrough)
     property int visitedThrough: 0
     property bool showLater: false
     property bool sourcesOpen: false
@@ -130,6 +133,9 @@ FocusScope {
     function observationTargets(row) {
         return row.areaIds?.length ? row.areaIds : [row.stop]
     }
+    function canReadObservation(row) {
+        return isAvailable(row.unlock || row.stop)
+    }
 
     function rememberReadingChoice() {
         if (!inSession || initialReading === FieldGuide.SaveRecognised) return
@@ -195,7 +201,8 @@ FocusScope {
         const index = route.findIndex(p => p.id === targetId)
         if (index >= 0) {
             place = index
-            visitedThrough = Math.max(visitedThrough, index)
+            const boundary = targetSheet?.unlock ? route.findIndex(p => p.id === targetSheet.unlock) : index
+            visitedThrough = Math.max(visitedThrough, boundary)
         }
         page = index >= 0 ? "walk" : id
         picker = ""
@@ -206,7 +213,7 @@ FocusScope {
         overview = false
         mapExpanded = false
         routeExpanded = false
-        chosenArea = targetSheet && !followSave ? targetSheet.area : ""
+        chosenArea = followSave ? "" : targetSheet?.area || areas.find(a => a.id === targetId)?.name || ""
         selectedStep = sheet && sheet.id === "kurok" ? 2 : 1
         readingFloor = false
         afterOpen = false
@@ -262,14 +269,16 @@ FocusScope {
     function isAvailable(id) {
         if (showLater) return true
         if (entities[id]) return revealedSubjects.includes(entities[id].category) || isAvailable(entities[id].unlock)
-        if (sheets[id] && sheets[id].stop !== id) return isAvailable(sheets[id].stop)
+        if (sheets[id] && sheets[id].stop !== id) {
+            return revealedSubjects.includes(sheets[id].category) || isAvailable(sheets[id].unlock || sheets[id].stop)
+        }
         const r = route.findIndex(p => p.id === id)
         if (r >= 0) return r <= readableThrough
         const a = articles.find(e => e.id === id)
         return !a || revealedSubjects.includes(a.category) || route.findIndex(p => p.id === a.unlock) <= readableThrough
     }
     function wikiRows() {
-        const records = articles.filter(a => isAvailable(a.id) && (!category || a.category === category))
+        const records = wikiEntries.filter(a => isAvailable(a.id) && (!category || a.category === category))
         if (category !== "Item ledger" && category !== "Bestiary") return records
         const names = Object.values(entities).filter(e => e.category === category && (isAvailable(e.id) || revealedSubjects.includes(category)))
             .map(e => ({id: e.id, title: e.name, lead: e.observations[0].where}))
@@ -277,7 +286,7 @@ FocusScope {
         return names.concat(records)
     }
     function subjectDetail(name) {
-        const rows = articles.filter(a => a.category === name)
+        const rows = wikiEntries.filter(a => a.category === name)
         const later = rows.filter(a => !isAvailable(a.id)).length
         return rows.length + (rows.length === 1 ? " article" : " articles") + (later ? "  ·  " + later + " for later" : "")
     }
@@ -285,6 +294,15 @@ FocusScope {
         category = name
         const rows = wikiRows()
         focusNamed(rows.length ? "wiki" + rows[0].id : "revealSubject")
+    }
+    function contentsRows() {
+        const rows = []
+        const earlySheets = Object.values(sheets).filter(s => s.unlock && isAvailable(s.id))
+        for (const stop of route) {
+            if (isAvailable(stop.id)) rows.push(stop)
+            else rows.push(...earlySheets.filter(s => s.stop === stop.id))
+        }
+        return rows
     }
     function searchRows() {
         const term = Book.searchText(query)
@@ -294,7 +312,7 @@ FocusScope {
         if (!words.length) return index
         const named = Object.values(entities).filter(e => isAvailable(e.id)).map(e => ({
             id:e.id, title:e.name, detail:e.observations[0].where,
-            terms:e.observations.filter(o => isAvailable(o.stop)).map(o => o.where + " " + o.detail).join(" ")
+            terms:e.observations.filter(o => canReadObservation(o)).map(o => o.where + " " + o.detail).join(" ")
         }))
         const illustrated = Object.values(sheets).filter(s => isAvailable(s.id)).map(s => ({
             id:s.id, title:s.title, detail:s.chapter, aliases:[s.area].concat(s.aliases || []), terms:[s.area,s.mapTitle,s.objective,s.mapAlt]
@@ -610,7 +628,7 @@ FocusScope {
                             id: landing; objectName: "guidePageTitle"
                             Layout.fillWidth: true; color: hero.cabinet ? "#fff2d8" : viewer.ink
                             text: viewer.sheet ? viewer.sheet.title : viewer.page === "walk" ?
-                                  (viewer.area ? viewer.area.name : viewer.stop.title) : viewer.titleOf(viewer.page)
+                                  (viewer.area && viewer.area.id !== viewer.stop.id ? viewer.area.name : viewer.stop.title) : viewer.titleOf(viewer.page)
                             font.pixelSize: viewer.narrow ? (viewer.tv ? 40 : 35) : viewer.tv ? 55 : 47
                             lineHeight: 1.04
                         }
@@ -729,7 +747,7 @@ FocusScope {
                         text: viewer.place !== viewer.currentPlace ? "" : fieldGuide.marker >= 0 ?
                               (!viewer.sheets[fieldGuide.markTarget] || viewer.bookmarkId === fieldGuide.markTarget ? "YOUR MARKED PLACE" : "") :
                               viewer.savedPlace >= 0 && (!viewer.area || viewer.area.name ===
-                                 (viewer.savedArea || viewer.areas[0]).name)
+                                 (viewer.savedArea || viewer.chapterArea)?.name)
                                  ? (viewer.gameStory.source || "").toUpperCase() : ""
                     }
                     Flow {
@@ -739,9 +757,12 @@ FocusScope {
                             model: viewer.areas
                             delegate: Action {
                                 required property var modelData
-                                objectName: "routeArea"+modelData.name; text: modelData.name
-                                selected: !!viewer.area && viewer.area.name === text
-                                onClicked: viewer.chooseArea(modelData.name)
+                                readonly property bool nextChapter: !!viewer.sheet?.unlock && viewer.sheet.nextSheet === modelData.id &&
+                                    !viewer.isAvailable(modelData.id)
+                                objectName: "routeArea"+modelData.name
+                                text: nextChapter ? "Next stop" : modelData.name
+                                selected: viewer.area?.id === modelData.id
+                                onClicked: nextChapter ? viewer.visit(modelData.id) : viewer.chooseArea(modelData.name)
                             }
                         }
                     }
@@ -1235,13 +1256,13 @@ FocusScope {
                     Layout.fillWidth: true; spacing: 10; visible: viewer.page === "route"
                     Copy { Layout.fillWidth: true; color: viewer.muted; text: "Choose a stop. Your marked place stays where you left it." }
                     Repeater {
-                        model: viewer.page === "route" ? viewer.route.filter(r => viewer.isAvailable(r.id)) : []
+                        model: viewer.page === "route" ? viewer.contentsRows() : []
                         delegate: Action {
                             required property int index
                             required property var modelData
                             objectName: "stop" + modelData.id
                             Layout.fillWidth: true; text: (index+1) + ".  " + modelData.title
-                            detail: modelData.region; selected: index === viewer.currentPlace
+                            detail: modelData.region || modelData.chapter; selected: modelData.id === viewer.route[viewer.currentPlace]?.id
                             onClicked: viewer.visit(modelData.id)
                         }
                     }
@@ -1260,7 +1281,7 @@ FocusScope {
                         rowSpacing: 8; columnSpacing: 14
                         Repeater {
                             model: viewer.page === "wiki" && !viewer.category ?
-                                Array.from(new Set(viewer.articles.map(a => a.category))) : []
+                                Array.from(new Set(viewer.wikiEntries.map(a => a.category))) : []
                             delegate: Action {
                                 required property int index
                                 required property string modelData
@@ -1268,7 +1289,7 @@ FocusScope {
                                 Layout.fillWidth: true; Layout.preferredWidth: 200
                                 text: modelData
                                 detail: viewer.subjectDetail(modelData)
-                                art: fieldGuide.plate(viewer.articles.find(a => a.category === modelData)?.art || "")
+                                art: fieldGuide.plate(viewer.wikiEntries.find(a => a.category === modelData)?.art || "")
                                 onClicked: viewer.openSubject(modelData)
                             }
                         }
@@ -1278,14 +1299,14 @@ FocusScope {
                                 required property var modelData
                                 Layout.fillWidth: true; Layout.preferredWidth: 200
                                 objectName: "wiki" + modelData.id; text: modelData.title
-                                detail: modelData.lead
+                                detail: modelData.objective || modelData.lead
                                 onClicked: viewer.visit(modelData.id)
                             }
                         }
                     }
                     Action {
                         objectName: "revealSubject"
-                        readonly property int later: viewer.articles.filter(a => a.category === viewer.category && !viewer.isAvailable(a.id)).length
+                        readonly property int later: viewer.wikiEntries.filter(a => a.category === viewer.category && !viewer.isAvailable(a.id)).length
                         visible: !!viewer.category && later > 0
                         text: "Show " + later + (later === 1 ? " later article" : " later articles") + " (spoilers)"
                         onClicked: { viewer.revealedSubjects = viewer.revealedSubjects.concat([viewer.category]); viewer.focusNamed("wiki" + viewer.wikiRows()[0].id) }
@@ -1337,7 +1358,7 @@ FocusScope {
                     visible: !!viewer.entity; Layout.fillWidth: true; Layout.maximumWidth: 860; spacing: 10
                     Title { text: viewer.entity?.category === "Bestiary" ? "Where to fight it" : "Where to find it" }
                     Repeater {
-                        model: (viewer.entity?.observations || []).filter(r => viewer.isAvailable(r.stop) || viewer.revealedSubjects.includes(viewer.entity.category))
+                        model: (viewer.entity?.observations || []).filter(r => viewer.canReadObservation(r) || viewer.revealedSubjects.includes(viewer.entity.category))
                         delegate: ColumnLayout {
                             id: sighting
                             required property var modelData
@@ -1360,7 +1381,7 @@ FocusScope {
                     }
                     Action {
                         visible: !!viewer.entity && !viewer.revealedSubjects.includes(viewer.entity.category)
-                                 && viewer.entity.observations.some(r => !viewer.isAvailable(r.stop))
+                                 && viewer.entity.observations.some(r => !viewer.canReadObservation(r))
                         text: "Show later locations (spoilers)"; quiet: true
                         onClicked: viewer.revealedSubjects = viewer.revealedSubjects.concat([viewer.entity.category])
                     }
@@ -1381,8 +1402,8 @@ FocusScope {
                     Layout.fillWidth: true
                     readonly property var related: Array.from(new Set((viewer.sheet?.links || []).concat(viewer.subject?.links || []))).filter(id => viewer.isAvailable(id))
                     readonly property var citations: viewer.entity ? Array.from(new Set(viewer.entity.observations
-                        .filter(r => viewer.isAvailable(r.stop) || viewer.revealedSubjects.includes(viewer.entity.category))
-                        .reduce((list,r) => list.concat(viewer.route.find(s => s.id === r.stop)?.sources || []), []))) : (viewer.subject?.sources || [])
+                        .filter(r => viewer.canReadObservation(r) || viewer.revealedSubjects.includes(viewer.entity.category))
+                        .reduce((list,r) => list.concat(viewer.route.find(s => s.id === r.stop)?.sources || []), []))) : (viewer.sheet?.sources || viewer.subject?.sources || [])
                     id: references
                     visible: !!viewer.subject || !!viewer.entity
                     Rule { }
@@ -1413,7 +1434,7 @@ FocusScope {
                             required property string modelData
                             Layout.fillWidth: true
                             readonly property var citation: viewer.book.sources[modelData]
-                            readonly property string chapter: (viewer.subject?.sourceSections || [])
+                            readonly property string chapter: (viewer.sheet?.sourceSections || viewer.subject?.sourceSections || [])
                                 .filter(s => s.source === modelData).map(s => s.section).join(" · ")
                             Copy { Layout.fillWidth: true; visible: !sourceRow.citation.url; text: sourceRow.citation.title }
                             Copy { Layout.fillWidth: true; visible: !sourceRow.citation.url && !!sourceRow.chapter; text: sourceRow.chapter }

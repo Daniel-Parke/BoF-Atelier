@@ -27,7 +27,9 @@ class EditorialChecks(unittest.TestCase):
                     for key, prefix in (("items", "item."), ("encounters", "enemy.")):
                         for row in stop.get(key, []):
                             subject = book["entities"][prefix + row["name"].lower().strip()]
-                            self.assertIn({"stop": stop["id"], **row}, subject["observations"])
+                            matches = [s for s in subject["observations"] if s["stop"] == stop["id"]
+                                       and all(s[k] == v for k, v in row.items())]
+                            self.assertTrue(matches, (subject["id"], row))
         dam = BOOKS["bof4"]["fieldSheets"]["dam"]
         self.assertIn("flywheel", " ".join(dam["opening"]["steps"]).lower())
         for name in ("Sluice Key", "Short Sword", "Swallow Eyes", "Vitamins"):

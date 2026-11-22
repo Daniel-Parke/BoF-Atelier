@@ -13,6 +13,7 @@ Choose a number on the map to see the matching direction. A dashed path marks an
 - **IV, the Dam.** Start with the work-camp directions when you arrive. Read the missable warning before giving the key back. [Open the Dam](https://daniel-parke.github.io/BoF-Atelier/#bof4/dam)
 - **IV, Kyria.** The cat and the chicken circle different pits. One leads to the mayor's house and the other to 400 zenny. [Open Kyria](https://daniel-parke.github.io/BoF-Atelier/#bof4/kyria)
 - **IV, Kyria Woods.** Follow the route from the well to the river. The fork above the waterfall separates the mayor's clearing from the Wisdom Seed. [Open Kyria Woods](https://daniel-parke.github.io/BoF-Atelier/#bof4/kyria-woods)
+- **IV, the passage to Synesta.** Follow the shallow water upstream. The marked side paths lead to the Water Bomb, Ammonia and 500 zenny before the well ladder. [Open the passage](https://daniel-parke.github.io/BoF-Atelier/#bof4/kyria-passage)
 
 ## Look something up
 

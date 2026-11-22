@@ -160,6 +160,14 @@ def check_pages_and_links(page, volumes: dict):
     legacy = {"bof3/cedar?floor=3": ("McNeil village", 7), **{
         f"bof4/dam-kyria?area=Kyria&floor={i}": ("Kyria Woods", mid)
         for i, mid in enumerate((1043, 1045, 1046), 1)}}
+    town = next(s for s in volumes["bof4"]["route"] if s["id"] == "synesta")
+    # All eight links published before the passage was illustrated must still open the same floor.
+    for i, (map_id, section) in enumerate(((4098, 0), (1093, 0), (1093, 1), (1093, 3),
+                                           (1093, 4), (1093, 5), (1138, 0), (4103, 0))):
+        expected = next(f["name"] for f in town["floors"] if (f["mapId"], f["section"]) == (map_id, section))
+        for path in (f"bof4/synesta?floor={i}", f"bof4/synesta?floor={i}&map={map_id}&section={section}"):
+            result, = sweep(page, [path])
+            assert (result["title"], result["floor"], result["floorOpen"]) == (town["title"], expected, True), result
     for result in sweep(page, legacy):
         title, map_id = legacy[result["path"]]
         expected = next(f["name"] for stop in volumes[result["game"]]["route"] for f in stop.get("floors", [])
@@ -217,6 +225,7 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
     main.get_by_role("button", name="Hide later names").click()
     for game, term, target in (("bof3","Mount Glaus","glaus"),("bof3","McNeil village","mcneil"),
             ("bof3","D'Lonzo","teacher-dlonzo"),("bof4","Kyria Woods","kyria-woods"),
+            ("bof4","Synesta Pathway","kyria-passage"),("bof4","Kyria passage","kyria-passage"),("bof4","Synesta","synesta"),
             ("bof4","Kurok","kurok"),("bof4","Dam","dam"),("bof3","Momo's Tower","momo-tower"),
             ("bof4","Bandit's Hideout","bandit-hideout"),("bof4","Wyndia Castle Basement","wyndia-basement"),
             ("bof4","Mt. Grom","mt-glom"),("bof4","Yaen","enemy.yaen")):
@@ -365,7 +374,7 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
 
 def check_responsive(page, base, destination):
     wide_routes = [("bof3","cedar"),("bof3","mcneil"),("bof3","glaus"),("bof4","kurok"),("bof4","dam"),
-                   ("bof4","kyria"),("bof4","kyria-woods"),("bof4","teacher-rwolf"),
+                   ("bof4","kyria"),("bof4","kyria-woods"),("bof4","kyria-passage"),("bof4","teacher-rwolf"),
                    ("bof3","genes"),("bof4","combination-magic"),("bof3","wiki")]
     for width,height in ((1920,1080),(1280,720),(850,800),(768,900),(390,844),(320,568)):
         page.set_viewport_size({"width":width, "height":height})
@@ -403,19 +412,31 @@ def check_responsive(page, base, destination):
 
 def check_storage(browser, base):
     store_key = "bof-atelier.public-guide.v1"
-    seed = {"bof3":{"through":4,"pins":["diary","cedar"]},"bof4":{"through":5,"pins":["dam-kyria","dragons"]}}
+    seed = {"bof3":{"through":4,"pins":["diary","cedar"]},"bof4":{"through":5,"pins":["dam-kyria","dragons","kyria-passage"]}}
     with browser.new_context(offline=True) as context:
         page = context.new_page()
         page.goto(base)
         page.evaluate("([key,value])=>localStorage.setItem(key,JSON.stringify(value))",[store_key,seed])
         page.reload()
-        for game,ids in (("bof3",("cedar","diary")),("bof4",("dam-kyria","dragons"))):
+        for game,ids in (("bof3",("cedar","diary")),("bof4",("dam-kyria","dragons","kyria-passage"))):
             set_route(page,base,game,"bookmarks")
             for page_id in ids:
                 expect(page.locator(f"main a[href$='/{page_id}']")).to_be_visible()
             set_route(page,base,game,"walk")
             expect(page.locator("main [data-action=reveal]")).to_have_attribute("aria-expanded","false")
         assert page.evaluate("key=>JSON.parse(localStorage.getItem(key)).bof4.through",store_key) == 5
+        main = page.get_by_role("main")
+        expect(main.locator("a[href='#bof4/kyria-passage']")).to_be_visible()
+        expect(main.locator("a[href='#bof4/synesta']")).to_have_count(0)
+        set_route(page,base,"bof4","wiki?subject=Walkthrough")
+        main.locator("a[href='#bof4/kyria-passage']").click()
+        expect(main.get_by_role("heading",level=1)).to_have_text("The passage to Synesta")
+        main.get_by_role("button",name="Mark my place").click()
+        assert page.evaluate("key=>JSON.parse(localStorage.getItem(key)).bof4.through",store_key) == 5
+        main.get_by_role("table",name="Items").get_by_role("link",name="Ammonia",exact=True).click()
+        expect(main.locator("a[href='#bof4/kyria-passage']")).to_be_visible()
+        expect(main.get_by_role("button",name="Show later locations")).to_be_visible()
+        expect(main.get_by_role("heading",name=re.compile("cellar",re.I))).to_have_count(0)
     with browser.new_context(offline=True) as context:
         context.add_init_script("Object.defineProperty(window,'localStorage',{get(){throw Error('off')}})")
         page = context.new_page()

@@ -43,9 +43,11 @@ class FieldGuideVolumeTests(unittest.TestCase):
                 row.pop("areaIds")
             del data["fieldSheets"]["kyria-woods"]
             del data["fieldSheets"]["kyria"]
+            del data["fieldSheets"]["kyria-passage"]
+            next(s for s in data["route"] if s["id"] == "synesta").pop("sectionsByArea")
             data["fieldSheets"]["dam"].pop("nextSheet")
             for row in [*data["articles"], *data["route"]]:
-                row["links"] = [key for key in row["links"] if key not in ("kyria-woods","kyria")]
+                row["links"] = [key for key in row["links"] if key not in ("kyria-woods","kyria","kyria-passage")]
             target = Path(folder) / "bof4.json"
             target.write_text(json.dumps(data), encoding="utf-8")
             restored = read_book(target.parent,"bof4")
@@ -55,6 +57,18 @@ class FieldGuideVolumeTests(unittest.TestCase):
             target.write_text(json.dumps(data), encoding="utf-8")
             with self.assertRaisesRegex(ValueError,"Unsupported bof4 Field Guide version 99"):
                 read_book(target.parent,"bof4")
+
+    def test_passage_observations_unlock_before_the_town(self):
+        book = read_book(ROOT / "wiki", "bof4")
+        passage = book["fieldSheets"]["kyria-passage"]
+        self.assertEqual(("synesta", "dam-kyria"), (passage["stop"], passage["unlock"]))
+        for key in ("item.ammonia", "enemy.army bat"):
+            sightings = book["entities"][key]["observations"]
+            cave = [s for s in sightings if "kyria-passage" in s.get("areaIds", [])]
+            town = [s for s in sightings if "synesta" in s.get("areaIds", [])]
+            self.assertTrue(cave and town, key)
+            self.assertTrue(all(s["unlock"] == "dam-kyria" for s in cave))
+            self.assertTrue(all(s.get("unlock", s["stop"]) == "synesta" for s in town))
 
     def test_books_have_complete_linked_routes_and_offline_sources(self):
         for game in CORE_PAGES:

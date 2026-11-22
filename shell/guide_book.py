@@ -67,6 +67,10 @@ def validate_field_sheets(book: dict, ids: set[str]) -> None:
         stop = stops.get(sheet["stop"])
         if (not stop or key != sheet["id"] or not re.fullmatch(r"[a-z][a-z0-9-]*", key)
                 or (key in ids and key != sheet["stop"])
+                or sheet.get("unlock", sheet["stop"]) not in stops
+                or set(sheet.get("sources", [])) - book["sources"].keys()
+                or any(ref["source"] not in sheet.get("sources", []) or not ref["section"].strip()
+                       for ref in sheet.get("sourceSections", []))
                 or (sheet.get("nextSheet") and sheet["nextSheet"] not in (ids | sheets.keys()) - {key})
                 or sheet["map"] != key + ".svg" or not sheet["mapAlt"].strip()
                 or sheet["art"] not in ART[book["game"]] | ATLAS_ART[book["game"]]
@@ -140,6 +144,7 @@ def _prepare_book(book: dict, game: str) -> dict:
     if len(ids) != len(pages) or ids & reserved or any(not re.fullmatch(r"[a-z][a-z0-9-]*", i) for i in ids):
         raise ValueError(f"Duplicate, invalid or reserved page ID: {game}")
     places = {row["id"] for row in route}
+    route_order = {row["id"]: index for index, row in enumerate(route)}
     validate_field_sheets(book, ids | reserved)
     entities = {}
     book["entities"] = entities
@@ -230,7 +235,15 @@ def _prepare_book(book: dict, game: str) -> dict:
                 entity_id = ("item." if field == "items" else "enemy.") + record["name"].strip().lower()
                 entity = entities.setdefault(entity_id, {"id": entity_id, "name": record["name"],
                                              "category": category, "unlock": stop["id"], "observations": []})
-                entity["observations"].append({"stop": stop["id"], **record})
+                observation = {"stop": stop["id"], **record}
+                boundaries = [book.get("fieldSheets", {}).get(area_id, {}).get("unlock", stop["id"])
+                              for area_id in record.get("areaIds", [])]
+                earliest = min([stop["id"], *boundaries], key=route_order.__getitem__)
+                if earliest != stop["id"]:
+                    observation["unlock"] = earliest
+                if route_order[earliest] < route_order[entity["unlock"]]:
+                    entity["unlock"] = earliest
+                entity["observations"].append(observation)
             page_id = f"{stop['id']}-{field}"
             if page_id in ids | reserved:
                 raise ValueError(f"Duplicate atlas article: {page_id}")
