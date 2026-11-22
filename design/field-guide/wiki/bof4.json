@@ -1993,16 +1993,26 @@
       "id": "synesta",
       "title": "The children of Synesta",
       "region": "Chapter I · Synesta and the wharf",
-      "lead": "The orphanage and a trader’s errands hold the next lead on Elina.",
-      "hint": "Begin at the orphanage. Rotate the view before counting a hiding place as empty.",
+      "lead": "The children at the orphanage know where Elina went. Start at the door across from the well.",
+      "hint": "Catch Chino, then follow the other children's clues. If Modo is the one you are missing, look north from the central bridge. He is on the lower street.",
       "steps": [
         "Leave Kyria by the uphill road behind the mayor's house. Wade upstream and jump east across the stepping stone. At the dry fork take the south tunnel to the flooded steps. Climb to the upper cavern and follow it to the well ladder.",
-        "From the well, enter the orphanage opposite and talk to the nun. Follow her outside. Cut across Chino’s circuit to catch him. Speak to the children inside, then check the doorway east of the well, the town exit stairs, the steps north of the well and the inn upstairs. Check the stairs between the circular walkway and upper town before returning to the nun. Pass the cellar guard when the water seller draws him away.",
-        "Follow the lead to Marlok. Fight Kahn at the door, then take Marlok’s errand to the hideout. Cut across the thief’s route to catch him.",
+        "Enter the orphanage opposite the well and speak to the nun preparing the meal. Leave and follow the younger sister to the raised outer walkway. Talk to her, then to Chino to start the chase.",
+        "By the man with a staff, wait under the covered arch north of the inn. Stay off the lane or Chino turns back. Run out from the side and use Talk as he passes. Advance the orphanage scene until the children scatter.",
+        "Speak to Jahn, the grey-haired child beside the toy downstairs. The other child sits the game out. Find Rudd in the arch outside the orphanage, under the eastern wall. Goete waits beneath the town gate on the west side.",
+        "Find Nahma on the narrow staircase above the gate. Step down beside her to talk. Look north from the central bridge for Modo, the frog child, then go down to the street to reach him. Konoko is in the inn, right beside the upstairs landing.",
+        "Return to the nun downstairs and accept her request. Find the guarded stairs on the upper southwest wall. Use Talk on the guard until he mentions his thirst. When the woman carrying the water jar comes near, speak to her. Step aside, then take the stairs while he gets his drink.",
+        "Descend to the corridor with two doors on the right. Take the first door. Two large bookcases stand against the east wall. Search the northern one for Ammonia. Return to the hall and leave at its north end for the kitchen.",
+        "Walk up the tipped table and cross the boards to get behind the bar. Face north and search the narrow bookcase for Protein. From behind the counter, take the south doorway and go upstairs.",
+        "In the room above the kitchen, face the tall bookcase against the west wall and search it for 80 zenny. Leave through the far corner of the room. The winding stairs lead to the lower cells.",
+        "A barrel blocks the door to Chino’s cell. Go to the neighbouring cell on its north side. Face the door from the hall and use Talk to open it. The bag inside holds Raptor Claws for Ershin.",
+        "Go up the stairs at the north end of the jail. Open the far cell, the one with the wooden patch in the floor. Walk onto the boards to drop into Chino’s cell below.",
+        "Walk around the jar on the right and talk to Chino. The scene returns the party to the orphanage. When he names Marlok, look for the house opposite the inn. Speak to the bodyguard at its door when you are ready to fight Kahn.",
+        "Once Marlok gives you the errand, ask the merchant at the town gate about the thief. Stop at the question mark on the road to the hideout. In the cave, Cray can move barrels across a side passage. Cut across the thief’s route to catch him.",
         "Return to Marlok and work at the Sandflier Wharf. Help clear the store, then use the crane to load the sandflier.",
         "Speak to Marlok after loading the sandflier. When play switches to Fou-Lu, leave Bunyan’s hut and follow the mountain trail to Yohm. Use Astral against his flying summon Khafu."
       ],
-      "tip": "Kahn can demonstrate Focus. Have someone Guard while he uses it if you want to learn the skill.",
+      "tip": "Speak to the children you find. Each one describes the next hiding place.",
       "links": [
         "kyria-passage",
         "wharf-cargo",
@@ -2022,12 +2032,23 @@
         "field-layout",
         "rx1",
         "drawers",
-        "enemy-research"
+        "enemy-research",
+        "angel"
       ],
       "landmarks": [
         "Passage from Kyria",
-        "Orphanage",
-        "Trader’s house",
+        "The orphanage by the well",
+        "Catch Chino",
+        "Jahn, Rudd and Goete",
+        "Nahma, Modo and Konoko",
+        "The guard and the water seller",
+        "The first side room",
+        "Across the kitchen",
+        "The upstairs bookcase",
+        "The lower jail",
+        "The cell above Chino",
+        "Back at the orphanage",
+        "Marlok's errand",
         "Sandflier Wharf",
         "Mountain trail"
       ],
@@ -2118,7 +2139,7 @@
         {
           "name": "Mouse",
           "where": "Synesta Cellar",
-          "detail": "Guard when it uses Snap for a chance to learn it.",
+          "detail": "380 HP. Guard for a chance to learn Snap. Fire is effective.",
           "areaIds": [
             "synesta"
           ]
@@ -2126,7 +2147,7 @@
         {
           "name": "Roach",
           "where": "Synesta Cellar",
-          "detail": "Appears alone or alongside mice in the cellar encounter groups.",
+          "detail": "800 HP. Watch for Jump when it is hurt or left alone. Fire is effective and a Healing Herb can drop.",
           "areaIds": [
             "synesta"
           ]
@@ -2134,7 +2155,7 @@
         {
           "name": "ToxicFly",
           "where": "Synesta Cellar",
-          "detail": "Can appear in groups on the way to the cells.",
+          "detail": "100 HP. Guard for Chlorine while another enemy is still standing. A lone fly can flee. An Antidote can drop.",
           "areaIds": [
             "synesta"
           ]
@@ -2213,6 +2234,21 @@
               "x": 15,
               "z": 40,
               "name": "Cellar entrance"
+            },
+            {
+              "x": 40,
+              "z": 32,
+              "name": "Orphanage door"
+            },
+            {
+              "x": 29,
+              "z": 9,
+              "name": "Covered arch north of the inn"
+            },
+            {
+              "x": 41,
+              "z": 16,
+              "name": "Modo on the lower street"
             }
           ]
         },
@@ -2246,12 +2282,12 @@
             {
               "x": 6,
               "z": 1,
-              "name": "Cellar · branching passage"
+              "name": "Corridor with two doors"
             }
           ]
         },
         {
-          "name": "Cellar · branching passage",
+          "name": "Corridor with two doors",
           "mapId": 1093,
           "section": 3,
           "landmarks": [
@@ -2263,36 +2299,46 @@
             {
               "x": 6,
               "z": 7,
-              "name": "Cellar · side room A"
+              "name": "Far side room"
             },
             {
               "x": 6,
               "z": 13,
-              "name": "Cellar · side room B"
+              "name": "Near side room with Ammonia"
+            },
+            {
+              "x": 3,
+              "z": 1,
+              "name": "Passage to the kitchen"
             }
           ]
         },
         {
-          "name": "Cellar · side room A",
+          "name": "Far side room",
           "mapId": 1093,
           "section": 4,
           "landmarks": [
             {
               "x": 1,
               "z": 2,
-              "name": "Cellar · branching passage"
+              "name": "Corridor with two doors"
             }
           ]
         },
         {
-          "name": "Cellar · side room B",
+          "name": "Near side room with Ammonia",
           "mapId": 1093,
           "section": 5,
           "landmarks": [
             {
               "x": 1,
               "z": 2,
-              "name": "Cellar · branching passage"
+              "name": "Corridor with two doors"
+            },
+            {
+              "x": 6,
+              "z": 1,
+              "name": "Search the north bookcase"
             }
           ]
         },
@@ -2429,31 +2475,169 @@
               "name": "Town well"
             }
           ]
+        },
+        {
+          "mapId": 1093,
+          "section": 2,
+          "name": "Cellar passage to the kitchen",
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 4,
+              "name": "Side-room corridor"
+            },
+            {
+              "x": 12,
+              "z": 2,
+              "name": "Broken kitchen"
+            }
+          ]
+        },
+        {
+          "mapId": 1094,
+          "section": 0,
+          "name": "Broken kitchen",
+          "landmarks": [
+            {
+              "x": 10,
+              "z": 2,
+              "name": "Side-room corridor"
+            },
+            {
+              "x": 1,
+              "z": 12,
+              "name": "Upstairs bookcase"
+            },
+            {
+              "x": 4,
+              "z": 1,
+              "name": "Face north for Protein"
+            }
+          ]
+        },
+        {
+          "mapId": 1094,
+          "section": 1,
+          "name": "Room above the kitchen",
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 9,
+              "name": "Broken kitchen"
+            },
+            {
+              "x": 12,
+              "z": 1,
+              "name": "Jail stairs"
+            },
+            {
+              "x": 1,
+              "z": 6,
+              "name": "Face west for 80 zenny"
+            }
+          ]
+        },
+        {
+          "mapId": 1095,
+          "section": 0,
+          "name": "Winding jail stairs",
+          "landmarks": [
+            {
+              "x": 9,
+              "z": 2,
+              "name": "Back to the bookcase"
+            },
+            {
+              "x": 1,
+              "z": 7,
+              "name": "Lower jail"
+            }
+          ]
+        },
+        {
+          "mapId": 1095,
+          "section": 4,
+          "name": "Lower jail",
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 14,
+              "name": "Winding stairs"
+            },
+            {
+              "x": 1,
+              "z": 1,
+              "name": "Stairs to the upper cells"
+            },
+            {
+              "x": 6,
+              "z": 7,
+              "name": "Face east for Raptor Claws"
+            }
+          ]
+        },
+        {
+          "mapId": 1095,
+          "section": 2,
+          "name": "Stairs between the cells",
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 4,
+              "name": "Stair landing"
+            }
+          ]
+        },
+        {
+          "mapId": 1095,
+          "section": 5,
+          "name": "Upper jail",
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 1,
+              "name": "Stair landing"
+            },
+            {
+              "x": 6,
+              "z": 12,
+              "name": "Wooden cover above Chino"
+            }
+          ]
         }
       ],
       "items": [
         {
           "name": "Raptor Claws",
-          "where": "Cellar cells",
-          "detail": "Search the bag in the cell beside Chino’s.",
+          "where": "Synesta Cellar · lower cells",
+          "detail": "Face the northern cell door from the hall and use Talk to open it. Search the bag inside for Ershin’s weapon.",
           "areaIds": [
             "synesta"
+          ],
+          "floorIds": [
+            1095
           ]
         },
         {
           "name": "Protein",
-          "where": "Cellar bar",
-          "detail": "Cross the broken furniture and search the cabinet behind the bar.",
+          "where": "Synesta Cellar · broken kitchen",
+          "detail": "Cross the tables to get behind the bar. Face north and search the narrow bookcase.",
           "areaIds": [
             "synesta"
+          ],
+          "floorIds": [
+            1094
           ]
         },
         {
           "name": "Ammonia",
-          "where": "Cellar corridor",
-          "detail": "Check the cabinet in the first side room off the hallway.",
+          "where": "Synesta Cellar · first side room",
+          "detail": "Take the first of the two doors on the right. Search the northern of the two large bookcases against the east wall.",
           "areaIds": [
             "synesta"
+          ],
+          "floorIds": [
+            1093
           ]
         },
         {
@@ -2491,10 +2675,13 @@
         },
         {
           "name": "80 zenny",
-          "where": "Cellar · above the kitchen",
-          "detail": "Cross the broken furniture in the kitchen and go upstairs. Search the bookcase against the west wall before leaving the room.",
+          "where": "Synesta Cellar · upstairs bookcase",
+          "detail": "Climb the stairs out of the kitchen. Search the tall bookcase on the west wall before leaving for the jail.",
           "areaIds": [
             "synesta"
+          ],
+          "floorIds": [
+            1094
           ]
         }
       ],
@@ -2538,6 +2725,22 @@
         {
           "source": "enemy-research",
           "section": "Encounters 024 and 028. The town cellar and the bandit hideout."
+        },
+        {
+          "source": "tricro",
+          "section": "IDXC00H to IDXC00J and IDXE005 to IDXE006. The two games, the water seller, the kitchen ramps and the cells."
+        },
+        {
+          "source": "deh1",
+          "section": "Synesta and Synesta Cellar. Six hiding places, the guard, the paired cells and returning to town."
+        },
+        {
+          "source": "angel",
+          "section": "p034 to p036. The named clues, the child who sits out, the lower balcony and the loose boards above Chino."
+        },
+        {
+          "source": "billy",
+          "section": "Synesta. Tag, Hide and Seek, the cellar and the entrance to Marlok’s house."
         }
       ],
       "sectionsByArea": [
@@ -2560,23 +2763,30 @@
         {
           "id": "synesta",
           "name": "Synesta and the Sandflier Wharf",
-          "lead": "The orphanage and a trader’s errands hold the next lead on Elina.",
-          "hint": "Begin at the orphanage. Rotate the view before counting a hiding place as empty.",
-          "tip": "Kahn can demonstrate Focus. Have someone Guard while he uses it if you want to learn the skill.",
+          "lead": "The children at the orphanage know where Elina went. Start at the door across from the well.",
+          "hint": "Catch Chino, then follow the other children's clues. If Modo is the one you are missing, look north from the central bridge. He is on the lower street.",
+          "tip": "Speak to the children you find. Each one describes the next hiding place.",
           "firstStep": 1,
-          "endStep": 5,
+          "endStep": 15,
           "firstFloor": 4098,
           "floorIds": [
             4098,
             1093,
             1138,
-            4103
+            4103,
+            1094,
+            1095
           ]
         }
       ],
       "aliases": [
         "Synesta",
-        "Town of Synesta"
+        "Town of Synesta",
+        "Synesta orphanage",
+        "Synesta Cellar",
+        "Find Chino",
+        "Hide-and-seek in Synesta",
+        "Chino"
       ]
     },
     {

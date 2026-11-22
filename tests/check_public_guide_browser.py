@@ -226,6 +226,7 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
     for game, term, target in (("bof3","Mount Glaus","glaus"),("bof3","McNeil village","mcneil"),
             ("bof3","D'Lonzo","teacher-dlonzo"),("bof4","Kyria Woods","kyria-woods"),
             ("bof4","Synesta Pathway","kyria-passage"),("bof4","Kyria passage","kyria-passage"),("bof4","Synesta","synesta"),
+            ("bof4","Synesta orphanage","synesta"),("bof4","Find Chino","synesta"),("bof4","Synesta Cellar","synesta"),
             ("bof4","Kurok","kurok"),("bof4","Dam","dam"),("bof3","Momo's Tower","momo-tower"),
             ("bof4","Bandit's Hideout","bandit-hideout"),("bof4","Wyndia Castle Basement","wyndia-basement"),
             ("bof4","Mt. Grom","mt-glom"),("bof4","Yaen","enemy.yaen")):
@@ -353,6 +354,18 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
     page.reload()
     expect(main.get_by_role("button",name="Bookmarked")).to_have_attribute("aria-pressed","true")
     expect(main.get_by_role("button",name="Reading place saved")).to_be_visible()
+
+    set_route(page, base, "bof4", "synesta")
+    expect(main.get_by_role("heading", level=1)).to_have_text("The children of Synesta")
+    directions = main.locator("ol.written")
+    for landmark in ("orphanage", "bookcase", "Chino"):
+        expect(directions).to_contain_text(re.compile(landmark, re.I))
+    town_items = main.get_by_role("table", name="Items")
+    for item in ("Ammonia", "Protein", "80 zenny", "Raptor Claws"):
+        expect(town_items.get_by_role("rowheader").filter(has_text=item)).to_be_visible()
+    expect(town_items.get_by_role("rowheader").filter(has_text="Water Bomb")).to_have_count(0)
+    screenshot(page, destination, "synesta-town")
+
     for slug in ("masters","rwolf","teacher-rwolf"):
         set_route(page,base,"bof4",slug)
         lessons = main.get_by_role("table",name="Lessons and rewards")

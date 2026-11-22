@@ -100,6 +100,7 @@ class NativeFieldGuideTests(unittest.TestCase):
         for game, term, destination in (("bof3","McNeil village","mcneil"), ("bof3","Mount Glaus","glaus"),
                 ("bof4","Kyria Woods","kyria-woods"), ("bof4","Kyria village","kyria"), ("bof3","D'Lonzo","teacher-dlonzo"),
                 ("bof4","Synesta Pathway","kyria-passage"), ("bof4","Kyria passage","kyria-passage"), ("bof4","Synesta","synesta"),
+                ("bof4","Synesta orphanage","synesta"), ("bof4","Find Chino","synesta"), ("bof4","Synesta Cellar","synesta"),
                 ("bof4","Dam","dam"), ("bof4","Kurok","kurok"), ("bof3","Momo's Tower","momo-tower"),
                 ("bof4","Bandit's Hideout","bandit-hideout"), ("bof4","Wyndia Castle Basement","wyndia-basement"),
                 ("bof4","Mt. Grom","mt-glom"), ("bof4","Yaen","enemy.yaen")):
@@ -140,7 +141,8 @@ class NativeFieldGuideTests(unittest.TestCase):
         self.open("bof4", "bookmarks")
         self.click("bookmarkkyria-passage")
         self.assertEqual("kyria-passage", self.reader.property("bookmarkId"))
-        for map_id, expected in ((1032, "kyria-passage"), (4098, "synesta")):
+        for map_id, expected in ((1032, "kyria-passage"), (4098, "synesta"),
+                                 (0x0446, "synesta"), (0x0447, "synesta")):
             self.reader.setProperty("gameStory", {"game":"bof4", "place":"synesta", "floorId":map_id})
             self.open("bof4")
             self.assertEqual(expected, self.reader.property("bookmarkId"))

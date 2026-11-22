@@ -15,6 +15,8 @@ Choose a number on the map to see the matching direction. A dashed path marks an
 - **IV, Kyria Woods.** Follow the route from the well to the river. The fork above the waterfall separates the mayor's clearing from the Wisdom Seed. [Open Kyria Woods](https://daniel-parke.github.io/BoF-Atelier/#bof4/kyria-woods)
 - **IV, the passage to Synesta.** Follow the shallow water upstream. The marked side paths lead to the Water Bomb, Ammonia and 500 zenny before the well ladder. [Open the passage](https://daniel-parke.github.io/BoF-Atelier/#bof4/kyria-passage)
 
+Once you reach the town, search for **Chino** or **Synesta Cellar**. The town page follows the children’s clues and lists the treasure below the guarded stairs. [Open the children of Synesta](https://daniel-parke.github.io/BoF-Atelier/#bof4/synesta)
+
 ## Look something up
 
 Open an item or enemy name for its known locations. The masters’ entries include the recruitment condition, every lesson and the change in growth per level. In III, use the gene cabinet to try Flame, Frost and Thunder. The native reader can open the remaining specimens from a verified local disc. In IV, look up spell combinations by casting order. [III dragon genes](https://daniel-parke.github.io/BoF-Atelier/#bof3/genes) · [IV combinations](https://daniel-parke.github.io/BoF-Atelier/#bof4/combination-magic)
