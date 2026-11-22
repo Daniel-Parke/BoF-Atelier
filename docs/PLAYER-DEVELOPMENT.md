@@ -1,6 +1,6 @@
 # Run the Windows Player source
 
-Use these instructions to work on the Qt desktop application. To read the guide, simply [open the HTML preview](../README.md#read-the-field-guide). To play your own disc with a released emulator, see [Playing the games](PLAYING.md).
+This page is for contributors who want to change the Windows app. If you came here to play, [choose your game and setup](PLAYING.md). If you want help with a route, [open the Field Guide](../README.md#read-the-field-guide).
 
 ## Inspect the app in an empty Lab
 

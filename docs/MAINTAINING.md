@@ -35,4 +35,6 @@ The repository owner enables this once for each repository or fork. In **Setting
 
 Once a public deployment is verified, link the actual address from the first action in the README. Its two volume captions can then link straight to the hosted reader at `#bof3/walk` and `#bof4/walk`. Keep the offline instructions. Fork owners should use their own verified deployment address.
 
-Subsequent merged changes to that branch update the hosted preview from the checked-in HTML. Check both the published site and the downloaded copy. Other stable fragments include `#bof4/wiki` and `#bof4/dam-kyria?area=Dam`.
+After a change reaches `main`, wait for the Pages deployment to finish. Open both README walkthrough links. From the guide footer, download the offline copy and open it with the network disconnected.
+
+For a repeatable browser check, install Playwright in your development environment and run `python tests/check_public_guide_browser.py --browser PATH_TO_CHROME --live-url PAGES_URL`. Use your installed Chrome or Edge executable and your published HTTPS URL ending in a slash. The check compares the served HTML to the local build, opens every walkthrough and wiki page, and checks the downloaded file.
