@@ -1,6 +1,6 @@
 {
   "game": "bof4",
-  "version": 1,
+  "version": 2,
   "sources": {
     "manual": {
       "title": "Capcom · North American PlayStation instruction booklet, pp. 8–23",
@@ -1047,7 +1047,11 @@
           "lead": "From Chamba, take the ridge past Rwolf. The lower western fork leads to the Dam.",
           "hint": "Look uphill for the red chest and downhill for the exit.",
           "tip": "The Deep Diver is fishing tackle. Collect it on the upper fork and return to the junction.",
-          "lore": true
+          "lore": true,
+          "id": "kurok",
+          "floorIds": [
+            1110
+          ]
         },
         {
           "name": "Dam",
@@ -1057,16 +1061,46 @@
           "lead": "Descend from the western entrance to the work camp before trying the engines.",
           "hint": "Find the worker wearing a swimming ring after meeting the foreman.",
           "tip": "Make an ordinary save before attempting the second engine if you want to retry the flywheel prize.",
-          "warning": true
+          "warning": true,
+          "id": "dam",
+          "floorIds": [
+            1024,
+            1029,
+            1028
+          ]
         },
         {
           "name": "Kyria",
           "firstStep": 7,
-          "endStep": 9,
+          "endStep": 11,
           "firstFloor": 4097,
-          "lead": "Find the mayor’s house before following the trail into the woods.",
-          "hint": "Listen to the parrot before setting out into the woods.",
-          "tip": "Keep spare apples to bait a different stump on your way back."
+          "lead": "Enter the mayor’s house through the pit circled by the cat.",
+          "hint": "The cat’s ladder leads to the parrot. The chicken marks a different cellar.",
+          "tip": "At the house, turn the parrot down four times. The next choice lets you ask about the mayor.",
+          "id": "kyria",
+          "floorIds": [
+            4097,
+            1056,
+            518,
+            517
+          ]
+        },
+        {
+          "id": "kyria-woods",
+          "name": "Kyria Woods",
+          "firstStep": 11,
+          "endStep": 15,
+          "firstFloor": 1043,
+          "floorIds": [
+            1043,
+            1045,
+            1046,
+            1047,
+            1049
+          ],
+          "lead": "Pass under the broken bridge and climb the falls to find the mayor.",
+          "hint": "The main trail passes under the broken bridge. Cross the upper bridge only when looking for treasure.",
+          "tip": "At the top of the falls, jump west for the Wisdom Seed. Come back to the fork and head north for the mayor."
         }
       ],
       "title": "Kurok, the Dam and Kyria Woods",
@@ -1080,15 +1114,23 @@
         "From the sword ladder, take the lower path to the second engine. Roll the directional buttons in a circle either way. Start slowly, then speed up. When the wheel sounds high-pitched, press your mapped Circle button. If Ryu starts sweating, he is tiring.",
         "The lower exit beside the second engine leads to the chest with two Vitamins. Return to the upper walkway and cross the second gate. Climb the eastern ladder for two Swallow Eyes. Take the east tunnel to the work camp, descend the ladder from the far gallery and pull the blue lever to lower the bridge.",
         "Once you have the three chests, cross the bridge to the foreman. After the bell, take the Crank back across the bridge. Examine the box on the lift. When the handle sticks, tap your mapped Cross button repeatedly to bring the lift down.",
-        "On the world map, go north from the Dam and enter the ! stop. Ask the bard for the dragon’s song. You can pay 10 zenny for each tune. Once the scene ends, follow the road east to Kyria.",
-        "At the village, reach the mayor’s house through the hole and ladder. Speak to the parrot, then travel west to the woods.",
-        "Lead with Ershin to knock apples from the tree. Bait the stumps and follow the fresh tracks to Maman. After finding the mayor, return to Kyria for the passage towards Synesta."
+        "Go north on the world map and enter the ! stop. Pay the bard 100 zenny for the dragon song. The 10-zenny tadpole tune is optional. Afterwards, take the eastern road to Kyria.",
+        "Leave the Manillo and the inn by the entrance. Cross the bridge towards the mayor’s house. A cage blocks the front door. Look behind the house for a cat pacing round a patch of ground.",
+        "Drop through the southern pit circled by the cat. Follow the short ledge to its ladder and climb into the mayor’s house. The northern pit by the chicken leads to the 400-zenny chest and the barrel shed.",
+        "Inside, check the bookcase beside the bird for a Fish-head. Tell the parrot you have no time, then decline its next three offers. On the US PlayStation version the choices are 2, 2, 3, 4. Now ask where the mayor is.",
+        "Leave through the front door and return across the bridge. If the foot trap catches you, clear its message and keep walking. The innkeeper can heal the party and offer an ordinary save. Leave town and go west on the world map to the Woods.",
+        "Follow the winding entrance path to the man blocking the way. Speak to him for an Apple. Put Ershin in front and ram the nearby tree for more. Pass the man and follow the sign east to the well.",
+        "In the trap clearing, take the path east from the well. Go under the broken bridge and through the eastern opening to the riverbank. Baiting a stump shows where a boar runs; you can walk straight through to the river without an apple.",
+        "From the riverbank, jump to the rock beside the waterfall, then to the far bank. Follow the ledges uphill. At the top, the western jump is a dead end with a Wisdom Seed. Jump back to the fork to continue.",
+        "Heal at the fork before leaving by the high northern path. The mayor is in the next clearing. Maman uses Body Press on one character and Rock Blast on the front rank. Ryu’s Aura form has Flame Strike; Nina can heal."
       ],
-      "tip": "The tracks branching towards chests are optional. Keep apples handy to bait a different stump on your way back.",
+      "tip": "The western waterfall jump leads to the Wisdom Seed. The northern trail leads to the mayor.",
       "links": [
         "rwolf",
         "apprentices",
-        "field-actions"
+        "field-actions",
+        "kyria-passage",
+        "learning-skills"
       ],
       "art": "iv-river",
       "sources": [
@@ -1101,7 +1143,10 @@
         "billy",
         "dalez",
         "field-layout",
-        "rx1"
+        "rx1",
+        "angel",
+        "enemy-research",
+        "mhobbs"
       ],
       "landmarks": [
         "Kurok · upper and lower forks",
@@ -1111,126 +1156,295 @@
         "Across the second gate",
         "Foreman and lift",
         "Road north · the bard",
-        "Kyria village",
-        "Kyria Woods"
+        "Cross the village bridge",
+        "Drop into the cat’s pit",
+        "Get an answer from the parrot",
+        "Take the western road",
+        "Find the man by the apple tree",
+        "Pass under the broken bridge",
+        "Jump up the falls",
+        "Take the northern trail"
       ],
       "items": [
         {
           "name": "Deep Diver",
           "where": "Kurok · upper fork",
-          "detail": "Open the chest on the upper western path. Rejoin the lower path for the exit."
+          "detail": "Open the chest on the upper western path. Rejoin the lower path for the exit.",
+          "areaIds": [
+            "kurok"
+          ]
         },
         {
           "name": "Short Sword",
           "where": "Dam · first gate",
-          "detail": "Cross the lowered gate and climb to the chest on the upper level."
+          "detail": "Cross the lowered gate and climb to the chest on the upper level.",
+          "areaIds": [
+            "dam"
+          ]
         },
         {
           "name": "Apples",
-          "where": "Kyria Woods",
-          "detail": "Have Ershin strike an apple tree. Place one apple on a stump to reveal tracks."
+          "where": "Kyria Woods · entrance tree",
+          "detail": "The man gives you one Apple. Ram the tree with Ershin to collect more. Each Apple restores 100 HP; you can also use one as bait.",
+          "areaIds": [
+            "kyria-woods"
+          ]
         },
         {
           "name": "Sluice Key",
           "where": "Dam · work camp",
-          "detail": "Speak to Rhoppe in the pink swimming ring after meeting the foreman."
+          "detail": "Speak to Rhoppe in the pink swimming ring after meeting the foreman.",
+          "areaIds": [
+            "dam"
+          ]
         },
         {
           "name": "Vitamin ×2",
           "where": "Dam · second engine",
-          "detail": "Take the passage beside the flywheel room to the small outdoor chest."
+          "detail": "Take the passage beside the flywheel room to the small outdoor chest.",
+          "areaIds": [
+            "dam"
+          ]
         },
         {
           "name": "Swallow Eye ×2",
           "where": "Dam · far gate",
-          "detail": "Cross the second lowered gate. The chest is at the top of the ladder."
+          "detail": "Cross the second lowered gate. The chest is at the top of the ladder.",
+          "areaIds": [
+            "dam"
+          ]
         },
         {
           "name": "Crank",
           "where": "Dam · work camp",
-          "detail": "The foreman exchanges it for the key. Take it to the lift."
+          "detail": "The foreman exchanges it for the key. Take it to the lift.",
+          "areaIds": [
+            "dam"
+          ]
         },
         {
           "name": "Flywheel prize",
           "where": "Dam · second engine",
-          "detail": "Speak to the worker after starting the engine. A good run can earn a fishing lure such as the Silver Top. Save before you start if you want to try for a different result."
+          "detail": "Speak to the worker after starting the engine. A good run can earn a fishing lure such as the Silver Top. Save before you start if you want to try for a different result.",
+          "areaIds": [
+            "dam"
+          ]
         },
         {
-          "name": "Fish-Head",
+          "name": "Fish-head",
           "where": "Kyria · mayor’s house",
-          "detail": "Search the shelves beside the parrot."
+          "detail": "Check the bookcase next to the parrot. It holds one Fish-head.",
+          "areaIds": [
+            "kyria"
+          ]
         },
         {
           "name": "Healing Herb ×4",
           "where": "Kyria Woods · well clearing",
-          "detail": "Drop through the hole near the cage. The ladder returns to the well."
+          "detail": "From the well, go up the east ramp and pass the stump. Fall into the pit beside the hanging cage. Open the chest and climb out through the well.",
+          "areaIds": [
+            "kyria-woods"
+          ]
         },
         {
           "name": "400 zenny",
           "where": "Kyria · trap cellar",
-          "detail": "Look for the chicken circling a hole in the north-west corner of town. Drop in for the chest and climb back out."
+          "detail": "Drop through the chicken’s pit. Take the first short drop and open the chest. A second drop leads to the floor below. Climb the ladders to the barrel shed and put Cray in front to push a barrel aside.",
+          "areaIds": [
+            "kyria"
+          ]
         },
         {
           "name": "Earth Ward",
           "where": "Kyria Woods · east of the well",
-          "detail": "Leave an apple on the stump up the slope east of the well. Follow the boar’s trail to the hidden chest."
+          "detail": "Bait the stump up the incline east of the well and follow the tracks. To find it yourself, go south from the hanging chest past the cage and enter the southern treeline before the downhill ramp.",
+          "areaIds": [
+            "kyria-woods"
+          ]
+        },
+        {
+          "name": "Belladonna",
+          "where": "Kyria · village bridge",
+          "detail": "Trigger the bridge trap and speak to the villager beside the bridge. If the gift has not appeared, spring other village traps and speak to the villager again.",
+          "areaIds": [
+            "kyria"
+          ]
+        },
+        {
+          "name": "Ice Punch",
+          "where": "Kyria · trapped chest",
+          "detail": "Open the chest behind the inn and fight the three enemies named ????. The Ice Punch comes from that one-time battle.",
+          "areaIds": [
+            "kyria"
+          ]
+        },
+        {
+          "name": "Bronze Shield",
+          "where": "Kyria · doghouse battle",
+          "detail": "Defeat the BeeTroop with its shield intact for a chance at the shield. Cast spells instead of striking it with weapons.",
+          "areaIds": [
+            "kyria"
+          ]
+        },
+        {
+          "name": "PointedStick",
+          "where": "Kyria Woods · suspended chest",
+          "detail": "Go south from the well and up the slope by the hanging plate. From the next cage, climb the short northern rise. Stand under the suspended chest to collect Nina’s weapon.",
+          "areaIds": [
+            "kyria-woods"
+          ]
+        },
+        {
+          "name": "Aura Ring",
+          "where": "Kyria Woods · underground ledge",
+          "detail": "From the cage south of the hanging chest, follow the trees to the southern edge. Go east down the ramp and up the next. Drop through the pit at the top to reach the ring. The ladder returns to the well.",
+          "areaIds": [
+            "kyria-woods"
+          ]
+        },
+        {
+          "name": "Apple ×8",
+          "where": "Kyria Woods · eastern glade",
+          "detail": "Bait the stump south of the hanging chest. Its trail leads to a gap in the eastern treeline on the upper ledge, behind the hanging stone. Open the chest in the glade.",
+          "areaIds": [
+            "kyria-woods"
+          ]
+        },
+        {
+          "name": "Wisdom Seed",
+          "where": "Kyria Woods · upper falls",
+          "detail": "At the top of the falls, jump across to the western dead end. Take the seed from the bag, then jump back to the fork.",
+          "areaIds": [
+            "kyria-woods"
+          ]
+        },
+        {
+          "name": "Flame Punch",
+          "where": "Kyria Woods · Maman",
+          "detail": "Defeat Maman in the clearing beyond the falls to win this weapon for Ershin. The boss carries an Apple to steal.",
+          "areaIds": [
+            "kyria-woods"
+          ]
         }
       ],
       "encounters": [
         {
           "name": "Mage Goo",
           "where": "Kurok and Dam · 200 HP",
-          "detail": "Guard to learn Burn when the goo casts it."
+          "detail": "Guard to learn Burn when the goo casts it.",
+          "areaIds": [
+            "kurok",
+            "dam"
+          ]
         },
         {
           "name": "Scorpion",
           "where": "Kurok · 280 HP",
-          "detail": "Guard when it uses Blind to learn the skill. A Scorpion gives 20 EXP."
+          "detail": "Guard when it uses Blind to learn the skill. A Scorpion gives 20 EXP.",
+          "areaIds": [
+            "kurok"
+          ]
         },
         {
           "name": "Flue Goo",
-          "where": "Kurok and Dam · 320 HP",
-          "detail": "Watch for Giant Growth. A Flue Goo gives 40 EXP before bonuses."
+          "where": "Kurok, Dam and Kyria Woods · 320 HP",
+          "detail": "Watch for Giant Growth. A Flue Goo gives 40 EXP before bonuses.",
+          "areaIds": [
+            "kurok",
+            "dam",
+            "kyria-woods"
+          ]
         },
         {
           "name": "Red Cap",
           "where": "Kurok, Dam and Kyria Woods · 300 HP",
-          "detail": "Watch for Command when other enemies are present."
+          "detail": "Watch for Command when other enemies are present.",
+          "areaIds": [
+            "kurok",
+            "dam",
+            "kyria-woods"
+          ]
         },
         {
           "name": "Maman",
-          "where": "Kyria Woods",
-          "detail": "Heal before following the last set of boar tracks."
+          "where": "Kyria Woods · clearing above the falls · 3,600 HP",
+          "detail": "Body Press hits one character. Rock Blast hits the front rank. An Apple used on Maman briefly distracts it and heals it for 100 HP. It carries an Apple to steal. Victory earns the Flame Punch, 1,500 EXP and 450 zenny.",
+          "areaIds": [
+            "kyria-woods"
+          ]
         },
         {
           "name": "Puspool",
           "where": "Dam tunnels · 300 HP",
-          "detail": "Fire hardens the slime. Try Guard to learn Molasses."
+          "detail": "Fire hardens the slime. Try Guard to learn Molasses.",
+          "areaIds": [
+            "dam"
+          ]
         },
         {
           "name": "Tadpole",
           "where": "Dam tunnels · 580 HP",
-          "detail": "Guard when it rests to learn Snooze."
+          "detail": "Guard when it rests to learn Snooze.",
+          "areaIds": [
+            "dam"
+          ]
         },
         {
           "name": "Army Bat",
           "where": "Dam tunnels · 8 HP",
-          "detail": "Low HP makes the bat a quick target in a mixed group."
+          "detail": "Low HP makes the bat a quick target in a mixed group.",
+          "areaIds": [
+            "dam"
+          ]
         },
         {
           "name": "Eye Goo",
           "where": "Dam · 150 HP",
-          "detail": "Guard for Rest if you missed it on the Cliff."
+          "detail": "Guard for Rest if you missed it on the Cliff.",
+          "areaIds": [
+            "dam"
+          ]
         },
         {
           "name": "Cap",
-          "where": "Dam · 170 HP",
-          "detail": "Drops can include Berries."
+          "where": "Dam and Kyria Woods · 170 HP",
+          "detail": "Use Guard when it loses interest and uses Distracted. Berries can be stolen; a Healing Herb can drop.",
+          "areaIds": [
+            "dam",
+            "kyria-woods"
+          ]
         },
         {
           "name": "Fungoid",
-          "where": "Kyria Woods",
-          "detail": "Guard for Command before finishing the fight."
+          "where": "Kyria Woods · 420 HP",
+          "detail": "Guard when it orders the other enemies with Command. Its powder can confuse the party.",
+          "areaIds": [
+            "kyria-woods"
+          ]
+        },
+        {
+          "name": "????",
+          "where": "Kyria · trapped chest behind the inn",
+          "detail": "Two of the three chests have only 1 HP. The real one has 300 HP and can run away. Clear the decoys to lower its magic resistance, then defeat it for the Ice Punch.",
+          "areaIds": [
+            "kyria"
+          ]
+        },
+        {
+          "name": "BeeTroop",
+          "where": "Kyria · doghouse · 800 HP",
+          "detail": "Use magic while its shield is intact to keep the Bronze Shield drop available. Guard when it uses Wild Swing. Breaking the shield lets it use Risky Blow, another learnable skill.",
+          "areaIds": [
+            "kyria"
+          ]
+        },
+        {
+          "name": "Bandit",
+          "where": "Kyria Woods · 500 HP",
+          "detail": "Expect Sever and Healing Herb. Its steal is a Moon Sword; its drop is a Healing Herb.",
+          "areaIds": [
+            "kyria-woods"
+          ]
         }
       ],
       "map": {
@@ -1579,6 +1793,153 @@
               "name": "Kyria Woods · junction"
             }
           ]
+        },
+        {
+          "name": "Kyria · trap cellars",
+          "mapId": 1056,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 20,
+              "z": 5,
+              "name": "Northern drop"
+            },
+            {
+              "x": 16,
+              "z": 10,
+              "name": "400-zenny chest"
+            },
+            {
+              "x": 9,
+              "z": 12,
+              "name": "Southern landing"
+            },
+            {
+              "x": 3,
+              "z": 18,
+              "name": "Ladder to the mayor"
+            },
+            {
+              "x": 23,
+              "z": 24,
+              "name": "Ladder to the barrel shed"
+            }
+          ]
+        },
+        {
+          "name": "Kyria · barrel shed",
+          "mapId": 518,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 5,
+              "z": 1,
+              "name": "Ladder landing"
+            },
+            {
+              "x": 3,
+              "z": 1,
+              "name": "Pushable barrels"
+            },
+            {
+              "x": 0,
+              "z": 3,
+              "name": "Village door"
+            }
+          ]
+        },
+        {
+          "name": "Kyria · mayor’s house",
+          "mapId": 517,
+          "section": 4,
+          "landmarks": [
+            {
+              "x": 1,
+              "z": 0,
+              "name": "Cellar ladder"
+            },
+            {
+              "x": 7,
+              "z": 8,
+              "name": "Parrot"
+            },
+            {
+              "x": 7,
+              "z": 10,
+              "name": "Fish-head bookcase"
+            },
+            {
+              "x": 8,
+              "z": 4,
+              "name": "Front door"
+            }
+          ]
+        },
+        {
+          "name": "Kyria · inn",
+          "mapId": 517,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 2,
+              "z": 4,
+              "name": "Village door"
+            },
+            {
+              "x": 5,
+              "z": 1,
+              "name": "Innkeeper"
+            }
+          ]
+        },
+        {
+          "name": "Kyria Woods · waterfall",
+          "mapId": 1047,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 27,
+              "z": 41,
+              "name": "Lower riverbank"
+            },
+            {
+              "x": 39,
+              "z": 30,
+              "name": "First jump"
+            },
+            {
+              "x": 18,
+              "z": 18,
+              "name": "Western jump"
+            },
+            {
+              "x": 12,
+              "z": 14,
+              "name": "Wisdom Seed bag"
+            },
+            {
+              "x": 42,
+              "z": 5,
+              "name": "Northern trail"
+            }
+          ]
+        },
+        {
+          "name": "Kyria Woods · clearing above the falls",
+          "mapId": 1049,
+          "section": 0,
+          "landmarks": [
+            {
+              "x": 13,
+              "z": 24,
+              "name": "Trail from the waterfall"
+            },
+            {
+              "x": 14,
+              "z": 16,
+              "name": "The mayor"
+            }
+          ]
         }
       ],
       "warning": {
@@ -1597,6 +1958,34 @@
         {
           "source": "dalez",
           "section": "Kyria and Woods"
+        },
+        {
+          "source": "dalez",
+          "section": "Chapter I, J–L: Town of Kyria, Woods and Passage to Synesta"
+        },
+        {
+          "source": "billy",
+          "section": "Chapter I: bard, Kyria, Woods, Maman and the passage"
+        },
+        {
+          "source": "angel",
+          "section": "The Awakening, p030–p031: Kyria’s traps and the Woods"
+        },
+        {
+          "source": "drawers",
+          "section": "Entries 029–041: village traps, Woods treasure and the passage"
+        },
+        {
+          "source": "rx1",
+          "section": "Kyria, Kyria Woods and Synesta Pathway"
+        },
+        {
+          "source": "enemy-research",
+          "section": "????, BeeTroop, Cap, Bandit, Fungoid, Maman and Woods encounters 010–011"
+        },
+        {
+          "source": "mhobbs",
+          "section": "Individual monster drops and learnable skills"
         }
       ]
     },
@@ -1607,6 +1996,7 @@
       "lead": "The orphanage and a trader’s errands hold the next lead on Elina.",
       "hint": "Begin at the orphanage. Rotate the view before counting a hiding place as empty.",
       "steps": [
+        "From Kyria, climb the northern trail to the cavern. Wade upstream and cross the deep pool by its stepping stone. At the next fork take the southern tunnel. Follow the stairs to the upper cavern, then climb the well ladder into Synesta.",
         "Cut across Chino’s circuit to catch him. Speak to the children in the orphanage, then search the doorway east of the well, the town exit stairs, the steps north of the well and the inn’s upper floor. Check the stairs between the circular walkway and the upper town for the last hiding place. Return to the nun, then pass the cellar guard when the water seller draws him away.",
         "Follow the lead to Marlok. Fight Kahn at the door, then take Marlok’s errand to the hideout. Cut across the thief’s route to catch him.",
         "Return to Marlok and work at the Sandflier Wharf. Help clear the store, then use the crane to load the sandflier.",
@@ -1614,9 +2004,11 @@
       ],
       "tip": "Kahn can demonstrate Focus. Have someone Guard while he uses it if you want to learn the skill.",
       "links": [
+        "kyria-passage",
         "wharf-cargo",
         "learning-skills",
-        "treasure-exchange"
+        "treasure-exchange",
+        "bandit-hideout"
       ],
       "art": "iv-wreck",
       "sources": [
@@ -1632,6 +2024,7 @@
         "drawers"
       ],
       "landmarks": [
+        "Passage from Kyria",
         "Orphanage",
         "Trader’s house",
         "Sandflier Wharf",
@@ -1657,6 +2050,41 @@
           "name": "Cadaver",
           "where": "Passage from Kyria",
           "detail": "Guard when it uses Feint to try to learn the skill."
+        },
+        {
+          "name": "Army Bat",
+          "where": "Passage from Kyria · 8 HP",
+          "detail": "Shadowwalk is a rare early lesson. At very low HP the bat can use it. Guarding only helps if it survives long enough to take a turn."
+        },
+        {
+          "name": "Puspool",
+          "where": "Passage from Kyria · flooded caverns",
+          "detail": "A fire hit changes its form. Guard against Molasses to try to learn it."
+        },
+        {
+          "name": "Tadpole",
+          "where": "Passage from Kyria · flooded caverns",
+          "detail": "Use Guard when it rests for a chance to learn Snooze."
+        },
+        {
+          "name": "Zombie",
+          "where": "Passage from Kyria · upper caverns",
+          "detail": "Fire works well against the undead here. Ershin can use her Flame Punch from Maman."
+        },
+        {
+          "name": "Mouse",
+          "where": "Bandits’ Hideout",
+          "detail": "Guard to learn Snap during Marlok’s errand."
+        },
+        {
+          "name": "Rat",
+          "where": "Bandits’ Hideout",
+          "detail": "Guard to learn Chlorine."
+        },
+        {
+          "name": "Army Bat",
+          "where": "Bandits’ Hideout",
+          "detail": "This species also appears on the path to Synesta."
         }
       ],
       "map": {
@@ -1860,6 +2288,16 @@
           "name": "Water Bomb",
           "where": "Passage from Kyria · first cavern",
           "detail": "In the first cave, cross the stream to the east and check the dead end before following the water onwards."
+        },
+        {
+          "name": "500 zenny",
+          "where": "Passage · flooded steps",
+          "detail": "Partway up the stairs, jump the side gap to the chest, then jump back for the upper passage."
+        },
+        {
+          "name": "Ammonia",
+          "where": "Passage · dry fork",
+          "detail": "The fork’s north branch ends at this chest. Return to the fork and go south to continue to Synesta."
         }
       ],
       "sourceSections": [
@@ -1874,6 +2312,26 @@
         {
           "source": "dalez",
           "section": "Find the children in Synesta"
+        },
+        {
+          "source": "rx1",
+          "section": "Synesta Pathway and Synesta"
+        },
+        {
+          "source": "billy",
+          "section": "Passage to Synesta: flood channels, staircase and town well"
+        },
+        {
+          "source": "drawers",
+          "section": "Entries 039–041: the three passage chests"
+        },
+        {
+          "source": "rx1",
+          "section": "Marlok’s Errands, the road encounter and hideout"
+        },
+        {
+          "source": "dalez",
+          "section": "Chapter I.O, Bandit Hideout and the barrel chase"
         }
       ]
     },
@@ -2162,6 +2620,10 @@
           "source": "boss-guide",
           "section": "Sparrow"
         }
+      ],
+      "aliases": [
+        "Wychwood",
+        "Worent"
       ]
     },
     {
@@ -2181,7 +2643,8 @@
         "plains-landmarks",
         "faerie-colony",
         "treasure-exchange",
-        "smiths-workbench"
+        "smiths-workbench",
+        "mt-glom"
       ],
       "art": "sandsea",
       "sources": [
@@ -2192,7 +2655,10 @@
         "drawers",
         "field-layout",
         "rx1",
-        "slivers"
+        "slivers",
+        "enemy-research",
+        "mhobbs",
+        "dalez"
       ],
       "landmarks": [
         "Smoke on the plains",
@@ -2230,6 +2696,21 @@
           "name": "Drill Punch",
           "where": "Mt. Glom · lava platforms",
           "detail": "When the north-west plate meets the wall, rotate the camera towards the west. The chest is inside the opening."
+        },
+        {
+          "name": "600 zenny",
+          "where": "Mt. Glom",
+          "detail": "Take the chest near the southeastern starting plate after the platforms move."
+        },
+        {
+          "name": "Vitamin ×2",
+          "where": "Mt. Glom",
+          "detail": "On the northern plates in the moving-platform room."
+        },
+        {
+          "name": "Molotov ×4",
+          "where": "Mt. Glom",
+          "detail": "From the smith’s house, go downstairs and follow the southwestern ledge to the chest."
         }
       ],
       "floors": [
@@ -2321,6 +2802,21 @@
           "name": "Fantam",
           "where": "Faerie dream",
           "detail": "Heal after the nightmare group falls. Their defeat brings out Fantam."
+        },
+        {
+          "name": "Drake",
+          "where": "Mt. Glom",
+          "detail": "Guard when it uses Flame Strike for a chance to learn it."
+        },
+        {
+          "name": "Wyd",
+          "where": "Mt. Glom",
+          "detail": "Commonly shares its group with Firewyd on the mountain."
+        },
+        {
+          "name": "Firewyd",
+          "where": "Mt. Glom",
+          "detail": "Can appear alone or together with Wyd. A battle ending can move the plates beneath the party."
         }
       ],
       "sourceSections": [
@@ -2339,6 +2835,14 @@
         {
           "source": "drawers",
           "section": "Mt. Glom, shifting platform room"
+        },
+        {
+          "source": "dalez",
+          "section": "Chapter II.E, Mt. Glom and the smith (listed as Mt. Grom in the contents)"
+        },
+        {
+          "source": "drawers",
+          "section": "Mt. Glom, moving-platform treasure"
         }
       ]
     },
@@ -2358,7 +2862,8 @@
       "links": [
         "field-actions",
         "faerie-colony",
-        "plains-landmarks"
+        "plains-landmarks",
+        "wyndia-basement"
       ],
       "art": "iv-river",
       "sources": [
@@ -2542,6 +3047,11 @@
           "source": "dalez",
           "section": "Kasq Woods"
         }
+      ],
+      "aliases": [
+        "Dragon Shrine",
+        "Ahm Fen",
+        "Kasq Woods"
       ]
     },
     {
@@ -2559,7 +3069,8 @@
       "tip": "Stop for a whole gust cycle on a new ledge. A calm jump and a wind-assisted jump can land on different paths.",
       "links": [
         "evocations",
-        "field-actions"
+        "field-actions",
+        "wyndia-basement"
       ],
       "art": "iv-river",
       "sources": [
@@ -2601,6 +3112,31 @@
           "name": "Icicle",
           "where": "Ice Peak · northern cave",
           "detail": "At the fork, take the upper northern trail and open the chest inside the cave. Return to the lower route to descend."
+        },
+        {
+          "name": "Soul Gem",
+          "where": "Wyndia Castle basement",
+          "detail": "Take the northern dead end at the first fork."
+        },
+        {
+          "name": "Swallow Eye ×3",
+          "where": "Wyndia Castle basement",
+          "detail": "Climb the northeast wind tunnel while the fan points away."
+        },
+        {
+          "name": "Balance Ring",
+          "where": "Wyndia Castle basement",
+          "detail": "From the turning platform, cross to the short southern ledge."
+        },
+        {
+          "name": "Healing Herb ×4",
+          "where": "Wyndia Castle basement",
+          "detail": "Take the first bag as you go north through the gust corridor, in an east alcove."
+        },
+        {
+          "name": "FlashGrenade ×2",
+          "where": "Wyndia Castle basement",
+          "detail": "Farther along the gust corridor, search the west alcove."
         }
       ],
       "floors": [
@@ -2763,6 +3299,26 @@
           "name": "Red Cap",
           "where": "Ice Peak",
           "detail": "Look for Command in mixed groups."
+        },
+        {
+          "name": "ZombieDr",
+          "where": "Wyndia Castle basement",
+          "detail": "Guard to learn Feint. It can cause confusion."
+        },
+        {
+          "name": "Cadaver",
+          "where": "Wyndia Castle basement",
+          "detail": "Guard to learn Feint."
+        },
+        {
+          "name": "Catrpilr",
+          "where": "Wyndia Castle basement",
+          "detail": "Guard to learn Feint."
+        },
+        {
+          "name": "Zombie",
+          "where": "Wyndia Castle basement",
+          "detail": "Its confused actions can teach Feign Swing and Distracted."
         }
       ],
       "sourceSections": [
@@ -2777,7 +3333,20 @@
         {
           "source": "drawers",
           "section": "Pung’tap"
+        },
+        {
+          "source": "dalez",
+          "section": "Chapter II.L, Wyndia Castle Basement"
+        },
+        {
+          "source": "drawers",
+          "section": "Wyndia Castle Basement, entries 094–099"
         }
+      ],
+      "aliases": [
+        "Pung’tap",
+        "Tower of Wind",
+        "Ice Peak"
       ]
     },
     {
@@ -2935,7 +3504,9 @@
         "eastern",
         "dalez",
         "drawers",
-        "field-layout"
+        "field-layout",
+        "enemy-research",
+        "mhobbs"
       ],
       "landmarks": [
         "Timed pillars",
@@ -2958,6 +3529,11 @@
           "name": "Bot",
           "where": "Sinchon",
           "detail": "Can leave a Multigun. Watch its behaviour when choosing combo targets."
+        },
+        {
+          "name": "Yaen",
+          "where": "Road to the Abandoned Village",
+          "detail": "Yaen can appear with Bilbul or Crawler. Guard to learn Rest or Chlorine."
         }
       ],
       "floors": [
@@ -3144,6 +3720,10 @@
         {
           "source": "drawers",
           "section": "Sinchon, items 113 and 114"
+        },
+        {
+          "source": "enemy-research",
+          "section": "Road to the Abandoned Village, Yaen formations and learnable moves"
         }
       ]
     },
@@ -3173,7 +3753,9 @@
         "drawers",
         "billy",
         "dalez",
-        "field-layout"
+        "field-layout",
+        "enemy-research",
+        "mhobbs"
       ],
       "landmarks": [
         "Shrine slab",
@@ -3325,6 +3907,11 @@
           "name": "Mud Pup",
           "where": "Mt. Ryft",
           "detail": "Can confuse a target or put the whole front line to sleep. Watch for Snooze to learn it."
+        },
+        {
+          "name": "Yaen",
+          "where": "Mt. Ryft",
+          "detail": "In the cave, Yaen can appear with Mud Pup. Guard for Rest or Chlorine."
         }
       ],
       "sourceSections": [
@@ -3339,6 +3926,10 @@
         {
           "source": "dalez",
           "section": "Mt. Ryft"
+        },
+        {
+          "source": "enemy-research",
+          "section": "Mt. Ryft, Yaen formations and learnable moves"
         }
       ]
     },
@@ -3368,7 +3959,9 @@
         "western",
         "dalez",
         "billy",
-        "field-layout"
+        "field-layout",
+        "enemy-research",
+        "mhobbs"
       ],
       "landmarks": [
         "Sandflier dealer",
@@ -3468,6 +4061,11 @@
           "name": "Saruga",
           "where": "Mt. Giga",
           "detail": "Watch for Muffle. Defeating its companions can provoke Blitz."
+        },
+        {
+          "name": "Yaen",
+          "where": "Mt. Giga",
+          "detail": "Yaen can appear alongside Saruga. Guard for Rest or Chlorine while a party member treats poison."
         }
       ],
       "sourceSections": [
@@ -3478,6 +4076,10 @@
         {
           "source": "dalez",
           "section": "Kyoin and the sandflier passage"
+        },
+        {
+          "source": "enemy-research",
+          "section": "Mt. Giga, Yaen formations and learnable moves"
         }
       ]
     },
@@ -4712,8 +5314,8 @@
       "steps": [
         "Take the key in the rest room, using Ershin to dislodge it. Unlock the stairs and descend through the castle.",
         "At Dragonne, use a dragon breath attack to end its repeated healing. Collect the Blue Charm where it stood and check the nearby save point.",
-        "Use the blue seal to gain access to the next floors. Find the Yellow Charm and use it on the sealed rope. Follow the route down to the Red Charm.",
-        "Unlock the red door and the sealed lift. Rest and keep an ordinary save in a separate slot before entering the inner palace."
+        "At the twin lifts on 1F, the northern lift returns to the blue-sealed treasure on 5F. For the main route take the southern lift to B1. Go past the yellow rope, cross the bridge and descend. Raise the bridge with the lever and pass underneath to reach the Yellow Charm.",
+        "Return to the rope with the bridge set for the crossing. Release the seal and follow the stairs down to the Red Charm. The red door east of the charm leads to the lift. At the bottom, the northern room has the last diary. Keep a separate File before taking the western stairs."
       ],
       "tip": "Remember the colour on any seal you leave behind. Once you have the matching charm, the lifts save a long climb back.",
       "links": [
@@ -4729,7 +5331,8 @@
         "western",
         "field-layout",
         "rx5",
-        "drawers"
+        "drawers",
+        "enemy-research"
       ],
       "landmarks": [
         "Rest room",
@@ -4746,7 +5349,7 @@
         {
           "name": "Yellow Charm",
           "where": "Castle · lower floors",
-          "detail": "Open the blue seal first. Use the yellow charm on the sealed rope."
+          "detail": "Lift the bridge with the basement lever. Walk underneath and take the north door. Bring the charm back to the rope seal."
         },
         {
           "name": "Red Charm",
@@ -4766,14 +5369,64 @@
         {
           "name": "Mist Armor",
           "where": "Imperial Castle · below the Yellow Charm",
-          "detail": "Climb down the ladder from the charm and take the short southern detour."
+          "detail": "Take the ladder in the Yellow Charm room before returning to the rope. Search the lower passage for the chest."
+        },
+        {
+          "name": "Shaman’s Ring",
+          "where": "Imperial Castle · basement ladders",
+          "detail": "Beyond the first yellow seal, climb the two ladders. Take the northern side passage before heading south for the bridge lever."
+        },
+        {
+          "name": "Defender",
+          "where": "Imperial Castle · blue seal on 5F",
+          "detail": "Ride the northern lift up after Dragonne. Search the dresser beyond the blue door for Ershin’s armour."
+        },
+        {
+          "name": "Dragon Helm",
+          "where": "Imperial Castle · behind the blue seal",
+          "detail": "From the dresser on 5F, take the ladder down. Open the chest before continuing down the second ladder."
+        },
+        {
+          "name": "Life Shard",
+          "where": "Imperial Castle · Red Charm room",
+          "detail": "Five in one chest. Take the southern side passage before using the red door to the east."
+        },
+        {
+          "name": "Wisdom Fruit",
+          "where": "Imperial Castle · core",
+          "detail": "Search the cupboards south of the lift for three."
+        },
+        {
+          "name": "Super Vitamin",
+          "where": "Imperial Castle · final diary",
+          "detail": "Three in the cupboards in the northern save room."
+        },
+        {
+          "name": "GooKingSword",
+          "where": "Imperial Castle · Goo King encounter",
+          "detail": "A possible battle reward for defeating the Goo King. Stealing from it gives an Apple."
+        },
+        {
+          "name": "Cleaver",
+          "where": "Imperial Castle · Horseman encounter",
+          "detail": "Use a steal skill against a Horseman in the lower castle for a chance at Scias’s sword."
         }
       ],
       "encounters": [
         {
           "name": "Dragonne",
           "where": "Sealed passages",
-          "detail": "Dragon breath stops its repeated healing."
+          "detail": "Use Ryu’s breath until its healing stops. Guard to learn Ebonfire. Belladonna is the steal and Moon Tears the battle drop."
+        },
+        {
+          "name": "Goo King",
+          "where": "Imperial Castle · on the descent to Dragonne",
+          "detail": "It often flees. Steal its Apple to keep it in battle, then prepare for stronger spells. Defeating it can award the GooKingSword."
+        },
+        {
+          "name": "Horseman",
+          "where": "Imperial Castle · below the yellow rope",
+          "detail": "Try a steal skill before finishing the fight if you want the Cleaver."
         }
       ],
       "floors": [
@@ -4839,6 +5492,10 @@
         {
           "source": "drawers",
           "section": "Imperial Castle, items 218 and 219"
+        },
+        {
+          "source": "enemy-research",
+          "section": "Goo King, Horseman and Dragonne"
         }
       ]
     },
@@ -5410,19 +6067,68 @@
         {
           "title": "Give an empty plot a purpose",
           "text": "Assign construction once land is clear. A finished house gives workers somewhere to set up a shop or service. Choose a job, return after battles outside and look at the result before moving more hunters away from food."
+        },
+        {
+          "title": "When food runs short",
+          "text": "Return to camp and speak to the head faerie to visit the colony. Move a worker back to hunting or deliver meat from a hunting ground. An easier work pace uses less food while the stores recover. Once there are five faeries, look for Njomo at the house on the road near Ahm Fen."
         }
       ],
       "links": [
         "apprentices",
         "wyndia",
-        "camp-and-card"
+        "camp-and-card",
+        "teacher-njomo"
       ],
       "art": "iv-river",
       "unlock": "wyndia",
       "sources": [
         "faeries",
         "prima",
-        "rx2"
+        "rx2",
+        "billy",
+        "dalez"
+      ],
+      "referenceTables": [
+        {
+          "title": "Choosing the next room",
+          "columns": [
+            "What you need",
+            "Job",
+            "What changes"
+          ],
+          "rows": [
+            [
+              "A place to recover",
+              "Inn",
+              "Rest to recover lost maximum HP."
+            ],
+            [
+              "More stock",
+              "Items or Arms",
+              "Neighbouring shops of the same kind develop their stock faster."
+            ],
+            [
+              "Find equipment",
+              "Search",
+              "Send a faerie to explore. Keep enough workers hunting at home."
+            ],
+            [
+              "Use Njomo’s training",
+              "Troops",
+              "Assign faeries here to strengthen the colony’s battle skills."
+            ]
+          ]
+        }
+      ],
+      "sourceSections": [
+        {
+          "source": "billy",
+          "section": "Chapter II and Fairy Village, sections 7-A to 7-D"
+        },
+        {
+          "source": "dalez",
+          "section": "Faerie Colony: food, work pace and jobs"
+        }
       ]
     },
     {
@@ -5443,7 +6149,9 @@
       "links": [
         "chiqua-bargain",
         "apprentices",
-        "camp-and-card"
+        "camp-and-card",
+        "manillo-stamp-cards",
+        "teacher-gyosil"
       ],
       "art": "iv-fishing",
       "unlock": "sarai",
@@ -5676,7 +6384,11 @@
         },
         {
           "title": "From yellow to red",
-          "text": "Take the lift back towards 5F for the blue-sealed door. In the lower floors, the Yellow Charm releases a rope as well as doors. Descend that way for the Red Charm, then return to the red-sealed lift to enter the core. Write down the floor of your last seal if you stop playing midway."
+          "text": "On 1F, the north lift goes up to the optional blue door on 5F. The south lift goes down to B1. At the yellow rope, continue south over the bridge. Beyond the ladders, the north passage leads to the Shaman’s Ring. Turn south instead for the lever. Raise the bridge and pass beneath it to find the charm."
+        },
+        {
+          "title": "Back at the rope",
+          "text": "On the way back, use the lever to restore the crossing. Unseal the rope and go down two flights. At the Red Charm, go south for five Life Shards or east for the lift. The last diary lies north of the lift exit."
         }
       ],
       "links": [
@@ -5689,7 +6401,8 @@
       "sources": [
         "routeRun",
         "angel",
-        "dalez"
+        "dalez",
+        "rx5"
       ]
     },
     {
@@ -5813,7 +6526,8 @@
       ],
       "links": [
         "golden-plains",
-        "sarai-salvage"
+        "sarai-salvage",
+        "mt-glom"
       ]
     },
     {
@@ -6020,6 +6734,315 @@
         "teacher-marlok",
         "clear-save"
       ]
+    },
+    {
+      "id": "kyria-passage",
+      "title": "The passage to Synesta",
+      "category": "Walkthrough",
+      "unlock": "dam-kyria",
+      "art": "iv-river",
+      "lead": "After helping the mayor, take the zigzag trail north of his house. The cavern comes out through the town well.",
+      "sections": [
+        {
+          "title": "Upstream to the dry fork",
+          "text": "At the first stream, the eastern bank has the Water Bomb chest. Get back in the shallows and wade upstream. Circle the deeper pool and jump across on the stepping stone. Enter the eastern tunnel."
+        },
+        {
+          "title": "From the fork to the well",
+          "text": "The north branch ends at the Ammonia chest. Take the south branch to the flooded steps and climb. Partway up, jump sideways for 500 zenny. Double back, keep climbing and enter the upper cavern. Its ladder opens into Synesta, close to the orphanage."
+        },
+        {
+          "title": "Learning along the way",
+          "text": "Guard when a Cadaver uses Feint or a Tadpole uses Snooze. Army Bats can use Shadowwalk at very low HP, but their total is only 8 HP. You can leave this lesson until another encounter."
+        }
+      ],
+      "links": [
+        "dam-kyria",
+        "synesta",
+        "learning-skills",
+        "kyria-woods"
+      ],
+      "sources": [
+        "rx1",
+        "billy",
+        "dalez",
+        "drawers",
+        "enemy-research"
+      ],
+      "aliases": [
+        "Kyria passage",
+        "Passage to Synesta",
+        "Synesta Pathway"
+      ]
+    },
+    {
+      "id": "manillo-stamp-cards",
+      "title": "Spending Manillo stamp cards",
+      "category": "Fishing",
+      "unlock": "sarai",
+      "art": "iv-fishing",
+      "lead": "At a blue Manillo’s fish counter, each trade earns shop points as well as the item you bought.",
+      "sections": [
+        {
+          "title": "Claim the stamps",
+          "text": "Use the shop’s Triangle prompt after a trade to put stamps on your card. Each 100 shop points buys one stamp. Twenty stamps fill a card, so one full card costs 2,000 shop points. Your fishing score for Gyosil is a separate record."
+        },
+        {
+          "title": "Spend or save",
+          "text": "Keep full cards for the merchant’s card exchange. Three cards buy one stat item. If you want the Linked Pole or the Render weapon, each early exchange sets your total back."
+        }
+      ],
+      "referenceTables": [
+        {
+          "title": "Prices in full cards",
+          "columns": [
+            "Cards",
+            "Exchange"
+          ],
+          "rows": [
+            [
+              "3",
+              "One Magic Shard, Power Food, Swallow Eye or Fish-Head"
+            ],
+            [
+              "25",
+              "Coupons"
+            ],
+            [
+              "50",
+              "Dragon Tear"
+            ],
+            [
+              "75",
+              "Linked Pole"
+            ],
+            [
+              "99",
+              "Render"
+            ]
+          ]
+        }
+      ],
+      "links": [
+        "fishing",
+        "teacher-gyosil"
+      ],
+      "sources": [
+        "dalez",
+        "dxie",
+        "fish",
+        "manillo"
+      ]
+    },
+    {
+      "id": "bandit-hideout",
+      "title": "Bandits’ Hideout",
+      "aliases": [
+        "Bandit Hideout",
+        "Bandit’s Hideout",
+        "Bandits Hideout",
+        "Thief’s Hideout",
+        "Stop, Thief!"
+      ],
+      "category": "Walkthrough",
+      "lead": "Marlok sends Ryu, Cray and Ershin after the thief. Before leaving Synesta, ask the merchant beside the town gate where he went.",
+      "art": "iv-wreck",
+      "unlock": "synesta",
+      "sections": [
+        {
+          "title": "Take the eastern road",
+          "text": "Leave Synesta and enter the question mark on the eastern path. After the encounter, follow the route to the hideout. Enter through the cleft in the rock and head east into the clearing."
+        },
+        {
+          "title": "Close a gap before taking chase",
+          "text": "Put Cray in front. Push barrels together across an opening in the southern half of the room. Approach the thief, then watch where his route turns back at the barricade. Cut across to meet him."
+        },
+        {
+          "title": "Return or recruit",
+          "text": "Catching the thief frees you to return to Marlok, then go north to the Sandflier Wharf. For an optional master, re-enter the hideout and talk to Stoll. He asks for every zenny you carry, so buy any supplies you want first."
+        }
+      ],
+      "referenceTables": [
+        {
+          "title": "Enemies in the hideout",
+          "columns": [
+            "Enemy",
+            "What to watch for"
+          ],
+          "rows": [
+            [
+              "Mouse",
+              "Guard to learn Snap."
+            ],
+            [
+              "Rat",
+              "Guard to learn Chlorine."
+            ],
+            [
+              "Army Bat",
+              "The bats appear in a group of four."
+            ]
+          ]
+        }
+      ],
+      "links": [
+        "synesta",
+        "teacher-stoll",
+        "wharf-cargo",
+        "learning-skills"
+      ],
+      "sources": [
+        "rx1",
+        "billy",
+        "dalez",
+        "enemy-research",
+        "mhobbs"
+      ]
+    },
+    {
+      "id": "wyndia-basement",
+      "title": "Wyndia Castle basement",
+      "aliases": [
+        "Wyndia Castle Basement",
+        "Wyndia basement",
+        "Windmill basement",
+        "Castle wind tunnels"
+      ],
+      "category": "Walkthrough",
+      "lead": "After visiting the oracle in Kasq Woods, speak to the king again. Enter the windmill on the north side of Wyndia Castle and descend past the guard.",
+      "art": "iv-river",
+      "unlock": "pung-tap",
+      "sections": [
+        {
+          "title": "Take the north fork for a Soul Gem",
+          "text": "Enter the eastern doorway below the stairs. The north branch ends at a chest. Return to the fork, turn south and follow the northeast passage to the revolving windmill."
+        },
+        {
+          "title": "Watch the vane",
+          "text": "When the fan turns away, dash into the northeast branch for three Swallow Eyes. Return to the fork and take the northern passage between gusts."
+        },
+        {
+          "title": "Ride the turning platforms",
+          "text": "Wait on the first platform until it faces the northern ledge. Cross and take the next platform east. Its short southern landing leads to a Balance Ring. To continue, cross to the eastern platform and leave by its east ledge."
+        },
+        {
+          "title": "Take shelter in the alcoves",
+          "text": "Move north between gusts and step into a recess when the wind rises. The east recess holds four Healing Herbs. Two FlashGrenades are farther up on the west. Go through the north door and take the Wind Flute from the pedestal. Retrace the route to the surface, then head northeast to Pung’tap."
+        }
+      ],
+      "referenceTables": [
+        {
+          "title": "Enemies below the windmill",
+          "columns": [
+            "Enemy",
+            "Learnable action"
+          ],
+          "rows": [
+            [
+              "Cadaver, Catrpilr and ZombieDr",
+              "Guard for Feint."
+            ],
+            [
+              "Zombie",
+              "Guard for Feign Swing or Distracted."
+            ],
+            [
+              "GntRoach",
+              "Douse requires a special encounter condition. The usual basement group does not supply its Drake partner."
+            ]
+          ]
+        }
+      ],
+      "links": [
+        "pung-tap",
+        "wyndia",
+        "learning-skills",
+        "field-actions"
+      ],
+      "sources": [
+        "rx2",
+        "billy",
+        "dalez",
+        "drawers",
+        "enemy-research",
+        "mhobbs"
+      ]
+    },
+    {
+      "id": "mt-glom",
+      "title": "Mt. Glom",
+      "aliases": [
+        "Mount Glom",
+        "Mt. Grom",
+        "Mount Grom",
+        "Mt Glom",
+        "Mt Grom"
+      ],
+      "category": "Walkthrough",
+      "lead": "Ride from Tarhn’s camp to the smoking mountain. Its moving plates change position when a battle ends.",
+      "art": "sandsea",
+      "unlock": "golden-plains",
+      "sections": [
+        {
+          "title": "Find the plates",
+          "text": "Jump across the first gaps and take the northern opening. A western side path leads to a Fire Ward. Come back and continue north into the platform room."
+        },
+        {
+          "title": "Ride a plate",
+          "text": "Step onto the southeastern plate and stay there until a battle finishes. Check which neighbouring plate you can now reach. The chest near the starting plate contains 600 zenny. For the way to the smith, change plates as they meet and work towards the northeast exit."
+        },
+        {
+          "title": "Take a weapon for Ershin",
+          "text": "From the northwestern part of the moving room, turn the camera towards the western wall. The doorway you can reach when the plates align leads to a Drill Punch. Return to the plates and leave to the northeast."
+        },
+        {
+          "title": "Find the smith",
+          "text": "Follow the ladders and bridges up to the smith’s house. He asks for a Faerie Drop to make a King’s Sword. Leave for Wychwood and inspect the faerie light. Bring the drop back when you have it."
+        }
+      ],
+      "referenceTables": [
+        {
+          "title": "Beside the main route",
+          "columns": [
+            "Find",
+            "Look here"
+          ],
+          "rows": [
+            [
+              "Fire Ward",
+              "The first room’s western side passage."
+            ],
+            [
+              "600 zenny",
+              "Chest reached from the starting southeastern plate."
+            ],
+            [
+              "Vitamin ×2",
+              "Northern plates."
+            ],
+            [
+              "Drill Punch",
+              "Hidden western doorway beside the moving plates."
+            ],
+            [
+              "Molotov ×4",
+              "Beyond the smith’s house, down the steps to the southwest."
+            ]
+          ]
+        }
+      ],
+      "links": [
+        "golden-plains",
+        "smiths-workbench",
+        "plains-landmarks",
+        "faerie-colony"
+      ],
+      "sources": [
+        "rx1",
+        "dalez",
+        "drawers",
+        "mhobbs"
+      ]
     }
   ],
   "fieldSheets": {
@@ -6089,7 +7112,9 @@
         "teacher-rwolf",
         "combination-magic",
         "learning-skills"
-      ]
+      ],
+      "nextSheet": "dam",
+      "mapTitle": "The two western forks"
     },
     "dam": {
       "title": "The Dam",
@@ -6152,9 +7177,9 @@
         "title": "After you give the key back",
         "steps": [
           "When the bell sounds, take the Crank back across the bridge and fit it to the lift. If the handle sticks, tap your mapped Cross button to lower the lift.",
-          "Once outside, head north on the world map to the ! stop. Ask the bard to play until you hear the Song of the Dragon. Each tune costs 10 zenny. Then take the east road towards Kyria."
+          "Go north on the world map and enter the ! stop. Pay the bard 100 zenny for the dragon song. The 10-zenny tadpole tune is optional. Afterwards, take the eastern road to Kyria."
         ],
-        "evidence": "The crank, escape and closed Dam were recorded in Lab. The bard and road to Kyria come from the walkthrough authors."
+        "evidence": "The US PlayStation Lab run paid 10 zenny for the tadpole song and 100 zenny for the dragon song, then continued east to Kyria."
       },
       "evidence": "The US PlayStation Lab run recorded all three rewards, the key exchange and the failed attempt to re-enter after the flood. This diagram separates elevations and the work camp. See the walk from the camp for the earlier engine instructions.",
       "mapKind": "Gate elevations and handover",
@@ -6174,7 +7199,209 @@
           "Return to the first control panel and use the key. Climb back outside and cross the gate you just lowered. The first ladder on the far side leads up to the Short Sword chest.",
           "Save before starting the second engine if you want another try at the flywheel prize. From the sword ladder, take the lower path to the second engine. Roll the directional buttons in a circle either way. Start slowly, then speed up. When the wheel sounds high-pitched, press your mapped Circle button. If Ryu starts sweating, he is tiring. Speak to the worker afterwards for the prize."
         ]
-      }
+      },
+      "nextSheet": "kyria",
+      "mapTitle": "The sluice gates"
+    },
+    "kyria": {
+      "id": "kyria",
+      "title": "Kyria village",
+      "chapter": "The Awakening · Kyria",
+      "objective": "Enter the mayor’s house from below and find out where he went.",
+      "entry": "Coming from the bard on the Dam road",
+      "map": "kyria.svg",
+      "mapTitle": "The bridge and the two pits",
+      "mapAlt": "Cross the bridge to the mayor’s house. The cat circles the pit with the ladder into the house. The chicken circles a different pit with 400 zenny. Speak to the parrot, then go back to the village gate for the western road to the Woods.",
+      "steps": [
+        {
+          "key": 1,
+          "title": "Cross the village bridge",
+          "body": "Leave the Manillo and the inn by the entrance. Cross the bridge towards the mayor’s house. A cage blocks the front door. Look behind the house for a cat pacing round a patch of ground."
+        },
+        {
+          "key": 2,
+          "title": "Drop into the cat’s pit",
+          "body": "Drop through the southern pit circled by the cat. Follow the short ledge to its ladder and climb into the mayor’s house. The northern pit by the chicken leads to the 400-zenny chest and the barrel shed."
+        },
+        {
+          "key": 3,
+          "title": "Get an answer from the parrot",
+          "body": "Inside, check the bookcase beside the bird for a Fish-head. Tell the parrot you have no time, then decline its next three offers. On the US PlayStation version the choices are 2, 2, 3, 4. Now ask where the mayor is."
+        },
+        {
+          "key": 4,
+          "title": "Take the western road",
+          "body": "Leave through the front door and return across the bridge. If the foot trap catches you, clear its message and keep walking. The innkeeper can heal the party and offer an ordinary save. Leave town and go west on the world map to the Woods."
+        }
+      ],
+      "optional": [
+        {
+          "name": "Fish-head",
+          "where": "mayor’s house",
+          "advice": "Check the bookcase next to the parrot. It holds one Fish-head."
+        },
+        {
+          "name": "400 zenny",
+          "where": "trap cellar",
+          "advice": "Drop through the chicken’s pit. Take the first short drop and open the chest. A second drop leads to the floor below. Climb the ladders to the barrel shed and put Cray in front to push a barrel aside."
+        },
+        {
+          "name": "Belladonna",
+          "where": "village bridge",
+          "advice": "Trigger the bridge trap and speak to the villager beside the bridge. If the gift has not appeared, spring other village traps and speak to the villager again."
+        },
+        {
+          "name": "Ice Punch",
+          "where": "trapped chest",
+          "advice": "Open the chest behind the inn and fight the three enemies named ????. The Ice Punch comes from that one-time battle."
+        },
+        {
+          "name": "Bronze Shield",
+          "where": "doghouse battle",
+          "advice": "Defeat the BeeTroop with its shield intact for a chance at the shield. Cast spells instead of striking it with weapons."
+        }
+      ],
+      "enemies": [
+        {
+          "name": "????",
+          "detail": "Two of the three chests have only 1 HP. The real one has 300 HP and can run away. Clear the decoys to lower its magic resistance, then defeat it for the Ice Punch."
+        },
+        {
+          "name": "BeeTroop",
+          "detail": "800 HP. Use magic while its shield is intact to keep the Bronze Shield drop available. Guard when it uses Wild Swing. Breaking the shield lets it use Risky Blow, another learnable skill."
+        }
+      ],
+      "warning": "Save at the inn before opening the trapped chest if you want the Ice Punch. Its carrier can flee. At the doghouse, use magic if you want the BeeTroop’s shield. Weapon hits can break it.",
+      "after": {
+        "title": "When you return with the mayor",
+        "steps": [
+          "After the night at the inn, climb out when Cray falls in. The zigzag path uphill north of the mayor’s house now leads to the passage for Synesta."
+        ]
+      },
+      "evidence": "The US PlayStation Lab run followed both pits. The northern cellar gave 400 zenny and led to the barrel shed. The southern ladder reached the parrot. The bookcase gave one Fish-head. The innkeeper restored the party and saved to an empty file.",
+      "mapKind": "Village route and cellar cutaway",
+      "stop": "dam-kyria",
+      "area": "Kyria",
+      "art": "iv-river",
+      "nextSheet": "kyria-woods",
+      "links": [
+        "field-actions",
+        "learning-skills",
+        "camp-and-card"
+      ]
+    },
+    "kyria-woods": {
+      "id": "kyria-woods",
+      "title": "Kyria Woods",
+      "chapter": "The Awakening · Kyria",
+      "objective": "Pass under the broken bridge and climb the falls to find the mayor.",
+      "entry": "Arriving from Kyria after speaking to the parrot",
+      "map": "kyria-woods.svg",
+      "mapTitle": "From the apple tree to the falls",
+      "mapAlt": "Follow the woodsman’s sign east to the well. Go under the broken bridge and leave the trap clearing by its eastern opening. Jump the river stones. At the top, the western branch holds a Wisdom Seed; the northern branch leads to the mayor and Maman.",
+      "steps": [
+        {
+          "key": 1,
+          "title": "Find the man by the apple tree",
+          "body": "Follow the winding entrance path to the man blocking the way. Speak to him for an Apple. Put Ershin in front and ram the nearby tree for more. Pass the man and follow the sign east to the well."
+        },
+        {
+          "key": 2,
+          "title": "Pass under the broken bridge",
+          "body": "In the trap clearing, take the path east from the well. Go under the broken bridge and through the eastern opening to the riverbank. Baiting a stump shows where a boar runs; you can walk straight through to the river without an apple."
+        },
+        {
+          "key": 3,
+          "title": "Jump up the falls",
+          "body": "From the riverbank, jump to the rock beside the waterfall, then to the far bank. Follow the ledges uphill. At the top, the western jump is a dead end with a Wisdom Seed. Jump back to the fork to continue."
+        },
+        {
+          "key": 4,
+          "title": "Take the northern trail",
+          "body": "Heal at the fork before leaving by the high northern path. The mayor is in the next clearing. Maman uses Body Press on one character and Rock Blast on the front rank. Ryu’s Aura form has Flame Strike; Nina can heal."
+        }
+      ],
+      "optional": [
+        {
+          "name": "Apples",
+          "where": "entrance tree",
+          "advice": "The man gives you one Apple. Ram the tree with Ershin to collect more. Each Apple restores 100 HP; you can also use one as bait."
+        },
+        {
+          "name": "Healing Herb ×4",
+          "where": "well clearing",
+          "advice": "From the well, go up the east ramp and pass the stump. Fall into the pit beside the hanging cage. Open the chest and climb out through the well."
+        },
+        {
+          "name": "Earth Ward",
+          "where": "east of the well",
+          "advice": "Bait the stump up the incline east of the well and follow the tracks. To find it yourself, go south from the hanging chest past the cage and enter the southern treeline before the downhill ramp."
+        },
+        {
+          "name": "PointedStick",
+          "where": "suspended chest",
+          "advice": "Go south from the well and up the slope by the hanging plate. From the next cage, climb the short northern rise. Stand under the suspended chest to collect Nina’s weapon."
+        },
+        {
+          "name": "Aura Ring",
+          "where": "underground ledge",
+          "advice": "From the cage south of the hanging chest, follow the trees to the southern edge. Go east down the ramp and up the next. Drop through the pit at the top to reach the ring. The ladder returns to the well."
+        },
+        {
+          "name": "Apple ×8",
+          "where": "eastern glade",
+          "advice": "Bait the stump south of the hanging chest. Its trail leads to a gap in the eastern treeline on the upper ledge, behind the hanging stone. Open the chest in the glade."
+        },
+        {
+          "name": "Wisdom Seed",
+          "where": "upper falls",
+          "advice": "At the top of the falls, jump across to the western dead end. Take the seed from the bag, then jump back to the fork."
+        }
+      ],
+      "enemies": [
+        {
+          "name": "Flue Goo",
+          "detail": "320 HP. Watch for Giant Growth. A Flue Goo gives 40 EXP before bonuses."
+        },
+        {
+          "name": "Red Cap",
+          "detail": "300 HP. Watch for Command when other enemies are present."
+        },
+        {
+          "name": "Maman",
+          "detail": "3,600 HP. Body Press hits one character. Rock Blast hits the front rank. An Apple used on Maman briefly distracts it and heals it for 100 HP. It carries an Apple to steal. Victory earns the Flame Punch, 1,500 EXP and 450 zenny."
+        },
+        {
+          "name": "Cap",
+          "detail": "170 HP. Use Guard when it loses interest and uses Distracted. Berries can be stolen; a Healing Herb can drop."
+        },
+        {
+          "name": "Fungoid",
+          "detail": "420 HP. Guard when it orders the other enemies with Command. Its powder can confuse the party."
+        },
+        {
+          "name": "Bandit",
+          "detail": "500 HP. Expect Sever and Healing Herb. Its steal is a Moon Sword; its drop is a Healing Herb."
+        }
+      ],
+      "warning": null,
+      "after": {
+        "title": "After the clearing",
+        "steps": [
+          "The battle returns the party to the world map. Re-enter Kyria and speak with the mayor. He opens the route to Synesta.",
+          "After the night at the inn, climb out of Cray’s pit. Take the uphill path north of the mayor’s house. The cavern on the far side leads to the well in Synesta."
+        ]
+      },
+      "evidence": "The US PlayStation Lab run received the Apple, crossed the trap clearing without baiting a stump, collected one Wisdom Seed on the western ledge and reached the mayor by the northern trail. The other treasure detours and battle details draw on the cited PlayStation references.",
+      "mapKind": "Woodland route and waterfall ascent",
+      "stop": "dam-kyria",
+      "area": "Kyria Woods",
+      "art": "iv-river",
+      "links": [
+        "kyria-passage",
+        "learning-skills",
+        "combination-magic"
+      ]
     }
   },
   "teachers": [
@@ -6254,7 +7481,8 @@
       ],
       "links": [
         "apprentices",
-        "masters"
+        "masters",
+        "bandit-hideout"
       ],
       "growth": {
         "HP": 0,

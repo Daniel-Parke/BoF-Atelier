@@ -2,6 +2,8 @@
 
 The desktop app and browser preview read the same guide records. Edit those records and regenerate the preview whenever you change the content, artwork or reader. Readers can open the finished HTML without Python, a server or a network connection.
 
+The published books declare their format in `version`. This reader accepts versions 1 and 2. Version 2 gives each grouped route an explicit list of floors and each item or encounter its own area membership. When changing that contract, test an earlier volume as well as the new one. Build the native reader with the matching books, then open one illustrated page from each volume in the finished package before distributing it.
+
 ## Make a change
 
 For directions, timings, rewards and skill conditions, follow the [editorial standard](FIELD-GUIDE-STYLE.md) and check the [community sources](WALKTHROUGH-SOURCES.md). Cite the author and chapter in the shared record. Keep each illustrated route’s pin numbers aligned with its steps. Additions to the full area ledger also appear in the reference index.
@@ -45,6 +47,8 @@ After a change reaches `main`, wait for the Pages deployment to finish. Open bot
 
 For a repeatable browser check, install Playwright in your development environment and run `python tests/check_public_guide_browser.py --browser PATH_TO_CHROME --live-url PAGES_URL`. Use your installed Chrome or Edge executable and your published HTTPS URL ending in a slash. The check compares the served HTML to the local build, opens every walkthrough and wiki page, and checks the downloaded file.
 
-The three editorial maps live under `design/field-guide/atlas`. The browser uses the vector drawings. The Windows reader uses matching high-resolution WebP images so the ink contours and labels survive Qt rendering. After editing a drawing, run `python -m tools.render_field_maps` with Pillow, Playwright and Chrome available. Check both versions visually before reviewing the new SHA-256 values in `tools/atlas_assets.py`.
+Each illustrated route has one record in the volume's `fieldSheets`. Its numbered pins, text directions and diagram under `design/field-guide/atlas` share the same keys. For a chapter covering several places, assign each place a stable ID, its floor IDs and the items and encounters that belong there. This keeps the village and the woods distinct even when their names overlap.
+
+The browser embeds the SVG. Windows uses a matching high-resolution WebP. With Pillow, Playwright and Chrome installed, run `python -m tools.render_field_maps kyria kyria-woods` to refresh selected drawings. Omit the names to rebuild all of them. Check both renderings at reading size. Review the new SHA-256 values in `tools/atlas_assets.py` before rebuilding the standalone book.
 
 The four original Ogg recordings have SDL-compatible copies for the desktop menu. Regenerate those with `python -m tools.render_menu_audio` and Python SoundFile. Review the changed audio digest, listen to the edit and keep the credits. These are contributor tools. Reading the offline guide requires only a browser.

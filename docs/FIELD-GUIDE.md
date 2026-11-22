@@ -7,8 +7,12 @@ Open either volume and choose **Walkthrough** to follow the story or **Search** 
 Choose a number on the map to see the matching direction. A dashed path marks an optional detour. Use **Read all steps** for the full sequence. The text route is also available when a diagram is hard to read.
 
 - **III, Cedar Woods.** Find the downstairs door, cross the log and take the optional path to Skill Ink. [Open Cedar Woods](https://daniel-parke.github.io/BoF-Atelier/#bof3/cedar)
+- **III, McNeil.** The green sword sign marks the weapon shop. The road past the wheat fields takes you out of the village. [Open McNeil](https://daniel-parke.github.io/BoF-Atelier/#bof3/mcneil)
+- **III, Mt. Glaus.** Use the climb for the hut and summit detour. Switch to the cave half of the drawing for the blood trail and the underground stream. [Open Mt. Glaus](https://daniel-parke.github.io/BoF-Atelier/#bof3/glaus)
 - **IV, Kurok.** The upper fork leads to the Deep Diver. The lower one leads to the Dam. [Open Kurok](https://daniel-parke.github.io/BoF-Atelier/#bof4/kurok)
 - **IV, the Dam.** Start with the work-camp directions when you arrive. Read the missable warning before giving the key back. [Open the Dam](https://daniel-parke.github.io/BoF-Atelier/#bof4/dam)
+- **IV, Kyria.** The cat and the chicken circle different pits. One leads to the mayor's house and the other to 400 zenny. [Open Kyria](https://daniel-parke.github.io/BoF-Atelier/#bof4/kyria)
+- **IV, Kyria Woods.** Follow the route from the well to the river. The fork above the waterfall separates the mayor's clearing from the Wisdom Seed. [Open Kyria Woods](https://daniel-parke.github.io/BoF-Atelier/#bof4/kyria-woods)
 
 ## Look something up
 

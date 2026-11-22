@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="390" viewBox="0 0 760 390" role="img" aria-labelledby="route-name route-desc">
+<title id="route-name">Kyria Woods, from the apple tree to the falls</title>
+<desc id="route-desc">The apple tree is at the entrance beside the woodsman. Follow the sign east to the well. Go underneath the broken bridge to leave the trap clearing. Jump the falls from bank to bank. A westward jump at the top reaches the Wisdom Seed. The north trail leads to the mayor.</desc>
+<defs>
+  <linearGradient id="paper" x2="1" y2="1"><stop stop-color="#f6f1dd"/><stop offset="1" stop-color="#e6d6b6"/></linearGradient>
+  <linearGradient id="wood" x2=".2" y2="1"><stop stop-color="#c4ceb0"/><stop offset="1" stop-color="#a3b29a"/></linearGradient>
+  <linearGradient id="stream" x2=".8" y2="1"><stop stop-color="#bdd6c5"/><stop offset=".55" stop-color="#8fb8af"/><stop offset="1" stop-color="#b2cabe"/></linearGradient>
+  <linearGradient id="fall" x2="1" y2="0"><stop stop-color="#b7d3c4"/><stop offset=".32" stop-color="#eef1dc"/><stop offset=".58" stop-color="#adccbe"/><stop offset="1" stop-color="#e0e9cf"/></linearGradient>
+  <pattern id="shale" width="17" height="11" patternUnits="userSpaceOnUse"><path d="m1 9 4-5m3 4 3-5m4 4 2-3" fill="none" stroke="#837c63" stroke-width=".8" opacity=".62"/></pattern>
+  <g id="oak" stroke-linecap="round">
+    <ellipse cy="1" rx="15" ry="4" fill="#455f50" opacity=".16"/>
+    <path d="M-4 1l3-24-8-12 11 8 9-12-7 16 2 24 4 3-10-1z" fill="#887a59" stroke="#66694e" stroke-width="1.4"/>
+    <path d="M-22-29q-6-7-4-14 1-7 9-9 0-11 11-12 8-8 17-2 10-3 16 5 8 2 7 11 6 6 0 12 0 10-12 11-9 6-17 1-11 4-17-3z" fill="#8aa082" stroke="#647c68" stroke-width="1.3"/>
+    <path d="M-20-43q3-5 8-5m-1-9q5-4 10-4m9 1q8-3 13 4m-35 19q5 2 10-2m9 0 6-2m3 4q6 0 9-6" fill="none" stroke="#bbcaab" stroke-width="1.9"/>
+  </g>
+  <g id="pine" stroke-linejoin="round">
+    <path d="M-1 2l1-31 3 1v30z" stroke="#766d50" fill="#827457"/><path d="m0-52-7 12 4-1-8 13 5-2-9 16 6-3-11 14 13-4 7 3 7-3 10 2-10-12 7 2-9-12 5 2-8-12 4 2z" fill="#779183" stroke="#586f60"/><path d="m0-43-2 8m3 0 5 10m-7 0-5 8m7 1 6 6" fill="none" stroke="#b4c5a8" stroke-width="1.4"/>
+  </g>
+  <g id="fruit">
+    <use href="#oak"/><g stroke="#8f6445" stroke-width=".8" fill="#c58258"><circle cx="-18" cy="-40" r="3.3"/><circle cx="7" cy="-60" r="3.1"/><circle cx="21" cy="-46" r="3.8"/><circle cx="-5" cy="-49" r="3.2"/><circle cx="6" cy="-32" r="3.7"/></g>
+  </g>
+  <g id="guide"><ellipse cx="1" cy="1" rx="9" ry="3.3" fill="#62715c" opacity=".3"/><path d="m-4-7-2 10h4l3-8 2 8h4L4-12" fill="#796e51" stroke="#625d4c"/><path d="M-5-19q4-6 9-2l4 12-13 2-3-6z" fill="#a58a62" stroke="#6d634d"/><path d="M-3-30q4-3 7 0l1 7-5 2-4-4z" fill="#c7a679" stroke="#76674e"/><path d="m-7-29 4-5 8 2 4 4-16 1z" fill="#7f8161" stroke="#677054"/><path d="m5-17 9 3 5-4m-22 3-4 5" fill="none" stroke="#8f7659" stroke-width="2.4"/></g>
+  <g id="stump">
+    <path d="m-10 2 3-11 13-1 5 12 3 4-8-1-4 2-7-3-7 2z" fill="#ad9970" stroke="#7d7356" stroke-width="1.2"/><ellipse cx="0" cy="-9" rx="7" ry="2.8" fill="#d5bc88" stroke="#867951"/><path d="m-5-4-2 7m9-8 1 8" fill="none" stroke="#867657"/>
+  </g>
+  <g id="well">
+    <ellipse cx="1" cy="0" rx="17.5" ry="7" fill="#87967f" opacity=".3"/>
+    <path d="M-16-14q14 8 31-1v13q-15 8-31 0z" fill="#aba98b" stroke="#727962" stroke-width="1.5"/>
+    <path d="M-16-9q13 6 31-1m-27-2v6m11-3v6m8-11v7" fill="none" stroke="#797e67"/>
+    <ellipse cy="-15" rx="17" ry="6" fill="#d4c9a2" stroke="#7d846b" stroke-width="1.3"/><ellipse cy="-15" rx="12.5" ry="3.6" fill="#697c6a"/>
+    <path d="m-12-14 1-21m22 21 1-22m-24 1 26-1m-4-2 5 4m-18 0v13" fill="none" stroke="#837057" stroke-linecap="round" stroke-width="2"/>
+  </g>
+  <g id="sign"><path d="m-1 5 0-21 3-1 1 21z" fill="#96794f"/><path d="m-7-19 19 0 6 4-7 4-18 0z" fill="#c1a16f" stroke="#7d6e4e"/><path d="m-4-15 13 0" stroke="#a88c60"/></g>
+  <g id="hang">
+    <path d="M-12 4l3-33 18-6m-17 8 16-5" stroke="#857454" fill="none" stroke-width="2"/><path d="m9-33 1 13" fill="none" stroke="#8a8164"/>
+    <path d="m2-19 15-2 3 4-18 2z" fill="#ac9f79" stroke="#7a775d"/>
+  </g>
+  <g id="stone"><path d="m-11 3 4-8 10-2 9 5-2 5-15 2z" fill="#a69b7d" stroke="#85886e"/><path d="m-6-4 8-2 6 3-12 2z" fill="#d5d0ab"/></g>
+  <g id="grass"><path d="m-6 1-5-6m8 6-2-8m5 6 4-10m-1 11 6-6" stroke="#87926f" stroke-width="1.1" fill="none"/></g>
+  <g id="mark"><circle r="16" fill="#fff8e7" stroke="#2d655a" stroke-width="1.7"/><circle r="13" fill="#285f55"/></g>
+</defs>
+<style>
+  .topo,.line,.spur{fill:none;stroke-linecap:round;stroke-linejoin:round}.topo{stroke:#a69e79;stroke-width:1.2}
+  .line{stroke:#396d5f;stroke-width:3}.spur{stroke:#966b3e;stroke-width:2.7;stroke-dasharray:5 5}
+  .label{font:bold 21px Georgia,'Times New Roman',serif;fill:#33483c}.small{font:600 14px 'Segoe UI',Arial,sans-serif;fill:#3e5140}
+  .label,.small{stroke:none}
+  .selection{fill:none;stroke:#b35d39;stroke-width:3;opacity:0}.pin.active .selection,.pin:target .selection{opacity:1}
+  .pin text{font:bold 17px 'Segoe UI',Arial,sans-serif;fill:#fff8e7;text-anchor:middle}
+  .legend{font:600 13px 'Segoe UI',Arial,sans-serif;fill:#4b5445}
+</style>
+<rect width="760" height="390" fill="url(#paper)"/>
+<!-- Overlapping contour bands rise from the orchard into the broken woodland terraces. -->
+<path d="M0 72Q57 42 132 56t139-3q81-23 148-5 63 13 107-7T641 18q75-4 119 6v42q-47-17-115-4-55 9-112 40-49 18-116 3-54-18-125-1-96 27-183 1Q59 97 0 115z" fill="#c4d0b4"/>
+<path d="M0 122q52-28 110-16 75 15 143-5t139-9q42 5 75-5l-21 46-56 34-149 12-114 69L0 228z" fill="url(#wood)"/>
+<path d="M0 142q31-17 67-15m129 5q64-29 133-24m47-2q56 7 76-2M9 152q32-14 65-13m152-8q62-20 98-15" class="topo" opacity=".55"/>
+<g opacity=".86">
+  <use href="#pine" transform="translate(9 136) scale(.7)"/><use href="#oak" transform="translate(33 126) scale(.62)"/><use href="#pine" transform="translate(65 124) scale(.75)"/>
+  <use href="#oak" transform="translate(125 119) scale(.77)"/><use href="#pine" transform="translate(151 121) scale(.78)"/><use href="#oak" transform="translate(195 122) scale(.67)"/>
+  <use href="#oak" transform="translate(282 115) scale(.68)"/><use href="#pine" transform="translate(330 111) scale(.82)"/><use href="#oak" transform="translate(355 114) scale(.66)"/>
+  <use href="#pine" transform="translate(442 99) scale(.83)"/><use href="#oak" transform="translate(462 95) scale(.55)"/><use href="#pine" transform="translate(690 76) scale(.71)"/><use href="#pine" transform="translate(718 70) scale(.85)"/>
+</g>
+<path d="M0 249q74-37 92-21 37 12 66-19l34-42q49-34 110-25t105-20l43 22-57 83-161 27-61 57-171 24z" fill="#ddcfaa"/>
+<path d="M199 193q42-33 80-35l32 1m-82 42q33-22 58-23m46-31q40 0 65-14" class="topo"/>
+<path d="M0 236q38-23 69-14m6 73q37-13 57-34m18-5q22-16 39-36" class="topo" opacity=".63"/>
+<path d="M29 294q22-21 52-23 46-3 68-36l26-25q36-26 70-24 36 5 62 1t68-20q49-18 72 8l26 20" fill="none" stroke="#eadbc0" stroke-width="16" stroke-linecap="round"/>
+<path d="M472 123q14-27 58-37l24-24 32 3-9 24-46 18-14 33-31 9z" fill="#c1b794"/>
+<path d="m477 139 14-24 31-16m-36 39 12-15 20-7m-11-16 18-5" class="topo"/>
+<!-- The falls are shown in profile so the optional top crossing and the north trail can be read apart. -->
+<path d="M541 99q18-13 51-19 32-9 51-32l27 10q-12 24-48 35-21 7-21 28l12 16-11 30-45 16-21 31 13 19-36 37-42 28-4 30-50 8q-13-44 19-73l36-26 16-29 21-19 10-36 17-23z" fill="url(#stream)" stroke="#8ea99a" stroke-width="1.4"/>
+<path d="M536 120l29-15 34 0-4 18-29 16-29 2zM510 179l37-15 39 0-10 17-32 17-31 2z" fill="#abac8d" stroke="#828d76" stroke-width="1.5"/>
+<path d="m538 121 23-10 1 24-20 10-13-1zm-27 57 37-12 1 22-28 17-19-2z" fill="url(#shale)"/>
+<path d="m562 110 33-3-2 30-20 10-11-5zm-13 56 32-2-3 33-24 8-8-8z" fill="url(#fall)" stroke="#9ebbb0" stroke-width=".8"/>
+<g fill="none" stroke="#eef2df" stroke-linecap="round"><path d="m567 113 0 23m7-25-1 28m10-29-1 20m-27 39-2 24m10-25-2 29m10-30-2 20" stroke-width="1.8"/><path d="M543 143q5 3 13-1t10 0m8 7q12-3 15-8m-64 63q10 4 21 0t13 0m-92 73q7-10 18-12m-29 29q12-6 16-13" stroke-width="1.6"/></g>
+<path d="M607 124q16-15 32-20l29-12 28-37q23-10 54-4v16q-14 0-28 7l-16 28q-25 19-53 25l-33 26-19 28-26-3z" fill="#c3b794" stroke="#929376"/>
+<path d="M585 179q22-24 34-29l21-17m14-8 34-12m14-10 11-15M624 157q19-15 44-25m15-9 19-9" class="topo"/>
+<path d="M505 202q17-19 24-45l-16 5-19 21-12 22z" fill="#c6b999" stroke="#9b977a"/>
+<path d="M523 221q30 5 53-21l23-13 25-2-6 16-36 18-32 19-30-1z" fill="#c0ae89" stroke="#91947a"/>
+<path d="m527 223 25 2 25-14m4-3 28-14" class="topo"/>
+<use href="#stone" transform="translate(507 218) scale(.83)"/><use href="#stone" transform="translate(530 217) scale(.7)"/><use href="#stone" transform="translate(585 156) scale(.72)"/>
+<path d="M19 295q23-22 61-24t69-36l25-25q29-25 69-24 43 8 74-1t60-20q40-13 76 14l28 29 23 9 27 1 28-9 40-21 14-18-17-14 5-16q16-22 37-28l34-16 23-26" class="line"/>
+<g stroke="#396d5f" stroke-width="2" fill="none" stroke-linecap="round"><path d="m191 195 8 0-3 7m143-34 8 1-4 6m144 24 5 7-8-1m127-76 7-3-2 7"/></g>
+<path d="M616 125q-12-13-29-18l-24 1-19-13" class="spur"/>
+<path d="M278 187q28-11 42-29l16-18" class="spur"/>
+<path d="M265 192q9 14 35 23 39 13 58 30" class="spur"/>
+<use href="#fruit" transform="translate(97 255) scale(1.22)"/><use href="#guide" transform="translate(152 227) scale(.93)"/><use href="#sign" transform="translate(176 205) scale(.9)"/>
+<use href="#well" transform="translate(263 170) scale(1.06)"/><use href="#stump" transform="translate(335 141) scale(.9)"/><use href="#stump" transform="translate(359 246) scale(.8)"/><use href="#hang" transform="translate(324 241) scale(.76)"/>
+<path d="m395 142 12 16 9 1-12-17-8-2zm22 35 14 23 11 1-15-24z" fill="#aa9270" stroke="#796e54" stroke-width="1.4"/>
+<g stroke="#716a51" stroke-width="1.7" fill="none" stroke-linecap="round"><path d="m388 137 16 21m-7-24 16 23m7 16 18 28m-9-30 18 29"/><path d="m391 138 9-2m-5 8 9-2m-5 8 9-2m16 31 9-2m-5 9 9-2m-5 8 9-2" stroke="#baa17c" stroke-width="2.3"/></g>
+<g class="topo"><path d="m405 142-1 13m30 28 1 11m-31-36 9 3m5 16 10 3"/></g>
+<g fill="#b59d6d" stroke="#817351"><path d="m531 90 8-4 6 2 1 9-12 2-5-4z"/><path d="m534 88 5-5 4 2-2 5z"/></g>
+<g opacity=".9"><use href="#oak" transform="translate(6 239) scale(.78)"/><use href="#pine" transform="translate(30 220) scale(.72)"/><use href="#pine" transform="translate(204 293) scale(.57)"/><use href="#oak" transform="translate(233 291) scale(.52)"/><use href="#pine" transform="translate(728 226) scale(.74)"/><use href="#oak" transform="translate(749 235) scale(.73)"/></g>
+<g><use href="#grass" transform="translate(49 268)"/><use href="#grass" transform="translate(145 256)"/><use href="#grass" transform="translate(299 199)"/><use href="#grass" transform="translate(348 213)"/><use href="#grass" transform="translate(475 152)"/><use href="#grass" transform="translate(669 140)"/></g>
+<g id="pin-1" class="pin" data-step="1"><circle class="selection" cx="119" cy="257" r="22"/><use href="#mark" x="119" y="257"/><text x="119" y="263">1</text></g>
+<g id="pin-2" class="pin" data-step="2"><circle class="selection" cx="387" cy="165" r="22"/><use href="#mark" x="387" y="165"/><text x="387" y="171">2</text></g>
+<g id="pin-3" class="pin" data-step="3"><circle class="selection" cx="551" cy="217" r="22"/><use href="#mark" x="551" y="217"/><text x="551" y="223">3</text></g>
+<g id="pin-4" class="pin" data-step="4"><circle class="selection" cx="677" cy="98" r="22"/><use href="#mark" x="677" y="98"/><text x="677" y="104">4</text></g>
+<g class="label"><text x="35" y="310">Apple tree</text><text x="274" y="57">Broken bridge</text><text x="551" y="271">Waterfall jumps</text><text x="619" y="38">North trail</text></g>
+<g class="small"><text x="36" y="329">Woodsman and east sign</text><text x="276" y="75">Pass underneath</text><text x="551" y="290">Cross from bank to bank</text><text x="219" y="147">Well</text><text x="492" y="71">Wisdom Seed</text><text x="299" y="284">Stump detours</text></g>
+<g transform="translate(20 365)"><path d="M0-15h720" stroke="#b8af8a"/><path d="M0 4h29" class="line"/><text x="38" y="9" class="legend">Main route</text><path d="M154 4h29" class="spur"/><text x="193" y="9" class="legend">Optional treasure</text></g>
+</svg>

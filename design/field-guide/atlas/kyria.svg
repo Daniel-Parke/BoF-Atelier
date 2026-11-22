@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="390" viewBox="0 0 760 390" role="img" aria-labelledby="route-name route-desc">
+<title id="route-name">Kyria village, the bridge and the two pits</title>
+<desc id="route-desc">Cross the bridge from the entrance. The cat's pit leads by ladder to the mayor's house and the parrot. The chicken's pit is an optional 400-zenny cellar. Return to the entrance for the world-map road west to the Woods.</desc>
+<defs>
+  <linearGradient id="paper" x2="1" y2="1" gradientUnits="objectBoundingBox"><stop stop-color="#f8f1d9"/><stop offset="1" stop-color="#e9dab6"/></linearGradient>
+  <linearGradient id="water" x2=".8" y2="1"><stop stop-color="#a8c6b9"/><stop offset=".55" stop-color="#85afa7"/><stop offset="1" stop-color="#c3d2b7"/></linearGradient>
+  <linearGradient id="earth" x2="0" y2="1"><stop stop-color="#c6ac7d"/><stop offset="1" stop-color="#dfcc9d"/></linearGradient>
+  <pattern id="silt" width="25" height="17" patternUnits="userSpaceOnUse"><path d="m1 10 6-3m7 7 3-2m4-8 4-2" stroke="#958263" stroke-width=".8" opacity=".48"/></pattern>
+  <pattern id="reed" width="13" height="7" patternUnits="userSpaceOnUse"><path d="M1 5l4-4m3 5 5-4" stroke="#879474" fill="none" stroke-width=".7"/></pattern>
+  <g id="elm">
+    <ellipse cy="1" rx="17" ry="4" fill="#65785c" opacity=".2"/>
+    <path d="M-3 2l2-26-7-10 9 8 5-14-2 18 1 23 5 2" fill="#8d7452" stroke="#68644d" stroke-width="1.5"/>
+    <path d="M-23-29q-8-9 0-15-2-11 10-13 5-11 17-6 12-8 19 3 9 2 7 11 9 9 1 17-2 7-13 8-8 5-17 0-14 4-24-5z" fill="#8b9e7c" stroke="#61775e" stroke-width="1.2"/>
+    <path d="M-23-43q5-8 13-7m-4-6q4-4 9-3m7 5q9-7 14 0m-25 20q6 4 10 1m5-6q8 3 12-3" stroke="#b7c5a0" stroke-width="2" fill="none"/>
+  </g>
+  <g id="roofhouse" stroke-linejoin="round" stroke-linecap="round">
+    <ellipse cx="2" cy="4" rx="47" ry="10" fill="#6b7256" opacity=".18"/>
+    <path d="M-39-34l54-13 28 13-1 36L-13 14-39 0z" fill="#c6a87d" stroke="#665c49" stroke-width="1.6"/>
+    <path d="M-12-18l56-16-2 36L-13 14z" fill="#e2caa2" stroke="#71654e" stroke-width="1.25"/>
+    <path d="M-39-28l27 11v28L-37-2z" fill="#a98b68"/>
+    <path d="M-48-35l15-23 48-13 38 34-62 19z" fill="#827866" stroke="#58594c" stroke-width="2"/>
+    <path d="M-48-35l16-26 15-1 8 44z" fill="#b79469" stroke="#6b5f4d" stroke-width="1.5"/>
+    <path d="M-30-61l47-12 34 34-59 17z" fill="#a58865" stroke="#665e4f" stroke-width="1.6"/>
+    <path d="M-26-58l42-12 28 29-51 15zm8 2 13 22m-1-25 13 21m0-24 15 20m-2-24 16 20m-66-9 52-15M-16-44l48-14m-41 23 49-14" fill="none" stroke="#ccb18c" stroke-width="1.25"/>
+    <path d="M-41-33l29 15 59-16m-89 38 30 13 56-12m-59-24v32m36-39v31m13-34v29" fill="none" stroke="#736448" stroke-width="2"/>
+    <path d="M0-14l14-4v23L0 9z" fill="#75684e" stroke="#625840"/><path d="M3-12l2 17m3-19 2 17" stroke="#a38b67"/>
+    <path d="M29-22l8-2v10l-8 2z" fill="#697a71" stroke="#6e634d"/><path d="M33-23v10m-4-4 7-2" fill="none" stroke="#bcac85"/>
+  </g>
+  <g id="hut"><path d="M-19-12l22-6 16 7V5L-3 12l-16-8z" fill="#d9c197" stroke="#76694e"/><path d="m-25-12 10-17 24-5 17 23-30 8z" fill="#8c8167" stroke="#665f4e"/><path d="m-16-24 24-7m-21 13 29-8m-23 12 25-6" fill="none" stroke="#bca57e"/><path d="m-6 0 7-2v9l-7 2z" fill="#685e48"/></g>
+  <g id="grass"><path d="M-8 0l-5-4m10 4-3-7m5 7 3-9m1 9 7-6" stroke="#8e9671" stroke-width="1.2" fill="none"/></g>
+  <g id="barrel"><path d="M-6-15q6-4 12 0l1 13q-6 4-14 0z" stroke="#78664d" fill="#ad9163"/><path d="M-6-12q6 3 12-1M-6-4q6 3 12-1" fill="none" stroke="#666a58" stroke-width="1.6"/></g>
+  <g id="pit"><ellipse rx="18" ry="8" fill="#bca680" stroke="#927c5b" stroke-width="1.3"/><ellipse cy="1" rx="13" ry="5" fill="#5e6254"/><path d="M-22-4l-6-4m20-2-2-4m27 9 8-4" fill="none" stroke="#a79873"/></g>
+  <g id="cat"><path d="M-12-2q-4-9-8-6-3 4 2 7-6-1-6-5-1-8 7-8 6 1 9 9l12-3 5-8 3 4 6-3-1 7-4 2-2 5-2 3-1-5-12 2-1 4-3-1 1-5z" fill="#635a4a"/><path d="m1-6 4 4m2-5 3 3" stroke="#bc9e72" stroke-width="1.4"/></g>
+  <g id="hen"><path d="M-13-9q4 0 7 3 6 3 10-6l5 1 1 4-3 1q-1 9-9 9-7-1-9-7z" fill="#bc9469" stroke="#805f43"/><path d="m4-11 1-5 3 3 2-2 1 5" fill="#a85c42"/><path d="m9-8 6 1-5 2" fill="#b28a4c"/><path d="m-4 3-1 4m5-5 1 5m-8-14q4 5 8 2" stroke="#816a4d" fill="none"/></g>
+  <g id="chest"><path d="M-13-9l19-4 11 6v12L-2 9l-11-5z" fill="#ac7354" stroke="#68563f"/><path d="M-13-9q0-7 5-9l16-3q9-1 9 14l-19 4z" fill="#bc855c" stroke="#68563f"/><path d="m-7-9 1-8m10 13q-1-9-3-15m2 18 5-1v4l-5 1z" fill="#cfad67" stroke="#c3a261"/></g>
+  <g id="marker-core"><circle r="16" fill="#fff8e5" stroke="#2e635a" stroke-width="1.7"/><circle r="13" fill="#285f55"/></g>
+</defs>
+<style>
+  .line,.spur,.edge {fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .line{stroke:#396d5f;stroke-width:3}.spur{stroke:#996a3f;stroke-width:2.6;stroke-dasharray:5 5}
+  .edge{stroke:#a49a74;stroke-width:1.3}.selection{fill:none;stroke:#b35d39;stroke-width:3;opacity:0}
+  .pin.active .selection,.pin:target .selection{opacity:1}
+  text{fill:#34483c}.pin text{font:bold 17px 'Segoe UI',Arial,sans-serif;fill:#fff9e7;text-anchor:middle}
+  .label{font:bold 21px Georgia,'Times New Roman',serif}.minor{font:600 14px 'Segoe UI',Arial,sans-serif}
+  .label,.minor{stroke:none}
+  .ink{stroke:#6c694e;stroke-width:1.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+  .legend{font:600 13px 'Segoe UI',Arial,sans-serif;fill:#4c5141}
+</style>
+<rect width="760" height="390" fill="url(#paper)"/>
+<!-- The northern terraces and the stream divide the approach from the mayor's side. -->
+<path d="M0 66Q73 42 130 54t112-11Q303 29 389 40t112-13Q625 0 760 26v34q-113-18-219 7t-190 8Q214 75 140 84T0 96z" fill="#c7cfac"/>
+<path d="M0 63Q73 41 129 51t112-10Q331 19 385 34t112-10Q640-1 760 21" class="edge"/>
+<path d="M238 105q67-42 150-33t161-13q117-34 211 2v148q-38 21-97 20l-206 27-200-18-64-49z" fill="#ded4ab"/>
+<path d="M467 91q69-28 109-26t88-14m-22 27 65-13M313 115q44-19 83-12" class="edge" opacity=".68"/>
+<path d="M0 135q69-29 111-23 65 4 99 34l18 19-25 50q-63 35-136 30H0z" fill="#d0cca5"/>
+<path d="M168 47q49 16 64 46 13 25 0 47-33 43-31 61 3 24 42 48l-43 19q-56-41-55-65 0-24 34-69 22-33-3-51-23-16-53-27z" fill="url(#water)" stroke="#82a398" stroke-width="1.3"/>
+<g fill="none" stroke="#dce7ce" stroke-width="1.6" opacity=".9"><path d="M181 65q27 9 42 26m-6 14q7 12-4 29m-31 31q-12 19-15 31m4 18q4 14 26 27"/><path d="M155 60q26 11 38 22m-20 79-12 21m40 35q6 12 23 21"/></g>
+<path d="M10 216Q86 209 133 166q25-14 55-18m55-9q39 6 66 26t68 30m-75-36q11-30 49-58m67 69q39-25 92-29" stroke="#e9dbb7" stroke-width="19" fill="none" stroke-linecap="round"/>
+<g opacity=".86"><use href="#elm" transform="translate(24 122) scale(.58)"/><use href="#elm" transform="translate(59 129) scale(.65)"/><use href="#elm" transform="translate(724 116) scale(.79)"/><use href="#elm" transform="translate(754 102) scale(.86)"/></g>
+<use href="#roofhouse" transform="translate(96 143) scale(.62)"/><use href="#hut" transform="translate(279 96) scale(.65)"/>
+<g class="ink"><path d="m150 152 84-20 7 11-83 23z" fill="#b8a17a"/><path d="M150 149l83-19m-78 34 86-21m-88 8-2-12m19 7-1-11m20 7-1-11m21 6-1-11m23 7-1-11m-73 40-2-10m19 6-1-9m21 4-1-8m21 5-1-10m22 4-1-10"/><path d="m151 140 82-19m-74 36 78-20" stroke="#98825c" stroke-width="2"/><path d="m158 153 6 6m4-9 6 7m6-9 6 6m4-9 7 7m4-10 6 6m4-9 6 6m5-9 5 6"/></g>
+<path d="M0 243q74-7 131-3t128-9q88-6 146 7t136-1q73-18 129-9t90 8v117H0z" fill="url(#earth)"/>
+<path d="M0 243q74-7 131-3t128-9q88-6 146 7t136-1q73-18 129-9t90 8v117H0z" fill="url(#silt)" opacity=".9"/>
+<path d="M0 243q74-7 131-3t128-9q88-6 146 7t136-1q73-18 129-9t90 8" stroke="#988d67" stroke-width="2" fill="none"/>
+<path d="M227 313q-6-21 18-31l24-5q18-3 19-29l-2-9 18-1 1 14q1 22 19 26l20 1q15 8 10 29-2 11-19 14l-91 1z" fill="#b6a481" stroke="#9b886a" stroke-width="1.6"/>
+<path d="M375 201q8 32 9 63-1 11-7 21-9 19 13 38l243-6q20-3 13-32-2-19-31-21l-47 1-2-109-20 5-1 113-122 10q-17 1-19-14l-9-71z" fill="#746f58" stroke="#85765a" stroke-width="1.5"/>
+<path d="M391 300q46-8 104-7t105-7q29-5 39 5l2 15-248 10z" fill="#aa9875"/>
+<path d="M392 311q36-8 86-6l68-2 69-9" fill="none" stroke="#c9b184" stroke-width="1.3"/>
+<g stroke="#b49a70" stroke-width="3" fill="none"><path d="m549 288 2-132m11 132 1-135"/><path d="m549 280 12-2m-12-10 12-2m-11-10 12-2m-12-10 12-2m-12-10 12-2m-12-10 12-2m-12-10 12-2m-12-10 12-2m-12-10 12-2m-12-10 12-2m-12-10 12-2"/></g>
+<path d="M42 207q51-12 93-39 26-14 58-20l50-9q33 10 64 28l60 26" class="line"/>
+<path d="m242 145q27 3 49-10l57-35" class="spur"/>
+<use href="#pit" transform="translate(356 98) scale(.82)"/><use href="#hen" transform="translate(385 90) scale(.88)"/>
+<use href="#pit" transform="translate(390 197)"/><use href="#cat" transform="translate(424 188) scale(.9)"/>
+<use href="#barrel" transform="translate(324 120) scale(.82)"/><use href="#barrel" transform="translate(335 122) scale(.72)"/>
+<path d="m390 207 10 79q3 13 23 12l103-6" stroke="#e4d4a9" stroke-width="3" class="line"/>
+<path d="m421 294 6 4-5 4m86-14 7 3-6 5" fill="none" stroke="#49695a" stroke-width="1.8"/>
+<use href="#chest" transform="translate(276 306)"/>
+<use href="#roofhouse" transform="translate(565 141) scale(1.06)"/>
+<g stroke="#6e7656" stroke-width="1.2" fill="none"><path d="m581 130 11-3 4 1-15 4"/><path d="m585 126q-4-11 0-15 5-4 8 1 5 4 0 7l-3 5-4 7 1-8z" fill="#8e9a71"/><path d="m591 112 5 1-3 3" fill="#c98b57"/></g>
+<use href="#hut" transform="translate(654 150) scale(.68)"/>
+<g><use href="#grass" transform="translate(20 202)"/><use href="#grass" transform="translate(126 193)"/><use href="#grass" transform="translate(456 175)"/><use href="#grass" transform="translate(684 198)"/><use href="#grass" transform="translate(707 202)"/><use href="#grass" transform="translate(670 219)"/></g>
+<path d="M606 111q29-6 57-23t64-20" class="edge" stroke-dasharray="3 4"/>
+<path d="M39 222q-4 5-12 8m9-8-9 8 13-1" fill="none" stroke="#396d5f" stroke-width="2"/>
+<g class="pin" id="pin-1" data-step="1"><circle class="selection" cx="181" cy="152" r="22"/><use href="#marker-core" x="181" y="152"/><text x="181" y="158">1</text></g>
+<g class="pin" id="pin-2" data-step="2"><circle class="selection" cx="365" cy="190" r="22"/><use href="#marker-core" x="365" y="190"/><text x="365" y="196">2</text></g>
+<g class="pin" id="pin-3" data-step="3"><circle class="selection" cx="525" cy="137" r="22"/><use href="#marker-core" x="525" y="137"/><text x="525" y="143">3</text></g>
+<g class="pin" id="pin-4" data-step="4"><circle class="selection" cx="58" cy="205" r="22"/><use href="#marker-core" x="58" y="205"/><text x="58" y="211">4</text></g>
+<g class="label"><text x="36" y="71">Village bridge</text><text x="295" y="221">Cat’s pit</text><text x="492" y="45">Mayor’s house</text><text x="30" y="269">Road to the Woods</text></g>
+<g class="minor"><text x="38" y="90">From the Dam</text><text x="307" y="66">Chicken’s pit</text><text x="491" y="65">Parrot and bookcase</text><text x="31" y="290">Leave by the village gate</text><text x="240" y="342">400 zenny</text><text x="428" y="337">Ladder into the house</text></g>
+<g transform="translate(20 365)"><path d="M0-15h720" stroke="#bdb08a"/><path d="M0 4h29" class="line"/><text x="38" y="9" class="legend">Main route</text><path d="M152 4h28" class="spur"/><text x="191" y="9" class="legend">Optional cellar</text></g>
+</svg>

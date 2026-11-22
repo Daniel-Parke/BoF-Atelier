@@ -103,12 +103,15 @@ def render(root: Path) -> dict[str, bytes]:
     recipes = {"+".join(names[i] for i in group): public_gene_recipe(group)
                for size in (1, 2, 3) for group in itertools.combinations(range(3), size)}
     atlas = guide / "atlas"
-    diagrams = {key: route_illustration(reviewed_asset(atlas, f"{key}.svg"), key)
-                for key in ("cedar", "kurok", "dam")}
+    diagrams = {}
     for volume in books.values():
         for key, sheet in volume.get("fieldSheets", {}).items():
-            if {str(step["key"]) for step in sheet["steps"]} != set(diagrams[key]["points"]):
+            if key in diagrams:
+                raise ValueError(f"Duplicate illustrated route ID: {key}")
+            diagram = route_illustration(reviewed_asset(atlas, sheet["map"]), key)
+            if {str(step["key"]) for step in sheet["steps"]} != set(diagram["points"]):
                 raise ValueError(f"Route markers differ from the directions for {key}")
+            diagrams[key] = diagram
     books["extras"] = {"recipes": recipes, "diagrams": diagrams}
     data = json.dumps(books, ensure_ascii=False, separators=(",", ":"))
     plates = illustrations(root)

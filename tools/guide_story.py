@@ -117,7 +117,7 @@ def _card_stamp(path: Path) -> tuple[int, int, int, int]:
     return info.st_dev, info.st_ino, info.st_size, info.st_mtime_ns
 
 
-def saved_story(game: str, record: dict | None, paths: dict[int, Path]) -> dict[str, str]:
+def saved_story(game: str, record: dict | None, paths: dict[int, Path]) -> dict[str, str | int]:
     """All occupied files on these ports must independently identify the same saved area."""
     if (game not in REVISIONS or not record or not record.get("verified")
             or record.get("game") != game or record.get("serial") != SERIALS[game]
@@ -142,14 +142,19 @@ def saved_story(game: str, record: dict | None, paths: dict[int, Path]) -> dict[
                     return {}
                 filenames.add(slot["filename"])
                 start = slot["blocks"][0] * memory_card.BLOCK
-                place = _saved_area(game, data[start:start + memory_card.BLOCK])
+                block = data[start:start + memory_card.BLOCK]
+                place = _saved_area(game, block)
                 if not place:
                     return {}
-                places.add(place)
+                # McNeil and Cedar Woods share a chapter. Name the village only when all files agree.
+                village = game == "bof3" and place == "cedar" and int.from_bytes(block[0x224:0x226], "little") == 7
+                places.add((place, village))
                 if len(places) > 1:
                     return {}
         if places and all(_card_stamp(path) == stamps[port] for port, path in paths.items()):
-            return {"game": game, "place": places.pop(), "source": "Last in-game save"}
+            place, village = places.pop()
+            result = {"game": game, "place": place, "source": "Last in-game save"}
+            return dict(result, floorId=7) if village else result
     except (OSError, ValueError):
         pass
     return {}

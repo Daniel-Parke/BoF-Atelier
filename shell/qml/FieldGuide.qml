@@ -48,9 +48,10 @@ FocusScope {
                                       && gameStory.floorId !== undefined ? gameStory.floorId : -1
     property string chosenArea: ""
     readonly property var areas: stop.sectionsByArea || []
-    readonly property var area: areas.find(s => s.name === chosenArea) || areas.find(s => s.firstFloor === savedFloor) || areas[0] || null
+    readonly property var savedArea: areas.find(s => s.floorIds.includes(savedFloor)) || null
+    readonly property var area: areas.find(s => s.name === chosenArea) || savedArea || areas[0] || null
     readonly property int firstStep: area ? area.firstStep : 0
-    readonly property var visibleFloors: area ? (stop.floors || []).filter(f => f.name.startsWith(area.name)) : stop.floors || []
+    readonly property var visibleFloors: area ? (stop.floors || []).filter(f => area.floorIds.includes(f.mapId)) : stop.floors || []
     readonly property bool hasWarning: !!stop.warning && (!area || !!area.warning)
     readonly property bool schematicAvailable: !!stop.map && (!area || area.name === areas[0].name)
     readonly property int readableThrough: Math.max(0, currentPlace, visitedThrough)
@@ -127,9 +128,7 @@ FocusScope {
         return (monsters ? "enemy." : "item.") + row.name.trim().toLowerCase()
     }
     function observationTargets(row) {
-        const sections = Object.values(sheets).filter(s => s.stop === row.stop &&
-            (!route.find(r => r.id === row.stop)?.sectionsByArea || row.where.includes(s.area)))
-        return sections.length ? sections.map(s => s.id) : [row.stop]
+        return row.areaIds?.length ? row.areaIds : [row.stop]
     }
 
     function rememberReadingChoice() {
@@ -169,8 +168,13 @@ FocusScope {
         game = id === "bof4" ? "bof4" : "bof3"
         fieldGuide.setContext(game, revision || "unregistered", branch || "default")
         place = Math.max(0, currentPlace)
+        if (!book.route) {
+            setPage("guide")
+            return
+        }
         const start = known(initial) ? initial : "guide"
-        setPage((start === "guide" || start === "walk") && currentPlace >= 0 ? (fieldGuide.markTarget || route[currentPlace].id) : start)
+        const followPlace = (start === "guide" || start === "walk") && currentPlace >= 0
+        setPage(followPlace ? (fieldGuide.markTarget || route[currentPlace].id) : start, followPlace && fieldGuide.marker < 0)
         if (start !== "guide") rememberReadingChoice()
     }
     function known(id) {
@@ -185,7 +189,7 @@ FocusScope {
         const found = volume.entries.concat(leaves, articles, route).find(entry => entry.id === id)
         return found ? found.title : "Field guide"
     }
-    function setPage(id) {
+    function setPage(id, followSave = false) {
         const targetSheet = sheets[id]
         const targetId = targetSheet ? targetSheet.stop : id
         const index = route.findIndex(p => p.id === targetId)
@@ -202,7 +206,7 @@ FocusScope {
         overview = false
         mapExpanded = false
         routeExpanded = false
-        chosenArea = targetSheet ? targetSheet.area : ""
+        chosenArea = targetSheet && !followSave ? targetSheet.area : ""
         selectedStep = sheet && sheet.id === "kurok" ? 2 : 1
         readingFloor = false
         afterOpen = false
@@ -283,7 +287,8 @@ FocusScope {
         focusNamed(rows.length ? "wiki" + rows[0].id : "revealSubject")
     }
     function searchRows() {
-        const words = query.trim().toLowerCase().split(/\s+/).filter(Boolean)
+        const term = Book.searchText(query)
+        const words = term.split(" ").filter(Boolean)
         const index = volume.entries.map(e => e.id === "walk" ? Object.assign({}, e, {detail: route.length + " stops · Hints and directions", art: route[0].art}) : e)
         if (articles.length) index.splice(1,0,{id:"wiki",title:"Field wiki",detail:articles.length + " articles · Browse by subject",terms:"encyclopaedia wiki reference",art:third ? "iii-woods" : "iv-river"})
         if (!words.length) return index
@@ -291,17 +296,21 @@ FocusScope {
             id:e.id, title:e.name, detail:e.observations[0].where,
             terms:e.observations.filter(o => isAvailable(o.stop)).map(o => o.where + " " + o.detail).join(" ")
         }))
-        const records = index.concat(leaves, named, route.filter(e => isAvailable(e.id)).map(e => ({
-            id:e.id,title:e.title,detail:e.region,terms:e.lead + " " + (e.landmarks || []).concat(e.steps || []).join(" ")
+        const illustrated = Object.values(sheets).filter(s => isAvailable(s.id)).map(s => ({
+            id:s.id, title:s.title, detail:s.chapter, aliases:[s.area].concat(s.aliases || []), terms:[s.area,s.mapTitle,s.objective,s.mapAlt]
+                .concat(s.steps.map(step => step.title + " " + step.body)).join(" ")
+        }))
+        const records = index.concat(leaves, illustrated, named, route.filter(e => isAvailable(e.id) && !sheets[e.id]).map(e => ({
+            id:e.id,title:e.title,detail:e.region,aliases:e.aliases || [],terms:e.lead + " " + (e.landmarks || []).concat(e.steps || []).join(" ")
         })), articles.filter(e => isAvailable(e.id)).map(e => ({
-            id:e.id,title:e.title,detail:e.category,terms:e.lead + " " + (e.sections || []).map(s => s.title + " " + s.text).join(" ")
+            id:e.id,title:e.title,detail:e.category,aliases:e.aliases || [],terms:e.lead + " " + (e.sections || []).map(s => s.title + " " + s.text).join(" ")
                 + " " + (e.records || []).map(r => r.name + " " + r.where + " " + r.detail).join(" ")
                 + " " + (e.referenceTables || []).map(t => t.rows.map(cells => cells.join(" ")).join(" ")).join(" ")
         })))
         return records.filter(entry => {
-            const haystack = (entry.title + " " + entry.detail + " " + entry.terms).toLowerCase()
+            const haystack = Book.searchText([entry.title, entry.detail, entry.terms].concat(entry.aliases || []).join(" "))
             return words.every(word => haystack.indexOf(word) >= 0)
-        })
+        }).sort((a,b) => Book.searchRank(term, a.title, a.aliases) - Book.searchRank(term, b.title, b.aliases))
     }
     function chooseGene(idx) {
         const next = chosen.slice()
@@ -720,7 +729,7 @@ FocusScope {
                         text: viewer.place !== viewer.currentPlace ? "" : fieldGuide.marker >= 0 ?
                               (!viewer.sheets[fieldGuide.markTarget] || viewer.bookmarkId === fieldGuide.markTarget ? "YOUR MARKED PLACE" : "") :
                               viewer.savedPlace >= 0 && (!viewer.area || viewer.area.name ===
-                                 (viewer.areas.find(s => s.firstFloor === viewer.savedFloor) || viewer.areas[0]).name)
+                                 (viewer.savedArea || viewer.areas[0]).name)
                                  ? (viewer.gameStory.source || "").toUpperCase() : ""
                     }
                     Flow {
@@ -819,7 +828,7 @@ FocusScope {
                                 id: floorSheet; objectName: "floorSheet"; Layout.fillWidth: true
                                 visible: viewer.activeSection === "Map" && !!viewer.stop.floors && !viewer.overview
                                 floors: viewer.visibleFloors; images: viewer.roster.floors || ({})
-                                initialMapId: viewer.area ? viewer.area.firstFloor : viewer.savedFloor
+                                initialMapId: viewer.area && !viewer.area.floorIds.includes(viewer.savedFloor) ? viewer.area.firstFloor : viewer.savedFloor
                                 place: viewer.game + "/" + (viewer.stop.id || "") + "/" + (viewer.area ? viewer.area.name : "")
                                 status: fieldGuide.floorStatus; accent: viewer.accent; tv: viewer.tv
                                 expanded: viewer.mapExpanded
@@ -842,7 +851,7 @@ FocusScope {
                             FieldLedger {
                                 Layout.fillWidth: true; visible: ["Items","Enemies"].includes(viewer.activeSection)
                                 monsters: viewer.activeSection === "Enemies"
-                                records: ((monsters ? viewer.stop.encounters : viewer.stop.items) || []).filter(r => !viewer.area || r.where.includes(viewer.area.name))
+                                records: ((monsters ? viewer.stop.encounters : viewer.stop.items) || []).filter(r => !viewer.area || (r.areaIds || []).includes(viewer.area.id))
                                 accent: viewer.accent; tv: viewer.tv
                                 onEntryRequested: (row) => viewer.visit(viewer.entityId(row, monsters))
                             }
@@ -892,19 +901,19 @@ FocusScope {
                         }
                         Copy { visible: viewer.loreOpen; Layout.fillWidth: true; text: viewer.stop.lore || "" }
                         Action {
-                            visible: viewer.sheet?.id === "cedar"; quiet: true; objectName: "afterCedar"
+                            visible: viewer.sheet?.id === "cedar" && !viewer.sheet.nextSheet; quiet: true; objectName: "afterCedar"
                             text: viewer.afterOpen ? "Close the later route" : "After reaching McNeil"
                             onClicked: viewer.afterOpen = !viewer.afterOpen
                         }
                         Repeater {
-                            model: viewer.sheet?.id === "cedar" && viewer.afterOpen ? viewer.stop.steps.slice(1) : []
+                            model: viewer.sheet?.id === "cedar" && !viewer.sheet.nextSheet && viewer.afterOpen ? viewer.stop.steps.slice(1) : []
                             delegate: Copy { required property string modelData; text: modelData; Layout.fillWidth: true }
                         }
                     }
                         Image {
                             objectName: "guideFieldFrame"
                             readonly property string frame: fieldGuide.photos[viewer.place] || ""
-                            visible: !!frame && (!viewer.sheet || viewer.readingFloor)
+                            visible: !!frame && (!viewer.sheet || (viewer.readingFloor && viewer.sheet.id === viewer.stop.id))
                             Layout.preferredWidth: viewer.narrow ? 227 : 300
                             Layout.preferredHeight: viewer.narrow ? 170 : 225
                             Layout.alignment: Qt.AlignTop | (viewer.narrow ? Qt.AlignLeft : Qt.AlignRight)
@@ -922,15 +931,13 @@ FocusScope {
                         }
                         Action {
                             objectName: "guideReadAhead"; Layout.fillWidth: true
-                            visible: viewer.place + 1 < viewer.route.length
-                            text: viewer.sheet?.id === "kurok" ? "Continue to the Dam" : viewer.sheet?.id === "dam" ? "Continue to Kyria" : "Read the next stop  ›"
+                            readonly property string nextRoute: viewer.sheet?.nextSheet || ""
+                            visible: !!nextRoute || viewer.place + 1 < viewer.route.length
+                            text: nextRoute ? "Continue to " + (nextRoute === "dam" ? "the Dam" : viewer.titleOf(nextRoute)) : "Read the next stop  ›"
                             onClicked: {
-                                if (viewer.sheet?.id === "kurok") {
-                                    viewer.visit("dam")
-                                    viewer.enginesOpen = true
-                                }
-                                else if (viewer.sheet?.id === "dam") {
-                                    viewer.chooseArea("Kyria"); scroller.contentY = 0; landing.forceActiveFocus()
+                                if (nextRoute) {
+                                    viewer.visit(nextRoute)
+                                    viewer.enginesOpen = !!viewer.sheet?.opening
                                 } else viewer.changePlace(viewer.place + 1)
                             }
                         }
@@ -947,7 +954,7 @@ FocusScope {
                             onClicked: {
                                 fieldGuide.clearMarker()
                                 if (fieldGuide.marker < 0) {
-                                    if (viewer.savedPlace >= 0) viewer.setPage(viewer.route[viewer.savedPlace].id)
+                                    if (viewer.savedPlace >= 0) viewer.setPage(viewer.route[viewer.savedPlace].id, true)
                                     else if (viewer.initialReading === FieldGuide.ReadingByChoice) viewer.initialReading = FieldGuide.AwaitingSave
                                 }
                             }

@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" role="img" aria-labelledby="route-name route-desc">
+<title id="route-name">Mt. Glaus, from the entrance bridge to the den</title>
+<desc id="route-desc">Climb the ramp beside the slide and cross the upper bridge to the hut. Broken trees lead to the cave. The summit is a detour for Vitamins. Inside, follow the blood to its end and retrace your steps. The upstream pool carries you behind the waterfall.</desc>
+<defs>
+  <linearGradient id="paper" x2=".82" y2="1"><stop stop-color="#f7efd7"/><stop offset=".6" stop-color="#f2e8ca"/><stop offset="1" stop-color="#e6d8b8"/></linearGradient>
+  <linearGradient id="moor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d1d5ae"/><stop offset="1" stop-color="#e4deba"/></linearGradient>
+  <linearGradient id="slate" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#98ada0"/><stop offset=".58" stop-color="#c4c6a8"/><stop offset="1" stop-color="#d4c4a2"/></linearGradient>
+  <pattern id="cut" width="7" height="8" patternUnits="userSpaceOnUse"><path d="m-2 8 5-8m2 8 5-8" stroke="#6f7161" stroke-width=".8" opacity=".55"/></pattern>
+  <pattern id="crop" width="17" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-17)"><path d="M0 14V2m0 8-4-4m4 1 4-5M9 14V7m0 4-3-3" fill="none" stroke="#9d9256" stroke-width="1.15"/></pattern>
+  <g id="larch" stroke-linejoin="round"><ellipse cy="3" rx="13" ry="4" fill="#799781" opacity=".3"/><path d="M0 2v-17" stroke="#66573e" stroke-width="2.1"/><path d="m0-36-6 13 3-1-8 10 4-1-7 10 8 1 4-3 7 3 8-1-7-9 4 2-9-13 4 1Z" fill="#7d9b82" stroke="#557769" stroke-width=".9"/><path d="m0-29-2 10-5 6m8-6 4 6m-5 0-4 5" fill="none" stroke="#bfca9e" stroke-width="1.4"/></g>
+  <g id="roundtree"><ellipse cy="4" rx="17" ry="5" fill="#69806b" opacity=".25"/><path d="m-2 3 1-20m1 8-6-7m7 6 7-6" fill="none" stroke="#75644b" stroke-width="3"/><path d="m-15-12q-9-13 2-19-1-10 9-11 7-8 13 1 13 0 13 10 9 7 1 17-4 6-12 3-6 6-12 1-9 5-14-2Z" fill="#90a788" stroke="#65816b" stroke-width="1.15"/><path d="m-12-27q1-7 8-6m-5 15q-3-6 3-11m3 6q0-7 5-10m1 9q6-5 10-4" fill="none" stroke="#c2c99f" stroke-width="1.7"/></g>
+  <g id="cottage" stroke="#67523b" stroke-width="1.2" stroke-linejoin="round">
+    <path d="m-26 2 26 8 28-10-1 5-28 11-31-9Z" fill="#778573" opacity=".28" stroke="none"/>
+    <path d="m-25-16 26 6 23-12v23L1 12l-26-8Z" fill="#ebd4a5"/><path d="m1-10 23-12v23L1 12Z" fill="#ceb88d"/>
+    <path d="m-31-17 15-20 26 5 18 12L2-6Z" fill="#995f43"/><path d="m-15-37 25 5L27-21 1-8Z" fill="#ba8055"/>
+    <path d="m-24-20 10-13m-4 15 10-12m-3 14 8-10m9-2 10 8m-7-10 10 8" fill="none" stroke="#dfb284"/>
+    <path d="m-18-10 5 1v7l-5-1Zm10 3 6 1V6l-6-2Zm16-2 7-3v6l-7 3Z" fill="#706955"/>
+    <path d="m-25-15 26 7m8-22 0-9 5 1v10" fill="#b39575"/>
+  </g>
+  <g id="awshop"><use href="#cottage"/><path d="m-26-14 24 6-5 6-25-7Z" fill="#537d74" stroke="#3c655d"/><path d="m-30-7 1 14m23-8 1 14" fill="none" stroke="#77603d" stroke-width="1.3"/><path d="m-25-12-5 6m11-5-5 6m11-4-5 6" stroke="#dfe1be" stroke-width="2"/></g>
+  <g id="swordshop"><use href="#awshop"/><path d="m-31-17 15-20 26 5 18 12L2-6Z" fill="#597d8b" stroke="#485e62" stroke-width="1.3"/><path d="m-15-37 25 5 17 11L1-8Z" fill="#7498a3"/><path d="m-22-19 10-12m-3 14 9-12m-3 14 9-11" fill="none" stroke="#aac2c1" stroke-width="1.5"/><path d="M8-12v-6h12v8" fill="none" stroke="#705e45" stroke-width="1.7"/><path d="M12-12h13v13H12Z" fill="#476e58" stroke="#635941" stroke-width="1.2"/><path d="m15-2 7-7m-7 3 4 4" stroke="#f3e8c8" stroke-width="1.3"/></g>
+  <g id="inn"><use href="#cottage"/><path d="m-31-17 15-20 26 5 18 12L2-6Z" fill="#a65a48" stroke="#755047" stroke-width="1.2"/><path d="m-25-18 12-15m-5 17 11-14m-5 16 9-12" fill="none" stroke="#cc8b72" stroke-width="1.5"/></g>
+  <g id="hut"><use href="#cottage"/><path d="m-32-17 16-21 28 6-12 22Z" fill="#ac9460" stroke="#745f43"/><path d="m-26-18 12-16m-6 17 11-15m-6 16 12-15" fill="none" stroke="#cfba86" stroke-width="1.6"/></g>
+  <g id="bridge"><path d="m-25 4 43-16 8 8L-16 13Z" fill="#cfac73" stroke="#80694e" stroke-width="1.2"/><path d="m-19 3 8 8m1-12 8 8m2-12 7 9m3-13 7 9" stroke="#9b7951" stroke-width="1.5"/><path d="m-26 1 42-16m-42 19-1-8m43-3v-10m-32 35-1-8m44-8v-8" fill="none" stroke="#78674d" stroke-width="2"/></g>
+  <g id="deck"><path d="m-25 4 43-16 8 8L-16 13Z" fill="#cdaf80" stroke="#80694e" stroke-width="1.2"/><path d="m-18 2 8 8m-2-11 8 8m-1-11 7 9m0-12 7 9m0-12 7 9" stroke="#9b7951" stroke-width="1.5"/></g>
+  <g id="rocks"><path d="m-19 3 4-9 8-3 4 7 4-13 9-3 8 14-7 6-12-2-7 4Z" fill="#a9aa90" stroke="#7f826e" stroke-width="1"/><path d="m1-2 6-11 3 7m-21 4 3-4" fill="none" stroke="#e1d8b4" stroke-width="2"/></g>
+  <g id="stonearch"><path d="m-21 1 4-15 9-10 12-3 13 8 5 15-2 8-12-3-14 4Z" fill="#aaa991" stroke="#777966" stroke-width="1.1"/><path d="m-13-1 4-13 9-4 8 5 5 12Z" fill="#4e5c53"/><path d="m-17-10 6-9 9-4m13 5 6 10" fill="none" stroke="#d9ccaa" stroke-width="2"/></g>
+  <g id="bale" stroke="#877447" stroke-width="1.2"><path d="m-8-5 12-5 7 6v9L-1 9l-8-5Z" fill="#c6ac6f"/><path d="m-7-5 7 6 10-5M0 1v8m3-17 5 5v10" fill="none"/></g>
+</defs>
+<style>
+  .label {font-family:Georgia,'Times New Roman',serif;font-weight:bold;fill:#263f37;font-size:21px}
+  .small,.folio,.number {font-family:'Segoe UI',Arial,sans-serif}.small{font-size:13px;font-weight:600;fill:#374a3e}
+  .outline{stroke:#f3e9cc;stroke-width:4px;stroke-linejoin:round}
+  .folio{font-size:13px;font-weight:bold;letter-spacing:1.3px;fill:#4d614e}.number{font-size:16px;font-weight:700;fill:#fffbea;text-anchor:middle}
+  .selection{fill:none;stroke:#204c43;stroke-width:3;opacity:0}.pin.active .selection,.pin:target .selection{opacity:1}
+</style>
+<rect width="760" height="390" fill="url(#paper)"/>
+<path d="M0 306Q20 278 45 279L66 237 91 226 111 183 144 176 151 153 185 138 204 119 238 108 263 76 287 79 309 40 346 74 372 91V314H0Z" fill="url(#slate)" stroke="#abb29a" stroke-width="1" stroke-linejoin="round"/>
+<path d="m28 264 62-41 26-40 29-8 20-18 14 12-39 24-29 46-49 26-21 23Z" fill="#b9bea4" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="m161 155 42-33 34-13 26-32 25 5 21-42 9 23-24 42-28-9-27 34-45 17-16 22Z" fill="#a5b3a1" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M0 304Q40 294 59 273T101 246L132 202l29-9M1 327Q48 311 85 292L122 251l33-32M193 168l54-31 25-32 22 4m-59 36 25-10 18-16M298 88l15-25 11 6" fill="none" stroke="#899e8a" stroke-width="1.45" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M51 289 94 259 126 216 139 215 112 255 83 300Z" fill="#dfd1aa" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M54 291 94 260 118 234 87 284Z" fill="url(#cut)" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M24 339Q26 313 66 314T135 285" fill="none" stroke="#95b3a3" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M24 339Q26 314 66 314T135 285" fill="none" stroke="#ccddc3" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M381 58Q420 49 465 57T545 53Q594 39 651 54T759 51V310Q712 325 653 310T549 318Q475 338 391 321Z" fill="#c3c2a3" stroke="#a5ad97" stroke-width="1" stroke-linejoin="round"/>
+<path d="M392 68Q443 58 473 72L531 65 561 71 595 56 617 68 649 64 687 77 737 72 755 85V306H391Z" fill="url(#cut)" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M389 218q25-47 53-36t58-9q17-8 32 2t27 3l-13 28-38 10-13 20-30 1-27-15-32 23Z" fill="#b8ba9e" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M390 255Q421 230 440 211L468 196Q494 187 508 170Q507 144 486 138T453 122Q451 106 469 96" fill="none" stroke="#807f67" stroke-width="23" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M507 170Q545 164 554 145Q558 124 582 113T620 90" fill="none" stroke="#807f67" stroke-width="23" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M390 255Q421 230 440 211L468 196Q494 187 508 170Q507 144 486 138T453 122Q451 106 469 96" fill="none" stroke="#eddfbc" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M507 170Q545 164 554 145Q558 124 582 113T620 90" fill="none" stroke="#eddfbc" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M618 89Q664 101 659 141T642 203Q636 233 656 264T682 317" fill="none" stroke="#698e91" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M618 89Q664 101 659 141T642 203Q636 233 656 264T682 317" fill="none" stroke="#add7cb" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M620 89Q661 102 656 141T639 203Q633 235 654 265T680 317" fill="none" stroke="#e1e7c9" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M540 155q19 3 38 19m-13-37q30-5 39 14" fill="none" stroke="#d5c8a6" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<use href="#stonearch" transform="translate(680 244) scale(1.22)"/>
+<use href="#rocks" transform="translate(453 278) scale(0.81)"/>
+<use href="#rocks" transform="translate(709 291) scale(0.78)"/>
+<use href="#rocks" transform="translate(550 231) scale(0.77)"/>
+<use href="#bridge" transform="translate(54 310) scale(0.85)"/>
+<use href="#deck" transform="translate(171 202) scale(0.72)"/>
+<use href="#hut" transform="translate(200 183) scale(0.93)"/>
+<use href="#stonearch" transform="translate(301 148) scale(0.79)"/>
+<use href="#larch" transform="translate(10 280) scale(0.67)"/>
+<use href="#larch" transform="translate(21 278) scale(0.6)"/>
+<use href="#larch" transform="translate(47 257) scale(0.64)"/>
+<use href="#larch" transform="translate(129 196) scale(0.58)"/>
+<use href="#larch" transform="translate(139 189) scale(0.78)"/>
+<use href="#larch" transform="translate(233 112) scale(0.58)"/>
+<use href="#larch" transform="translate(260 96) scale(0.53)"/>
+<use href="#larch" transform="translate(301 70) scale(0.59)"/>
+<use href="#larch" transform="translate(339 97) scale(0.63)"/>
+<use href="#larch" transform="translate(351 98) scale(0.71)"/>
+<use href="#larch" transform="translate(305 275) scale(0.66)"/>
+<use href="#larch" transform="translate(325 270) scale(0.8)"/>
+<use href="#larch" transform="translate(346 260) scale(0.67)"/>
+<use href="#larch" transform="translate(270 309) scale(0.7)"/>
+<path d="M41 322C57 310 71 305 85 280S106 244 118 223Q143 207 161 207L185 194Q199 180 211 182C242 181 250 163 267 154L301 148" fill="none" stroke="#f9efd1" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><path d="M41 322C57 310 71 305 85 280S106 244 118 223Q143 207 161 207L185 194Q199 180 211 182C242 181 250 163 267 154L301 148" fill="none" stroke="#245f53" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M267 154Q259 133 277 113T309 79" fill="none" stroke="#f9efd1" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><path d="M267 154Q259 133 277 113T309 79" fill="none" stroke="#96572f" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="1" stroke-dasharray="5 5"/>
+<path d="M389 255Q416 234 439 211L468 196Q494 187 508 170Q507 144 485 138T453 122Q451 106 469 96" fill="none" stroke="#f9efd1" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><path d="M389 255Q416 234 439 211L468 196Q494 187 508 170Q507 144 485 138T453 122Q451 106 469 96" fill="none" stroke="#245f53" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M508 170Q544 164 554 145Q559 124 582 113T620 90" fill="none" stroke="#f9efd1" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><path d="M508 170Q544 164 554 145Q559 124 582 113T620 90" fill="none" stroke="#245f53" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="m480 141 6 1-1-6m58 18 1-7-6 2M648 192l-6 6-2-8M654 259l2 7-7-2" fill="none" stroke="#28594f" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M645 219q10 16 29 18" fill="none" stroke="#eadcba" stroke-width="13" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M645 219q10 16 29 18" fill="none" stroke="#f9efd1" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><path d="M645 219q10 16 29 18" fill="none" stroke="#245f53" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<text x="14" y="26" text-anchor="start" class="folio">THE CLIMB</text>
+<text x="389" y="26" text-anchor="start" class="folio">INSIDE THE MOUNTAIN</text>
+<text x="309" y="42" text-anchor="middle" class="small outline" aria-hidden="true">Vitamins</text><text x="309" y="42" text-anchor="middle" class="small">Vitamins</text>
+<text x="305" y="59" text-anchor="middle" class="small outline" aria-hidden="true">Summit detour</text><text x="305" y="59" text-anchor="middle" class="small">Summit detour</text>
+<text x="390" y="280" text-anchor="start" class="small outline" aria-hidden="true">Cave entry</text><text x="390" y="280" text-anchor="start" class="small">Cave entry</text>
+<text x="542" y="288" text-anchor="start" class="small outline" aria-hidden="true">Return by water</text><text x="542" y="288" text-anchor="start" class="small">Return by water</text>
+<text x="448" y="65" text-anchor="start" class="small outline" aria-hidden="true">Backtrack here</text><text x="448" y="65" text-anchor="start" class="small">Backtrack here</text>
+<path d="M367 45v284" fill="none" stroke="#9e9c7f" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="1" stroke-dasharray="3 6"/>
+<g id="pin-1" data-step="1" class="pin"><circle class="selection" cx="85" cy="280" r="21"/><circle cx="85" cy="280" r="14.5" fill="#f8f0d6" stroke="#245b50" stroke-width="1.7"/><circle cx="85" cy="280" r="12" fill="#245b50"/><text class="number" x="85" y="285.7">1</text><text x="20" y="351" text-anchor="start" class="label outline" aria-hidden="true">Scree ramp</text><text x="20" y="351" text-anchor="start" class="label">Scree ramp</text></g>
+<g id="pin-2" data-step="2" class="pin"><circle class="selection" cx="211" cy="182" r="21"/><circle cx="211" cy="182" r="14.5" fill="#f8f0d6" stroke="#245b50" stroke-width="1.7"/><circle cx="211" cy="182" r="12" fill="#245b50"/><text class="number" x="211" y="187.7">2</text><text x="159" y="236" text-anchor="start" class="label outline" aria-hidden="true">Mountain hut</text><text x="159" y="236" text-anchor="start" class="label">Mountain hut</text></g>
+<path d="M301 131v-13" fill="none" stroke="#596e5c" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<g id="pin-3" data-step="3" class="pin"><circle class="selection" cx="301" cy="148" r="21"/><circle cx="301" cy="148" r="14.5" fill="#f8f0d6" stroke="#245b50" stroke-width="1.7"/><circle cx="301" cy="148" r="12" fill="#245b50"/><text class="number" x="301" y="153.7">3</text><text x="359" y="112" text-anchor="end" class="label outline" aria-hidden="true">Cave mouth</text><text x="359" y="112" text-anchor="end" class="label">Cave mouth</text></g>
+<g id="pin-4" data-step="4" class="pin"><circle class="selection" cx="469" cy="96" r="21"/><circle cx="469" cy="96" r="14.5" fill="#f8f0d6" stroke="#245b50" stroke-width="1.7"/><circle cx="469" cy="96" r="12" fill="#245b50"/><text class="number" x="469" y="101.7">4</text><text x="389" y="47" text-anchor="start" class="label outline" aria-hidden="true">Blood ends</text><text x="389" y="47" text-anchor="start" class="label">Blood ends</text></g>
+<g id="pin-5" data-step="5" class="pin"><circle class="selection" cx="620" cy="90" r="21"/><circle cx="620" cy="90" r="14.5" fill="#f8f0d6" stroke="#245b50" stroke-width="1.7"/><circle cx="620" cy="90" r="12" fill="#245b50"/><text class="number" x="620" y="95.7">5</text><text x="742" y="47" text-anchor="end" class="label outline" aria-hidden="true">Upstream pool</text><text x="742" y="47" text-anchor="end" class="label">Upstream pool</text></g>
+<g id="pin-6" data-step="6" class="pin"><circle class="selection" cx="675" cy="237" r="21"/><circle cx="675" cy="237" r="14.5" fill="#f8f0d6" stroke="#245b50" stroke-width="1.7"/><circle cx="675" cy="237" r="12" fill="#245b50"/><text class="number" x="675" y="242.7">6</text><text x="670" y="210" text-anchor="middle" class="label outline" aria-hidden="true">The den</text><text x="670" y="210" text-anchor="middle" class="label">The den</text></g>
+<path d="M18 358H742" fill="none" stroke="#b2ad90" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M21 371h33" fill="none" stroke="#245f53" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><text x="62" y="376" text-anchor="start" class="small outline" aria-hidden="true">Main route</text><text x="62" y="376" text-anchor="start" class="small">Main route</text><path d="M166 371h30" fill="none" stroke="#96572f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" opacity="1" stroke-dasharray="5 5"/><text x="203" y="376" text-anchor="start" class="small outline" aria-hidden="true">Optional detour</text><text x="203" y="376" text-anchor="start" class="small">Optional detour</text>
+</svg>

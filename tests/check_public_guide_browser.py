@@ -135,9 +135,11 @@ def check_pages_and_links(page, volumes: dict):
             parts = stop.get("sectionsByArea") or [{"name": ""}]
             for part in parts:
                 area = part["name"]
-                local = [f for f in stop.get("floors", []) if not area or f["name"].startswith(area)]
+                local = [f for f in stop.get("floors", []) if not area or f["mapId"] in part["floorIds"]]
                 for number, floor in enumerate(local):
-                    query = {"area": area, "floor": number} if area else {"floor": number}
+                    query = {"floor": number, "map": floor["mapId"], "section": floor["section"]}
+                    if area:
+                        query["area"] = area
                     floors[destination + "?" + urlencode(query)] = floor["name"]
         names.update({f"{game}/{article['id']}": article["title"] for article in book["articles"]})
         names.update({f"{game}/{quote(entry['id'], safe='')}": entry["name"] for entry in book["entities"].values()})
@@ -155,6 +157,14 @@ def check_pages_and_links(page, volumes: dict):
     floor_results = sweep(page, floors)
     for result in floor_results:
         assert result["floorOpen"] and result["floor"] == floors[result["path"]], result
+    legacy = {"bof3/cedar?floor=3": ("McNeil village", 7), **{
+        f"bof4/dam-kyria?area=Kyria&floor={i}": ("Kyria Woods", mid)
+        for i, mid in enumerate((1043, 1045, 1046), 1)}}
+    for result in sweep(page, legacy):
+        title, map_id = legacy[result["path"]]
+        expected = next(f["name"] for stop in volumes[result["game"]]["route"] for f in stop.get("floors", [])
+                        if f["mapId"] == map_id)
+        assert result["title"] == title and result["floorOpen"] and result["floor"] == expected, result
     # Include both the spoiler-limited and the opt-in indexes when gathering links.
     indexes = []
     for game in volumes:
@@ -205,6 +215,22 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
     search.fill("unlisted-query-1234")
     expect(main).to_contain_text("No matching pages.")
     main.get_by_role("button", name="Hide later names").click()
+    for game, term, target in (("bof3","Mount Glaus","glaus"),("bof3","McNeil village","mcneil"),
+            ("bof3","D'Lonzo","teacher-dlonzo"),("bof4","Kyria Woods","kyria-woods"),
+            ("bof4","Kurok","kurok"),("bof4","Dam","dam"),("bof3","Momo's Tower","momo-tower"),
+            ("bof4","Bandit's Hideout","bandit-hideout"),("bof4","Wyndia Castle Basement","wyndia-basement"),
+            ("bof4","Mt. Grom","mt-glom"),("bof4","Yaen","enemy.yaen")):
+        set_route(page,base,game,"search")
+        if main.locator("button[data-action=reveal]").get_attribute("aria-expanded") != "true":
+            main.get_by_role("button", name="Show later matches").click()
+        search.fill(term)
+        first = main.locator("#matches a").first
+        expect(first).to_have_attribute("href",f"#{game}/{target}")
+        first.click()
+        expect(main.get_by_role("heading",level=1)).to_be_visible()
+    for game in ("bof3","bof4"):
+        set_route(page,base,game,"search")
+        main.get_by_role("button", name="Hide later names").click()
     set_route(page,base,"bof4","masters")
     expect(main.get_by_role("combobox",name="Apprentice under")).to_have_count(0)
     main.get_by_role("button",name="Show later masters").click()
@@ -241,23 +267,28 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
     expect(main.get_by_role("status")).to_contain_text("Choose a gene")
 
     set_route(page, base, "bof4", "dam-kyria")
-    expect(main.get_by_role("heading", level=1)).to_have_text("Kurok, the Dam and Kyria Woods")
-    main.locator("a[href*='area=Kurok']").click()
+    chapter = next(s for s in volumes["bof4"]["route"] if s["id"] == "dam-kyria")
+    expect(main.get_by_role("heading", level=1)).to_have_text(chapter["title"])
+    main.locator("a[href='#bof4/kurok']").click()
     expect(main.get_by_text("Missable", exact=True)).to_be_hidden()
-    for location, number, title in (("kurok",3,"Open the red chest"),("dam",2,"Take the lower exit for Vitamins"),
-                                      ("cedar",3,"Turn uphill for Skill Ink")):
-        game = "bof3" if location == "cedar" else "bof4"
+    for game, location in ((game, key) for game, book in volumes.items() for key in book["fieldSheets"]):
         set_route(page, base, game, location)
         sheet = volumes[game]["fieldSheets"][location]
         figure = main.get_by_role("img", name=sheet["mapAlt"])
         expect(figure).to_be_visible()
         assert figure.evaluate("el=>el.complete && el.naturalWidth>0"), location
-        marker = main.locator(f".map-pin[data-number='{number}']")
-        marker.click()
-        step = main.locator(f".step-button[data-number='{number}']")
-        expect(step).to_contain_text(title)
-        expect(step).to_have_attribute("aria-pressed","true")
-        expect(step.locator(".step-body")).to_be_visible()
+        for direction in sheet["steps"]:
+            number = direction["key"]
+            main.locator(f".map-pin[data-number='{number}']").click()
+            step = main.locator(f".step-button[data-number='{number}']")
+            expect(step).to_contain_text(direction["title"])
+            expect(step).to_have_attribute("aria-pressed","true")
+            expect(step.locator(".step-body")).to_have_text(direction["body"])
+            expect(step.locator(".step-body")).to_be_visible()
+        stop = next(s for s in volumes[game]["route"] if s["id"] == sheet["stop"])
+        for kind, label in (("items","Items"), ("encounters","Enemies")):
+            expected = [r["name"] for r in stop.get(kind,[]) if not stop.get("sectionsByArea") or location in r["areaIds"]]
+            assert main.get_by_role("table",name=label).locator("tbody th a").all_text_contents() == expected, (location,label)
         screenshot(page, destination, location)
         opener = main.get_by_role("button", name="Enlarge map")
         opener.click()
@@ -333,7 +364,8 @@ def check_reader_actions(page, base: str, volumes: dict, destination: Path | Non
     expect(main.get_by_role("heading",level=1)).to_have_text("Breath of Fire IV")
 
 def check_responsive(page, base, destination):
-    wide_routes = [("bof3","cedar"),("bof4","kurok"),("bof4","dam"),("bof4","teacher-rwolf"),
+    wide_routes = [("bof3","cedar"),("bof3","mcneil"),("bof3","glaus"),("bof4","kurok"),("bof4","dam"),
+                   ("bof4","kyria"),("bof4","kyria-woods"),("bof4","teacher-rwolf"),
                    ("bof3","genes"),("bof4","combination-magic"),("bof3","wiki")]
     for width,height in ((1920,1080),(1280,720),(850,800),(768,900),(390,844),(320,568)):
         page.set_viewport_size({"width":width, "height":height})

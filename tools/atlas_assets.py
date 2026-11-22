@@ -1,6 +1,14 @@
 """Reviewed, redistributable editorial assets. New bytes require a provenance review."""
 
 ATLAS_HASHES = {
+    "design/field-guide/atlas/mcneil.svg": "a6092186e572e4dd61ecd2de270a99d9afea5d8a894cdb080660e9b7c230614c",
+    "design/field-guide/atlas/mcneil.webp": "334434751f6afa622c588a7a0a52a2623262b719cbb3ddb336f986d2805beb2d",
+    "design/field-guide/atlas/glaus.svg": "3f92eb56e823594613dc92f4ec4fed079703e06cf15d1f4cc2aaf0c0d7d2aaa0",
+    "design/field-guide/atlas/glaus.webp": "65e81c761904cd3252766c0965c849be83f4a654df15c0d47a1f624ae2c5e427",
+    "design/field-guide/atlas/kyria.svg": "285c4832c7daa5e262319773c32aa0757ea2212752e0cb2a1121a4b98dad9bd3",
+    "design/field-guide/atlas/kyria.webp": "9843d40b236706e5c81fbb41b8e53e9a829dbb314da3d2f77991bac4f961ae9d",
+    "design/field-guide/atlas/kyria-woods.svg": "f894c51897a0b6678843d397ab88fc16e2a3108985423def339acfcf45351bda",
+    "design/field-guide/atlas/kyria-woods.webp": "c32c69811a821e320f1af667e67c18ff3cd69bb73be9d54a57fae49b89437f3f",
     "design/field-guide/atlas/cedar.svg": "11f80a6bd2819a6b157b362eaca487570e0d7f7575cd414c2a997fab6227516f",
     "design/field-guide/atlas/cedar.webp": "887df0371654ccdbad69edcef76f7ef60dbd3ffa8b07733a959c64b60b4d55e2",
     "design/field-guide/atlas/dam.svg": "a9533c3304d68ddb8c6b946c8b50789f3392628f6374147ad68215989e8432b7",

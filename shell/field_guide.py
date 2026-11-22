@@ -233,7 +233,8 @@ class FieldGuideBridge(QObject):
         self._plates = ApprovedPlates(css)
         self._diagrams = {}
         atlas = directory / "atlas"
-        for name in ("cedar", "kurok", "dam"):
+        routes = {key: route for book in self._books.values() for key, route in book.get("fieldSheets", {}).items()}
+        for name, route in routes.items():
             sheet = atlas / (name + ".webp")
             source = atlas / (name + ".svg")
             if not (sheet.is_file() and source.is_file()):
@@ -245,7 +246,7 @@ class FieldGuideBridge(QObject):
                 for group in svg.iter("{http://www.w3.org/2000/svg}g"):
                     if "data-step" not in group.attrib:
                         continue
-                    ring = group.find("{http://www.w3.org/2000/svg}circle")
+                    ring = group.find("{http://www.w3.org/2000/svg}circle[@class='selection']")
                     if ring is None:
                         raise ValueError("Map pin has no centre")
                     x = (float(ring.attrib["cx"]) - left) / width
@@ -254,7 +255,7 @@ class FieldGuideBridge(QObject):
                         raise ValueError("Map pin is outside the plate")
                     pins.append({"key": int(group.attrib["data-step"]), "x": x, "y": y})
                 image = QImage(str(sheet))
-                if image.isNull() or not pins:
+                if image.isNull() or sorted(p["key"] for p in pins) != [step["key"] for step in route["steps"]]:
                     continue
                 self._plates.images["map-" + name] = image
                 self._diagrams[name] = {"url": "image://chrysm/map-" + name,
@@ -345,7 +346,7 @@ class FieldGuideBridge(QObject):
         for stop in book.get("route", []):
             if stop["id"] == place:
                 for area in stop.get("sectionsByArea", []):
-                    if area["firstFloor"] == floor:
+                    if floor in area["floorIds"]:
                         return area["name"]
                 return stop["title"]
         return ""

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 390" role="img" aria-labelledby="route-name route-desc">
+<title id="route-name">McNeil village and the road past the farm</title>
+<desc id="route-desc">Meet Rei and Teepo at the first house and the weapon shop. The fields lead to Yraall Road. After changing clothes you can turn back to the village inn and shops.</desc>
+<defs>
+  <linearGradient id="paper" x2=".82" y2="1"><stop stop-color="#f7efd7"/><stop offset=".6" stop-color="#f2e8ca"/><stop offset="1" stop-color="#e6d8b8"/></linearGradient>
+  <linearGradient id="moor" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d1d5ae"/><stop offset="1" stop-color="#e4deba"/></linearGradient>
+  <linearGradient id="slate" x1="0" y1="0" x2=".85" y2="1"><stop stop-color="#98ada0"/><stop offset=".58" stop-color="#c4c6a8"/><stop offset="1" stop-color="#d4c4a2"/></linearGradient>
+  <pattern id="cut" width="7" height="8" patternUnits="userSpaceOnUse"><path d="m-2 8 5-8m2 8 5-8" stroke="#6f7161" stroke-width=".8" opacity=".55"/></pattern>
+  <pattern id="crop" width="17" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(-17)"><path d="M0 14V2m0 8-4-4m4 1 4-5M9 14V7m0 4-3-3" fill="none" stroke="#9d9256" stroke-width="1.15"/></pattern>
+  <g id="larch" stroke-linejoin="round"><ellipse cy="3" rx="13" ry="4" fill="#799781" opacity=".3"/><path d="M0 2v-17" stroke="#66573e" stroke-width="2.1"/><path d="m0-36-6 13 3-1-8 10 4-1-7 10 8 1 4-3 7 3 8-1-7-9 4 2-9-13 4 1Z" fill="#7d9b82" stroke="#557769" stroke-width=".9"/><path d="m0-29-2 10-5 6m8-6 4 6m-5 0-4 5" fill="none" stroke="#bfca9e" stroke-width="1.4"/></g>
+  <g id="roundtree"><ellipse cy="4" rx="17" ry="5" fill="#69806b" opacity=".25"/><path d="m-2 3 1-20m1 8-6-7m7 6 7-6" fill="none" stroke="#75644b" stroke-width="3"/><path d="m-15-12q-9-13 2-19-1-10 9-11 7-8 13 1 13 0 13 10 9 7 1 17-4 6-12 3-6 6-12 1-9 5-14-2Z" fill="#90a788" stroke="#65816b" stroke-width="1.15"/><path d="m-12-27q1-7 8-6m-5 15q-3-6 3-11m3 6q0-7 5-10m1 9q6-5 10-4" fill="none" stroke="#c2c99f" stroke-width="1.7"/></g>
+  <g id="cottage" stroke="#67523b" stroke-width="1.2" stroke-linejoin="round">
+    <path d="m-26 2 26 8 28-10-1 5-28 11-31-9Z" fill="#778573" opacity=".28" stroke="none"/>
+    <path d="m-25-16 26 6 23-12v23L1 12l-26-8Z" fill="#ebd4a5"/><path d="m1-10 23-12v23L1 12Z" fill="#ceb88d"/>
+    <path d="m-31-17 15-20 26 5 18 12L2-6Z" fill="#995f43"/><path d="m-15-37 25 5L27-21 1-8Z" fill="#ba8055"/>
+    <path d="m-24-20 10-13m-4 15 10-12m-3 14 8-10m9-2 10 8m-7-10 10 8" fill="none" stroke="#dfb284"/>
+    <path d="m-18-10 5 1v7l-5-1Zm10 3 6 1V6l-6-2Zm16-2 7-3v6l-7 3Z" fill="#706955"/>
+    <path d="m-25-15 26 7m8-22 0-9 5 1v10" fill="#b39575"/>
+  </g>
+  <g id="awshop"><use href="#cottage"/><path d="m-26-14 24 6-5 6-25-7Z" fill="#537d74" stroke="#3c655d"/><path d="m-30-7 1 14m23-8 1 14" fill="none" stroke="#77603d" stroke-width="1.3"/><path d="m-25-12-5 6m11-5-5 6m11-4-5 6" stroke="#dfe1be" stroke-width="2"/></g>
+  <g id="swordshop"><use href="#awshop"/><path d="m-31-17 15-20 26 5 18 12L2-6Z" fill="#597d8b" stroke="#485e62" stroke-width="1.3"/><path d="m-15-37 25 5 17 11L1-8Z" fill="#7498a3"/><path d="m-22-19 10-12m-3 14 9-12m-3 14 9-11" fill="none" stroke="#aac2c1" stroke-width="1.5"/><path d="M8-12v-6h12v8" fill="none" stroke="#705e45" stroke-width="1.7"/><path d="M12-12h13v13H12Z" fill="#476e58" stroke="#635941" stroke-width="1.2"/><path d="m15-2 7-7m-7 3 4 4" stroke="#f3e8c8" stroke-width="1.3"/></g>
+  <g id="inn"><use href="#cottage"/><path d="m-31-17 15-20 26 5 18 12L2-6Z" fill="#a65a48" stroke="#755047" stroke-width="1.2"/><path d="m-25-18 12-15m-5 17 11-14m-5 16 9-12" fill="none" stroke="#cc8b72" stroke-width="1.5"/></g>
+  <g id="hut"><use href="#cottage"/><path d="m-32-17 16-21 28 6-12 22Z" fill="#ac9460" stroke="#745f43"/><path d="m-26-18 12-16m-6 17 11-15m-6 16 12-15" fill="none" stroke="#cfba86" stroke-width="1.6"/></g>
+  <g id="bridge"><path d="m-25 4 43-16 8 8L-16 13Z" fill="#cfac73" stroke="#80694e" stroke-width="1.2"/><path d="m-19 3 8 8m1-12 8 8m2-12 7 9m3-13 7 9" stroke="#9b7951" stroke-width="1.5"/><path d="m-26 1 42-16m-42 19-1-8m43-3v-10m-32 35-1-8m44-8v-8" fill="none" stroke="#78674d" stroke-width="2"/></g>
+  <g id="deck"><path d="m-25 4 43-16 8 8L-16 13Z" fill="#cdaf80" stroke="#80694e" stroke-width="1.2"/><path d="m-18 2 8 8m-2-11 8 8m-1-11 7 9m0-12 7 9m0-12 7 9" stroke="#9b7951" stroke-width="1.5"/></g>
+  <g id="rocks"><path d="m-19 3 4-9 8-3 4 7 4-13 9-3 8 14-7 6-12-2-7 4Z" fill="#a9aa90" stroke="#7f826e" stroke-width="1"/><path d="m1-2 6-11 3 7m-21 4 3-4" fill="none" stroke="#e1d8b4" stroke-width="2"/></g>
+  <g id="stonearch"><path d="m-21 1 4-15 9-10 12-3 13 8 5 15-2 8-12-3-14 4Z" fill="#aaa991" stroke="#777966" stroke-width="1.1"/><path d="m-13-1 4-13 9-4 8 5 5 12Z" fill="#4e5c53"/><path d="m-17-10 6-9 9-4m13 5 6 10" fill="none" stroke="#d9ccaa" stroke-width="2"/></g>
+  <g id="bale" stroke="#877447" stroke-width="1.2"><path d="m-8-5 12-5 7 6v9L-1 9l-8-5Z" fill="#c6ac6f"/><path d="m-7-5 7 6 10-5M0 1v8m3-17 5 5v10" fill="none"/></g>
+</defs>
+<style>
+  .label {font-family:Georgia,'Times New Roman',serif;font-weight:bold;fill:#263f37;font-size:21px}
+  .small,.folio,.number {font-family:'Segoe UI',Arial,sans-serif}.small{font-size:13px;font-weight:600;fill:#374a3e}
+  .outline{stroke:#f3e9cc;stroke-width:4px;stroke-linejoin:round}
+  .folio{font-size:13px;font-weight:bold;letter-spacing:1.3px;fill:#4d614e}.number{font-size:16px;font-weight:700;fill:#fffbea;text-anchor:middle}
+  .selection{fill:none;stroke:#204c43;stroke-width:3;opacity:0}.pin.active .selection,.pin:target .selection{opacity:1}
+</style>
+<rect width="760" height="390" fill="url(#paper)"/>
+<path d="M0 0H760V57Q699 41 646 67T519 65Q471 78 421 55T279 56Q191 82 136 56T0 79Z" fill="url(#moor)" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M-15 130Q44 98 103 114T212 119Q246 106 261 99L285 119Q269 139 232 147T108 139Q43 127-10 155Z" fill="#d4d7b4" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M405 90Q497 47 590 69Q664 83 760 63V144Q694 159 627 135Q559 111 464 143L410 150Z" fill="#d1d8b3" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M520 151Q595 119 627 137L692 165 577 201Z" fill="#d2c68e" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M520 151Q595 119 627 137L692 165 577 201Z" fill="url(#crop)" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M590 206 706 169 765 190 765 228 658 252Z" fill="#d9cba1" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M590 206 706 169 765 190 765 228 658 252Z" fill="url(#crop)" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M458 296 515 262 567 285 519 323Z" fill="#d5c38a" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M458 296 515 262 567 285 519 323Z" fill="url(#crop)" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M0 313Q78 295 118 318T246 328Q293 310 324 307T390 347L413 362H0Z" fill="#d7d5ad" stroke="none" stroke-width="1" stroke-linejoin="round"/>
+<path d="M0 305Q83 283 127 308T247 317M474 74Q530 51 577 60T688 62M45 137Q92 126 140 141M651 130Q702 150 761 135" fill="none" stroke="#afb697" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M9 73C69 61 100 78 143 88S216 115 251 135S289 161 339 160C386 158 414 199 457 211S516 246 550 258C617 267 627 298 653 319S707 338 744 340" fill="none" stroke="#d9bd90" stroke-width="22" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M9 73C69 61 100 78 143 88S216 115 251 135S289 161 339 160C386 158 414 199 457 211S516 246 550 258C617 267 627 298 653 319S707 338 744 340" fill="none" stroke="#e9d8b0" stroke-width="16" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M335 160C309 183 269 204 248 225S213 249 174 253" fill="none" stroke="#dbc49a" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<use href="#roundtree" transform="translate(17 67) scale(0.85)"/>
+<use href="#roundtree" transform="translate(44 58) scale(0.72)"/>
+<use href="#roundtree" transform="translate(72 63) scale(0.8)"/>
+<use href="#roundtree" transform="translate(17 119) scale(0.68)"/>
+<use href="#roundtree" transform="translate(391 57) scale(0.71)"/>
+<use href="#roundtree" transform="translate(427 58) scale(0.83)"/>
+<use href="#roundtree" transform="translate(458 58) scale(0.64)"/>
+<use href="#roundtree" transform="translate(672 60) scale(0.76)"/>
+<use href="#roundtree" transform="translate(698 66) scale(1)"/>
+<use href="#roundtree" transform="translate(725 61) scale(0.75)"/>
+<use href="#roundtree" transform="translate(752 75) scale(1)"/>
+<use href="#roundtree" transform="translate(456 331) scale(0.6)"/>
+<use href="#roundtree" transform="translate(433 336) scale(0.8)"/>
+<use href="#roundtree" transform="translate(18 310) scale(0.62)"/>
+<use href="#roundtree" transform="translate(38 305) scale(0.72)"/>
+<use href="#hut" transform="translate(103 76) scale(0.77)"/>
+<use href="#hut" transform="translate(151 99) scale(1.02)"/>
+<use href="#cottage" transform="translate(170 75) scale(0.79)"/>
+<use href="#cottage" transform="translate(219 132) scale(0.74)"/>
+<use href="#swordshop" transform="translate(305 151) scale(1.25)"/>
+<use href="#awshop" transform="translate(378 152) scale(0.87)"/>
+<use href="#inn" transform="translate(137 206) scale(1.18)"/>
+<use href="#roundtree" transform="translate(73 224) scale(0.68)"/>
+<path d="M67 231 86 225 147 244 174 232 190 236 148 256 81 237 67 241Z" fill="#8caa80" stroke="#718a6d" stroke-width="1" stroke-linejoin="round"/>
+<path d="M77 229 143 249 176 235" fill="none" stroke="#bdc79b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<use href="#bale" transform="translate(565 190) scale(0.9)"/>
+<use href="#bale" transform="translate(587 185) scale(0.7)"/>
+<use href="#bale" transform="translate(493 294) scale(0.68)"/>
+<path d="m477 199 29-14 26 8m-52 10-1-12m10 8-1-12m11 7-1-12m14 14-1-13m12 18-1-13" fill="none" stroke="#867655" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M17 74C70 67 99 78 143 89S214 114 253 137S295 160 337 161C393 161 423 202 458 211S519 249 550 258C616 267 629 304 655 320S704 338 744 340" fill="none" stroke="#f9efd1" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><path d="M17 74C70 67 99 78 143 89S214 114 253 137S295 160 337 161C393 161 423 202 458 211S519 249 550 258C616 267 629 304 655 320S704 338 744 340" fill="none" stroke="#245f53" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M416 193Q375 210 337 203T267 214Q226 234 186 249" fill="none" stroke="#f9efd1" stroke-width="7.2" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><path d="M416 193Q375 210 337 203T267 214Q226 234 186 249" fill="none" stroke="#96572f" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="1" stroke-dasharray="5 5"/>
+<text x="19" y="22" text-anchor="start" class="folio">FROM CEDAR WOODS</text>
+<text x="502" y="108" text-anchor="start" class="small outline" aria-hidden="true">Wheat fields</text><text x="502" y="108" text-anchor="start" class="small">Wheat fields</text>
+<text x="458" y="238" text-anchor="start" class="small outline" aria-hidden="true">Follow the road</text><text x="458" y="238" text-anchor="start" class="small">Follow the road</text>
+<text x="175" y="292" text-anchor="middle" class="small outline" aria-hidden="true">Supplies after changing</text><text x="175" y="292" text-anchor="middle" class="small">Supplies after changing</text>
+<text x="278" y="108" text-anchor="start" class="small outline" aria-hidden="true">Green sword sign</text><text x="278" y="108" text-anchor="start" class="small">Green sword sign</text>
+<g id="pin-1" data-step="1" class="pin"><circle class="selection" cx="116" cy="84" r="21"/><circle cx="116" cy="84" r="14.5" fill="#f8f0d6" stroke="#245b50" stroke-width="1.7"/><circle cx="116" cy="84" r="12" fill="#245b50"/><text class="number" x="116" y="89.7">1</text><text x="112" y="40" text-anchor="start" class="label outline" aria-hidden="true">First houses</text><text x="112" y="40" text-anchor="start" class="label">First houses</text></g>
+<g id="pin-2" data-step="2" class="pin"><circle class="selection" cx="337" cy="161" r="21"/><circle cx="337" cy="161" r="14.5" fill="#f8f0d6" stroke="#245b50" stroke-width="1.7"/><circle cx="337" cy="161" r="12" fill="#245b50"/><text class="number" x="337" y="166.7">2</text><text x="277" y="91" text-anchor="start" class="label outline" aria-hidden="true">Weapon shop</text><text x="277" y="91" text-anchor="start" class="label">Weapon shop</text></g>
+<g id="pin-3" data-step="3" class="pin"><circle class="selection" cx="550" cy="258" r="21"/><circle cx="550" cy="258" r="14.5" fill="#f8f0d6" stroke="#245b50" stroke-width="1.7"/><circle cx="550" cy="258" r="12" fill="#245b50"/><text class="number" x="550" y="263.7">3</text><text x="565" y="247" text-anchor="start" class="label outline" aria-hidden="true">Farm</text><text x="565" y="247" text-anchor="start" class="label">Farm</text></g>
+<g id="pin-4" data-step="4" class="pin"><circle class="selection" cx="186" cy="249" r="21"/><circle cx="186" cy="249" r="14.5" fill="#f8f0d6" stroke="#8c4b2b" stroke-width="1.7"/><circle cx="186" cy="249" r="12" fill="#8c4b2b"/><text class="number" x="186" y="254.7">4</text><text x="175" y="274" text-anchor="middle" class="label outline" aria-hidden="true">Inn garden</text><text x="175" y="274" text-anchor="middle" class="label">Inn garden</text></g>
+<g id="pin-5" data-step="5" class="pin"><circle class="selection" cx="655" cy="320" r="21"/><circle cx="655" cy="320" r="14.5" fill="#f8f0d6" stroke="#245b50" stroke-width="1.7"/><circle cx="655" cy="320" r="12" fill="#245b50"/><text class="number" x="655" y="325.7">5</text><text x="742" y="299" text-anchor="end" class="label outline" aria-hidden="true">Yraall Road</text><text x="742" y="299" text-anchor="end" class="label">Yraall Road</text></g>
+<path d="M18 358H742" fill="none" stroke="#b2ad90" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" opacity="1"/>
+<path d="M21 371h33" fill="none" stroke="#245f53" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round" opacity="1"/><text x="62" y="376" text-anchor="start" class="small outline" aria-hidden="true">Main route</text><text x="62" y="376" text-anchor="start" class="small">Main route</text><path d="M166 371h30" fill="none" stroke="#96572f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" opacity="1" stroke-dasharray="5 5"/><text x="203" y="376" text-anchor="start" class="small outline" aria-hidden="true">Optional detour</text><text x="203" y="376" text-anchor="start" class="small">Optional detour</text>
+</svg>

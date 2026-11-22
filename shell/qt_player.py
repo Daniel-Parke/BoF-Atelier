@@ -306,6 +306,26 @@ def main(argv=None, on_loaded=None):
     return status[0]
 
 
+def run(argv: list[str]) -> int:
+    """A failed offscreen review reports to its caller without invoking the windowed bootloader's error UI."""
+    review = argparse.ArgumentParser(add_help=False, allow_abbrev=False)
+    review.add_argument("--review", type=Path)
+    request, _ = review.parse_known_args(argv)
+    if request.review is None:
+        return main(argv)
+    try:
+        return main(argv)
+    except Exception as error:
+        message = f"{type(error).__name__}: {error}"[:2048]
+        try:
+            request.review.with_suffix(".error.txt").write_text(message + "\n", encoding="utf-8")
+        except (OSError, ValueError):
+            pass
+        if sys.stderr is not None:
+            print(message, file=sys.stderr)
+        return 3
+
+
 if __name__ == "__main__":
     multiprocessing.freeze_support()
-    raise SystemExit(main())
+    raise SystemExit(run(sys.argv[1:]))

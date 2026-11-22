@@ -62,18 +62,22 @@ def teacher_pages(book: dict) -> list[dict]:
 
 def validate_field_sheets(book: dict, ids: set[str]) -> None:
     stops = {stop["id"]: stop for stop in book["route"]}
-    for key, sheet in book.get("fieldSheets", {}).items():
+    sheets = book.get("fieldSheets", {})
+    for key, sheet in sheets.items():
         stop = stops.get(sheet["stop"])
         if (not stop or key != sheet["id"] or not re.fullmatch(r"[a-z][a-z0-9-]*", key)
+                or (key in ids and key != sheet["stop"])
+                or (sheet.get("nextSheet") and sheet["nextSheet"] not in (ids | sheets.keys()) - {key})
                 or sheet["map"] != key + ".svg" or not sheet["mapAlt"].strip()
                 or sheet["art"] not in ART[book["game"]] | ATLAS_ART[book["game"]]
-                or set(sheet["links"]) - ids or not sheet["objective"].strip()
+                or set(sheet["links"]) - (ids | sheets.keys()) or not sheet["objective"].strip()
                 or not sheet["steps"] or not sheet["entry"].strip()
                 or any(step["key"] != n or not step["title"].strip() or not step["body"].strip()
                        for n, step in enumerate(sheet["steps"], 1))):
             raise ValueError(f"Incomplete illustrated route: {key}")
         for subset, ledger in (("optional", "items"), ("enemies", "encounters")):
-            known = {row["name"] for row in stop.get(ledger, [])}
+            known = {row["name"] for row in stop.get(ledger, [])
+                     if not stop.get("sectionsByArea") or key in row.get("areaIds", [])}
             if any(row["name"] not in known for row in sheet[subset]):
                 raise ValueError(f"Unmatched {ledger} entry in {key}")
 
@@ -98,9 +102,23 @@ def read_book(directory: Path, game: str) -> dict:
     if game not in CORE_PAGES:
         raise ValueError("Unknown guide volume")
     book = json.loads((directory / f"{game}.json").read_text(encoding="utf-8-sig"))
-    if book["game"] != game or book["version"] != 1:
-        raise ValueError(f"Wrong Field Guide volume or version: {game}")
+    if book.get("game") != game:
+        raise ValueError(f"Expected the {game} Field Guide volume, found {book.get('game')!r}.")
+    if type(book.get("version")) is not int or book["version"] not in (1, 2):
+        raise ValueError(f"Unsupported {game} Field Guide version {book.get('version')!r}. This reader supports 1 and 2.")
     route, articles, sources = book["route"], book["articles"], book["sources"]
+    # The first public books grouped floors by the area heading. Keep their order and bookmarks
+    # when building a reader from an older volume. Current authors supply explicit ownership.
+    if book["version"] == 1:
+        for stop in route:
+            areas = stop.get("sectionsByArea", [])
+            for area in areas:
+                area["id"] = re.sub(r"\s+", "-", area["name"].lower())
+                area["floorIds"] = list(dict.fromkeys(f["mapId"] for f in stop.get("floors", [])
+                                                      if f["name"].startswith(area["name"])))
+            if areas:
+                for entry in stop.get("items", []) + stop.get("encounters", []):
+                    entry["areaIds"] = [area["id"] for area in areas if area["name"] in entry["where"]]
     if tuple(row["id"] for row in route[:2]) != EARLY_PLACES[game]:
         raise ValueError(f"The legacy reading places must remain available: {game}")
     articles.extend(teacher_pages(book))
@@ -122,7 +140,7 @@ def read_book(directory: Path, game: str) -> dict:
     for row in pages:
         if (not row["title"].strip() or not row["lead"].strip() or row["art"] not in ART[game]
                 or not row["sources"] or set(row["sources"]) - sources.keys()
-                or set(row["links"]) - (ids | reserved)):
+                or set(row["links"]) - (ids | reserved | book.get("fieldSheets", {}).keys())):
             raise ValueError(f"Incomplete guide page: {game}/{row['id']}")
         for citation in row.get("sourceSections", []):
             if (citation.get("source") not in row["sources"] or not isinstance(citation.get("section"), str)
@@ -156,16 +174,27 @@ def read_book(directory: Path, game: str) -> dict:
                 raise ValueError(f"Invalid floor landmark: {stop['id']}")
         sections = stop.get("sectionsByArea", [])
         next_step = 0
+        assigned_floors: set[int] = set()
+        area_ids: set[str] = set()
+        floor_ids = {key[0] for key in floor_keys}
         for area in sections:
+            area_id = area.get("id", "")
+            owned = area.get("floorIds", [])
             if (not all(isinstance(area.get(k), str) and area[k].strip() for k in ("name", "lead", "hint", "tip"))
                     or area.get("firstStep") != next_step or type(area.get("endStep")) is not int
                     or not next_step < area["endStep"] <= len(stop["steps"])
-                    or not any(f["mapId"] == area.get("firstFloor") and
-                               f["name"].startswith(area["name"]) for f in floors)):
+                    or not re.fullmatch(r"[a-z][a-z0-9-]*", area_id) or area_id in area_ids
+                    or (area_id in book.get("fieldSheets", {}) and
+                        (book["fieldSheets"][area_id]["stop"] != stop["id"] or
+                         book["fieldSheets"][area_id]["area"] != area["name"]))
+                    or area.get("firstFloor") not in owned or set(owned) - floor_ids
+                    or len(set(owned)) != len(owned) or assigned_floors.intersection(owned)):
                 raise ValueError(f"Invalid area directions: {stop['id']}")
+            area_ids.add(area_id)
+            assigned_floors.update(owned)
             next_step = area["endStep"]
-        if sections and next_step != len(stop["steps"]):
-            raise ValueError(f"Unassigned area directions: {stop['id']}")
+        if sections and (next_step != len(stop["steps"]) or assigned_floors != floor_ids):
+            raise ValueError(f"Unassigned area directions or floors: {stop['id']}")
         names = stop.get("landmarks", [])
         if len(names) != len(stop["steps"]) or not all(isinstance(s, str) and s.strip() for s in names):
             raise ValueError(f"Walkthrough landmarks must match the directions: {stop['id']}")
@@ -184,6 +213,8 @@ def read_book(directory: Path, game: str) -> dict:
             if any(not all(r[k].strip() for k in ("name", "where", "detail")) for r in records):
                 raise ValueError(f"Incomplete {field} record: {stop['id']}")
             for record in records:
+                if sections and ((book["version"] >= 2 and not record.get("areaIds")) or set(record["areaIds"]) - area_ids):
+                    raise ValueError(f"Unassigned {field} entry: {stop['id']}/{record['name']}")
                 entity_id = ("item." if field == "items" else "enemy.") + record["name"].strip().lower()
                 entity = entities.setdefault(entity_id, {"id": entity_id, "name": record["name"],
                                              "category": category, "unlock": stop["id"], "observations": []})

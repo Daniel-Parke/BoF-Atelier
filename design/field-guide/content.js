@@ -1,6 +1,18 @@
 /* Editorial sample, US PlayStation revisions. Evidence and media provenance are in
    FIELD-GUIDE-EXPERIENCE.md. No game assets, save addresses or disc tables are bundled. */
 "use strict";
+function searchText(value) {
+  return String(value || "").normalize("NFKD").replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase().replace(/[’‘]/g, "'").replace(/[‐‑–-]/g, " ")
+    .replace(/\b(?:mt\.?|mount)(?=\s)/g, "mount").replace(/\s+/g, " ").trim();
+}
+function searchRank(term, title, aliases) {
+  const names = [title].concat(aliases || []).map(searchText);
+  if (names.some(name => name === term)) return 0;
+  if (names.some(name => name.startsWith(term + " "))) return 1;
+  if (names.some(name => name.includes(term))) return 2;
+  return 3;
+}
 const volumes = {
   iii: {
     title: "Breath of Fire III",

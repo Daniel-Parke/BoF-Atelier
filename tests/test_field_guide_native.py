@@ -75,9 +75,9 @@ class NativeFieldGuideTests(unittest.TestCase):
         QTest.qWait(45)
         self.app.processEvents(QEventLoop.AllEvents, 10)
 
-    def control(self, name):
+    def control(self, name, *, include_hidden=False):
         def find(item):
-            if item.objectName() == name and item.isVisible():
+            if item.objectName() == name and (include_hidden or item.isVisible()):
                 return item
             for child in item.childItems():
                 hit = find(child)
@@ -95,6 +95,32 @@ class NativeFieldGuideTests(unittest.TestCase):
     def open(self, game, page="guide", branch="lab/test", rev="unregistered"):
         self.reader.openBook(game, rev, branch, page)
         self.pump()
+
+    def test_search_finds_illustrated_areas_and_plain_keyboard_names(self):
+        for game, term, destination in (("bof3","McNeil village","mcneil"), ("bof3","Mount Glaus","glaus"),
+                ("bof4","Kyria Woods","kyria-woods"), ("bof4","Kyria village","kyria"), ("bof3","D'Lonzo","teacher-dlonzo"),
+                ("bof4","Dam","dam"), ("bof4","Kurok","kurok"), ("bof3","Momo's Tower","momo-tower"),
+                ("bof4","Bandit's Hideout","bandit-hideout"), ("bof4","Wyndia Castle Basement","wyndia-basement"),
+                ("bof4","Mt. Grom","mt-glom"), ("bof4","Yaen","enemy.yaen")):
+            with self.subTest(term=term):
+                self.open(game)
+                self.reader.setProperty("showLater", True)
+                self.reader.setProperty("query", term)
+                self.pump()
+                rows = self.reader.searchRows().toVariant()
+                self.assertEqual(destination, rows[0]["id"])
+                self.click("entry" + destination)
+                self.assertEqual(destination, self.reader.property("bookmarkId"))
+
+    def test_saved_floor_and_explicit_area_choose_independently(self):
+        for game, chapter, floor, sheet in (("bof3","cedar",7,"mcneil"),("bof4","dam-kyria",1045,"kyria-woods")):
+            with self.subTest(sheet=sheet):
+                self.reader.setProperty("gameStory", {"game":game,"place":chapter,"floorId":floor,"source":"Last in-game save"})
+                self.open(game)
+                self.assertEqual(sheet,self.reader.property("bookmarkId"))
+                self.assertEqual(self.reader.property("area")["name"],self.bridge.campaignPlace(game,chapter,floor))
+                self.open(game,"cedar" if game == "bof3" else "kyria")
+                self.assertNotEqual(sheet,self.reader.property("bookmarkId"))
 
     def test_search_recipe_articles_and_direct_return(self):
         self.open("bof3")
@@ -394,18 +420,18 @@ class NativeFieldGuideTests(unittest.TestCase):
         evidence = self.control("storyEvidence")
         self.assertEqual("FIRST VISIT", evidence.property("text"))
         self.assertEqual("The Dam", self.control("guidePageTitle").property("text"))
-        self.assertEqual("The two gates", self.control("routeLandmark").property("text"))
+        self.assertEqual(self.bridge.book["fieldSheets"]["dam"]["mapTitle"], self.control("routeLandmark").property("text"))
         self.assertTrue(self.reader.property("hasWarning"))
         self.click("guideStep")
         self.click("routeAreaKurok")
         self.assertFalse(evidence.isVisible())
         self.assertFalse(self.reader.property("hasWarning"))
         self.assertEqual("Kurok ridge", self.control("guidePageTitle").property("text"))
-        self.assertEqual("The western fork", self.control("routeLandmark").property("text"))
+        self.assertEqual(self.bridge.book["fieldSheets"]["kurok"]["mapTitle"], self.control("routeLandmark").property("text"))
         self.assertEqual(-1, self.bridge.marker)
         self.click("routeAreaKyria")
         self.assertFalse(evidence.isVisible())
-        self.assertIn("Kyria", self.control("routeLandmark").property("text"))
+        self.assertEqual(self.bridge.book["fieldSheets"]["kyria"]["mapTitle"], self.control("routeLandmark").property("text"))
         self.click("routeAreaDam")
         self.assertTrue(evidence.isVisible())
         self.assertEqual("FIRST VISIT", evidence.property("text"))
@@ -506,13 +532,25 @@ class NativeFieldGuideTests(unittest.TestCase):
             self.assertEqual({}, self.bridge.campaignMark("bof4", "original", "lab/one"))
 
     def test_worked_page_contours_full_directions_and_teacher_lessons(self):
-        for game, sheet, title in (("bof3", "cedar", "Cedar Woods"), ("bof4", "kurok", "Kurok ridge"), ("bof4", "dam", "The Dam")):
+        for game, sheet, title in (("bof3", "cedar", "Cedar Woods"), ("bof3", "mcneil", "McNeil village"),
+                ("bof3", "glaus", "Mt. Glaus"), ("bof4", "kyria", "Kyria village"), ("bof4", "kyria-woods", "Kyria Woods"),
+                ("bof4", "kurok", "Kurok ridge"), ("bof4", "dam", "The Dam")):
             with self.subTest(sheet=sheet):
                 self.open(game, sheet)
                 self.assertEqual(title, self.control("guidePageTitle").property("text"))
+                opening = self.bridge.book["fieldSheets"][sheet].get("opening")
+                toggle = self.control("damEngines", include_hidden=True)
+                self.assertEqual(bool(opening), toggle.isVisible())
+                if opening:
+                    self.assertEqual(opening["title"], toggle.property("text"))
+                    self.click("damEngines")
+                    self.assertIn(opening["steps"][0], self.control("routeOpeningStep1").property("text"))
+                    self.click("damEngines")
+                if sheet == "cedar":
+                    self.assertFalse(self.control("afterCedar", include_hidden=True).isVisible())
                 diagram = self.bridge.routeDiagram(sheet)
                 pins = [p["key"] for p in diagram["pins"]]
-                self.assertEqual([1, 2, 3, 4], pins)
+                self.assertEqual([s["key"] for s in self.bridge.book["fieldSheets"][sheet]["steps"]], pins)
                 self.assertGreater(self.control("routeIllustration").property("sourceSize").width(), 1000)
                 self.click("expandRouteMap")
                 self.assertTrue(self.reader.property("routeExpanded"))

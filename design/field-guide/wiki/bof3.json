@@ -1,6 +1,6 @@
 {
   "game": "bof3",
-  "version": 1,
+  "version": 2,
   "sources": {
     "manual": {
       "title": "Capcom · Breath of Fire III US PlayStation instruction manual",
@@ -309,6 +309,18 @@
     "s26-adult": {
       "title": "SLTE · Getting the Party Back Together",
       "url": "https://www.arrpeegeez.com/2023/02/breath-of-fire-iii-walkthrough-part-26.html"
+    },
+    "kixer": {
+      "title": "Kixer · Masters FAQ",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/17594"
+    },
+    "peco-guide": {
+      "title": "Proudnerd · Peco Guide",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/70283"
+    },
+    "abilities": {
+      "title": "Andrew Testa · Ability/Skill FAQ",
+      "url": "https://gamefaqs.gamespot.com/ps/196817-breath-of-fire-iii/faqs/19959"
     }
   },
   "route": [
@@ -484,17 +496,21 @@
       "lead": "Save beside the bed at Rei’s house. Head for McNeil to find Rei and Teepo, or take the log bridge to search the clearing first.",
       "hint": "Cross the log bridge. If you reach the world map in your nightshirt, look for your two new friends in town.",
       "steps": [
-        "Face the diary beside the bed. Choose a memory card and an empty file to record the morning.",
-        "Go downhill past the friendly monsters and the old man. Leave by the wooden sign, then follow the world-map road around the trees into McNeil. Find Rei and Teepo by the shops and continue to Yraall Road for their plan.",
-        "Return to Bunyan’s cabin in Cedar Woods. Let Rei open the lock. Take the Beef Jerky from the cellar cupboard and head back upstairs.",
-        "During the woodcutting task, swing when Teepo has set the log upright. Head for the road to Mt. Glaus afterwards."
+        "Save at the diary beside Rei’s bed. Go downstairs for the front door and follow the outside wall to the dirt path.",
+        "Cross the log bridge, pass the friendly monsters and go downhill. Leave by the sign at the fork. On the world map, follow the road around the trees to McNeil.",
+        "After the scene by the first house, follow the cobbles downhill. Speak to Teepo beside the red roof, across from the weapon shop. Ryu changes into travelling clothes on the farm road.",
+        "With all three together, take the farm road to Yraall Road. Walk down to the junction and stand in the patch of trees Rei chooses. The bag beside the hiding place holds 40 zenny.",
+        "Go back to the woods entrance nearest Bunyan’s cottage. Put Rei in front to unlock the door. Take the ladder down to the cellar cupboard for the Beef Jerky, then go upstairs and outside.",
+        "Watch Teepo’s hands at the woodpile. Swing just after he draws them back and the log begins to tip. When Bunyan lets the two boys leave, take the road to Mt. Glaus."
       ],
       "tip": "Before leaving the woods, explore the clearing across the bridge. Its chest holds Skill Ink.",
       "links": [
         "diary",
         "camp-notes",
         "enemy-skills",
-        "field-view"
+        "field-view",
+        "yraall-bunyan",
+        "mcneil-shops"
       ],
       "art": "iii-woods",
       "sources": [
@@ -507,11 +523,15 @@
         "floor-exits",
         "dk",
         "tri",
-        "enemy-db"
+        "enemy-db",
+        "s2",
+        "puzzles"
       ],
       "landmarks": [
         "Rei’s house",
-        "McNeil and Yraall Road",
+        "Signed fork",
+        "The weapon shop",
+        "Yraall Road",
         "Bunyan’s cellar",
         "Woodpile"
       ],
@@ -519,27 +539,119 @@
         {
           "name": "Vitamin · Worm",
           "where": "Rei’s house",
-          "detail": "Search both downstairs dressers."
+          "detail": "Search both downstairs dressers.",
+          "areaIds": [
+            "cedar"
+          ],
+          "floorIds": [
+            10
+          ]
         },
         {
           "name": "Skill Ink",
           "where": "Eastern clearing",
-          "detail": "Cross the log bridge and climb the slope to the chest."
+          "detail": "After the log bridge, climb the slope and open the chest.",
+          "areaIds": [
+            "cedar"
+          ]
         },
         {
           "name": "Ammonia",
           "where": "Stream bank",
-          "detail": "Look behind the trees northwest of the Skill Ink chest."
+          "detail": "Look behind the trees near the water, northwest of the Skill Ink chest.",
+          "areaIds": [
+            "cedar"
+          ]
         },
         {
           "name": "Healing Herb",
-          "where": "Kitchen cellar",
-          "detail": "Come back in travelling clothes and climb down the ladder."
+          "where": "Treehouse cellar",
+          "detail": "After Ryu gets his travelling clothes, climb down to the storage room.",
+          "areaIds": [
+            "cedar"
+          ],
+          "floorIds": [
+            10
+          ]
         },
         {
           "name": "Green Apple ×2",
           "where": "Fallen cage",
-          "detail": "Take the bag southeast of the cage. The second apple is hidden behind the large tree nearby."
+          "detail": "One bag lies southeast of the cage. Check behind the big tree for the second apple.",
+          "areaIds": [
+            "cedar"
+          ],
+          "floorIds": [
+            9
+          ]
+        },
+        {
+          "name": "Healing Herb",
+          "where": "First village house",
+          "detail": "After Ryu changes clothes, return to the first thatched house. Open the tall dresser beside the beds.",
+          "areaIds": [
+            "mcneil"
+          ],
+          "floorIds": [
+            7
+          ]
+        },
+        {
+          "name": "Antidote",
+          "where": "Village houses",
+          "detail": "In the second house, search the lower dresser.",
+          "areaIds": [
+            "mcneil"
+          ],
+          "floorIds": [
+            7
+          ]
+        },
+        {
+          "name": "Molotov",
+          "where": "Item shop",
+          "detail": "Inspect the display beside the shopkeeper.",
+          "areaIds": [
+            "mcneil"
+          ],
+          "floorIds": [
+            7
+          ]
+        },
+        {
+          "name": "Vitamin",
+          "where": "Inn hedge",
+          "detail": "From the red-roof inn, walk to the lower-left end of the front hedge. Turn around the clipped hedge and follow the gap between the long hedge and the woodshed. Search the far end.",
+          "areaIds": [
+            "mcneil"
+          ],
+          "floorIds": [
+            7
+          ]
+        },
+        {
+          "name": "Vitamin",
+          "where": "Manor approach",
+          "detail": "On the optional lane beyond the farm, open the dresser inside the little hut.",
+          "areaIds": [
+            "mcneil"
+          ]
+        },
+        {
+          "name": "40 zenny",
+          "where": "Yraall Road",
+          "detail": "After the ambush, check the satchel near the hiding place.",
+          "areaIds": [
+            "mcneil"
+          ]
+        },
+        {
+          "name": "Beef Jerky",
+          "where": "Bunyan’s cellar",
+          "detail": "Return from Yraall Road with Rei. Unlock the cottage and inspect the cupboard below the ladder.",
+          "areaIds": [
+            "mcneil"
+          ]
         }
       ],
       "map": {
@@ -718,23 +830,110 @@
       "encounters": [
         {
           "name": "Goblin",
-          "where": "Woods after Ryu gets dressed",
-          "detail": "Examine to learn Unmotivate. Its steal is a Bent Sword."
+          "where": "Cedar Woods and Yraall Road",
+          "detail": "After Ryu changes clothes, Examine a Goblin to learn Unmotivate. Rei can steal a Bent Sword.",
+          "areaIds": [
+            "cedar",
+            "mcneil"
+          ]
         },
         {
           "name": "Gonghead",
-          "where": "Woods after Ryu gets dressed",
-          "detail": "Rei can steal a Vitamin. A Life Shard is a possible drop."
+          "where": "Cedar Woods and Yraall Road",
+          "detail": "Rei can steal a Vitamin. A Life Shard is a possible drop.",
+          "areaIds": [
+            "cedar",
+            "mcneil"
+          ]
+        },
+        {
+          "name": "Eye Goo",
+          "where": "Cedar Woods and Yraall Road",
+          "detail": "Leave it alive for more than ten turns if you want to Examine Snooze.",
+          "areaIds": [
+            "cedar",
+            "mcneil"
+          ]
+        },
+        {
+          "name": "Mage Goo",
+          "where": "Cedar Woods and Yraall Road",
+          "detail": "Use Examine to learn Burn when the Mage Goo casts it.",
+          "areaIds": [
+            "cedar",
+            "mcneil"
+          ]
+        },
+        {
+          "name": "Boss Goblin",
+          "where": "Cedar Woods and Yraall Road",
+          "detail": "Examine for Influence. Leave a second foe alive so the Boss Goblin has someone to command.",
+          "areaIds": [
+            "cedar",
+            "mcneil"
+          ]
+        },
+        {
+          "name": "Ripper",
+          "where": "Cedar Woods and Yraall Road",
+          "detail": "Use Examine for Blind while the Ripper can still act.",
+          "areaIds": [
+            "cedar",
+            "mcneil"
+          ]
         }
       ],
       "sourceSections": [
         {
           "source": "dk",
-          "section": "Rei’s house, the woods and Bunyan’s cellar"
+          "section": "Cedar Woods and McNeil; Yraall Road and Bunyan’s House"
         },
         {
           "source": "tri",
-          "section": "Prologue, the cabin and woodcutting"
+          "section": "PRO00000004–06 and MIN00000001, from the shop to the woodpile"
+        },
+        {
+          "source": "s1",
+          "section": "McNeil, Farm and McNeil Manor, including the village dressers and inn"
+        },
+        {
+          "source": "r1",
+          "section": "McNeil’s item shop, dressers and inn hedge"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Areas 008–010 and 019, early woods and Yraall Road formations"
+        }
+      ],
+      "sectionsByArea": [
+        {
+          "id": "cedar",
+          "name": "Cedar Woods",
+          "firstStep": 0,
+          "endStep": 2,
+          "firstFloor": 10,
+          "floorIds": [
+            10,
+            8,
+            9
+          ],
+          "lead": "Leave the treehouse by its downstairs front door. The log bridge connects the house to the paths south.",
+          "hint": "At the old man, take the fork with the wooden sign. The fenced cottage is Bunyan’s.",
+          "tip": "After the log bridge, the eastern clearing has Skill Ink on the rise and Ammonia behind the trees.",
+          "lore": true
+        },
+        {
+          "id": "mcneil",
+          "name": "McNeil",
+          "firstStep": 2,
+          "endStep": 6,
+          "firstFloor": 7,
+          "floorIds": [
+            7
+          ],
+          "lead": "Follow the cobbles downhill from the first house to Teepo. Look for the weapon shop’s green sword sign.",
+          "hint": "Walk up to Teepo and speak. Rei waits at the blue-roof shop across from him.",
+          "tip": "Once Ryu has changed clothes, return to the village for supplies or follow the fields straight to Yraall Road."
         }
       ]
     },
@@ -742,19 +941,23 @@
       "id": "glaus",
       "title": "The hunt on Mt. Glaus",
       "region": "The highlands",
-      "lead": "A mountain shelter gives you a place to stop before following Rei’s quarry.",
-      "hint": "The first encounter ends on the mountain. Signs of a struggle continue into the cave.",
+      "lead": "Climb the ramp beside the pale scree and cross the upper bridge to find Rei. The trail above his hut leads into the mountain.",
+      "hint": "When the blood stops at the skeleton, go back to the last junction. An unmarked passage leads to water higher up.",
       "steps": [
-        "Climb past the rockslide to the hut by the bridge. Rejoin Rei and follow the encounter outside.",
-        "Track the broken trees into the cave. Where the trail reaches a dead end, return to the junction and take the path to running water.",
-        "Agree to jump into the current. Prepare to heal before approaching the Nue again.",
-        "After the fight, look into the den behind it. Leave by the water and speak to the villagers in McNeil."
+        "Cross the timber bridge and climb the ramp beside the broad tan scree. Each raised ledge has a bag. To reach one, line up with its dark notch above, slide down, then climb the ramp for the other.",
+        "At the top of the ramp, cross the bridge without rails over the stream. Look for Rei inside the hut. When the Nue appears outside, Rei can try Pilfer for Power Food before it flees.",
+        "When the Nue flees, rest at the hut if needed. Follow the broken trunks uphill from its side. Pass the cave mouth only if you want the summit bag of Vitamins.",
+        "Enter the cave and follow the blood until it stops beside a skeleton. Inspect the bones for 200 zenny. Turn back to the junction in the main passage.",
+        "Take the passage without blood. Two side passages contain a Ballock Knife and a Talisman. Continue to the upstream pool and jump into the current to reach the far side of the waterfall.",
+        "Heal before approaching the Nue. After the battle you can examine its body to enter the den. Before leaving, decide whether to see that short scene. Jump back into the water for the way out."
       ],
-      "tip": "Keep one party member free to heal. An early knockout makes the following climb harder.",
+      "tip": "Before entering the cave, use the bed in the hut to recover and the dragon statue outside to save.",
       "links": [
         "enemy-skills",
         "camp-notes",
-        "fishing-tackle"
+        "fishing-tackle",
+        "glaus-approach",
+        "nue-and-spring"
       ],
       "art": "highlands",
       "sources": [
@@ -765,29 +968,86 @@
         "floor-attrs",
         "floor-exits",
         "dk",
-        "boss"
+        "boss",
+        "tri",
+        "enemy-db",
+        "skills",
+        "s3"
       ],
       "landmarks": [
+        "Scree ramp",
         "Mountain hut",
-        "Broken trees",
-        "Underground stream",
+        "Cave mouth",
+        "End of the blood trail",
+        "Upstream pool",
         "The den"
       ],
       "encounters": [
         {
           "name": "Nue",
           "where": "Hut and cave",
-          "detail": "Rei can try Pilfer for a Power Food before the first fight ends at the hut. Follow the broken trees and heal before the cave rematch."
+          "detail": "Chlorine can poison one ally. When the Nue howls in the rematch, heal the party before Jolt. Rei can try Pilfer in each fight.",
+          "floorIds": [
+            23,
+            22
+          ]
         },
         {
           "name": "Bat",
-          "where": "Mt. Glaus",
-          "detail": "Watch for Gloom. Berries can be stolen."
+          "where": "Cave",
+          "detail": "Use Examine for Gloom. Rei can steal Berries.",
+          "floorIds": [
+            22
+          ]
         },
         {
           "name": "Zombie",
           "where": "Cave",
-          "detail": "Use Teepo’s fire magic in the passages along the blood trail."
+          "detail": "Use Teepo’s fire magic. Rei can steal Clothing.",
+          "floorIds": [
+            22
+          ]
+        },
+        {
+          "name": "Curr",
+          "where": "Mountain and cave",
+          "detail": "Currs travel in packs. Finish the wounded one before turning to the next.",
+          "floorIds": [
+            23,
+            22
+          ]
+        },
+        {
+          "name": "Eye Goo",
+          "where": "Mountain trail",
+          "detail": "Leave one alive for more than ten turns if you want to Examine Snooze.",
+          "floorIds": [
+            23
+          ]
+        },
+        {
+          "name": "Mage Goo",
+          "where": "Mountain trail",
+          "detail": "Use Examine for Burn. Its spell can reach the back of the party.",
+          "floorIds": [
+            23
+          ]
+        },
+        {
+          "name": "Puff Goo",
+          "where": "Mountain trail",
+          "detail": "Rei can steal a Healing Herb. A Vitamin is a possible drop.",
+          "floorIds": [
+            23
+          ]
+        },
+        {
+          "name": "Gonghead",
+          "where": "Mountain trail",
+          "detail": "Rei can steal a Vitamin. It can also drop a Life Shard.",
+          "floorIds": [
+            23
+          ]
         }
       ],
       "map": {
@@ -901,45 +1161,124 @@
       ],
       "items": [
         {
+          "name": "Antidote",
+          "where": "Below the entrance bridge",
+          "detail": "Across the bridge, take the dipping path that doubles back underneath it.",
+          "floorIds": [
+            23
+          ]
+        },
+        {
+          "name": "Heavy Caro",
+          "where": "Scree ledge",
+          "detail": "Climb the side ramp. Line up with a dark notch and slide onto the ledge for the fishing lure.",
+          "floorIds": [
+            23
+          ]
+        },
+        {
+          "name": "Cloth Shield",
+          "where": "Second scree ledge",
+          "detail": "Climb back up, then line up with the other notch to reach the second bag.",
+          "floorIds": [
+            23
+          ]
+        },
+        {
+          "name": "Vitamins",
+          "where": "Above the cave mouth",
+          "detail": "After the hut encounter, continue uphill past the cave for the summit bag. Retrace the path to enter the cave.",
+          "floorIds": [
+            23
+          ]
+        },
+        {
           "name": "Bent Sword",
           "where": "Bone chamber",
-          "detail": "At the blood-trail junction, take the northwest passage and inspect the bones."
+          "detail": "Detour through the first side passage off the blood trail. Search the large heap of bones.",
+          "floorIds": [
+            22
+          ]
         },
         {
           "name": "Molotov",
           "where": "Bone chamber",
-          "detail": "Look beside the same pile for a second pickup."
+          "detail": "Turn the camera beside the bone heap to see the second pickup.",
+          "floorIds": [
+            22
+          ]
         },
         {
           "name": "200 zenny",
-          "where": "Blood trail in the cave",
-          "detail": "Search the skeleton where the blood stops. Retrace your steps to the junction for the water route."
+          "where": "End of the blood trail",
+          "detail": "Inspect the skeleton in the chamber where the party loses the trail.",
+          "floorIds": [
+            22
+          ]
+        },
+        {
+          "name": "Ballock Knife",
+          "where": "Upper cave passages",
+          "detail": "After doubling back, leave the blood trail. Search the skeleton in the first side passage on the way to the upstream pool.",
+          "floorIds": [
+            22
+          ]
+        },
+        {
+          "name": "Talisman",
+          "where": "Upper cave passages",
+          "detail": "In the next side passage, inspect the other skeleton before continuing to the water.",
+          "floorIds": [
+            22
+          ]
+        },
+        {
+          "name": "Power Food",
+          "where": "Nue, hut and cave",
+          "detail": "Rei can attempt Pilfer in both battles. The first chance ends when the Nue flees the hut.",
+          "floorIds": [
+            23,
+            22
+          ]
         }
       ],
       "sourceSections": [
         {
           "source": "dk",
-          "section": "Mountain hut and second Nue encounter"
+          "section": "Road to Mt. Glaus; Mt. Glaus and the Caverns; Yraall Region (Spring)"
         },
         {
-          "source": "boss",
-          "section": "Nue, first and second fights"
+          "source": "tri",
+          "section": "PRO00000007–09 and BOS00000001–02, mountain, both battles and the return to town"
+        },
+        {
+          "source": "r1",
+          "section": "Mt. Glaus, the mountain slide, blood trail, stream and two Power Foods"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Areas 023 and 022, outside Mt. Glaus and Nue’s Cave; Nue’s half-HP response"
         }
-      ]
+      ],
+      "warning": {
+        "label": "Missable steal",
+        "text": "Outside the hut, let Rei try Pilfer before the Nue retreats if you want its first Power Food. The cave battle has a separate steal."
+      }
     },
     {
       "id": "mcneil-manor",
       "title": "A night at McNeil Manor",
       "region": "The highlands",
-      "lead": "Getting into the manor takes more ingenuity than fighting the guards. Talk to the people on patrol.",
-      "hint": "Look for a repaired patch of wall. A missing possession and a noisy chicken coop can open the way inside.",
+      "lead": "Find Loki in the shed beyond the farm. The break-in starts at night, and the guards patrol the lanes between the hedges.",
+      "hint": "If the first guard wants 50 zenny, check the path behind the hedge near the courtyard entrance.",
       "steps": [
-        "Meet Loki in the hut beyond the farm. At night, inspect the odd section of outer wall and enter the courtyard.",
-        "Find the wallet for the guard, make use of the bell and follow the gossip near the hedges. Deal with the dog and investigate the chicken coop to draw guards from the front door.",
-        "Inside, visit the rooms guarded by the family ghosts. Use the lift to reach the roof and find the grappling hook by the last raised window.",
-        "Cross the rope with Rei. Heal before entering McNeil’s room, then return to the woods when the job is over."
+        "Inspect the fresh patch in the wall west of the manor. Inside, look behind the entrance hedge for a man with 50 zenny. Pay the first guard. Upstairs, turn the camera at the bend in the walkway to see the Wallet. Return it to its owner.",
+        "Slip past the lanterns while the guards face away. At the tower, strike the bell with Ryu or Teepo. Past the fountain, defeat Pooch. Talk to the woman and her suitors, then to the guard at the chicken coop. Defeat Rocky inside and return to the front door.",
+        "With Ryu and Teepo, climb the hall stairs for Torast. The bedroom beside the portrait gallery has a bed and diary. From the hall, take the stairs to the bedrooms and go through to the balcony for Kassen. Re-enter at its far end and go downstairs past Galtel.",
+        "Go through the kitchen and take the hall past the stairs for Doksen. The lift beyond him goes to the attic bed. Climb the ladder, then the roof stairs. At the last raised window, slide down onto the Grappling Hook to get Rei back.",
+        "Cross the rope. The Swallow Eye and Broad Sword are on opposite sides of this roof. Return to the diary if you need it. Descend near the smoking chimney and heal before entering McNeil’s bedroom for Amalgam."
       ],
-      "tip": "Keep a little zenny for the first guard. If a patrol catches you, you can enter the grounds again.",
+      "tip": "A lantern guard sends you back to the entrance. You can return to Loki’s hut to rest before trying the courtyard again.",
       "links": [
         "apprentices",
         "fishing-tackle",
@@ -958,9 +1297,10 @@
         "enemy-db"
       ],
       "landmarks": [
-        "Outer wall",
-        "Courtyard patrols",
-        "Family rooms",
+        "Loose wall",
+        "Bell and coop",
+        "Bedrooms and balcony",
+        "Kitchen and lift",
         "Rooftop crossing"
       ],
       "items": [
@@ -988,6 +1328,71 @@
           "name": "Magic Shard",
           "where": "Servants’ rooms",
           "detail": "Look in the upstairs cabinet beyond the portrait gallery. Return to the servants’ beds to rest and save before hunting the ghosts."
+        },
+        {
+          "name": "50 zenny",
+          "where": "Courtyard hedge",
+          "detail": "Turn towards the hidden path as you enter. The man at the far end gives you the first guard’s fee."
+        },
+        {
+          "name": "Firecracker",
+          "where": "Courtyard chest",
+          "detail": "After Pooch, climb the steps beside the manor façade and follow the upper walkway east."
+        },
+        {
+          "name": "Gems",
+          "where": "Upstairs bedrooms",
+          "detail": "Before the balcony, search the partly hidden cabinet in the end bedroom."
+        },
+        {
+          "name": "40 zenny",
+          "where": "Library wing",
+          "detail": "In the bedroom with the fireplace, turn the camera to find the corner dresser."
+        },
+        {
+          "name": "Panacea",
+          "where": "Balcony door",
+          "detail": "After Kassen, re-enter through the door at the far end. Check the cabinet before going downstairs."
+        },
+        {
+          "name": "MultiVitamin",
+          "where": "Servants’ beds",
+          "detail": "After Galtel, search the dresser beside the butler."
+        },
+        {
+          "name": "Healing Herb",
+          "where": "Kitchen",
+          "detail": "Open the cupboard beside the cook."
+        },
+        {
+          "name": "600 zenny",
+          "where": "Kitchen stair",
+          "detail": "Climb to the servants’ bedroom and search the cabinet at the far end of the beds."
+        },
+        {
+          "name": "Grappling Hook",
+          "where": "Near roof",
+          "detail": "Climb to the last dormer window. Slide onto the coil to bring Rei out of hiding."
+        },
+        {
+          "name": "Swallow Eye",
+          "where": "Far roof",
+          "detail": "After crossing the rope, descend to the lowest northwestern edge."
+        },
+        {
+          "name": "Broad Sword",
+          "where": "Far roof",
+          "detail": "Go southeast to the end of the roof, then rotate the camera."
+        },
+        {
+          "name": "Vitamin",
+          "where": "Bathroom",
+          "detail": "Descend the ladder beside the smoking chimney. Check the cabinet in the room adjoining the bath."
+        },
+        {
+          "name": "Magic Shard",
+          "where": "McNeil’s bedroom",
+          "detail": "Rei can try Pilfer on Amalgam after the rooftop reunion."
         }
       ],
       "encounters": [
@@ -1010,6 +1415,41 @@
           "name": "Volt",
           "where": "Manor interior",
           "detail": "Examine for Charge before using thunder on it. A thunder hit changes its routine."
+        },
+        {
+          "name": "Torast",
+          "where": "Entrance hall",
+          "detail": "Sleep can catch both boys. A Silver Knife from the fishing merchant exploits his Holy weakness."
+        },
+        {
+          "name": "Kassen",
+          "where": "Balcony",
+          "detail": "Drain restores some of his health. Heal either boy if he keeps targeting him."
+        },
+        {
+          "name": "Galtel",
+          "where": "Stairs beyond the balcony",
+          "detail": "He weakens your attacks. Take the stairs down once he disappears."
+        },
+        {
+          "name": "Doksen",
+          "where": "Kitchen corridor",
+          "detail": "He often retaliates against ordinary attacks. Attack with abilities to avoid those reprisals."
+        },
+        {
+          "name": "Amalgam",
+          "where": "McNeil’s bedroom",
+          "detail": "Sleep can disable the party. Astral Warp hits one ally hard. Rei can steal a Magic Shard."
+        },
+        {
+          "name": "Bat",
+          "where": "Manor rooms",
+          "detail": "Examine for Gloom."
+        },
+        {
+          "name": "Roach",
+          "where": "Manor rooms",
+          "detail": "Examine for Jump if you missed it in the coop."
         }
       ],
       "map": {
@@ -1160,7 +1600,7 @@
       ],
       "warning": {
         "label": "Missable",
-        "text": "Search the cabinets and crates before finishing the robbery. The night-time interior is a one-visit area."
+        "text": "Search both sides of the roof before entering McNeil’s bedroom. The night-time interior closes after Amalgam. Rocky’s Life Shard is a separate steal in the courtyard."
       },
       "sourceSections": [
         {
@@ -1170,6 +1610,14 @@
         {
           "source": "tri",
           "section": "Night-time manor, portrait gallery and servant quarters"
+        },
+        {
+          "source": "s6",
+          "section": "Courtyard hedge, bell, Pooch and the coop"
+        },
+        {
+          "source": "s7",
+          "section": "Torast to Amalgam, balcony route, servants’ rooms and both sides of the roof"
         }
       ]
     },
@@ -1192,7 +1640,8 @@
         "genes",
         "apprentices",
         "wyndia-children",
-        "genes-child"
+        "genes-child",
+        "super-combo"
       ],
       "art": "highlands",
       "sources": [
@@ -1367,7 +1816,10 @@
         "puzzles",
         "gene-faq",
         "a-genes",
-        "tri"
+        "tri",
+        "enemy-db",
+        "skills",
+        "electro-fish"
       ],
       "landmarks": [
         "Mason’s hut",
@@ -1405,6 +1857,11 @@
           "name": "Reverse gene",
           "where": "Woods below the tower",
           "detail": "Enter the ? clearing south of the mountain escape. Have Ryu inspect the purple crystal."
+        },
+        {
+          "name": "Bamboo Rod",
+          "where": "Momo’s Tower, above the moving platform",
+          "detail": "After Momo joins, charge the platform to reach the stairs. Climb both flights. Take the first door on the left before the laser room and open the chest."
         }
       ],
       "floors": [
@@ -1564,6 +2021,21 @@
           "name": "NutTroop",
           "where": "Mt. Boumore",
           "detail": "Examine for Double Blow. A Broad Sword can drop."
+        },
+        {
+          "name": "Hyper Bot",
+          "where": "Momo’s Tower",
+          "detail": "Examine for Blitz. The attack costs the user half its current HP."
+        },
+        {
+          "name": "Ice Toad",
+          "where": "Momo’s Tower",
+          "detail": "Use fire to weaken it. A damaged Ice Toad has a weaker breath attack and may flee after a fire hit."
+        },
+        {
+          "name": "Orc",
+          "where": "Momo’s Tower",
+          "detail": "Examine for Last Resort before defeating it."
         }
       ],
       "sourceSections": [
@@ -1578,7 +2050,19 @@
         {
           "source": "tri",
           "section": "Tower, EP100000009 · Nina and the crystal switches"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Ice Toad, Hyper Bot and Orc, including their learnable actions"
+        },
+        {
+          "source": "electro-fish",
+          "section": "Rods, Bamboo Rod chest and fishing range"
         }
+      ],
+      "aliases": [
+        "Momo’s Tower",
+        "Mt. Boumore"
       ]
     },
     {
@@ -1598,7 +2082,8 @@
         "field-actions",
         "accession-field",
         "formations",
-        "genes-child"
+        "genes-child",
+        "peco-first-levels"
       ],
       "art": "iii-mine",
       "sources": [
@@ -2589,7 +3074,8 @@
         "railway-points",
         "fusion-forms",
         "diary",
-        "genes-home"
+        "genes-home",
+        "faerie-jobs"
       ],
       "art": "iii-mine",
       "sources": [
@@ -3889,7 +4375,9 @@
         "floor-exits",
         "dk",
         "a-genes",
-        "gene-faq"
+        "gene-faq",
+        "skills",
+        "enemy-db"
       ],
       "landmarks": [
         "Colony portal",
@@ -4027,6 +4515,11 @@
           "name": "Tank Bot",
           "where": "Colony",
           "detail": "Watch for Transfer or Sacrifice."
+        },
+        {
+          "name": "Insector",
+          "where": "Relay Point A",
+          "detail": "On the adult visit, look in the passages between the portal and the platforms. Use Examine on Insector for Tornado. It can appear with a swarm of Dragon Flies."
         }
       ],
       "sourceSections": [
@@ -4037,6 +4530,14 @@
         {
           "source": "gene-faq",
           "section": "Trance, Failure and Radiance locations"
+        },
+        {
+          "source": "skills",
+          "section": "Tornado, communication tower on the return visit"
+        },
+        {
+          "source": "enemy-db",
+          "section": "Areas 111 and 112, the Insector and Dragon Fly formations"
         }
       ]
     },
@@ -4897,7 +5398,8 @@
         "floor-exits",
         "dk",
         "enemy-db",
-        "skills"
+        "skills",
+        "boss"
       ],
       "landmarks": [
         "Eden lift",
@@ -5020,6 +5522,11 @@
           "name": "Vampire",
           "where": "Final passage",
           "detail": "Frost can be learned here. Leave a Vampire alone if you want to see Evil Eye or Triple Blow."
+        },
+        {
+          "name": "Myria",
+          "where": "Eden",
+          "detail": "Venom can inflict several conditions at once. Sanctuary removes buffs, so keep enough AP for healing and recovery."
         }
       ],
       "warning": {
@@ -5034,6 +5541,10 @@
         {
           "source": "enemy-db",
           "section": "Vampire and the last passages"
+        },
+        {
+          "source": "boss",
+          "section": "Myria’s battle, Venom and Sanctuary"
         }
       ]
     }
@@ -5124,7 +5635,8 @@
       ],
       "links": [
         "camp-notes",
-        "cedar"
+        "cedar",
+        "super-combo"
       ],
       "art": "iii-woods",
       "unlock": "cedar",
@@ -5189,11 +5701,18 @@
         {
           "title": "When a fish runs",
           "text": "Follow the fish icon with the green tracker. The red gauge measures the fish’s stamina. If the line keeps running out even with the tracker green, return with a stronger rod."
+        },
+        {
+          "title": "A longer cast from the tower",
+          "text": "After Momo joins, climb the stairs above the charged platform in her tower. The first doorway on the left leads to the Bamboo Rod chest. It casts up to 34 metres and moves the tracking bar faster than the Wooden Rod. Both rods have the same pulling strength."
         }
       ],
       "links": [
         "glaus",
-        "camp-notes"
+        "camp-notes",
+        "mcneil-manor",
+        "nue-and-spring",
+        "momo-tower"
       ],
       "art": "iii-port",
       "unlock": "glaus",
@@ -5222,6 +5741,36 @@
             [
               "Southeast of Mt. Zublo",
               "Manillo"
+            ]
+          ]
+        },
+        {
+          "title": "Manillo southwest of McNeil",
+          "columns": [
+            "Trade for",
+            "Bring",
+            "Use"
+          ],
+          "rows": [
+            [
+              "Silver Knife",
+              "2 Rainbow Trout and 2 Trout",
+              "A Holy weapon for the manor ghosts."
+            ],
+            [
+              "Skill Ink",
+              "1 Rainbow Trout and 1 Trout",
+              "Move a learned skill in camp."
+            ],
+            [
+              "Iron Helm",
+              "1 Trout and 2 Pirana",
+              "Head armour."
+            ],
+            [
+              "Waistcloth",
+              "1 Trout and 1 Puffer",
+              "Body armour."
             ]
           ]
         }
@@ -5348,7 +5897,8 @@
       "links": [
         "momo-tower",
         "field-view",
-        "camp-notes"
+        "camp-notes",
+        "peco-first-levels"
       ],
       "art": "highlands",
       "unlock": "momo-tower",
@@ -5520,7 +6070,8 @@
       ],
       "links": [
         "lighthouse",
-        "camp-notes"
+        "camp-notes",
+        "faerie-jobs"
       ],
       "art": "iii-woods",
       "unlock": "lighthouse",
@@ -5783,7 +6334,8 @@
       ],
       "links": [
         "colony",
-        "genes"
+        "genes",
+        "enemy-skills"
       ],
       "art": "iii-mine",
       "unlock": "colony",
@@ -6469,6 +7021,400 @@
           ]
         }
       ]
+    },
+    {
+      "id": "yraall-bunyan",
+      "title": "Yraall Road and Bunyan’s woodpile",
+      "category": "Exploration",
+      "lead": "Once Ryu has his clothes, Rei chooses a hiding place on the road south of the farm.",
+      "art": "iii-woods",
+      "unlock": "cedar",
+      "sections": [
+        {
+          "title": "The ambush",
+          "text": "Walk to the fork at Yraall Road. Step into the trees where Rei and Teepo are waiting. After Bunyan passes, search the bag close to the hiding place for 40 zenny."
+        },
+        {
+          "title": "The locked cottage",
+          "text": "Leave the road the way you entered. Return to the woods by the entrance closest to Bunyan’s fenced house. Put Rei in front and use his field action on the door."
+        },
+        {
+          "title": "The cellar cupboard",
+          "text": "In the cottage, follow the ladder down to the cupboard. Take the Beef Jerky, listen upstairs and leave through the front door."
+        },
+        {
+          "title": "Swing after Teepo lets go",
+          "text": "Teepo varies his timing. Watch his hands and the tilt of the log. Swing once it stands free. A missed round can be repeated. When the work is done, the two boys can set off for the road to Mt. Glaus."
+        }
+      ],
+      "links": [
+        "cedar",
+        "field-actions",
+        "glaus",
+        "glaus-approach"
+      ],
+      "sources": [
+        "dk",
+        "tri",
+        "s2",
+        "s3",
+        "puzzles",
+        "r1"
+      ]
+    },
+    {
+      "id": "mcneil-shops",
+      "title": "McNeil’s shops, dressers and inn",
+      "category": "Camp & village",
+      "lead": "After the farm scene, turn back to town with Rei and Teepo. The houses are open, and the inn has a diary.",
+      "art": "iii-woods",
+      "unlock": "cedar",
+      "sections": [
+        {
+          "title": "The free supplies",
+          "text": "Look in the dressers in the two neighbouring houses, on the display beside the item seller, and in the hedge alongside the inn. The inn lets you save. For a free rest, head back to the boys’ house."
+        },
+        {
+          "title": "Taking up fishing",
+          "text": "A Wooden Rod costs 40 zenny. The item shop sells several 20-zenny lures. A Worm or Sinker gives you something to cast. Keep any Coin you find for Manillo."
+        }
+      ],
+      "links": [
+        "cedar",
+        "camp-notes",
+        "yraall-bunyan",
+        "fishing-tackle",
+        "mcneil"
+      ],
+      "sources": [
+        "dk",
+        "s1",
+        "r1",
+        "electro-fish"
+      ],
+      "referenceTables": [
+        {
+          "title": "Early purchases",
+          "columns": [
+            "Item",
+            "Price",
+            "Use"
+          ],
+          "rows": [
+            [
+              "Healing Herb",
+              "10 zenny",
+              "Single-ally healing"
+            ],
+            [
+              "Antidote",
+              "12 zenny",
+              "Cure poison"
+            ],
+            [
+              "Molotov",
+              "10 zenny",
+              "Fire damage in battle"
+            ],
+            [
+              "Wooden Rod",
+              "40 zenny",
+              "Equip with a lure"
+            ],
+            [
+              "Worm, Toad, Old Popper or Sinker",
+              "20 zenny each",
+              "Bait and lures"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "glaus-approach",
+      "title": "Teepo and the road to Mt. Glaus",
+      "category": "Exploration",
+      "lead": "The question mark on the road to Glaus is a separate crossing. Teepo can reach several pickups here before the mountain climb.",
+      "art": "highlands",
+      "unlock": "glaus",
+      "sections": [
+        {
+          "title": "Empty the stream",
+          "text": "Cross the bridge and walk to the large boulder. Put Teepo in front. Kick the little stone supporting it. The boulder rolls into the stream. Walk to the shallow approach downstream and follow the exposed bed to the Weather Vane chest."
+        },
+        {
+          "title": "Look underneath",
+          "text": "Return to the boulder and take the uphill path. Kick loose stones out of the way. Check the holes they uncover. A chest beside a tree near the far exit holds 80 zenny."
+        },
+        {
+          "title": "Reach Mt. Glaus",
+          "text": "Leave by the far end and continue along the world-map road to the mountain. After this first crossing, you can pass the road on the map when returning to McNeil."
+        },
+        {
+          "title": "On the approach road",
+          "text": "Ripper and Man Trap appear on this road before the mountain. Use Examine for Blind against Ripper. Once you reach the mountain proper, expect Curr packs and the small Goos."
+        }
+      ],
+      "links": [
+        "glaus",
+        "field-actions",
+        "fishing-tackle"
+      ],
+      "sources": [
+        "dk",
+        "tri",
+        "r1",
+        "s3",
+        "enemy-db",
+        "skills"
+      ],
+      "referenceTables": [
+        {
+          "title": "Roadside finds",
+          "columns": [
+            "Look for",
+            "Pickup"
+          ],
+          "rows": [
+            [
+              "Chest reached through the drained channel",
+              "Weather Vane"
+            ],
+            [
+              "Holes under the loose stones",
+              "Vitamin, 120 zenny and Coin"
+            ],
+            [
+              "Chest beside the tree near the exit",
+              "80 zenny"
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "nue-and-spring",
+      "title": "The Nue and the return to McNeil",
+      "category": "Combat",
+      "lead": "The encounter outside the hut and the one beyond the waterfall have separate chances to steal. The return trip opens the first apprenticeship.",
+      "art": "highlands",
+      "unlock": "glaus",
+      "sections": [
+        {
+          "title": "Outside the hut",
+          "text": "Put Rei on Pilfer if you want Power Food. The fight ends when the Nue retreats. Return to the bed to recover before taking the path of broken trees."
+        },
+        {
+          "title": "Beyond the falls",
+          "text": "Heal before reaching the beast. Chlorine can poison, and physical blows can draw reprisals. Its howl warns of Jolt, which hits the full party. Rei has another chance at Power Food."
+        },
+        {
+          "title": "Before you jump out",
+          "text": "Examine the Nue’s body to see the den it was protecting. Take the water exit when you are ready to leave. Back in the woods, head down to McNeil."
+        },
+        {
+          "title": "A spring visit",
+          "text": "After the welcome in town, spend what you need before visiting Mygas at the stump northwest of McNeil. His fee is the zenny you carry. To continue the story, speak to Loki, the cloaked villager, and meet him in the farm shed once you have stocked up."
+        }
+      ],
+      "links": [
+        "glaus",
+        "mcneil-manor",
+        "teacher-mygas",
+        "apprentices",
+        "fishing-tackle"
+      ],
+      "sources": [
+        "dk",
+        "tri",
+        "r1",
+        "boss",
+        "enemy-db",
+        "a-masters"
+      ]
+    },
+    {
+      "id": "super-combo",
+      "title": "Performing Super Combo",
+      "category": "Combat",
+      "lead": "Bunyan teaches a timed attack for one enemy. Each correct button adds another hit.",
+      "art": "highlands",
+      "unlock": "wyndia",
+      "sections": [
+        {
+          "title": "Learn it at the cabin",
+          "text": "Put a character under Bunyan and gain eight levels with him as their master. Go back to his cabin in Cedar Woods to collect the skill."
+        },
+        {
+          "title": "Follow the face buttons",
+          "text": "Use Super Combo on one target. Press the control mapped to the PlayStation symbol that appears, then watch for the next one. The prompts get quicker. Release fast-forward while learning the sequence."
+        }
+      ],
+      "links": [
+        "teacher-bunyan",
+        "enemy-skills",
+        "camp-notes"
+      ],
+      "sources": [
+        "kixer",
+        "peco-guide",
+        "skills",
+        "dk"
+      ],
+      "referenceTables": [
+        {
+          "title": "Two ways to strike more than once",
+          "columns": [
+            "Skill",
+            "AP",
+            "How it works"
+          ],
+          "rows": [
+            [
+              "Super Combo",
+              "12",
+              "Bunyan. Match the prompts to chain hits."
+            ],
+            [
+              "Double Blow",
+              "2",
+              "Examine a NutTroop. Two strikes with no button sequence."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peco-first-levels",
+      "title": "Peco’s first levels",
+      "category": "Masters & companions",
+      "lead": "Peco joins at level 1. His choice of master starts to matter with his very first level gain.",
+      "art": "highlands",
+      "unlock": "dump",
+      "sections": [
+        {
+          "title": "Before his first battle",
+          "text": "If you want a particular growth pattern, visit the master before putting Peco in the fighting party. Bunyan favours power at the expense of AP and intelligence. If you want Peco to absorb hits, compare Fahl’s growth once he accepts pupils."
+        },
+        {
+          "title": "Put him where he can answer back",
+          "text": "Peco often strikes back after a physical hit and recovers a little HP each round. His fire and ice breath depend on his current HP. Heal him before using them against a group."
+        },
+        {
+          "title": "Put him in front on the field",
+          "text": "Peco can headbutt certain rocks. He can also speak for the party at Yggdrasil trees."
+        }
+      ],
+      "links": [
+        "dump",
+        "field-actions",
+        "apprentices",
+        "teacher-bunyan",
+        "teacher-fahl",
+        "formations"
+      ],
+      "sources": [
+        "peco-guide",
+        "qu",
+        "abilities",
+        "dk"
+      ],
+      "referenceTables": [
+        {
+          "title": "Native abilities",
+          "columns": [
+            "Peco’s level",
+            "Ability",
+            "Use"
+          ],
+          "rows": [
+            [
+              "10",
+              "Dream Breath",
+              "May put the enemy group to sleep."
+            ],
+            [
+              "17",
+              "Venom Breath",
+              "May poison the enemy group."
+            ],
+            [
+              "20",
+              "Rejuvenate",
+              "Restore one ally’s HP."
+            ],
+            [
+              "21",
+              "Purify",
+              "Remove poison."
+            ],
+            [
+              "30–31",
+              "Ice Breath and Fire Breath",
+              "Elemental damage to the enemy group."
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "id": "faerie-jobs",
+      "title": "Staffing the faerie village",
+      "category": "Camp & village",
+      "lead": "The noticeboard shows the food store and the work assigned to each faerie. Check it after fighting outside the village.",
+      "art": "iii-woods",
+      "unlock": "mine-return",
+      "sections": [
+        {
+          "title": "Feed the village first",
+          "text": "If the food store is falling, put another faerie on hunting before opening a shop. Give clearing and construction to faeries with long green bars. New indoor jobs need a room."
+        },
+        {
+          "title": "Give a scholar time",
+          "text": "Scholars can raise culture to level 7 and discover jobs. Put a scholar in a room and return after battles. Fishing and leaving the game idle do not advance the village."
+        },
+        {
+          "title": "Choose a merchant",
+          "text": "Speed and Ability merchants in the same trade develop different stock. Up to three faeries can share a room. Reassigning the room can erase its stock or interrupt an unfinished copy."
+        }
+      ],
+      "links": [
+        "faerie-homes",
+        "camp-notes",
+        "mine-return"
+      ],
+      "sources": [
+        "faerie-work",
+        "s-faeries",
+        "a-faeries"
+      ],
+      "referenceTables": [
+        {
+          "title": "Choose by the long bar",
+          "columns": [
+            "Faerie’s bar",
+            "Work"
+          ],
+          "rows": [
+            [
+              "Red",
+              "Hunting and exploring."
+            ],
+            [
+              "Green",
+              "Clearing ground and building."
+            ],
+            [
+              "Dark blue",
+              "Running a shop."
+            ],
+            [
+              "Light blue",
+              "Studying and copying."
+            ]
+          ]
+        }
+      ]
     }
   ],
   "fieldSheets": {
@@ -6527,11 +7473,27 @@
       "enemies": [
         {
           "name": "Goblin",
-          "detail": "After Ryu changes into travelling clothes, use Examine to learn Unmotivate. Rei can steal a Bent Sword."
+          "detail": "Cedar Woods. After Ryu changes clothes, Examine a Goblin to learn Unmotivate. Rei can steal a Bent Sword."
         },
         {
           "name": "Gonghead",
-          "detail": "After Ryu changes clothes, Rei can steal a Vitamin. A Life Shard is a possible drop."
+          "detail": "Cedar Woods. Rei can steal a Vitamin. A Life Shard is a possible drop."
+        },
+        {
+          "name": "Eye Goo",
+          "detail": "Cedar Woods. Leave it alive for more than ten turns if you want to Examine Snooze."
+        },
+        {
+          "name": "Mage Goo",
+          "detail": "Cedar Woods. Use Examine to learn Burn when the Mage Goo casts it."
+        },
+        {
+          "name": "Boss Goblin",
+          "detail": "Cedar Woods. Examine for Influence. Leave a second foe alive so the Boss Goblin has someone to command."
+        },
+        {
+          "name": "Ripper",
+          "detail": "Cedar Woods. Use Examine for Blind while the Ripper can still act."
         }
       ],
       "warning": null,
@@ -6545,7 +7507,271 @@
         "diary",
         "enemy-skills",
         "teacher-bunyan"
-      ]
+      ],
+      "mapTitle": "The forest path",
+      "nextSheet": "mcneil"
+    },
+    "mcneil": {
+      "id": "mcneil",
+      "stop": "cedar",
+      "area": "McNeil",
+      "title": "McNeil village",
+      "chapter": "The highlands · A change of clothes",
+      "objective": "Find Teepo by the weapon shop, then join the others on the farm road.",
+      "entry": "Ryu arrives alone from Cedar Woods",
+      "art": "iii-woods",
+      "map": "mcneil.svg",
+      "mapTitle": "The village and farm road",
+      "mapKind": "Illustrated route sketch",
+      "mapAlt": "The cobbled road leads downhill from the first houses to a blue-roof weapon shop. Teepo stands by the red-roof inn across from it. The road continues through the farm towards Yraall Road. The inn garden and shops are an optional return after Ryu changes clothes.",
+      "steps": [
+        {
+          "key": 1,
+          "title": "Follow the boys downhill",
+          "body": "Enter McNeil from Cedar Woods. Wait for Rei and Teepo to come out of the house. When Ryu can move again, follow the cobbles downhill."
+        },
+        {
+          "key": 2,
+          "title": "Speak to Teepo",
+          "body": "Find the blue roof with a green sword sign. Rei stands against the shop. Teepo waits a few steps away by the red-roof inn. Face Teepo and speak to him."
+        },
+        {
+          "key": 3,
+          "title": "Join the others at the farm",
+          "body": "Finish the conversation. The scene moves to the farm, where Ryu gets dressed. You now control the three boys and can open the party menu."
+        },
+        {
+          "key": 4,
+          "title": "Search the village on your return",
+          "body": "Return after Ryu changes clothes. The first house has a Healing Herb by the beds. For a Vitamin, go round the lower-left end of the inn’s front hedge. Search the far end of the gap beside the woodshed.",
+          "optional": true
+        },
+        {
+          "key": 5,
+          "title": "Continue to Yraall Road",
+          "body": "Follow the road past the fields. On the world map, enter Yraall Road and walk down to the junction. Go to the patch of trees Rei picks for the ambush."
+        }
+      ],
+      "optional": [
+        {
+          "name": "Healing Herb",
+          "where": "First village house",
+          "advice": "After Ryu changes clothes, return to the first thatched house. Open the tall dresser beside the beds."
+        },
+        {
+          "name": "Antidote",
+          "where": "Village houses",
+          "advice": "In the second house, search the lower dresser."
+        },
+        {
+          "name": "Molotov",
+          "where": "Item shop",
+          "advice": "Inspect the display beside the shopkeeper."
+        },
+        {
+          "name": "Vitamin",
+          "where": "Inn hedge",
+          "advice": "From the red-roof inn, walk to the lower-left end of the front hedge. Turn around the clipped hedge and follow the gap between the long hedge and the woodshed. Search the far end."
+        },
+        {
+          "name": "Vitamin",
+          "where": "Manor approach",
+          "advice": "On the optional lane beyond the farm, open the dresser inside the little hut."
+        },
+        {
+          "name": "40 zenny",
+          "where": "Yraall Road",
+          "advice": "After the ambush, check the satchel near the hiding place."
+        },
+        {
+          "name": "Beef Jerky",
+          "where": "Bunyan’s cellar",
+          "advice": "Return from Yraall Road with Rei. Unlock the cottage and inspect the cupboard below the ladder."
+        }
+      ],
+      "enemies": [
+        {
+          "name": "Goblin",
+          "detail": "Yraall Road. After Ryu changes clothes, Examine a Goblin to learn Unmotivate. Rei can steal a Bent Sword."
+        },
+        {
+          "name": "Gonghead",
+          "detail": "Yraall Road. Rei can steal a Vitamin. A Life Shard is a possible drop."
+        },
+        {
+          "name": "Eye Goo",
+          "detail": "Yraall Road. Leave it alive for more than ten turns if you want to Examine Snooze."
+        },
+        {
+          "name": "Mage Goo",
+          "detail": "Yraall Road. Use Examine to learn Burn when the Mage Goo casts it."
+        },
+        {
+          "name": "Boss Goblin",
+          "detail": "Yraall Road. Examine for Influence. Leave a second foe alive so the Boss Goblin has someone to command."
+        },
+        {
+          "name": "Ripper",
+          "detail": "Yraall Road. Use Examine for Blind while the Ripper can still act."
+        }
+      ],
+      "warning": null,
+      "links": [
+        "yraall-bunyan",
+        "mcneil-shops",
+        "camp-notes",
+        "enemy-skills"
+      ],
+      "nextSheet": "glaus",
+      "evidence": "The US PlayStation Lab replay reached Teepo by the red-roof inn, joined the party at the farm and collected the Healing Herb and the Vitamin on returning to the village. The other supplies and Yraall route use the cited walkthroughs."
+    },
+    "glaus": {
+      "id": "glaus",
+      "stop": "glaus",
+      "area": "Mt. Glaus",
+      "title": "Mt. Glaus",
+      "chapter": "The highlands · The Nue hunt",
+      "objective": "Find Rei at the hut, then follow the Nue through the mountain.",
+      "entry": "After Bunyan sends Rei ahead",
+      "art": "highlands",
+      "map": "glaus.svg",
+      "mapTitle": "From the scree to the den",
+      "mapKind": "Illustrated mountain and cave sketch",
+      "mapAlt": "The first bridge leads to the uphill ramp beside the one-way slide. An upper bridge reaches the hut. Broken trunks lead to the cave mouth; the summit bag is optional. Inside the cave, the blood trail ends at a skeleton. Backtrack to the fork and take the clear path to the upstream pool. The current reaches the den behind the falls.",
+      "steps": [
+        {
+          "key": 1,
+          "title": "Climb beside the scree",
+          "body": "Cross the timber bridge and climb the ramp beside the broad tan scree. Each raised ledge has a bag. To reach one, line up with its dark notch above, slide down, then climb the ramp for the other."
+        },
+        {
+          "key": 2,
+          "title": "Meet Rei at the hut",
+          "body": "At the top of the ramp, cross the bridge without rails over the stream. Look for Rei inside the hut. When the Nue appears outside, Rei can try Pilfer for Power Food before it flees."
+        },
+        {
+          "key": 3,
+          "title": "Follow the broken trees",
+          "body": "When the Nue flees, rest at the hut if needed. Follow the broken trunks uphill from its side. Pass the cave mouth only if you want the summit bag of Vitamins."
+        },
+        {
+          "key": 4,
+          "title": "Find where the trail ends",
+          "body": "Enter the cave and follow the blood until it stops beside a skeleton. Inspect the bones for 200 zenny. Turn back to the junction in the main passage."
+        },
+        {
+          "key": 5,
+          "title": "Jump in upstream",
+          "body": "Take the passage without blood. Two side passages contain a Ballock Knife and a Talisman. Continue to the upstream pool and jump into the current to reach the far side of the waterfall."
+        },
+        {
+          "key": 6,
+          "title": "Return by the water",
+          "body": "Heal before approaching the Nue. After the battle you can examine its body to enter the den. Before leaving, decide whether to see that short scene. Jump back into the water for the way out."
+        }
+      ],
+      "opening": {
+        "title": "Getting to the mountain",
+        "steps": [
+          "After chopping wood, leave Cedar Woods with Teepo. On the map, follow the road along the east edge of the woods to the question mark.",
+          "Cross the stream bridge. Teepo can kick the small support from under the boulder if you want the chest in the dry bed. Take the uphill path and cross the far exit to reach Mt. Glaus on the world map."
+        ]
+      },
+      "optional": [
+        {
+          "name": "Antidote",
+          "where": "Below the entrance bridge",
+          "advice": "Across the bridge, take the dipping path that doubles back underneath it."
+        },
+        {
+          "name": "Heavy Caro",
+          "where": "Scree ledge",
+          "advice": "Climb the side ramp. Line up with a dark notch and slide onto the ledge for the fishing lure."
+        },
+        {
+          "name": "Cloth Shield",
+          "where": "Second scree ledge",
+          "advice": "Climb back up, then line up with the other notch to reach the second bag."
+        },
+        {
+          "name": "Vitamins",
+          "where": "Above the cave mouth",
+          "advice": "After the hut encounter, continue uphill past the cave for the summit bag. Retrace the path to enter the cave."
+        },
+        {
+          "name": "Bent Sword",
+          "where": "Bone chamber",
+          "advice": "Detour through the first side passage off the blood trail. Search the large heap of bones."
+        },
+        {
+          "name": "Molotov",
+          "where": "Bone chamber",
+          "advice": "Turn the camera beside the bone heap to see the second pickup."
+        },
+        {
+          "name": "200 zenny",
+          "where": "End of the blood trail",
+          "advice": "Inspect the skeleton in the chamber where the party loses the trail."
+        },
+        {
+          "name": "Ballock Knife",
+          "where": "Upper cave passages",
+          "advice": "After doubling back, leave the blood trail. Search the skeleton in the first side passage on the way to the upstream pool."
+        },
+        {
+          "name": "Talisman",
+          "where": "Upper cave passages",
+          "advice": "In the next side passage, inspect the other skeleton before continuing to the water."
+        },
+        {
+          "name": "Power Food",
+          "where": "Nue, hut and cave",
+          "advice": "Rei can attempt Pilfer in both battles. The first chance ends when the Nue flees the hut."
+        }
+      ],
+      "enemies": [
+        {
+          "name": "Nue",
+          "detail": "Hut and cave. Chlorine can poison one ally. When the Nue howls in the rematch, heal the party before Jolt. Rei can try Pilfer in each fight."
+        },
+        {
+          "name": "Bat",
+          "detail": "Cave. Use Examine for Gloom. Rei can steal Berries."
+        },
+        {
+          "name": "Zombie",
+          "detail": "Cave. Use Teepo’s fire magic. Rei can steal Clothing."
+        },
+        {
+          "name": "Curr",
+          "detail": "Mountain and cave. Currs travel in packs. Finish the wounded one before turning to the next."
+        },
+        {
+          "name": "Eye Goo",
+          "detail": "Mountain trail. Leave one alive for more than ten turns if you want to Examine Snooze."
+        },
+        {
+          "name": "Mage Goo",
+          "detail": "Mountain trail. Use Examine for Burn. Its spell can reach the back of the party."
+        },
+        {
+          "name": "Puff Goo",
+          "detail": "Mountain trail. Rei can steal a Healing Herb. A Vitamin is a possible drop."
+        },
+        {
+          "name": "Gonghead",
+          "detail": "Mountain trail. Rei can steal a Vitamin. It can also drop a Life Shard."
+        }
+      ],
+      "warning": "Outside the hut, let Rei try Pilfer before the Nue retreats if you want its first Power Food. The cave battle has a separate steal.",
+      "links": [
+        "glaus-approach",
+        "nue-and-spring",
+        "enemy-skills",
+        "fishing-tackle",
+        "mcneil-manor"
+      ],
+      "evidence": "The US PlayStation Lab replay reached the timber entrance bridge, the scree ledges and the upper bridge without rails. Eye Goo, Mage Goo and Puff Goo appeared on the climb. The summit and cave route follow the cited walkthroughs."
     }
   },
   "teachers": [
@@ -6620,7 +7846,8 @@
         "s-masters"
       ],
       "links": [
-        "apprentices"
+        "apprentices",
+        "super-combo"
       ],
       "growth": {
         "HP": 2,

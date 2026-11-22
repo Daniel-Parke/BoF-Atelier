@@ -15,7 +15,7 @@ You can fork the code, improve a walkthrough or adapt an original Chrysm illustr
 
 ## Facts, tables and private game data
 
-The original Kurok landscape was created with ImageGen using the project's own Sand Sea painting as reference. The Cedar Woods, Kurok and Dam diagrams are original drawings. The four menu pieces use an original score and synthesised instruments. Credit BoF Atelier contributors for these works under CC BY 4.0. Gloock and Barlow Semi Condensed carry separate font notices. [Bundled font licences](../design/field-guide/atlas/type)
+The original Kurok landscape was created with ImageGen using the project's own Sand Sea painting as reference. The illustrated routes are original diagrams by BoF Atelier contributors. This includes Cedar Woods, McNeil and Mt. Glaus in III and Kurok, the Dam, Kyria and Kyria Woods in IV. The four menu pieces use an original score and synthesised instruments. Credit BoF Atelier contributors for these works under CC BY 4.0. Gloock and Barlow Semi Condensed carry separate font notices. [Bundled font licences](../design/field-guide/atlas/type)
 
 Individual observations such as an item name, value or direction can have a different legal status from a writer's description, an illustration or the selection and arrangement of a table. Database rights also vary by jurisdiction. CC BY applies to the contributors' original expression and any relevant database rights they can license. It establishes no claim to all underlying facts or to third-party tables. Record the source, verify individual facts and write descriptions in your own words. Keep extracted game assets, private floor rasters and raw game data local.
 

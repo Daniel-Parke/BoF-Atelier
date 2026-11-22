@@ -13,7 +13,7 @@ ColumnLayout {
     readonly property int chosen: reader.selectedStep - 1
     readonly property var scopedItems: (reader.stop.items || []).filter(belongs)
     readonly property var scopedEnemies: (reader.stop.encounters || []).filter(belongs)
-    function belongs(row) { return !reader.area || row.where.includes(reader.area.name) }
+    function belongs(row) { return !reader.area || (row.areaIds || []).includes(reader.area.id) }
     function choose(key) {
         reader.selectedStep = key
         if (reader.routeExpanded) mapViewport.showPin()
@@ -38,19 +38,22 @@ ColumnLayout {
             id: caution
             anchors.left: parent.left; anchors.right: parent.right; anchors.margins: 14
             anchors.verticalCenter: parent.verticalCenter; spacing: 2
-            Copy { text: "Missable treasure"; color: "#722e1b"; font.weight: Font.DemiBold }
+            Copy { text: spread.sheet.warningLabel || "Missable treasure"; color: "#722e1b"; font.weight: Font.DemiBold }
             Copy { text: spread.sheet.warning || "" }
         }
     }
     Action {
         visible: !!spread.sheet.opening; objectName: "damEngines"
-        text: spread.reader.enginesOpen ? "Close the work-camp directions" : "Arriving from Kurok? Start at the work camp"
+        text: spread.sheet.opening?.title || ""
+        selected: spread.reader.enginesOpen
+        Accessible.checkable: true; Accessible.checked: selected
         quiet: true; onClicked: spread.reader.enginesOpen = !spread.reader.enginesOpen
     }
     Repeater {
         model: spread.sheet.opening && spread.reader.enginesOpen ? spread.sheet.opening.steps : []
         delegate: Copy {
             required property int index; required property string modelData
+            objectName: "routeOpeningStep" + (index + 1)
             text: (index + 1) + ".  " + modelData
         }
     }
@@ -64,7 +67,7 @@ ColumnLayout {
                 Layout.fillWidth: true; spacing: 7
                 Section {
                     objectName: "routeLandmark"; Layout.minimumWidth: 0
-                    text: spread.sheet.id === "dam" ? "The two gates" : spread.sheet.id === "kurok" ? "The western fork" : "The forest path"
+                    text: spread.sheet.mapTitle || spread.sheet.area || ""
                 }
                 Action {
                     visible: !!spread.diagram.url; objectName: "expandRouteMap"

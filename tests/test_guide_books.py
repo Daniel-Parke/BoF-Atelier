@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import re
+from tempfile import TemporaryDirectory
 import unittest
 
 from shell.guide_book import ART, CORE_PAGES, read_book
@@ -13,6 +14,37 @@ ROOT = Path(__file__).resolve().parents[1] / "design/field-guide"
 
 
 class FieldGuideVolumeTests(unittest.TestCase):
+    def test_published_first_format_and_unsupported_versions(self):
+        with TemporaryDirectory() as folder:
+            data = json.loads((ROOT / "wiki/bof4.json").read_bytes())
+            data["version"] = 1
+            stop = next(s for s in data["route"] if s["id"] == "dam-kyria")
+            first_edition_maps = {1110, 1024, 1029, 1028, 4097, 1043, 1045, 1046}
+            stop["floors"] = [floor for floor in stop["floors"] if floor["mapId"] in first_edition_maps]
+            parts = stop["sectionsByArea"]
+            # The first edition grouped the village and woods under the name Kyria.
+            parts[-2]["endStep"] = parts[-1]["endStep"]
+            parts.pop()
+            for part in parts:
+                part.pop("id")
+                part.pop("floorIds")
+            for row in stop["items"] + stop["encounters"]:
+                row.pop("areaIds")
+            del data["fieldSheets"]["kyria-woods"]
+            del data["fieldSheets"]["kyria"]
+            data["fieldSheets"]["dam"].pop("nextSheet")
+            for row in [*data["articles"], *data["route"]]:
+                row["links"] = [key for key in row["links"] if key not in ("kyria-woods","kyria")]
+            target = Path(folder) / "bof4.json"
+            target.write_text(json.dumps(data), encoding="utf-8")
+            restored = read_book(target.parent,"bof4")
+            local = next(s for s in restored["route"] if s["id"] == "dam-kyria")
+            self.assertEqual([4097,1043,1045,1046],local["sectionsByArea"][-1]["floorIds"])
+            data["version"] = 99
+            target.write_text(json.dumps(data), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError,"Unsupported bof4 Field Guide version 99"):
+                read_book(target.parent,"bof4")
+
     def test_books_have_complete_linked_routes_and_offline_sources(self):
         for game in CORE_PAGES:
             with self.subTest(game=game):
